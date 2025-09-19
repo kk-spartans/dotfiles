@@ -1,0 +1,8 @@
+services:
+  biblioreads:
+    image: nesaku/biblioreads:latest
+    container_name: biblioreads
+    ports:
+      - "3015:3000"
+    restart: always
+

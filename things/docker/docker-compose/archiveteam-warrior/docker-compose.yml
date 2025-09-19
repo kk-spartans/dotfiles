@@ -1,0 +1,7 @@
+services:
+  archiveteam-warrior:
+    image: atdr.meo.ws/archiveteam/warrior-dockerfile
+    container_name: archiveteam-warrior
+    restart: always
+    ports:
+      - "8001:8001"

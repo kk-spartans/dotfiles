@@ -1,0 +1,153 @@
+watch_stylesheet: true
+watch_config: true
+debug: true 
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic stop --whkd && komorebic start --whkd"
+bars:
+  primary-bar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: false
+    blur_effect:
+      enabled: false
+      acrylic: false
+      dark_mode: false
+      round_corners: true
+      border_color: None
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 32
+    padding:
+      top: 4
+      left: 6
+      bottom: 0
+      right: 6
+    widgets:
+      left: [
+        "komorebi_workspaces",
+        "komorebi_active_layout",
+      ]
+      center: [
+        "clock",
+      ]
+      right: [
+        "media",
+        "volume",
+      #  "counter",
+        ]
+widgets:
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{artist} - {title}"
+      label_alt: "{artist}"
+      max_field_size:
+        label: 64
+        label_alt: 24
+      show_thumbnail: true
+      controls_only: false
+      controls_left: true
+      hide_empty: true
+      thumbnail_alpha: 150
+      thumbnail_padding: 8
+      thumbnail_corner_radius: 0
+      icons:
+        prev_track: "\udb81\udcae"
+        next_track: "\udb81\udcad"
+        play: "\udb81\udc0a"
+        pause: "\udb80\udfe4"
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%a, %d %b %H:%M:%S}"
+      label_alt: "{%A, %d %B %Y %H:%M:%S}"
+      timezones: []
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "\u23fc Offline"
+      label_workspace_btn: "\udb81\udc3d"
+      label_workspace_active_btn: ""
+      label_workspace_populated_btn: "\udb81\udc3e"
+      label_default_name: "{index}"
+      label_zero_index: false
+      hide_empty_workspaces: false
+      hide_if_offline: true
+      animation: true
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  komorebi_active_layout:
+    type: "komorebi.active_layout.ActiveLayoutWidget"
+    options:
+      hide_if_offline: true
+      label: "{icon}"
+      layouts:
+        [
+          "bsp",
+          "columns",
+          "rows",
+          "grid",
+          "vertical_stack",
+          "horizontal_stack",
+          "ultrawide_vertical_stack",
+          "right_main_vertical_stack",
+        ]
+      layout_icons:
+        bsp: "BSP"
+        columns: "COLS"
+        rows: "ROWS"
+        grid: "GRID"
+        vertical_stack: "Verticle Stack"
+        horizontal_stack: "H-STACK"
+        ultrawide_vertical_stack: "W-STACK"
+        right_main_vertical_stack: "RMV-STACK"
+        monocle: "MONOCLE"
+        maximised: "MAX"
+        floating: "FLOATING"
+        paused: "PAUSED"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+      callbacks:
+        on_left: "next_layout"
+        on_middle: "toggle_monocle"
+        on_right: "prev_layout"
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      tooltip: false
+      volume_icons:
+        - "\ueee8"
+        - "\uf026"
+        - "\uf027"
+        - "\uf027"
+        - "\uf028"
+      callbacks:
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+#  counter:
+#    type: "yasb.custom.CustomWidget"
+#    options:
+#      label: "Count: {data}"
+#      exec_options:
+#        run_cmd: 'powershell -NoProfile -ExecutionPolicy Bypass -File "%APPDATA%\\YASB\\read.ps1"'
+#        run_interval: 1000
+#        return_format: "string"
+#        hide_empty: false
+#      callbacks:
+#        on_left: 'exec powershell -NoProfile -ExecutionPolicy Bypass -File "%APPDATA%\\YASB\\inc.ps1"'
+#        on_right: 'exec powershell -NoProfile -ExecutionPolicy Bypass -File "%APPDATA%\\YASB\\dec.ps1"'

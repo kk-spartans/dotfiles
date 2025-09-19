@@ -1,0 +1,18 @@
+services:
+  quetre:
+    container_name: quetre
+    image: quay.io/pussthecatorg/quetre:latest
+    restart: always
+    ports:
+      - "3012:3000"
+    environment:
+      - "NODE_ENV=production"
+      - "PORT=3000"
+      - "CACHE_PERIOD=1h"
+      - "REDIS_URL=quetre-redis:6379"
+      - "REDIS_TTL=3600"
+
+  quetre-redis:
+    container_name: quetre-redis
+    image: redis:alpine
+    restart: always

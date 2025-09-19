@@ -1,0 +1,10 @@
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    restart: always
+    ports:
+      - "3003:8080"
+    volumes:
+      - ./config:/etc/searxng
+      - ../../volumes/searxng/data:/var/cache/searxng
