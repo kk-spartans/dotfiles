@@ -1,7 +1,7 @@
 services:
   redlib:
     image: quay.io/redlib/redlib:latest
-    restart: always
+    restart: no
     container_name: "redlib"
     ports:
       - 3002:8080
@@ -13,6 +13,14 @@ services:
       - ALL
     env_file: .env
     healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "--tries=1", "http://localhost:8080/settings"]
+      test:
+        [
+          "CMD",
+          "wget",
+          "--spider",
+          "-q",
+          "--tries=1",
+          "http://localhost:8080/settings",
+        ]
       interval: 5m
       timeout: 3s

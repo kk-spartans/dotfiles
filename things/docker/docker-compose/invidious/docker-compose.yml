@@ -2,7 +2,7 @@ services:
   invidious:
     container_name: invidious
     image: quay.io/invidious/invidious:latest
-    restart: always
+    restart: no
     ports:
       - "3004:3000"
     environment:
@@ -43,8 +43,8 @@ services:
     container_name: invidious-companion
     image: quay.io/invidious/invidious-companion:latest
     environment:
-       - SERVER_SECRET_KEY=izieneiZairah8oo
-    restart: always
+      - SERVER_SECRET_KEY=izieneiZairah8oo
+    restart: no
     # Uncomment only if you have configured "public_url" for Invidious companion
     # Or if you want to use Invidious companion as an API in your program.
     # Remove "127.0.0.1:" if used from an external IP
@@ -66,7 +66,7 @@ services:
   invidious-db:
     container_name: invidious-db
     image: docker.io/library/postgres:14
-    restart: always
+    restart: no
     volumes:
       - ../../volumes/invidious/postgresdata:/var/lib/postgresql/data
       - ../../volumes/invidious/sql:/config/sql

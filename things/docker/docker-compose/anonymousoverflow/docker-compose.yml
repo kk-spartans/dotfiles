@@ -7,4 +7,4 @@ services:
       - JWT_SIGNING_SECRET=secret
     ports:
       - "3013:8080"
-    restart: "always"
+    restart: no

@@ -1,4 +1,3 @@
-
 services:
   shoelace:
     image: nixgoat/shoelace
@@ -9,4 +8,4 @@ services:
       - SHOELACE_CONFIG=/data/shoelace.toml
     volumes:
       - ../../volumes/shoelace/data:/data
-    restart: always
+    restart: no

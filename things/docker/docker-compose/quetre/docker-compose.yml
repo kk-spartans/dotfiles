@@ -2,7 +2,7 @@ services:
   quetre:
     container_name: quetre
     image: quay.io/pussthecatorg/quetre:latest
-    restart: always
+    restart: no
     ports:
       - "3012:3000"
     environment:
@@ -15,4 +15,4 @@ services:
   quetre-redis:
     container_name: quetre-redis
     image: redis:alpine
-    restart: always
+    restart: no

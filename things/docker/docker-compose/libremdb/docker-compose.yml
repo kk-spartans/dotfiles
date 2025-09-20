@@ -7,7 +7,7 @@ services:
     env_file: .env.local.example
     depends_on:
       - libremdb-redis
-    restart: always
+    restart: no
     user: 65534:65534
     read_only: true
     tmpfs:
@@ -20,7 +20,7 @@ services:
   libremdb-redis:
     container_name: libremdb_redis
     image: redis
-    restart: always
+    restart: no
     user: nobody
     read_only: true
     security_opt:

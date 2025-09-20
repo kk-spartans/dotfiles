@@ -2,7 +2,7 @@ services:
   priviblur:
     image: quay.io/syeopite/priviblur:latest
     container_name: priviblur
-    restart: always
+    restart: no
     ports:
       - "3011:8000"
     volumes:
@@ -14,7 +14,7 @@ services:
     command: redis-server --loglevel warning
     volumes:
       - ../../volumes/priviblur/priviblur-redis:/data
-    restart: always
+    restart: no
     user: "999:1000"
     read_only: true
     security_opt:

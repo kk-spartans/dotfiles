@@ -47,11 +47,14 @@
   "files.insertFinalNewline": true,
   "vscode_vibrancy.disableFramelessWindow": true,
   "window.controlsStyle": "custom",
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "github.copilot.enable": {
     "*": false,
     "plaintext": false,
     "markdown": false,
     "scminput": false
+  },
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": true
   }
 }

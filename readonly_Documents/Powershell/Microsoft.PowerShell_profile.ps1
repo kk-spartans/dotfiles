@@ -31,7 +31,7 @@ function ls {
         [string]$Path = '.'
     )
 
-    eza --all --git --icons --color=always --group-directories-first $Path
+    eza --all --git --icons --group-directories-first $Path
 }
 
 # === Make A File Hidden ===
@@ -89,7 +89,7 @@ function cat {
         [string]$Path
     )
 
-    bat --paging=never --style=full --wrap=never --color=always $Path
+    bat --paging=never --style=full --wrap=never --color=always --theme="Catppuccin Mocha" $Path
 }
 
 #===cd command===
@@ -116,9 +116,10 @@ function y {
 }
 
 
-Invoke-Expression (& { oh-my-posh init pwsh --config "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\powerlevel10k_rainbow.omp.json" })
+Invoke-Expression (& { oh-my-posh init pwsh --config "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\catppuccin_mocha.omp.json" })
 
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Vi
+# Set-PSReadLineKeyHandler -Key DownArrow -Function MenuComplete
 Set-Alias pb Get-Clipboard

@@ -4,5 +4,4 @@ services:
     container_name: biblioreads
     ports:
       - "3015:3000"
-    restart: always
-
+    restart: no

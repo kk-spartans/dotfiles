@@ -1,0 +1,40 @@
+[user]
+	name = kk-spartans
+	email = kcube.jan+github@gmail.com
+	signingkey = 6910B9912088CD54
+[core]
+	autocrlf = input
+	eol = lf
+	editor = code --wait
+[commit]
+	gpgsign = true
+[receive]
+	denyNonFastForwards = true
+[gpg]
+	program = ~\\AppData\\Local\\Programs\\GnuPG\\bin\\gpg.exe
+[push]
+	autoSetupRemote = true
+[diff]
+    colorMoved = default
+[delta]
+    features = catppuccin-mocha
+    line-numbers = true
+    navigate = true
+[init]
+    defaultbranch = main
+    templateDir = ~/.config/git/template
+[interactive]
+    diffFilter = delta --color-only
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[pull]
+    rebase = true
+[rebase]
+    autoStash = true
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = normal
+    submoduleSummary = true
