@@ -71,9 +71,6 @@ uv tool install "mcpo"
 uv tool install "tldr"
 
 go install "github.com/samyakbardiya/trex@latest"
-go install "github.com/jesseduffield/lazynpm@latest"
-
-cargo install --locked lazycli
 
 code --install-extension="brian-njogu.gitlantis"
 code --install-extension="esbenp.prettier-vscode"
