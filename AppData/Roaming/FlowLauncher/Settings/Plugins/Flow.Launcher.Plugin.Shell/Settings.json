@@ -1,0 +1,15 @@
+{
+  "Shell": 0,
+  "ReplaceWinR": false,
+  "CloseShellAfterPress": false,
+  "LeaveShellOpen": false,
+  "RunAsAdministrator": true,
+  "UseWindowsTerminal": false,
+  "ShowOnlyMostUsedCMDs": false,
+  "ShowOnlyMostUsedCMDsNumber": 0,
+  "CommandHistory": {
+    "komorebic start --whkd": 1,
+    "winver": 4,
+    "code ~/komorebi.json": 1
+  }
+}

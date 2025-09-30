@@ -25,12 +25,8 @@ function rm {
 # === Fix ls command ===
 Remove-Item Alias:ls
 function ls {
-    [CmdletBinding()]
-    param(
-        [Parameter(Position = 0)]
-        [string]$Path = '.'
-    )
-
+    param([string]$Path = '.')
+    if ($Path -like '~*') { $Path = $Path -replace '^~', $HOME }
     eza --all --git --icons --group-directories-first $Path
 }
 
@@ -83,12 +79,8 @@ function gs {
 #===Bat to Cat
 Remove-Item Alias:cat
 function cat {
-    [CmdletBinding()]
-    param(
-        [Parameter(Position = 0)]
-        [string]$Path
-    )
-
+    param([string]$Path)
+    if ($Path -like '~*') { $Path = $Path -replace '^~', $HOME }
     bat --paging=never --style=full --wrap=never --color=always --theme="Catppuccin Mocha" $Path
 }
 
@@ -114,7 +106,6 @@ function y {
     }
     Remove-Item -Path $tmp
 }
-
 
 Invoke-Expression (& { oh-my-posh init pwsh --config "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\catppuccin_mocha.omp.json" })
 

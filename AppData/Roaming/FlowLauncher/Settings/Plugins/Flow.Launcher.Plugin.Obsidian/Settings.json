@@ -1,0 +1,129 @@
+{
+  "MaxResult": 0,
+  "UseAliases": true,
+  "UseFilesExtension": false,
+  "AddCheckBoxesToContext": true,
+  "AddGlobalFolderExcludeToContext": true,
+  "AddLocalFolderExcludeToContext": false,
+  "AddCreateNoteOptionOnAllSearch": true,
+  "GlobalVaultSetting": {
+    "OpenInNewTabByDefault": false,
+    "SearchMarkdown": true,
+    "SearchCanvas": true,
+    "SearchImages": false,
+    "SearchExcalidraw": true,
+    "SearchOther": false,
+    "SearchContent": false,
+    "ExcludedPaths": [
+      ".trash",
+      ".obsidian"
+    ]
+  },
+  "VaultsSetting": {
+    "69e7cc41afee921f": {
+      "UseGlobalSetting": true,
+      "UseGlobalExcludedPaths": true,
+      "OpenInNewTabByDefault": false,
+      "SearchMarkdown": true,
+      "SearchCanvas": true,
+      "SearchImages": false,
+      "SearchExcalidraw": true,
+      "SearchOther": false,
+      "SearchContent": false,
+      "ExcludedPaths": [
+        ".trash",
+        ".obsidian"
+      ]
+    },
+    "5d1ca243ae4e714a": {
+      "UseGlobalSetting": true,
+      "UseGlobalExcludedPaths": true,
+      "OpenInNewTabByDefault": false,
+      "SearchMarkdown": true,
+      "SearchCanvas": true,
+      "SearchImages": false,
+      "SearchExcalidraw": true,
+      "SearchOther": false,
+      "SearchContent": false,
+      "ExcludedPaths": [
+        ".trash",
+        ".obsidian"
+      ]
+    },
+    "493155b8097a21e6": {
+      "UseGlobalSetting": true,
+      "UseGlobalExcludedPaths": true,
+      "OpenInNewTabByDefault": true,
+      "SearchMarkdown": true,
+      "SearchCanvas": true,
+      "SearchImages": false,
+      "SearchExcalidraw": true,
+      "SearchOther": false,
+      "SearchContent": false,
+      "ExcludedPaths": [
+        ".trash",
+        ".obsidian"
+      ]
+    },
+    "410fbeded6aec255": {
+      "UseGlobalSetting": true,
+      "UseGlobalExcludedPaths": true,
+      "OpenInNewTabByDefault": false,
+      "SearchMarkdown": true,
+      "SearchCanvas": true,
+      "SearchImages": false,
+      "SearchExcalidraw": true,
+      "SearchOther": false,
+      "SearchContent": false,
+      "ExcludedPaths": [
+        ".trash",
+        ".obsidian"
+      ]
+    },
+    "9f96471d830d9606": {
+      "UseGlobalSetting": true,
+      "UseGlobalExcludedPaths": true,
+      "OpenInNewTabByDefault": false,
+      "SearchMarkdown": true,
+      "SearchCanvas": true,
+      "SearchImages": false,
+      "SearchExcalidraw": true,
+      "SearchOther": false,
+      "SearchContent": false,
+      "ExcludedPaths": [
+        ".trash",
+        ".obsidian"
+      ]
+    },
+    "990062bb6f93b5c9": {
+      "UseGlobalSetting": true,
+      "UseGlobalExcludedPaths": true,
+      "OpenInNewTabByDefault": false,
+      "SearchMarkdown": true,
+      "SearchCanvas": true,
+      "SearchImages": false,
+      "SearchExcalidraw": true,
+      "SearchOther": false,
+      "SearchContent": false,
+      "ExcludedPaths": [
+        ".trash",
+        ".obsidian"
+      ]
+    },
+    "e745ccb48b7b8735": {
+      "UseGlobalSetting": true,
+      "UseGlobalExcludedPaths": true,
+      "OpenInNewTabByDefault": false,
+      "SearchMarkdown": true,
+      "SearchCanvas": true,
+      "SearchImages": false,
+      "SearchExcalidraw": true,
+      "SearchOther": false,
+      "SearchContent": false,
+      "ExcludedPaths": [
+        ".trash",
+        ".obsidian"
+      ]
+    }
+  }
+}

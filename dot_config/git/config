@@ -11,7 +11,7 @@
 [receive]
 	denyNonFastForwards = true
 [gpg]
-	program = ~\\AppData\\Local\\Programs\\GnuPG\\bin\\gpg.exe
+	program = ~/AppData/Local/Programs/GnuPG/bin/gpg.exe
 [push]
 	autoSetupRemote = true
 [diff]
