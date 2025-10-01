@@ -124,7 +124,7 @@ foreach ($pkg in $pnpmApps) {
 
     if (-not $found) {
         Write-Host "Installing $pkg"
-        pnpm install -g $pkg
+        pnpm install --global $pkg
     } else {
         Write-Host "Skipping $pkg"
     }
@@ -164,6 +164,15 @@ Write-Host "Installing trex"
 go install "github.com/samyakbardiya/trex@latest"
 Write-Host "Installing ascii-image-convertor"
 go install "github.com/TheZoraiz/ascii-image-converter@latest"
+
+
+# -----------------
+# Nvim
+# -----------------
+Write-Host "Installing bob"
+cargo install "bob-nvim"
+
+bob use latest
 
 # -----------------
 # VSCode
