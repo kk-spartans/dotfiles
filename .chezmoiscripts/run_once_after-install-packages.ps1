@@ -62,7 +62,7 @@ $wingetApps = @(
     "Zoom.Zoom",
     "Ookla.Speedtest.CLI",
     "sharkdp.hyperfine",
-    "dandavison.delta"
+    "AlDanial.Cloc"
 )
 
 $installedWinget = winget list
