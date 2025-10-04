@@ -1,5 +1,5 @@
-{{- if eq .chezmoi.os "android" }}
-#!/data/data/com.termux/files/usr/bin/env bash
+{{ if eq .chezmoi.os "android" -}}
+#!/data/data/com.termux/files/usr/bin/bash
 termux-setup-storage
 
 pkg update -y
@@ -45,4 +45,5 @@ code --install-extension usernamehw.errorlens
 code --install-extension vscodevim.vim
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+bat cache --build
 {{- end}}

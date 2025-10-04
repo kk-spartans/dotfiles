@@ -3,7 +3,7 @@ services:
     container_name: "anonymousoverflow"
     image: "ghcr.io/httpjamesm/anonymousoverflow:release"
     environment:
-      - APP_URL=http://localhost:3013
+      - APP_URL=http://kdsiblings:3013
       - JWT_SIGNING_SECRET=secret
     ports:
       - "3013:8080"

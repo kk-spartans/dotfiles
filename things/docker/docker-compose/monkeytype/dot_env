@@ -3,10 +3,10 @@
 ### === Required Config ===
 
 # URL of the frontend (accessible by browser)
-MONKEYTYPE_FRONTENDURL=http://localhost:3000
+MONKEYTYPE_FRONTENDURL=http://kdsiblings:3000
 
 # URL of the backend (accessible by browser)
-MONKEYTYPE_BACKENDURL=http://localhost:5000
+MONKEYTYPE_BACKENDURL=http://kdsiblings:5000
 
 ### === Optional: Google reCAPTCHA ===
 

@@ -6,7 +6,7 @@
 ### 1. REQUIRED VARS(site may not work as expected without these).
 ################################################################################
 ## used for meta tags. e.g: 'https://libremdb.iket.me'. don't add end slash.
-NEXT_PUBLIC_URL=http://localhost:3007
+NEXT_PUBLIC_URL=http://kdsiblings:3007
 ## used when fetching data from IMDb. not adding these could result in not getting any response.
 ## example useragent header: 'Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0'
 AXIOS_USERAGENT='Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0'
@@ -38,6 +38,6 @@ NEXT_TELEMETRY_DISABLED=1
 ### 4. INSTANCE META FIELDS(not required but good to have)
 ################################################################################
 ## example: 'https://iket.me'. 
-NEXT_PUBLIC_INSTANCE_MAIN_URL=http://localhost:3007
+NEXT_PUBLIC_INSTANCE_MAIN_URL=http://kdsiblings:3007
 ## eg: 'zyachel'
 NEXT_PUBLIC_INSTANCE_NAME=instance

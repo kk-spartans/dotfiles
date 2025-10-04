@@ -2,7 +2,7 @@ services:
   searxng:
     image: searxng/searxng:latest
     container_name: searxng
-    restart: no
+    restart: always
     ports:
       - "3003:8080"
     volumes:
