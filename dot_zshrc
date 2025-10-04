@@ -129,4 +129,4 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-
+PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
