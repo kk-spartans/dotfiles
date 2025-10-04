@@ -45,7 +45,6 @@ $wingetApps = @(
     "Microsoft.WindowsTerminal",
     "sharkdp.bat",
     "Anthropic.Claude",
-    "sxyazi.yazi",
     "jqlang.jq",
     "oschwartz10612.Poppler",
     "sharkdp.fd",

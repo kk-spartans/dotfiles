@@ -1,0 +1,46 @@
+#!/data/data/com.termux/files/usr/bin/env bash
+termux-setup-storage
+
+pkg update -y
+pkg upgrade -y
+
+pkg install x11-repo -y
+pkg install root-repo -y
+pkg update -y
+
+pkg install tur-repo  -y
+pkg update -y
+
+pkg install termux-x11-nightly -y
+pkg update -y
+
+pkg install android-tools audacity blender gimp bat bc chromium clang code-oss code-is-code-oss code-server curl eza ffmpeg firefox fzf gh ghostscript git gnupg htop imagemagick jq make mandoc pandoc neofetch nodejs openssl openssh p7zip proot-distro pulseaudio yt-dlp ripgrep speedtest-go rust termux-api fd python golang build-essential hyperfine sudo lazygit git-delta zoxide zsh xfce4 which wget cmake file feh audacity-ffmpeg ruby tmux gimp-resynthesizer scdaemon g-ir-scanner mesa-dev termux-services python-tkinter rust-analyzer -y
+
+chsh -s zsh
+
+npm install --global tree-sitter-cli
+
+pip install ocrmypdf spotdl copyparty tldr xonsh
+
+go install github.com/samyakbardiya/trex@latest
+go install github.com/TheZoraiz/ascii-image-convertor@latest
+
+cargo install bob-nvim
+bob use latest
+
+code --install-extension brian-njogu.gitlantis
+code --install-extension esbenp.prettier-vscode
+code --install-extension github.copilot
+code --install-extension github.copilot-chat
+code --install-extension catppuccin.catppuccin-vsc
+code --install-extension mhutchie.git-graph
+code --install-extension miguelsolorio.symbols
+code --install-extension mkxml.vscode-filesize
+code --install-extension ms-python.debugpy
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-vscode.powershell
+code --install-extension usernamehw.errorlens
+code --install-extension vscodevim.vim
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

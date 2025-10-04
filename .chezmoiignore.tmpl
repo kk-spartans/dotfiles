@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.os "windows" }}
+.zshrc
+.p10k.zsh
+.termux
+x
+.config/Code
+.config/bat
+{{- end}}
+
+{{- if eq .chezmoi.os "android" }}
+wallpaper.jpg
+things
+Documents
+komorebi.json
+applications.json
+.wslconfig
+AppData
+.config/lazydocker
+.config/whkdrc
+.config/yasb
+{{- end }}
