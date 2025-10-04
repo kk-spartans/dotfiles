@@ -10,14 +10,15 @@
 	gpgsign = true
 [receive]
 	denyNonFastForwards = true
+{{ if eq .chezmoi.os "windows" -}}
 [gpg]
 	program = ~/AppData/Local/Programs/GnuPG/bin/gpg.exe
+{{- end}}
 [push]
 	autoSetupRemote = true
 [diff]
     colorMoved = default
 [delta]
-    features = catppuccin-mocha
     line-numbers = true
     navigate = true
 [init]

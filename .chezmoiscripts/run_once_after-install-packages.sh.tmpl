@@ -3,7 +3,7 @@
 termux-setup-storage
 
 pkg update -y
-pkg upgrade -y
+yes | pkg upgrade -y
 
 pkg install x11-repo -y
 pkg install root-repo -y
@@ -19,9 +19,7 @@ pkg install android-tools audacity blender gimp bat bc chromium clang code-oss c
 
 chsh -s zsh
 
-npm install --global tree-sitter-cli
-
-pip install ocrmypdf spotdl copyparty tldr xonsh
+pip install copyparty tldr xonsh
 
 go install github.com/samyakbardiya/trex@latest
 go install github.com/TheZoraiz/ascii-image-convertor@latest
