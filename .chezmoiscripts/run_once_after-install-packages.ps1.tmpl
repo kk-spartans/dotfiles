@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" }}
 Write-Host "Installing ripgrep"
 winget install --id="BurntSushi.ripgrep.GNU" --source="winget" --accept-package-agreements --accept-source-agreements --disable-interactivity --exact
 
@@ -232,4 +233,4 @@ if (-not $found) {
 [Environment]::SetEnvironmentVariable("YAZI_FILE_ONE", (Resolve-Path "$HOME\AppData\Local\Programs\Git\usr\bin\file.exe").Path, "User")
 [Environment]::SetEnvironmentVariable("XDG_CONFIG_HOME", (Resolve-Path "$HOME\.config").Path, "User")
 [Environment]::SetEnvironmentVariable("EZA_CONFIG_DIR", (Resolve-Path "$HOME\.config\eza").Path, "User")
-
+{{- end}}
