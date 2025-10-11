@@ -25,27 +25,20 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "python.analysis.addHoverSummaries": true,
   "python.analysis.autoFormatStrings": true,
   "workbench.startupEditor": "none",
-  "glassit.alpha": 200,
-  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
   "workbench.colorCustomizations": {},
   "terminal.integrated.gpuAcceleration": "off",
   "window.systemColorTheme": "dark",
   "window.autoDetectColorScheme": false,
   "window.titleBarStyle": "custom",
-  "redhat.telemetry.enabled": false,
-  "application.shellEnvironmentResolutionTimeout": 120,
   "editor.fontLigatures": true,
   "terminal.integrated.cursorStyle": "line",
   "editor.minimap.autohide": "mouseover",
-  "animations.Install-Method": "Apc Customize UI++",
   "explorer.confirmDragAndDrop": false,
   "editor.fontFamily": "\"JetBrainsMono Nerd Font\"",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "vscode_vibrancy.disableFramelessWindow": true,
   "window.controlsStyle": "custom",
   "workbench.colorTheme": "Catppuccin Mocha",
   "github.copilot.enable": {
@@ -56,5 +49,8 @@
   },
   "chat.mcp.discovery.enabled": {
     "claude-desktop": true
-  }
+  },
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.editor.splitInGroupLayout": "vertical",
+  "editor.unicodeHighlight.invisibleCharacters": false
 }

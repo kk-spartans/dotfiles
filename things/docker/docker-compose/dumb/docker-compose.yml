@@ -1,7 +1,0 @@
-services:
-  dumb:
-    image: ghcr.io/rramiachraf/dumb:latest
-    restart: no
-    container_name: dumb
-    ports:
-      - "3010:5555"

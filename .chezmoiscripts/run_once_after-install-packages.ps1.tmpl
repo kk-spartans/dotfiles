@@ -1,8 +1,10 @@
 {{- if eq .chezmoi.os "windows" }}
-Write-Host "Installing ripgrep"
-winget install --id="BurntSushi.ripgrep.GNU" --source="winget" --accept-package-agreements --accept-source-agreements --disable-interactivity --exact
-
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+if (-not (Get-Command rg -ErrorAction SilentlyContinue))
+{
+    Write-Host "Installing ripgrep"
+    winget install --id="BurntSushi.ripgrep.GNU" --source="winget" --accept-package-agreements --accept-source-agreements --disable-interactivity --exact
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+}
 
 # -----------------
 # Winget
@@ -62,32 +64,45 @@ $wingetApps = @(
     "Zoom.Zoom",
     "Ookla.Speedtest.CLI",
     "sharkdp.hyperfine",
-    "AlDanial.Cloc"
+    "AlDanial.Cloc",
+    "Amazon.Kindle",
+    "Fastfetch-cli.Fastfetch",
+    "ImputNet.Helium",
+    "FiloSottile.age"
 )
 
 $installedWinget = winget list
 
-foreach ($app in $wingetApps) {
+foreach ($app in $wingetApps)
+{
     $installedWinget | rg -iq $app
     $found = $LASTEXITCODE -eq 0
 
-    if (-not $found) {
+    if (-not $found)
+    {
         Write-Host "Installing $app"
         winget install --id="$app" --exact --accept-package-agreements --accept-source-agreements --disable-interactivity
-    } else {
+    } else
+    {
         Write-Host "Skipping $app"
     }
 }
 
+winget upgrade --all --include-unknown
+
 # -----------------
 # Spicetify
 # -----------------
-if (-not (Get-Command spicetify -ErrorAction SilentlyContinue)) {
+if (-not (Get-Command spicetify -ErrorAction SilentlyContinue))
+{
     Write-Host "Installing Spicetify"
     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/spicetify/cli/main/install.ps1" -UseBasicParsing | Invoke-Expression
-} else {
-    Write-Host "Skipping Spicetify"
+} else
+{
+    Write-Host "Trying to update Spicetify"
+    spicetify update
 }
+
 
 # -----------------
 # Volta
@@ -98,37 +113,49 @@ $voltaApps = @(
     "pnpm"
 )
 
-foreach ($tool in $voltaApps) {
+foreach ($tool in $voltaApps)
+{
     $installedVolta | rg -iq $tool
     $found = $LASTEXITCODE -eq 0
 
-    if (-not $found) {
+    if (-not $found)
+    {
         Write-Host "Installing $tool"
         volta install $tool
-    } else {
+    } else
+    {
         Write-Host "Skipping $tool"
     }
 }
+
+pnpm self-update
 
 # -----------------
 # Pnpm
 # -----------------
 $installedPnpm = pnpm list -g --depth=0
 $pnpmApps = @(
-    "tree-sitter-cli"
+    "tree-sitter-cli",
+    "@immich/cli",
+    "qrcode"
 )
 
-foreach ($pkg in $pnpmApps) {
+foreach ($pkg in $pnpmApps)
+{
     $installedPnpm | rg -iq $pkg
     $found = $LASTEXITCODE -eq 0
 
-    if (-not $found) {
+    if (-not $found)
+    {
         Write-Host "Installing $pkg"
         pnpm install --global $pkg
-    } else {
+    } else
+    {
         Write-Host "Skipping $pkg"
     }
 }
+
+pnpm update -g
 
 # -----------------
 # Uv
@@ -141,38 +168,72 @@ $uvApps = @(
     "copyparty",
     "mcpo",
     "tldr",
-    "xonsh"
-    "oterm"
+    "xonsh",
+    "oterm",
+    "pycowsay"
 )
 
-foreach ($uvTool in $uvApps) {
+foreach ($uvTool in $uvApps)
+{
     $installedUv | rg -iq $uvTool
     $found = $LASTEXITCODE -eq 0
 
-    if (-not $found) {
+    if (-not $found)
+    {
         Write-Host "Installing $uvTool"
         uv tool install $uvTool
-    } else {
+    } else
+    {
         Write-Host "Skipping $uvTool"
     }
 }
 
+uv tool upgrade --all
+
 # -----------------
 # Go
 # -----------------
-Write-Host "Installing trex"
-go install "github.com/samyakbardiya/trex@latest"
-Write-Host "Installing ascii-image-convertor"
-go install "github.com/TheZoraiz/ascii-image-converter@latest"
+
+$goApps = @{
+    "github.com/samyakbardiya/trex@latest" = "trex"
+    "github.com/TheZoraiz/ascii-image-converter@latest" = "ascii-image-converter"
+}
+
+foreach ($repo in $goApps.Keys)
+{
+    $cmd = $goApps[$repo]
+    if (-not (Get-Command $cmd -ErrorAction SilentlyContinue))
+    {
+        Write-Host "Installing $cmd"
+        go install $repo
+    } else
+    {
+        Write-Host "Skipping $cmd"
+    }
+}
 
 
 # -----------------
-# Nvim
+# Rust
 # -----------------
-Write-Host "Installing bob"
-cargo install "bob-nvim"
 
-bob use latest
+$cargoApps = @{
+    "bob-nvim" = "bob"
+    "gitoxide" = "gix"
+}
+
+foreach ($pkgname in $cargoApps.Keys)
+{
+    $cmd = $cargoApps[$pkgname]
+    if (-not (Get-Command $cmd -ErrorAction SilentlyContinue))
+    {
+        Write-Host "Installing $cmd"
+        cargo install $pkgname
+    } else
+    {
+        Write-Host "Skipping $cmd"
+    }
+}
 
 # -----------------
 # VSCode
@@ -195,14 +256,17 @@ $extensions = @(
     "vscodevim.vim"
 )
 
-foreach ($ext in $extensions) {
+foreach ($ext in $extensions)
+{
     $installedExtensions | rg -iq $ext
     $found = $LASTEXITCODE -eq 0
 
-    if (-not $found) {
+    if (-not $found)
+    {
         Write-Host "Installing $ext"
         code --install-extension $ext
-    } else {
+    } else
+    {
         Write-Host "Skipping $ext"
     }
 }
@@ -213,7 +277,8 @@ foreach ($ext in $extensions) {
 $installedWinget | rg -iq Docker.DockerDesktop
 $found = $LASTEXITCODE -eq 0
 
-if (-not $found) {
+if (-not $found)
+{
     Write-Host "Starting docker containers"
     Start-Job { Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe" } -ErrorAction SilentlyContinue
     Start-Sleep -Seconds 60
@@ -223,8 +288,6 @@ if (-not $found) {
         docker compose up -d --force-recreate
         Pop-Location
     }
-} else {
-    Write-Host "Skipping Containers"
 }
 
 # -----------------
