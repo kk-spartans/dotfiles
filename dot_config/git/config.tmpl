@@ -1,13 +1,17 @@
 [user]
 	name = kk-spartans
 	email = kcube.jan+github@gmail.com
+{{ if eq .chezmoi.os "windows" -}}
 	signingkey = 6910B9912088CD54
+{{- end}}
 [core]
 	autocrlf = input
 	eol = lf
 	editor = code --wait
 [commit]
+{{ if eq .chezmoi.os "windows" -}}
 	gpgsign = true
+{{- end}}
 [receive]
 	denyNonFastForwards = true
 {{ if eq .chezmoi.os "windows" -}}
