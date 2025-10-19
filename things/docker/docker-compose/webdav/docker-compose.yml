@@ -4,6 +4,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ../../volumes/webdav:/var/webdav
+      - ../../volumes/webdav:/data
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     restart: always
