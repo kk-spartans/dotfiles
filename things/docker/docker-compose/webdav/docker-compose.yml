@@ -6,3 +6,4 @@ services:
     volumes:
       - ../../volumes/webdav:/var/webdav
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: always
