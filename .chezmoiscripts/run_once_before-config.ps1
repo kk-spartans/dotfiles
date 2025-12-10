@@ -1,0 +1,2 @@
+(New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path ([Environment]::GetFolderPath('Startup')) 'YASB.lnk')).TargetPath='C:\Program Files\YASB\yasb.exe';(New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path ([Environment]::GetFolderPath('Startup')) 'YASB.lnk')).WorkingDirectory='C:\Program Files\YASB';(New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path ([Environment]::GetFolderPath('Startup')) 'YASB.lnk')).Save()
+komorebic enable-autostart --whkd

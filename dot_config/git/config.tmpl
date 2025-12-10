@@ -1,0 +1,34 @@
+[user]
+	name = kk-spartans
+	email = kcube.jan+github@gmail.com
+[core]
+	autocrlf = input
+	eol = lf
+	editor = code --wait
+[receive]
+	denyNonFastForwards = true
+[push]
+	autoSetupRemote = true
+[diff]
+    colorMoved = default
+[delta]
+    line-numbers = true
+    navigate = true
+[init]
+    defaultbranch = main
+    templateDir = ~/.config/git/template
+[interactive]
+    diffFilter = mise x delta -- delta --color-only
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[pull]
+    rebase = true
+[rebase]
+    autoStash = true
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = normal
+    submoduleSummary = true
