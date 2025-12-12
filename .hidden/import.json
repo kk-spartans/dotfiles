@@ -1,170 +1,61 @@
 {
-	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-12-10T16:18:11.417-00:00",
-	"Sources" : 
-	[
-		{
-			"Packages" : 
-			[
-				{
-					"PackageIdentifier" : "7zip.7zip"
-				},
-				{
-					"PackageIdentifier" : "Audacity.Audacity"
-				},
-				{
-					"PackageIdentifier" : "Docker.DockerDesktop"
-				},
-				{
-					"PackageIdentifier" : "Buanzo.FFmpegforAudacity"
-				},
-				{
-					"PackageIdentifier" : "REALiX.HWiNFO"
-				},
-				{
-					"PackageIdentifier" : "Ookla.Speedtest.CLI"
-				},
-				{
-					"PackageIdentifier" : "ShiningLight.OpenSSL.Dev"
-				},
-				{
-					"PackageIdentifier" : "Piriform.Recuva"
-				},
-				{
-					"PackageIdentifier" : "Zen-Team.Zen-Browser"
-				},
-				{
-					"PackageIdentifier" : "BlenderFoundation.Blender"
-				},
-				{
-					"PackageIdentifier" : "AmN.yasb"
-				},
-				{
-					"PackageIdentifier" : "TheDocumentFoundation.LibreOffice"
-				},
-				{
-					"PackageIdentifier" : "gerardog.gsudo"
-				},
-				{
-					"PackageIdentifier" : "Google.GoogleDrive"
-				},
-				{
-					"PackageIdentifier" : "voidtools.Everything"
-				},
-				{
-					"PackageIdentifier" : "Zoom.Zoom"
-				},
-				{
-					"PackageIdentifier" : "LGUG2Z.whkd"
-				},
-				{
-					"PackageIdentifier" : "LGUG2Z.komorebi"
-				},
-				{
-					"PackageIdentifier" : "CodeSector.TeraCopy"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerShell"
-				},
-				{
-					"PackageIdentifier" : "OBSProject.OBSStudio"
-				},
-				{
-					"PackageIdentifier" : "Parsec.Parsec"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
-				},
-				{
-					"PackageIdentifier" : "DEVCOM.JetBrainsMonoNerdFont"
-				},
-				{
-					"PackageIdentifier" : "Tailscale.Tailscale"
-				},
-				{
-					"PackageIdentifier" : "Amazon.Kindle"
-				},
-				{
-					"PackageIdentifier" : "GIMP.GIMP.2"
-				},
-				{
-					"PackageIdentifier" : "Git.Git"
-				},
-				{
-					"PackageIdentifier" : "MiKTeX.MiKTeX"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Edit"
-				},
-				{
-					"PackageIdentifier" : "Perplexity.Comet"
-				},
-				{
-					"PackageIdentifier" : "Spotify.Spotify"
-				},
-				{
-					"PackageIdentifier" : "aria2.aria2"
-				},
-				{
-					"PackageIdentifier" : "Obsidian.Obsidian"
-				},
-				{
-					"PackageIdentifier" : "ElementLabs.LMStudio"
-				},
-				{
-					"PackageIdentifier" : "eza-community.eza"
-				},
-				{
-					"PackageIdentifier" : "ImputNet.Helium"
-				},
-				{
-					"PackageIdentifier" : "jdx.mise"
-				},
-				{
-					"PackageIdentifier" : "oschwartz10612.Poppler"
-				},
-				{
-					"PackageIdentifier" : "twpayne.chezmoi"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
-				},
-				{
-					"PackageIdentifier" : "Anysphere.Cursor"
-				},
-				{
-					"PackageIdentifier" : "CharlesMilette.TranslucentTB"
-				},
-				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				}
-			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://cdn.winget.microsoft.com/cache",
-				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
-				"Name" : "winget",
-				"Type" : "Microsoft.PreIndexed.Package"
-			}
-		},
-		{
-			"Packages" : 
-			[
-				{
-					"PackageIdentifier" : "9PFXXSHC64H3"
-				}
-			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
-				"Identifier" : "StoreEdgeFD",
-				"Name" : "msstore",
-				"Type" : "Microsoft.Rest"
-			}
-		}
-	],
-	"WinGetVersion" : "1.12.350"
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "CreationDate": "2025-12-11T16:43:19.138-00:00",
+  "Sources": [
+    {
+      "Packages": [
+        { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "Microsoft.VisualStudio.BuildTools", "Overrides": ["--wait --passive --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --add Microsoft.VisualStudio.Component.Windows11SDK.22621"] },
+        { "PackageIdentifier": "Audacity.Audacity" },
+        { "PackageIdentifier": "REALiX.HWiNFO" },
+        { "PackageIdentifier": "Google.PlatformTools" },
+        { "PackageIdentifier": "ImageMagick.Q16-HDRI" },
+        { "PackageIdentifier": "Gyan.FFmpeg" },
+        { "PackageIdentifier": "BlenderFoundation.Blender" },
+        { "PackageIdentifier": "AmN.yasb" },
+        { "PackageIdentifier": "TheDocumentFoundation.LibreOffice" },
+        { "PackageIdentifier": "gerardog.gsudo" },
+        { "PackageIdentifier": "Google.GoogleDrive" },
+        { "PackageIdentifier": "voidtools.Everything" },
+        { "PackageIdentifier": "LGUG2Z.whkd" },
+        { "PackageIdentifier": "LGUG2Z.komorebi" },
+        { "PackageIdentifier": "Microsoft.PowerShell" },
+        { "PackageIdentifier": "OBSProject.OBSStudio" },
+        { "PackageIdentifier": "DEVCOM.JetBrainsMonoNerdFont" },
+        { "PackageIdentifier": "Tailscale.Tailscale" },
+        { "PackageIdentifier": "GIMP.GIMP.2" },
+        { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "MiKTeX.MiKTeX" },
+        { "PackageIdentifier": "Microsoft.Edit" },
+        { "PackageIdentifier": "Ookla.Speedtest.CLI" },
+        { "PackageIdentifier": "Perplexity.Comet" },
+        { "PackageIdentifier": "Spotify.Spotify" },
+        { "PackageIdentifier": "aria2.aria2" },
+        { "PackageIdentifier": "Obsidian.Obsidian" },
+        { "PackageIdentifier": "ElementLabs.LMStudio" },
+        { "PackageIdentifier": "jdx.mise" },
+        { "PackageIdentifier": "twpayne.chezmoi" },
+        { "PackageIdentifier": "Microsoft.VisualStudioCode" },
+        { "PackageIdentifier": "Microsoft.PowerToys" },
+        { "PackageIdentifier": "Anysphere.Cursor" },
+        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" }
+      ],
+      "SourceDetails": {
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      }
+    },
+    {
+      "Packages": [{ "PackageIdentifier": "9PFXXSHC64H3" }],
+      "SourceDetails": {
+        "Argument": "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
+        "Identifier": "StoreEdgeFD",
+        "Name": "msstore",
+        "Type": "Microsoft.Rest"
+      }
+    }
+  ],
+  "WinGetVersion": "1.12.350"
 }
