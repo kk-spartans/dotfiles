@@ -5,7 +5,7 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
-        { "PackageIdentifier": "Microsoft.VisualStudio.BuildTools", "Overrides": ["--wait --passive --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --add Microsoft.VisualStudio.Component.Windows11SDK.22621"] },
+        { "PackageIdentifier": "Microsoft.VisualStudio.Community", "Overrides": ["--wait --passive --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --add Microsoft.VisualStudio.Component.Windows11SDK.22621"] },
         { "PackageIdentifier": "Audacity.Audacity" },
         { "PackageIdentifier": "REALiX.HWiNFO" },
         { "PackageIdentifier": "Google.PlatformTools" },

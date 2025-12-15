@@ -22,6 +22,7 @@ cargo-binstall = "latest"
 "ubi:charmbracelet/glow" = "latest"
 "ubi:jgm/pandoc" = "latest"
 "ubi:cli/cli" = { version = "latest", exe = "gh" }
+"ubi:BurntSushi/ripgrep" = { version = "latest", exe = "rg" }
 jq = "latest"
 
 "pipx:yt-dlp" = "latest"

@@ -1,3 +1,7 @@
+if (-not [Environment]::UserInteractive -or $PSCmdlet.ParameterSetName -eq 'NonInteractive' -or [Environment]::GetCommandLineArgs() -match '-NonInteractive|-Command|-c|-File|-f') {
+    return
+}
+
 # === Import PowerShell Tools and Modules ===
 $toolsPath = Join-Path $PROFILE -ChildPath '..\Modules\tools'
 
