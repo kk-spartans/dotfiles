@@ -8,3 +8,14 @@ Remove-Item Alias:sc -ErrorAction SilentlyContinue
 
 Set-Alias pb Get-Clipboard
 Set-Alias sc Set-Clipboard
+
+# Custom kill function that accepts process names
+function Kill-Process {
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$ProcessName
+    )
+    Stop-Process -Name $ProcessName -ErrorAction SilentlyContinue
+}
+
+Set-Alias kill Kill-Process
