@@ -33,6 +33,7 @@ jq = "latest"
 "pipx:tldr" = "latest"
 "pipx:xonsh" = "latest"
 "pipx:pycowsay" = "latest"
+"pipx:magic-wormhole" = "latest"
 
 "npm:opencode-ai" = "latest"
 "npm:vercel" = "latest"
