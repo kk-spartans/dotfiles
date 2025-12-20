@@ -13,7 +13,6 @@
         { "PackageIdentifier": "Gyan.FFmpeg" },
         { "PackageIdentifier": "BlenderFoundation.Blender" },
         { "PackageIdentifier": "AmN.yasb" },
-        { "PackageIdentifier": "TheDocumentFoundation.LibreOffice" },
         { "PackageIdentifier": "gerardog.gsudo" },
         { "PackageIdentifier": "Google.GoogleDrive" },
         { "PackageIdentifier": "voidtools.Everything" },
@@ -38,7 +37,8 @@
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
         { "PackageIdentifier": "Anysphere.Cursor" },
-        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" }
+        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
+        { "PackageIdentifier": "Buanzo.FFmpegforAudacity" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
