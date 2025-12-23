@@ -36,9 +36,9 @@
         { "PackageIdentifier": "twpayne.chezmoi" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
-        { "PackageIdentifier": "Anysphere.Cursor" },
         { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
-        { "PackageIdentifier": "Buanzo.FFmpegforAudacity" }
+        { "PackageIdentifier": "Buanzo.FFmpegforAudacity" },
+        { "PackageIdentifier": "Spicetify.Spicetify" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
