@@ -5,7 +5,12 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
-        { "PackageIdentifier": "Microsoft.VisualStudio.Community", "Overrides": ["--wait --passive --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --add Microsoft.VisualStudio.Component.Windows11SDK.22621"] },
+        {
+          "PackageIdentifier": "Microsoft.VisualStudio.Community",
+          "Overrides": [
+            "--wait --passive --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --add Microsoft.VisualStudio.Component.Windows11SDK.22621"
+          ]
+        },
         { "PackageIdentifier": "Audacity.Audacity" },
         { "PackageIdentifier": "REALiX.HWiNFO" },
         { "PackageIdentifier": "Google.PlatformTools" },
@@ -28,7 +33,7 @@
         { "PackageIdentifier": "Microsoft.Edit" },
         { "PackageIdentifier": "Ookla.Speedtest.CLI" },
         { "PackageIdentifier": "Perplexity.Comet" },
-        { "PackageIdentifier": "Spotify.Spotify" },
+        { "PackageIdentifier": "Spotify.Spotify", "Version": "1.2.79.427.g80eb4a07" },
         { "PackageIdentifier": "aria2.aria2" },
         { "PackageIdentifier": "Obsidian.Obsidian" },
         { "PackageIdentifier": "ElementLabs.LMStudio" },
