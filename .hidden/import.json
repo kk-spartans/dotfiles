@@ -28,7 +28,7 @@
         { "PackageIdentifier": "DEVCOM.JetBrainsMonoNerdFont" },
         { "PackageIdentifier": "Tailscale.Tailscale" },
         { "PackageIdentifier": "GIMP.GIMP.2" },
-        { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "Git.Git", "Scope": "user" },
         { "PackageIdentifier": "MiKTeX.MiKTeX" },
         { "PackageIdentifier": "Microsoft.Edit" },
         { "PackageIdentifier": "Ookla.Speedtest.CLI" },
