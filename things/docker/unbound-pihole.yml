@@ -1,0 +1,26 @@
+services:
+  unbound:
+    image: klutchell/unbound
+    container_name: unbound
+    volumes:
+      - ./unbound.conf:/etc/unbound/custom.conf.d/unbound.conf:ro
+    restart: unless-stopped
+
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    depends_on:
+      - unbound
+    environment:
+      TZ: "Asia/Kolkata"
+      FTLCONF_webserver_api_password: "password"
+      FTLCONF_dns_listeningMode: "all"
+      FTLCONF_dns_upstreams: "unbound"
+    volumes:
+      - ./etc-pihole:/etc/pihole
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"

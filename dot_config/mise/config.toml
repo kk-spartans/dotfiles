@@ -9,6 +9,7 @@ uv = "latest"
 cargo-binstall = "latest"
 
 "github:fastfetch-cli/fastfetch" = "latest"
+"github:Mikescher/firefox-sync-client" = "latest"
 "github:sharkdp/hyperfine" = "latest"
 "github:jesseduffield/lazydocker" = "latest"
 "github:jesseduffield/lazygit" = "latest"

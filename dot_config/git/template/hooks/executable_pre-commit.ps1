@@ -1,1 +1,1 @@
-mise x gitleaks -- gitleaks git --pre-commit --verbose
+gitleaks git --pre-commit --verbose

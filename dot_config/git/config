@@ -1,3 +1,5 @@
+[include]
+    path = ~/.config/catppuccin.gitconfig
 [user]
 	name = kk-spartans
 	email = kcube.jan+github@gmail.com
@@ -5,6 +7,7 @@
 	autocrlf = input
 	eol = lf
 	editor = code --wait
+	pager = delta
 [receive]
 	denyNonFastForwards = true
 [push]
@@ -13,14 +16,18 @@
     colorMoved = default
 [delta]
     line-numbers = true
-    navigate = true
+	navigate = true
+    features = catppuccin-mocha
+    side-by-side = true
+    hyperlinks = true
 [init]
     defaultbranch = main
     templateDir = ~/.config/git/template
 [interactive]
-    diffFilter = mise x delta -- delta --color-only
+	diffFilter = delta --color-only
 [merge]
     tool = vscode
+	conflictStyle = zdiff3
 [mergetool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [pull]

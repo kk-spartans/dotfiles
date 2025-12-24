@@ -1,0 +1,16 @@
+services:
+  watchtower:
+    image: containrrr/watchtower
+    restart: always
+    container_name: watchtower
+    command: --interval 3600
+    networks:
+      - watchtower
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DOCKER_API_VERSION=1.52
+
+networks:
+  watchtower:
+    name: watchtower

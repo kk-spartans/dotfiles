@@ -13,6 +13,8 @@
           ]
         },
         { "PackageIdentifier": "Audacity.Audacity" },
+        { "PackageIdentifier": "MSYS2.MSYS2" },
+        { "PackageIdentifier": "Docker.DockerDesktop" },
         { "PackageIdentifier": "REALiX.HWiNFO" },
         { "PackageIdentifier": "Google.PlatformTools" },
         { "PackageIdentifier": "ImageMagick.Q16-HDRI" },

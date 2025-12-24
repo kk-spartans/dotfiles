@@ -23,6 +23,11 @@ type = "file"
 url = "https://raw.githubusercontent.com/Spikerko/spicy-lyrics/refs/heads/main/builds/spicy-lyrics.mjs"
 refreshPeriod = "168h"
 
+[".config/catppuccin.gitconfig"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/delta/refs/heads/main/catppuccin.gitconfig"
+refreshPeriod = "168h"
+
 # # Generated with:
 # import os
 # import requests
