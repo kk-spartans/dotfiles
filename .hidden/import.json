@@ -5,6 +5,7 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "RustDesk.RustDesk" },
         {
           "PackageIdentifier": "Microsoft.VisualStudio.Community",
           "Overrides": [
@@ -38,7 +39,6 @@
         { "PackageIdentifier": "Obsidian.Obsidian" },
         { "PackageIdentifier": "ElementLabs.LMStudio" },
         { "PackageIdentifier": "jdx.mise" },
-        { "PackageIdentifier": "twpayne.chezmoi" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
         { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },

@@ -1,7 +1,13 @@
- $gitPath = "$env:localappdata\Programs\Git\usr\bin"
+ $gitPath1 = "$env:localappdata\Programs\Git\usr\bin"
+ $gitPath2 = "C:\Program Files\Git\usr\bin"
  $misePath = "$env:localappdata\mise\shims"
  $userPath = [Environment]::GetEnvironmentVariable("PATH", "User")
- if ($userPath -notlike "*$gitPath*") {
+ if (Test-Path $gitPath1) {
+     $gitPath = $gitPath1
+ } elseif (Test-Path $gitPath2) {
+     $gitPath = $gitPath2
+ }
+ if ($gitPath -and ($userPath -notlike "*$gitPath*")) {
      $userPath += ";$gitPath"
      [Environment]::SetEnvironmentVariable("PATH", $userPath, "User")
  }
