@@ -44,7 +44,6 @@
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
         { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
-        { "PackageIdentifier": "Buanzo.FFmpegforAudacity" },
         { "PackageIdentifier": "Spicetify.Spicetify" }
       ],
       "SourceDetails": {
