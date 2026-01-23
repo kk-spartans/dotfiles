@@ -1,7 +1,0 @@
-include:
-  - path: ./rustdesk.yml
-  - path: ./immich.yml
-  - path: ./open-webui.yml
-  - path: ./searxng.yml
-  - path: ./unbound-pihole.yml
-  - path: ./watchtower.yml

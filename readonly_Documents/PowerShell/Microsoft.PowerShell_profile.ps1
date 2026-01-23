@@ -1,8 +1,4 @@
-$nonInteractiveArgs = @('-NonInteractive','-Command','-c','-EncodedCommand','-e','-File','-f')
-if (-not [Environment]::UserInteractive -or
-    ([Environment]::GetCommandLineArgs() | Where-Object { $_ -in $nonInteractiveArgs })) {
-    return
-}
+mise activate pwsh | Out-String | Invoke-Expression
 
 # ==============================================================================
 # === Aliases ===
@@ -14,6 +10,8 @@ Remove-Item Alias:cat -ErrorAction SilentlyContinue
 Remove-Item Alias:cd -ErrorAction SilentlyContinue
 Remove-Item Alias:gc -ErrorAction SilentlyContinue
 Remove-Item Alias:sc -ErrorAction SilentlyContinue
+Remove-Item Alias:where -ErrorAction SilentlyContinue
+
 
 Set-Alias pb Get-Clipboard
 Set-Alias sc Set-Clipboard

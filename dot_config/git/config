@@ -39,3 +39,9 @@
     showStash = true
     showUntrackedFiles = normal
     submoduleSummary = true
+[credential "https://github.com"]
+	helper = 
+	helper = !'C:\\Users\\kkkar\\AppData\\Local\\mise\\installs\\github-cli-cli\\2.83.2\\bin\\gh.exe' auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !'C:\\Users\\kkkar\\AppData\\Local\\mise\\installs\\github-cli-cli\\2.83.2\\bin\\gh.exe' auth git-credential

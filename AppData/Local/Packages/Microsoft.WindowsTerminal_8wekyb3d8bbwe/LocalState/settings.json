@@ -77,7 +77,7 @@
         "defaults": 
         {
             "colorScheme": "Catppuccin Mocha",
-            "cursorShape": "filledBox",
+            "cursorShape": "bar",
             "font": 
             {
                 "face": "JetBrainsMono Nerd Font"

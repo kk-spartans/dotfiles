@@ -38,6 +38,7 @@ jq = "latest"
 "pipx:magic-wormhole" = "latest"
 
 "npm:opencode-ai" = "latest"
+"npm:@google/gemini-cli" = "latest"
 "npm:vercel" = "latest"
 
 "cargo:gitoxide" = "latest"
