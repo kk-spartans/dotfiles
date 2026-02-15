@@ -50,3 +50,9 @@ alt + shift + 6         : komorebic move-to-workspace 5; komorebic focus-workspa
 alt + shift + 7         : komorebic move-to-workspace 6; komorebic focus-workspace 6
 alt + shift + 8         : komorebic move-to-workspace 7; komorebic focus-workspace 7
 alt + shift + 9         : komorebic move-to-workspace 8; komorebic focus-workspace 8
+
+# Send windows across monitors
+lwin + shift + 1        : komorebic send-to-monitor 0
+lwin + shift + 2        : komorebic send-to-monitor 1
+lwin + shift + 3        : komorebic send-to-monitor 2
+lwin + shift + 4        : komorebic send-to-monitor 3

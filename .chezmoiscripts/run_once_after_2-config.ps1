@@ -9,7 +9,6 @@ function AddToPath {
       }
 }
 
-AddToPath "$env:localappdata\mise\shims"
 AddToPath "C:\msys64\ucrt64\bin"
 AddToPath "C:\msys64\usr\bin"
 

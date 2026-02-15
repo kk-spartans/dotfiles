@@ -11,60 +11,46 @@
   "animation": {
     "enabled": true,
     "duration": 500,
-    "fps": 75, 
+    "fps": 75,
     "style": "EaseOutExpo"
   },
-"border_colours": {
-  "single": "#fdb9c6",
-  "stack": "#000000",
-  "monocle": "#ff5858",
-  "unfocused": "#adadad"
-},
+  "border_colours": {
+    "single": "#fdb9c6",
+    "stack": "#000000",
+    "monocle": "#ff5858",
+    "unfocused": "#adadad"
+  },
   "float_rule_placement": "Center",
   "float_override_placement": "Center",
   "window_container_behaviour": "Create",
   "mouse_follows_focus": true,
-
-"monitors": [
+  "monitors": [
     {
       "workspaces": [
-        {
-          "name": "1",
-          "layout": "BSP"
-        },
-        {
-          "name": "2",
-          "layout": "BSP"
-        },
-        {
-          "name": "3",
-          "layout": "BSP"
-        },
-        {
-          "name": "4",
-          "layout": "BSP"
-        },
-        {
-          "name": "5",
-          "layout": "BSP"
-        },
-        {
-          "name": "6",
-          "layout": "BSP"
-        },
-        {
-          "name": "7",
-          "layout": "BSP"
-        },
-        {
-          "name": "8",
-          "layout": "BSP"
-        },
-        {
-          "name": "9",
-          "layout": "BSP"
-        }
+        {"name": "1", "layout": "BSP"},
+        {"name": "2", "layout": "BSP"},
+        {"name": "3", "layout": "BSP"},
+        {"name": "4", "layout": "BSP"},
+        {"name": "5", "layout": "BSP"},
+        {"name": "6", "layout": "BSP"},
+        {"name": "7", "layout": "BSP"},
+        {"name": "8", "layout": "BSP"},
+        {"name": "9", "layout": "BSP"}
+      ]
+    },
+    {
+      "workspaces": [
+        {"name": "1", "layout": "BSP"},
+        {"name": "2", "layout": "BSP"},
+        {"name": "3", "layout": "BSP"},
+        {"name": "4", "layout": "BSP"},
+        {"name": "5", "layout": "BSP"},
+        {"name": "6", "layout": "BSP"},
+        {"name": "7", "layout": "BSP"},
+        {"name": "8", "layout": "BSP"},
+        {"name": "9", "layout": "BSP"}
       ]
     }
   ]
 }
+

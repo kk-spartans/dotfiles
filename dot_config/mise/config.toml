@@ -5,8 +5,6 @@ bun = "latest"
 deno = "latest"
 go = "latest"
 uv = "latest"
-"cargo:sccache" = "latest"
-cargo-binstall = "latest"
 
 "github:fastfetch-cli/fastfetch" = "latest"
 "github:Mikescher/firefox-sync-client" = "latest"
@@ -49,4 +47,3 @@ jq = "latest"
 [settings]
 pipx.uvx = true
 npm.package_manager = "bun"
-cargo.binstall = true
