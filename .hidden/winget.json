@@ -5,7 +5,11 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "Discord.Discord" },
+        { "PackageIdentifier": "Google.AndroidStudio" },
         { "PackageIdentifier": "RustDesk.RustDesk" },
+        { "PackageIdentifier": "QPDF.QPDF" },
+        { "PackageIdentifier": "TheDocumentFoundation.LibreOffice" },
         {
           "PackageIdentifier": "Microsoft.VisualStudio.Community",
           "Overrides": [
@@ -14,7 +18,9 @@
         },
         { "PackageIdentifier": "Audacity.Audacity" },
         { "PackageIdentifier": "MSYS2.MSYS2" },
+        { "PackageIdentifier": "Piriform.Recuva" },
         { "PackageIdentifier": "Docker.DockerDesktop" },
+        { "PackageIdentifier": "namazso.PawnIO" },
         { "PackageIdentifier": "REALiX.HWiNFO" },
         { "PackageIdentifier": "Google.PlatformTools" },
         { "PackageIdentifier": "ImageMagick.Q16-HDRI" },
@@ -33,18 +39,20 @@
         { "PackageIdentifier": "GIMP.GIMP.2" },
         { "PackageIdentifier": "Git.Git", "Scope": "user" },
         { "PackageIdentifier": "MiKTeX.MiKTeX" },
-        { "PackageIdentifier": "Microsoft.Edit" },
         { "PackageIdentifier": "Ookla.Speedtest.CLI" },
+        { "PackageIdentifier": "Termius.Termius" },
         { "PackageIdentifier": "Perplexity.Comet" },
-        { "PackageIdentifier": "Spotify.Spotify", "Version": "1.2.79.427.g80eb4a07" },
+        {
+          "PackageIdentifier": "Spotify.Spotify",
+          "Version": "1.2.82.428.g0ac8be2b"
+        },
         { "PackageIdentifier": "aria2.aria2" },
         { "PackageIdentifier": "Obsidian.Obsidian" },
         { "PackageIdentifier": "ElementLabs.LMStudio" },
         { "PackageIdentifier": "jdx.mise" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
-        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
-        { "PackageIdentifier": "Spicetify.Spicetify" }
+        { "PackageIdentifier": "ImputNet.Helium" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
@@ -54,7 +62,7 @@
       }
     },
     {
-      "Packages": [{ "PackageIdentifier": "9PFXXSHC64H3" }],
+      "Packages": [{ "PackageIdentifier": "9PFXXSHC64H3" }, { "PackageIdentifier": "9NKSQGP7F2NH" }],
       "SourceDetails": {
         "Argument": "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
         "Identifier": "StoreEdgeFD",

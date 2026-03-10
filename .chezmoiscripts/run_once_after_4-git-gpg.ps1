@@ -1,0 +1,80 @@
+$email = "kcube.jan+github@gmail.com"
+$name = "Karthikeyan KK"
+$preferred_key = "7FFC07EF617D1A01"
+$gpg = "C:\Program Files\Git\usr\bin\gpg.exe"
+$gpgconf = "C:\Program Files\Git\usr\bin\gpgconf.exe"
+$user_gpg_home = "/c/Users/$env:USERNAME/.gnupg"
+$msys_gpg_home = "/c/msys64/home/$env:USERNAME/.gnupg"
+
+if (-not (Test-Path $gpg)) {
+    throw "gpg not found at $gpg"
+}
+
+if (-not (Test-Path $gpgconf)) {
+    throw "gpgconf not found at $gpgconf"
+}
+
+New-Item -ItemType Directory -Force -Path (Join-Path $env:USERPROFILE ".gnupg") | Out-Null
+
+& $gpgconf --homedir $user_gpg_home --launch gpg-agent | Out-Null
+
+$user_key = & $gpg --homedir $user_gpg_home --list-secret-keys --with-colons --keyid-format LONG $preferred_key 2>$null |
+    Select-String "^sec:" |
+    Select-Object -First 1
+
+if (-not $user_key -and (Test-Path $msys_gpg_home)) {
+    $msys_key = & $gpg --homedir $msys_gpg_home --list-secret-keys --with-colons --keyid-format LONG $preferred_key 2>$null |
+        Select-String "^sec:" |
+        Select-Object -First 1
+
+    if ($msys_key) {
+        $tmp = Join-Path ([System.IO.Path]::GetTempPath()) ([System.IO.Path]::GetRandomFileName())
+        try {
+            & $gpg --homedir $msys_gpg_home --batch --yes --armor --output $tmp --export-secret-keys $preferred_key
+            & $gpg --homedir $user_gpg_home --batch --yes --import $tmp
+        }
+        finally {
+            if (Test-Path $tmp) {
+                Remove-Item $tmp -Force
+            }
+        }
+    }
+}
+
+$user_key = & $gpg --homedir $user_gpg_home --list-secret-keys --with-colons --keyid-format LONG $preferred_key 2>$null |
+    Select-String "^sec:" |
+    Select-Object -First 1
+
+if (-not $user_key) {
+    $any_user_key = & $gpg --homedir $user_gpg_home --list-secret-keys --with-colons --keyid-format LONG $email 2>$null |
+        Select-String "^sec:" |
+        Select-Object -First 1
+
+    if ($any_user_key) {
+        & $gpg --homedir $user_gpg_home --list-secret-keys --keyid-format LONG $email
+        exit 0
+    }
+
+    $cfg = @"
+Key-Type: eddsa
+Key-Curve: ed25519
+Subkey-Type: eddsa
+Subkey-Curve: ed25519
+Name-Real: $name
+Name-Email: $email
+Expire-Date: 0
+%no-protection
+%commit
+"@
+
+    $tmp = New-TemporaryFile
+    try {
+        Set-Content $tmp $cfg -Encoding ascii
+        & $gpg --homedir $user_gpg_home --batch --generate-key $tmp
+    }
+    finally {
+        Remove-Item $tmp -Force
+    }
+}
+
+& $gpg --homedir $user_gpg_home --list-secret-keys --keyid-format LONG $preferred_key

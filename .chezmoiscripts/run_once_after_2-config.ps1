@@ -11,10 +11,52 @@ function AddToPath {
 
 AddToPath "C:\msys64\ucrt64\bin"
 AddToPath "C:\msys64\usr\bin"
+AddToPath "$env:USERPROFILE\AppData\Local\mise\shims"
 
 [Environment]::SetEnvironmentVariable("EDITOR", "code", "User")
+[Environment]::SetEnvironmentVariable("PYTHONUTF8", "1", "User")
+[Environment]::SetEnvironmentVariable("PYTHONIOENCODING", "utf-8", "User")
+[Environment]::SetEnvironmentVariable("OPENCODE_ENABLE_EXA", "true", "User")
 
 $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+$githubToken = $Env:GITHUB_TOKEN
+
+if ([string]::IsNullOrWhiteSpace($githubToken)) {
+      $secureGithubToken = Read-Host "Enter GitHub token for Docker auth (leave blank to skip)" -AsSecureString
+      $githubTokenBstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureGithubToken)
+
+      try {
+          $githubToken = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($githubTokenBstr)
+      }
+      finally {
+          if ($githubTokenBstr -ne [IntPtr]::Zero) {
+              [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($githubTokenBstr)
+          }
+      }
+
+      if (-not [string]::IsNullOrWhiteSpace($githubToken)) {
+          [Environment]::SetEnvironmentVariable("GITHUB_TOKEN", $githubToken, "User")
+          $Env:GITHUB_TOKEN = $githubToken
+      }
+}
+
+if ((Get-Command docker -ErrorAction SilentlyContinue) -and -not [string]::IsNullOrWhiteSpace($githubToken)) {
+      try {
+          $githubUser = (Invoke-RestMethod -Uri "https://api.github.com/user" -Headers @{
+              Authorization = "Bearer $githubToken"
+              Accept = "application/vnd.github+json"
+              "User-Agent" = "chezmoi-bootstrap"
+              "X-GitHub-Api-Version" = "2022-11-28"
+          }).login
+
+          if ($githubUser) {
+              $githubToken | docker login ghcr.io --username $githubUser --password-stdin | Out-Null
+          }
+      }
+      catch {
+          Write-Warning "Failed to authenticate Docker CLI with GitHub token: $($_.Exception.Message)"
+      }
+}
 
 bat cache --build
 komorebic enable-autostart --whkd

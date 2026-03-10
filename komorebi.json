@@ -5,13 +5,12 @@
   "cross_monitor_move_behaviour": "Insert",
   "default_workspace_padding": 3,
   "default_container_padding": 3,
-  "border": true,
-  "border_width": 5,
+  "border": false,
   "border_offset": 0,
   "animation": {
     "enabled": true,
     "duration": 500,
-    "fps": 75,
+    "fps": 100,
     "style": "EaseOutExpo"
   },
   "border_colours": {
@@ -27,30 +26,29 @@
   "monitors": [
     {
       "workspaces": [
-        {"name": "1", "layout": "BSP"},
-        {"name": "2", "layout": "BSP"},
-        {"name": "3", "layout": "BSP"},
-        {"name": "4", "layout": "BSP"},
-        {"name": "5", "layout": "BSP"},
-        {"name": "6", "layout": "BSP"},
-        {"name": "7", "layout": "BSP"},
-        {"name": "8", "layout": "BSP"},
-        {"name": "9", "layout": "BSP"}
+        { "name": "1", "layout": "Grid" },
+        { "name": "2", "layout": "Grid" },
+        { "name": "3", "layout": "Grid" },
+        { "name": "4", "layout": "Grid" },
+        { "name": "5", "layout": "Grid" },
+        { "name": "6", "layout": "Grid" },
+        { "name": "7", "layout": "Grid" },
+        { "name": "8", "layout": "Grid" },
+        { "name": "9", "layout": "Grid" }
       ]
     },
     {
       "workspaces": [
-        {"name": "1", "layout": "BSP"},
-        {"name": "2", "layout": "BSP"},
-        {"name": "3", "layout": "BSP"},
-        {"name": "4", "layout": "BSP"},
-        {"name": "5", "layout": "BSP"},
-        {"name": "6", "layout": "BSP"},
-        {"name": "7", "layout": "BSP"},
-        {"name": "8", "layout": "BSP"},
-        {"name": "9", "layout": "BSP"}
+        { "name": "1", "layout": "Grid" },
+        { "name": "2", "layout": "Grid" },
+        { "name": "3", "layout": "Grid" },
+        { "name": "4", "layout": "Grid" },
+        { "name": "5", "layout": "Grid" },
+        { "name": "6", "layout": "Grid" },
+        { "name": "7", "layout": "Grid" },
+        { "name": "8", "layout": "Grid" },
+        { "name": "9", "layout": "Grid" }
       ]
     }
   ]
 }
-

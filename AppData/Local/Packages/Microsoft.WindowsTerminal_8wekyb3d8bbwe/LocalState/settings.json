@@ -80,9 +80,10 @@
             "cursorShape": "bar",
             "font": 
             {
-                "face": "JetBrainsMono Nerd Font"
+                "face": "JetBrainsMono Nerd Font",
+                "size": 12
             },
-            "opacity": 40,
+            "opacity": 50,
             "padding": "4,4,0,0",
             "scrollbarState": "hidden",
             "useAcrylic": true
@@ -135,6 +136,7 @@
             "yellow": "#F9E2AF"
         }
     ],
+    "searchWebDefaultQueryUrl": "https://unduck.link?q=%s",
     "showTabsInTitlebar": true,
     "themes": 
     [
@@ -162,5 +164,7 @@
             }
         }
     ],
-    "useAcrylicInTabRow": true
+    "useAcrylicInTabRow": true,
+    "warning.largePaste": false,
+    "warning.multiLinePaste": false
 }

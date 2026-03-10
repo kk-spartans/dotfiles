@@ -1,0 +1,72 @@
+{
+  "version": 3,
+  "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "skillFolderHash": "928950704df8a8b885c03de5da626331e6f29cf8",
+      "installedAt": "2026-02-07T08:25:18.629Z",
+      "updatedAt": "2026-02-07T08:25:18.629Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "installedAt": "2026-02-07T08:25:25.934Z",
+      "updatedAt": "2026-02-07T08:25:25.934Z"
+    },
+    "mise-expert": {
+      "source": "samhvw8/dotfiles",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/samhvw8/dotfiles.git",
+      "skillPath": "dot_ccp/hub/skills/mise-expert/SKILL.md",
+      "skillFolderHash": "cc2778e4ad1050c7c3d070aef9e2d6e09ea174dc",
+      "installedAt": "2026-02-07T10:20:01.106Z",
+      "updatedAt": "2026-02-07T10:20:01.106Z"
+    },
+    "uv-package-manager": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/uv-package-manager/SKILL.md",
+      "skillFolderHash": "cd5fceeaba8a0831758d9f82403658737cc3b5f1",
+      "installedAt": "2026-02-07T10:22:09.213Z",
+      "updatedAt": "2026-03-09T12:28:56.499Z"
+    },
+    "convex": {
+      "source": "waynesutton/convexskills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/waynesutton/convexskills.git",
+      "skillPath": "skills/convex/SKILL.md",
+      "skillFolderHash": "ed8cc5ba816144dd693b9f76e3cdb4550a9542d2",
+      "installedAt": "2026-02-09T14:58:23.310Z",
+      "updatedAt": "2026-02-09T14:58:23.310Z"
+    },
+    "chezmoi-config": {
+      "source": "faintghost/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/faintghost/skills.git",
+      "skillPath": "chezmoi-config/SKILL.md",
+      "skillFolderHash": "537d49904f8c61e5b4a23dcbdd40b317338b0e0e",
+      "installedAt": "2026-03-09T09:24:03.788Z",
+      "updatedAt": "2026-03-09T09:29:05.354Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode"
+  ]
+}

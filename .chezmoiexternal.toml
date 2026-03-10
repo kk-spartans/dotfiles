@@ -8,11 +8,6 @@ type = "file"
 url = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/catppuccin_mocha.omp.json"
 refreshPeriod = "168h"
 
-["applications.json"]
-type = "file"
-url = "https://raw.githubusercontent.com/LGUG2Z/komorebi-application-specific-configuration/refs/heads/master/applications.json"
-refreshPeriod = "168h"
-
 [".config/eza/theme.yml"]
 type = "file"
 url = "https://raw.githubusercontent.com/catppuccin/eza/refs/heads/main/themes/mocha/catppuccin-mocha-pink.yml"

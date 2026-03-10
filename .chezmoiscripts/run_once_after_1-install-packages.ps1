@@ -1,7 +1,22 @@
-winget import -i "$env:userprofile/.local/share/chezmoi/.hidden/import.json" --accept-package-agreements --accept-source-agreements
+winget import -i "$env:userprofile/.local/share/chezmoi/.hidden/winget.json" --accept-package-agreements --accept-source-agreements
 
-winget pin add --id Microsoft.VisualStudio.Community --blocking
-winget pin add --id Spotify.Spotify --blocking
-winget pin add --id Buanzo.FFmpegforAudacity --blocking
+# fontget
+
+fontget import "$env:userprofile/.local/share/chezmoi/.hidden/fontget.json" --accept-agreements --accept-defaults
+
+# betterdiscord
 
 mise install
+mise activate pwsh | Out-String | Invoke-Expression
+bdcli install
+
+# skills
+
+Set-Location $env:USERPROFILE
+Copy-Item -Path ".agents/.skill-lock.json" -Destination "skills-lock.json"
+bun x skills experimental_install
+Remove-Item -Path "skills-lock.json"
+
+# choco
+
+Start-Process "choco" -ArgumentList "install", "$env:USERPROFILE\.local\share\chezmoi\.hidden\packages.config", "-y" -Verb RunAs

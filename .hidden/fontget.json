@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "exported_at": "2026-03-09T10:10:37Z",
+  "exported_by": "fontget",
+  "fonts": [
+    {
+      "font_id": "google.google-sans",
+      "family_names": [
+        "Google Sans"
+      ],
+      "source": "Google Fonts",
+      "license": "OFL",
+      "categories": [
+        "Sans Serif"
+      ],
+      "variants": [
+        "Bold",
+        "Bold Italic",
+        "Italic",
+        "Medium",
+        "Medium Italic",
+        "Regular",
+        "SemiBold",
+        "SemiBold Italic"
+      ],
+      "scope": "user"
+    },
+    {
+      "font_id": "google.inter",
+      "family_names": [
+        "Inter"
+      ],
+      "source": "Google Fonts",
+      "license": "OFL",
+      "categories": [
+        "Sans Serif"
+      ],
+      "variants": [
+        "Black",
+        "Black Italic",
+        "Bold",
+        "Bold Italic",
+        "ExtraBold",
+        "ExtraBold Italic",
+        "ExtraLight",
+        "ExtraLight Italic",
+        "Italic",
+        "Light",
+        "Light Italic",
+        "Medium",
+        "Medium Italic",
+        "Regular",
+        "SemiBold",
+        "SemiBold Italic",
+        "Thin",
+        "Thin Italic"
+      ],
+      "scope": "user"
+    },
+    {
+      "font_id": "nerd.jetbrains-mono",
+      "family_names": [
+        "JetBrainsMono Nerd Font",
+        "JetBrainsMono Nerd Font Mono",
+        "JetBrainsMono Nerd Font Propo",
+        "JetBrainsMonoNL Nerd Font",
+        "JetBrainsMonoNL Nerd Font Mono",
+        "JetBrainsMonoNL Nerd Font Propo"
+      ],
+      "source": "Nerd Fonts",
+      "license": "Mixed",
+      "categories": [
+        "Nerd Font"
+      ],
+      "variants": [
+        "Bold",
+        "Bold Italic",
+        "ExtraBold",
+        "ExtraBold Italic",
+        "ExtraLight",
+        "ExtraLight Italic",
+        "Italic",
+        "Light",
+        "Light Italic",
+        "Medium",
+        "Medium Italic",
+        "Regular",
+        "SemiBold",
+        "SemiBold Italic",
+        "Thin",
+        "Thin Italic"
+      ],
+      "scope": "user"
+    }
+  ],
+  "metadata": {
+    "total_fonts": 3,
+    "total_variants": 42,
+    "only_matched": true
+  }
+}

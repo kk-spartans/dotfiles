@@ -1,12 +1,14 @@
 [include]
     path = ~/.config/catppuccin.gitconfig
 [user]
-	name = kk-spartans
+	name = Karthikeyan KK
 	email = kcube.jan+github@gmail.com
+	signingkey = 7FFC07EF617D1A01
 [core]
 	autocrlf = input
 	eol = lf
 	editor = code --wait
+	longpaths = true
 	pager = delta
 [receive]
 	denyNonFastForwards = true
@@ -41,7 +43,12 @@
     submoduleSummary = true
 [credential "https://github.com"]
 	helper = 
-	helper = !'C:\\Users\\kkkar\\AppData\\Local\\mise\\installs\\github-cli-cli\\2.83.2\\bin\\gh.exe' auth git-credential
+	helper = !'C:\\Users\\kk-spartans\\AppData\\Local\\mise\\installs\\gh\\2.87.3\\bin\\gh.exe' auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !'C:\\Users\\kkkar\\AppData\\Local\\mise\\installs\\github-cli-cli\\2.83.2\\bin\\gh.exe' auth git-credential
+	helper = !'C:\\Users\\kk-spartans\\AppData\\Local\\mise\\installs\\gh\\2.87.3\\bin\\gh.exe' auth git-credential
+[commit]
+	gpgsign = true
+[gpg]
+	format = openpgp
+	program = "C:\\Program Files\\Git\\usr\\bin\\gpg.exe"
