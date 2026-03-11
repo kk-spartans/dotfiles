@@ -40,8 +40,9 @@ QToolTip {
 .yasb-bar {
     padding: 0;
     margin: 0;
-    background-color: var(--base01);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
+    backdrop-filter: blur(10px);
 }
 .widget {
     padding: 0 12px;
@@ -200,6 +201,128 @@ QToolTip {
 .volume-widget {
     padding: 0 6px;
 }
+.copilot-widget,
+.memory-widget,
+.cpu-widget,
+.gpu-widget {
+    padding: 0 8px;
+}
+
+.copilot-widget .icon,
+.memory-widget .icon,
+.cpu-widget .icon,
+.gpu-widget .icon {
+    margin-right: 4px;
+}
+
+.copilot-widget .icon,
+.copilot-widget .label {
+    color: var(--base08);
+}
+
+.memory-widget .label,
+.memory-widget .icon {
+    color: #d9a66b;
+}
+
+.cpu-widget .label,
+.cpu-widget .icon {
+    color: #8fb0a9;
+}
+
+.gpu-widget.gpu-usage .label,
+.gpu-widget.gpu-usage .icon {
+    color: #8aa6d9;
+}
+
+.gpu-widget.gpu-memory .label,
+.gpu-widget.gpu-memory .icon {
+    color: #b598d6;
+}
+
+.memory-widget .label.status-medium,
+.cpu-widget .label.status-medium,
+.gpu-widget .label.status-medium,
+.copilot-widget .label.warning,
+.copilot-widget .icon.warning {
+    color: #e0b55f;
+}
+
+.memory-widget .label.status-high,
+.memory-widget .label.status-critical,
+.cpu-widget .label.status-high,
+.cpu-widget .label.status-critical,
+.gpu-widget .label.status-high,
+.gpu-widget .label.status-critical,
+.copilot-widget .label.critical,
+.copilot-widget .icon.critical {
+    color: #d97b7b;
+}
+
+.copilot-menu {
+    background-color: rgba(0, 0, 0, 0.88);
+    border: 1px solid var(--base0F);
+    border-radius: 12px;
+    min-width: 360px;
+}
+
+.copilot-menu .header,
+.copilot-menu .section-title,
+.copilot-menu .usage-count,
+.copilot-menu .usage-percent,
+.copilot-menu .reset-date,
+.copilot-menu .stat-label,
+.copilot-menu .stat-value,
+.copilot-menu .model-name,
+.copilot-menu .model-count,
+.copilot-menu .error-message,
+.copilot-menu .empty-message {
+    color: var(--base05);
+    font-family: "JetBrainsMono NF";
+}
+
+.copilot-menu .section {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    margin: 6px 10px;
+}
+
+.copilot-menu .progress-bar {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.copilot-menu .progress-bar .fill,
+.copilot-menu .usage-chart,
+.copilot-menu .progress-bar.model-0 .fill {
+    color: #8aa6d9;
+    background-color: #8aa6d9;
+}
+
+.copilot-menu .progress-bar.model-1 .fill {
+    background-color: #b598d6;
+}
+
+.copilot-menu .progress-bar.model-2 .fill {
+    background-color: #d9a66b;
+}
+
+.copilot-menu .progress-bar.model-3 .fill {
+    background-color: #8fb0a9;
+}
+
+.copilot-menu .progress-bar.model-4 .fill {
+    background-color: #d97b7b;
+}
+
+.copilot-menu .progress-bar.warning .fill {
+    background-color: #e0b55f;
+}
+
+.copilot-menu .progress-bar.critical .fill {
+    background-color: #d97b7b;
+}
+
 .weather-widget .icon {
     font-size: 18px;
     margin: 0 2px 1px 0;

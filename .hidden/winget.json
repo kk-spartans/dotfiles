@@ -52,7 +52,8 @@
         { "PackageIdentifier": "jdx.mise" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
-        { "PackageIdentifier": "ImputNet.Helium" }
+        { "PackageIdentifier": "ImputNet.Helium" },
+        { "PackageIdentifier": "NVidia.CUDA" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
@@ -62,7 +63,10 @@
       }
     },
     {
-      "Packages": [{ "PackageIdentifier": "9PFXXSHC64H3" }, { "PackageIdentifier": "9NKSQGP7F2NH" }],
+      "Packages": [
+        { "PackageIdentifier": "9PFXXSHC64H3" },
+        { "PackageIdentifier": "9NKSQGP7F2NH" }
+      ],
       "SourceDetails": {
         "Argument": "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
         "Identifier": "StoreEdgeFD",

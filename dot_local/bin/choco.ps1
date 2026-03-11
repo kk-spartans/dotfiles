@@ -1,0 +1,1 @@
+gsudo choco @args

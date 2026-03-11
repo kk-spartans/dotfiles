@@ -39,6 +39,11 @@ bars:
         "clock",
       ]
       right: [
+        "copilot",
+        "memory",
+        "cpu",
+        "gpu_usage",
+        "gpu_memory",
         "media",
         "volume",
       #  "counter",
@@ -70,6 +75,96 @@ widgets:
       label: "{%a, %d %b %H:%M:%S}"
       label_alt: "{%A, %d %B %Y %H:%M:%S}"
       timezones: []
+  copilot:
+    type: "yasb.copilot.CopilotWidget"
+    options:
+      label: "{icon} {used}/{allowance}"
+      label_alt: "{icon} {percentage}%"
+      token: "env"
+      plan: "pro"
+      tooltip: true
+      update_interval: 2000
+      thresholds:
+        warning: 75
+        critical: 90
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        chart: true
+      callbacks:
+        on_left: "toggle_popup"
+        on_middle: "refresh"
+        on_right: "toggle_label"
+  memory:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: "RAM {virtual_mem_used}"
+      label_alt: "RAM {virtual_mem_percent}%"
+      update_interval: 1000
+      hide_decimal: false
+      memory_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: "CPU {info[percent][total]}%"
+      label_alt: "CPU {info[freq][current]} MHz"
+      update_interval: 1000
+      hide_decimal: true
+      cpu_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "exec cmd /c Taskmgr"
+  gpu_usage:
+    type: "yasb.gpu.GpuWidget"
+    options:
+      class_name: "gpu-usage"
+      label: "GPU {info[utilization]}%"
+      label_alt: "GPU {info[temp]}\u00b0C"
+      gpu_index: 0
+      update_interval: 2000
+      hide_decimal: true
+      gpu_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+  gpu_memory:
+    type: "yasb.gpu.GpuWidget"
+    options:
+      class_name: "gpu-memory"
+      label: "VRAM {info[mem_used]}"
+      label_alt: "VRAM {info[histograms][mem_used]}"
+      gpu_index: 0
+      update_interval: 2000
+      hide_decimal: false
+      gpu_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
   komorebi_workspaces:
     type: "komorebi.workspaces.WorkspaceWidget"
     options:
@@ -139,15 +234,3 @@ widgets:
         - "\uf028"
       callbacks:
         on_right: "exec cmd.exe /c start ms-settings:sound"
-#  counter:
-#    type: "yasb.custom.CustomWidget"
-#    options:
-#      label: "Count: {data}"
-#      exec_options:
-#        run_cmd: 'powershell -NoProfile -ExecutionPolicy Bypass -File "%APPDATA%\\YASB\\read.ps1"'
-#        run_interval: 1000
-#        return_format: "string"
-#        hide_empty: false
-#      callbacks:
-#        on_left: 'exec powershell -NoProfile -ExecutionPolicy Bypass -File "%APPDATA%\\YASB\\inc.ps1"'
-#        on_right: 'exec powershell -NoProfile -ExecutionPolicy Bypass -File "%APPDATA%\\YASB\\dec.ps1"'

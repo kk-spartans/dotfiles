@@ -30,12 +30,16 @@ sccache = "latest"
 cargo-binstall = "latest"
 oh-my-posh = "latest"
 
+"http:ffmpeg" = { version = "latest", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z", bin = "ffmpeg.exe", extract = true }
+
+"pipx:ocrmypdf" = { version = "latest", uvx_args = "--with git+https://github.com/ocrmypdf/OCRmyPDF-EasyOCR.git --python 3.12 --index https://download.pytorch.org/whl/cu130" }
+"pipx:markitdown" = { version = "latest", uvx_args = "--python 3.12 --with python-pptx --with mammoth~=1.11.0 --with pandas --with openpyxl --with xlrd --with lxml --with pdfminer.six>=20251230 --with pdfplumber>=0.11.9 --with olefile --with pydub --with SpeechRecognition --with youtube-transcript-api~=1.0.0 --with azure-ai-documentintelligence --with azure-identity" }
+"pipx:thefuck" = { version = "latest", uvx_args = "--python 3.11" }
+
 "pipx:yt-dlp" = "latest"
 "pipx:spotdl" = "latest"
 "pipx:tldr" = "latest"
 "pipx:copyparty" = "latest"
-"pipx:ocrmypdf" = { version = "latest", uvx_args = "--with git+https://github.com/ocrmypdf/OCRmyPDF-EasyOCR.git --python 3.12 --index https://download.pytorch.org/whl/cu130" }
-"pipx:markitdown" = { version = "latest", uvx_args = "--python 3.12 --with python-pptx --with mammoth~=1.11.0 --with pandas --with openpyxl --with xlrd --with lxml --with pdfminer.six>=20251230 --with pdfplumber>=0.11.9 --with olefile --with pydub --with SpeechRecognition --with youtube-transcript-api~=1.0.0 --with azure-ai-documentintelligence --with azure-identity" }
 "pipx:magic-wormhole" = "latest"
 "pipx:img2pdf" = "latest"
 "pipx:pygments" = "latest"
@@ -46,14 +50,13 @@ oh-my-posh = "latest"
 "npm:fkill-cli" = "latest"
 "npm:convex" = "latest"
 "npm:tokscale" = "latest"
+"npm:trash-cli" = "latest"
 
 "github:GitOxideLabs/gitoxide" = "latest"
 "github:BetterDiscord/cli" = "latest"
 "github:Graphixa/FontGet" = "latest"
 "github:AlDanial/cloc" = { version = "latest", asset_pattern = "cloc-*.exe", bin = "cloc.exe" }
-"http:ffmpeg" = { version = "latest", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z", bin = "ffmpeg.exe", extract = true }
 "github:spicetify/cli" = "latest"
-"pipx:thefuck" = "latest"
 
 [settings]
 pipx.uvx = true

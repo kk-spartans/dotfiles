@@ -9,6 +9,15 @@
       }
     ]
   },
+  "Cap": {
+    "ignore": [
+      {
+        "kind": "Exe",
+        "id": "Cap.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
   "Ableton Live": {
     "ignore": [
       {

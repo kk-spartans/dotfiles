@@ -1,8 +1,54 @@
 {
   "version": "1.0",
-  "exported_at": "2026-03-09T10:10:37Z",
+  "exported_at": "2026-03-11T12:23:12Z",
   "exported_by": "fontget",
   "fonts": [
+    {
+      "font_id": "google.geist",
+      "family_names": [
+        "Geist"
+      ],
+      "source": "Google Fonts",
+      "license": "OFL",
+      "categories": [
+        "Sans Serif"
+      ],
+      "variants": [
+        "Black",
+        "Bold",
+        "ExtraBold",
+        "ExtraLight",
+        "Light",
+        "Medium",
+        "Regular",
+        "SemiBold",
+        "Thin"
+      ],
+      "scope": "user"
+    },
+    {
+      "font_id": "google.geist-mono",
+      "family_names": [
+        "Geist Mono"
+      ],
+      "source": "Google Fonts",
+      "license": "OFL",
+      "categories": [
+        "Monospace"
+      ],
+      "variants": [
+        "Black",
+        "Bold",
+        "ExtraBold",
+        "ExtraLight",
+        "Light",
+        "Medium",
+        "Regular",
+        "SemiBold",
+        "Thin"
+      ],
+      "scope": "user"
+    },
     {
       "font_id": "google.google-sans",
       "family_names": [
@@ -94,8 +140,8 @@
     }
   ],
   "metadata": {
-    "total_fonts": 3,
-    "total_variants": 42,
+    "total_fonts": 5,
+    "total_variants": 60,
     "only_matched": true
   }
 }

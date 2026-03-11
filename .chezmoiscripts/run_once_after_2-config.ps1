@@ -3,7 +3,7 @@ function AddToPath {
       if (Test-Path $pathToAdd) {
           $userPath = [Environment]::GetEnvironmentVariable("PATH", "User")
           if ($userPath -notlike "*$pathToAdd*") {
-              $userPath += ";$pathToAdd"
+               $pathToAdd += ";$userPath"
               [Environment]::SetEnvironmentVariable("PATH", $userPath, "User")
           }
       }
@@ -12,6 +12,7 @@ function AddToPath {
 AddToPath "C:\msys64\ucrt64\bin"
 AddToPath "C:\msys64\usr\bin"
 AddToPath "$env:USERPROFILE\AppData\Local\mise\shims"
+AddToPath "$env:USERPROFILE\.local\bin"
 
 [Environment]::SetEnvironmentVariable("EDITOR", "code", "User")
 [Environment]::SetEnvironmentVariable("PYTHONUTF8", "1", "User")
