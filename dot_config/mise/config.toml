@@ -57,6 +57,8 @@ oh-my-posh = "latest"
 "github:Graphixa/FontGet" = "latest"
 "github:AlDanial/cloc" = { version = "latest", asset_pattern = "cloc-*.exe", bin = "cloc.exe" }
 "github:spicetify/cli" = "latest"
+"github:aria2/aria2" = "latest"
+"github:sharkdp/diskus" = "latest"
 
 [settings]
 pipx.uvx = true

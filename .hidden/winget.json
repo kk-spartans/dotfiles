@@ -5,6 +5,7 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "AntibodySoftware.WizTree" },
         { "PackageIdentifier": "Discord.Discord" },
         { "PackageIdentifier": "Google.AndroidStudio" },
         { "PackageIdentifier": "RustDesk.RustDesk" },

@@ -7,55 +7,46 @@
     {
       "key": "developer-mode",
       "text": "Developer mode (hide installation overlay)",
-      "tooltip": "When enabled, Talon runs without showing the full-screen install overlay.",
       "enabled": false
     },
     {
       "key": "remove-edge-permanently",
       "text": "Remove Microsoft Edge permanently",
-      "tooltip": "Enabled to match debloat.rs overlap.",
       "enabled": true
     },
     {
       "key": "uninstall-outlook-onedrive",
       "text": "Uninstall Outlook & OneDrive",
-      "tooltip": "Enabled to match debloat.rs overlap.",
       "enabled": true
     },
     {
       "key": "browser-installation",
       "text": "Install web browser: None",
-      "tooltip": "Disabled.",
       "enabled": false
     },
     {
       "key": "debloat-windows-phase-one",
       "text": "Debloat Windows phase one (WinUtil)",
-      "tooltip": "Enabled with a narrowed config.",
       "enabled": true
     },
     {
       "key": "debloat-windows-phase-two",
       "text": "Debloat Windows phase two (Win11Debloat)",
-      "tooltip": "Enabled with narrowed arguments.",
       "enabled": true
     },
     {
       "key": "registry-tweaks",
       "text": "Apply debloat.rs-aligned registry tweaks",
-      "tooltip": "Custom registry payload that only applies debloat.rs-style registry changes Talon can express.",
       "enabled": true
     },
     {
       "key": "configure-updates",
       "text": "Set security-only update policy",
-      "tooltip": "Enabled to match debloat.rs overlap.",
       "enabled": true
     },
     {
       "key": "apply-background",
       "text": "Apply debloat.rs wallpaper",
-      "tooltip": "Uses the debloat.rs wallpaper instead of Talon's default one.",
       "enabled": true
     }
   ],
@@ -974,6 +965,5 @@
       "value_type": "REG_DWORD",
       "value": 14
     }
-  ],
-  "applied_background_path": "C:\\Users\\kk-spartans\\things\\repos\\talon\\debloat_rs_wallpaper.jpg"
+  ]
 }
