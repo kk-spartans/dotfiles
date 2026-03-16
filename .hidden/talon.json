@@ -1,0 +1,979 @@
+{
+  "version": 1,
+  "selected_browser_name": "None",
+  "selected_browser_package": "",
+  "include_browser_install": false,
+  "items": [
+    {
+      "key": "developer-mode",
+      "text": "Developer mode (hide installation overlay)",
+      "tooltip": "When enabled, Talon runs without showing the full-screen install overlay.",
+      "enabled": false
+    },
+    {
+      "key": "remove-edge-permanently",
+      "text": "Remove Microsoft Edge permanently",
+      "tooltip": "Enabled to match debloat.rs overlap.",
+      "enabled": true
+    },
+    {
+      "key": "uninstall-outlook-onedrive",
+      "text": "Uninstall Outlook & OneDrive",
+      "tooltip": "Enabled to match debloat.rs overlap.",
+      "enabled": true
+    },
+    {
+      "key": "browser-installation",
+      "text": "Install web browser: None",
+      "tooltip": "Disabled.",
+      "enabled": false
+    },
+    {
+      "key": "debloat-windows-phase-one",
+      "text": "Debloat Windows phase one (WinUtil)",
+      "tooltip": "Enabled with a narrowed config.",
+      "enabled": true
+    },
+    {
+      "key": "debloat-windows-phase-two",
+      "text": "Debloat Windows phase two (Win11Debloat)",
+      "tooltip": "Enabled with narrowed arguments.",
+      "enabled": true
+    },
+    {
+      "key": "registry-tweaks",
+      "text": "Apply debloat.rs-aligned registry tweaks",
+      "tooltip": "Custom registry payload that only applies debloat.rs-style registry changes Talon can express.",
+      "enabled": true
+    },
+    {
+      "key": "configure-updates",
+      "text": "Set security-only update policy",
+      "tooltip": "Enabled to match debloat.rs overlap.",
+      "enabled": true
+    },
+    {
+      "key": "apply-background",
+      "text": "Apply debloat.rs wallpaper",
+      "tooltip": "Uses the debloat.rs wallpaper instead of Talon's default one.",
+      "enabled": true
+    }
+  ],
+  "winutil_config": {
+    "WPFTweaks": ["WPFTweaksServices"]
+  },
+  "win11debloat_args": "-Silent -RemoveApps -RemoveGamingApps -ClearStartAllUsers",
+  "registry_changes": [
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+      "name": "AppsUseLightTheme",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+      "name": "SystemUsesLightTheme",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+      "name": "EnableTransparency",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Desktop",
+      "name": "MenuShowDelay",
+      "value_type": "REG_SZ",
+      "value": "0"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Desktop",
+      "name": "DragFullWindows",
+      "value_type": "REG_SZ",
+      "value": "1"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Desktop\\WindowMetrics",
+      "name": "MinAnimate",
+      "value_type": "REG_SZ",
+      "value": "1"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Desktop",
+      "name": "FontSmoothing",
+      "value_type": "REG_SZ",
+      "value": "2"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Desktop",
+      "name": "ScreenSaveActive",
+      "value_type": "REG_SZ",
+      "value": "0"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Desktop",
+      "name": "SCRNSAVE.EXE",
+      "value_type": "REG_SZ",
+      "value": ""
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Desktop",
+      "name": "ScreenSaverIsSecure",
+      "value_type": "REG_SZ",
+      "value": "0"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+      "name": "VisualFXSetting",
+      "value_type": "REG_DWORD",
+      "value": 3
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\DWM",
+      "name": "EnableAeroPeek",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\DWM",
+      "name": "AlwaysHibernateThumbnails",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\Dwm",
+      "name": "RoundedCorners",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\Dwm",
+      "name": "ForceEffectMode",
+      "value_type": "REG_DWORD",
+      "value": 2
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "ExtendedUIHoverTime",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Clipboard",
+      "name": "EnableClipboardHistory",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+      "name": "AllowIndexingEncryptedStoresOrItems",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Control\\Power\\PowerSettings\\54533251-82be-4824-96c1-47b60b740d00\\893dee8e-2bef-41e0-89c6-b55d0929964c\\DefaultPowerSchemeValues\\381b4222-f694-41f0-9685-ff5bb260df2e",
+      "name": "ACSettingIndex",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Control\\Power\\PowerSettings\\54533251-82be-4824-96c1-47b60b740d00\\893dee8e-2bef-41e0-89c6-b55d0929964c\\DefaultPowerSchemeValues\\381b4222-f694-41f0-9685-ff5bb260df2e",
+      "name": "DCSettingIndex",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Control\\Power\\PowerSettings\\7516b95f-f776-4464-8c53-06167f40cc99\\3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e\\DefaultPowerSchemeValues\\381b4222-f694-41f0-9685-ff5bb260df2e",
+      "name": "ACSettingIndex",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Control\\Power\\PowerSettings\\7516b95f-f776-4464-8c53-06167f40cc99\\3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e\\DefaultPowerSchemeValues\\381b4222-f694-41f0-9685-ff5bb260df2e",
+      "name": "DCSettingIndex",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AppModelUnlock",
+      "name": "AllowDevelopmentWithoutDevLicense",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Control\\FileSystem",
+      "name": "LongpathsEnabled",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Services\\W32Time\\Parameters",
+      "name": "NtpServer",
+      "value_type": "REG_SZ",
+      "value": "time.nist.gov"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Policies\\Microsoft\\Windows\\Explorer",
+      "name": "ShowRunAsDifferentUserInStart",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Sensor\\Overrides\\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}",
+      "name": "SensorPermissionState",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Services\\lfsvc\\Service",
+      "name": "Start",
+      "value_type": "REG_DWORD",
+      "value": 4
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection",
+      "name": "AllowTelemetry",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection",
+      "name": "DoNotShowFeedbackNotifications",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\DataCollection",
+      "name": "AllowTelemetry",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\DataCollection",
+      "name": "DoNotShowFeedbackNotifications",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\DataCollection",
+      "name": "MaxTelemetryAllowed",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
+      "name": "GlobalUserDisabled",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
+      "name": "BackgroundAppGlobalToggle",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+      "name": "TurnOffWindowsRecall",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Control\\FeatureManagement\\Overrides\\0\\2093230218",
+      "name": "EnabledState",
+      "value_type": "REG_DWORD",
+      "value": 2
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\WindowsPlatformBinaryTable",
+      "name": "Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "DisablePreviewHandlers",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "DisableThumbnailCache",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+      "name": "DisableWindowsConsumerFeatures",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+      "name": "DisableCloudOptimizedContent",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "ShowCopilotButton",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\WcmSvc\\wifinetworkmanager\\config",
+      "name": "AutoConnectAllowedOEM",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\PolicyManager\\default\\WiFi\\AllowWiFiHotspotReporting",
+      "name": "value",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SystemPaneSuggestionsEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SoftLandingEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "RotatingLockScreenEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "RotatingLockScreenOverlayEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContentEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-338393Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-353694Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-353696Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-88000326Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-310093Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-338388Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-314559Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+      "name": "SubscribedContent-338389Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search",
+      "name": "SearchBoxTaskbarMode",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "TaskbarDa",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "TaskbarMn",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Feeds",
+      "name": "EnableFeeds",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+      "name": "TurnOffWindowsCopilot",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+      "name": "TurnOffWindowsCopilot",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "Start_TrackDocs",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "Start_IrisRecommendations",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "ShowTaskViewButton",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\PenWorkspace",
+      "name": "PenWorkspaceButtonDesiredVisibility",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\TabletTip\\1.7",
+      "name": "TipbandDesiredVisibility",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "System\\GameConfigStore",
+      "name": "GameDVR_Enabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameDVR",
+      "name": "AppCaptureEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Microsoft\\PolicyManager\\default\\ApplicationManagement\\AllowGameDVR",
+      "name": "Value",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "LaunchTo",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Mouse",
+      "name": "MouseSpeed",
+      "value_type": "REG_SZ",
+      "value": "0"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Mouse",
+      "name": "MouseThreshold1",
+      "value_type": "REG_SZ",
+      "value": "0"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Mouse",
+      "name": "MouseThreshold2",
+      "value_type": "REG_SZ",
+      "value": "0"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+      "name": "SettingsPageVisibility",
+      "value_type": "REG_SZ",
+      "value": "hide:home"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint",
+      "name": "DisableAIFeatures",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Paint",
+      "name": "DisableAIFeatures",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Notepad",
+      "name": "DisableAIFeatures",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Notepad",
+      "name": "DisableAIFeatures",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Accessibility\\StickyKeys",
+      "name": "Flags",
+      "value_type": "REG_SZ",
+      "value": "506"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Accessibility\\Keyboard Response",
+      "name": "Flags",
+      "value_type": "REG_SZ",
+      "value": "122"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Control Panel\\Accessibility\\ToggleKeys",
+      "name": "Flags",
+      "value_type": "REG_SZ",
+      "value": "58"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "HideFileExt",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "Hidden",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "ShowSuperHidden",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "HideDrivesWithNoMedia",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "TaskbarAnimations",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "IconsOnly",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "ListviewShadow",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "ShowSecondsInSystemClock",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "HideIcons",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "DisallowShaking",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "name": "AltTabSettings",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings",
+      "name": "TaskbarEndTask",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CabinetState",
+      "name": "FullPathAddress",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\PushNotifications",
+      "name": "ToastEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+      "name": "DisableNotificationCenter",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search",
+      "name": "BingSearchEnabled",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search",
+      "name": "CortanaConsent",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+      "name": "DisableWebSearch",
+      "value_type": "REG_DWORD",
+      "value": 1
+    },
+    {
+      "hive": "HKLM",
+      "key_path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+      "name": "ConnectedSearchUseWeb",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Console\\%%Startup",
+      "name": "DelegationConsole",
+      "value_type": "REG_SZ",
+      "value": "{2EACA947-7F5F-4CFA-BA87-8F7FBEEFBE69}"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Console\\%%Startup",
+      "name": "DelegationTerminal",
+      "value_type": "REG_SZ",
+      "value": "{E12CFF52-A866-4C77-9A90-F570A7AA2C6B}"
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "AAPThreshold",
+      "value_type": "REG_DWORD",
+      "value": 3
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "PanEnabled",
+      "value_type": "REG_DWORD",
+      "value": 4294967295
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ScrollDirection",
+      "value_type": "REG_DWORD",
+      "value": 0
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ZoomEnabled",
+      "value_type": "REG_DWORD",
+      "value": 4294967295
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "TapsEnabled",
+      "value_type": "REG_DWORD",
+      "value": 4294967295
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "TwoFingerTapEnabled",
+      "value_type": "REG_DWORD",
+      "value": 4294967295
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "TapAndDrag",
+      "value_type": "REG_DWORD",
+      "value": 4294967295
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "RightClickZoneEnabled",
+      "value_type": "REG_DWORD",
+      "value": 4294967295
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerTapEnabled",
+      "value_type": "REG_DWORD",
+      "value": 4
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerSlideEnabled",
+      "value_type": "REG_DWORD",
+      "value": 65535
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerUp",
+      "value_type": "REG_DWORD",
+      "value": 65535
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerDown",
+      "value_type": "REG_DWORD",
+      "value": 65535
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerLeft",
+      "value_type": "REG_DWORD",
+      "value": 65535
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerRight",
+      "value_type": "REG_DWORD",
+      "value": 65535
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerUpKeyParams",
+      "value_type": "REG_DWORD",
+      "value": 2097170
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerDownKeyParams",
+      "value_type": "REG_DWORD",
+      "value": 4849682
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerLeftKeyParams",
+      "value_type": "REG_DWORD",
+      "value": 4718610
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "ThreeFingerRightKeyParams",
+      "value_type": "REG_DWORD",
+      "value": 4980754
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "FourFingerTapEnabled",
+      "value_type": "REG_DWORD",
+      "value": 3
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "CustomFourFingerTap",
+      "value_type": "REG_DWORD",
+      "value": 3
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "FourFingerSlideEnabled",
+      "value_type": "REG_DWORD",
+      "value": 3
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "FourFingerUp",
+      "value_type": "REG_DWORD",
+      "value": 16
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "FourFingerDown",
+      "value_type": "REG_DWORD",
+      "value": 17
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "FourFingerLeft",
+      "value_type": "REG_DWORD",
+      "value": 15
+    },
+    {
+      "hive": "HKCU",
+      "key_path": "Software\\Microsoft\\Windows\\CurrentVersion\\PrecisionTouchPad",
+      "name": "FourFingerRight",
+      "value_type": "REG_DWORD",
+      "value": 14
+    }
+  ],
+  "applied_background_path": "C:\\Users\\kk-spartans\\things\\repos\\talon\\debloat_rs_wallpaper.jpg"
+}

@@ -54,6 +54,15 @@
       "skillFolderHash": "537d49904f8c61e5b4a23dcbdd40b317338b0e0e",
       "installedAt": "2026-03-09T09:24:03.788Z",
       "updatedAt": "2026-03-09T09:29:05.354Z"
+    },
+    "frontend-slides": {
+      "source": "zarazhangrui/frontend-slides",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/zarazhangrui/frontend-slides.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "384d1a07ba1fd59ff626b141caa65f51a44ccc73",
+      "installedAt": "2026-03-12T12:45:12.759Z",
+      "updatedAt": "2026-03-12T12:45:12.759Z"
     }
   },
   "dismissed": {

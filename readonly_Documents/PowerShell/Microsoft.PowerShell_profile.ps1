@@ -38,5 +38,5 @@ zoxide init powershell | Out-String | Invoke-Expression
 thefuck --alias | Out-String | Invoke-Expression
 
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -PredictionViewStyle InlineView
 Set-PSReadLineOption -EditMode Vi
