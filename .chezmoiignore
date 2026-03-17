@@ -4,6 +4,9 @@ AppData
 .config/whkdrc
 .local/bin/*.ps1
 Documents
+applications.json
+komorebi.json
+wallpaper.jpg
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
