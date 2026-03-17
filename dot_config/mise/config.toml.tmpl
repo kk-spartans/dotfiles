@@ -1,7 +1,5 @@
 [tools]
-
 node = "latest"
-rust = "latest"
 bun = "latest"
 deno = "latest"
 go = "latest"
@@ -30,6 +28,7 @@ sccache = "latest"
 cargo-binstall = "latest"
 {{- if eq .chezmoi.os "windows" }}
 oh-my-posh = "latest"
+rust = "latest"
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
@@ -55,11 +54,11 @@ oh-my-posh = "latest"
 "npm:convex" = "latest"
 "npm:tokscale" = "latest"
 "npm:trash-cli" = "latest"
-"npm:fast-cli" = "latest"
 
 "github:GitOxideLabs/gitoxide" = "latest"
 {{- if eq .chezmoi.os "windows" }}
 "github:BetterDiscord/cli" = "latest"
+"npm:fast-cli" = "latest"
 "github:Graphixa/FontGet" = "latest"
 "github:AlDanial/cloc" = { version = "latest", asset_pattern = "cloc-*.exe", bin = "cloc.exe" }
 "github:spicetify/cli" = "latest"
