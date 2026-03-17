@@ -1,4 +1,6 @@
 {{- if eq .chezmoi.os "linux" }}
+#!/usr/bin/env bash
+set -e
 
 sudo apt-get install p7zip-full docker.io
 curl -fsSL https://tailscale.com/install.sh | sh
@@ -10,5 +12,5 @@ cd ~
 .local/bin/mise activate bash | source
 cp ".agents/.skill-lock.json" "skills-lock.json"
 bun x skills experimental_install
-Remove-Item -Path "skills-lock.json"
+rm -f "skills-lock.json"
 {{- end }}
