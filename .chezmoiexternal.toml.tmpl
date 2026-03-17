@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" }}
 ["AppData/Roaming/bat/themes/Catppuccin Mocha.tmTheme"]
 type = "file"
 url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
@@ -6,11 +7,6 @@ refreshPeriod = "168h"
 ["catppuccin.omp.json"]
 type = "file"
 url = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/catppuccin_mocha.omp.json"
-refreshPeriod = "168h"
-
-[".config/eza/theme.yml"]
-type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/eza/refs/heads/main/themes/mocha/catppuccin-mocha-pink.yml"
 refreshPeriod = "168h"
 
 ["AppData/Roaming/spicetify/Extensions/adblock.js"]
@@ -22,6 +18,13 @@ refreshPeriod = "168h"
 type = "file"
 url = "https://raw.githubusercontent.com/Spikerko/spicy-lyrics/refs/heads/main/builds/spicy-lyrics.mjs"
 refreshPeriod = "168h"
+{{- end }}
+
+[".config/eza/theme.yml"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/eza/refs/heads/main/themes/mocha/catppuccin-mocha-pink.yml"
+refreshPeriod = "168h"
+
 
 [".config/catppuccin.gitconfig"]
 type = "file"

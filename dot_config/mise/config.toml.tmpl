@@ -31,7 +31,9 @@ jq = "latest"
 vercel = "latest"
 sccache = "latest"
 cargo-binstall = "latest"
+{{- if eq .chezmoi.os "windows" }}
 oh-my-posh = "latest"
+{{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
 "http:ffmpeg" = { version = "latest", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z", bin = "ffmpeg.exe", extract = true }

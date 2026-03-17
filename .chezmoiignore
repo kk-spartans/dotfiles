@@ -12,3 +12,5 @@ wallpaper.jpg
 {{- if ne .chezmoi.os "linux" }}
 .local/bin/*.sh
 {{- end }}
+
+README.md
