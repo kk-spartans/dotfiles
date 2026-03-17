@@ -10,7 +10,7 @@ wallpaper.jpg
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
-.local/bin/*.sh
+.config/fish/
 {{- end }}
 
 README.md

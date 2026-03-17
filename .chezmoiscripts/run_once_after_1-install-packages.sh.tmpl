@@ -2,7 +2,9 @@
 #!/usr/bin/env bash
 set -e
 
-sudo apt-get install p7zip-full docker.io
+sudo apt-get install p7zip-full docker.io fish
+echo "input password for chsh"
+chsh -s $(which fish)
 curl -fsSL https://tailscale.com/install.sh | sh
 curl https://mise.run | sh
 
