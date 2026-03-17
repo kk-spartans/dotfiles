@@ -1,0 +1,11 @@
+{{- if ne .chezmoi.os "windows" }}
+AppData
+.config/yasb/
+.config/whkdrc
+.local/bin/*.ps1
+Documents
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.local/bin/*.sh
+{{- end }}

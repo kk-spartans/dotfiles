@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" }}
 $email = "kcube.jan+github@gmail.com"
 $name = "Karthikeyan KK"
 $preferred_key = "7FFC07EF617D1A01"
@@ -78,3 +79,4 @@ Expire-Date: 0
 }
 
 & $gpg --homedir $user_gpg_home --list-secret-keys --keyid-format LONG $preferred_key
+{{- end }}

@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" }}
 winget import -i "$env:userprofile/.local/share/chezmoi/.hidden/winget.json" --accept-package-agreements --accept-source-agreements
 
 # fontget
@@ -20,3 +21,4 @@ Remove-Item -Path "skills-lock.json"
 # choco
 
 Start-Process "choco" -ArgumentList "install", "$env:USERPROFILE\.local\share\chezmoi\.hidden\packages.config", "-y" -Verb RunAs
+{{- end }}

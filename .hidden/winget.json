@@ -5,6 +5,8 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "Balena.Etcher" },
+        { "PackageIdentifier": "RaspberryPiFoundation.RaspberryPiImager" },
         { "PackageIdentifier": "AntibodySoftware.WizTree" },
         { "PackageIdentifier": "Discord.Discord" },
         { "PackageIdentifier": "Google.AndroidStudio" },
@@ -25,7 +27,6 @@
         { "PackageIdentifier": "REALiX.HWiNFO" },
         { "PackageIdentifier": "Google.PlatformTools" },
         { "PackageIdentifier": "ImageMagick.Q16-HDRI" },
-        { "PackageIdentifier": "Gyan.FFmpeg" },
         { "PackageIdentifier": "BlenderFoundation.Blender" },
         { "PackageIdentifier": "AmN.yasb" },
         { "PackageIdentifier": "gerardog.gsudo" },
@@ -40,14 +41,11 @@
         { "PackageIdentifier": "GIMP.GIMP.2" },
         { "PackageIdentifier": "Git.Git", "Scope": "user" },
         { "PackageIdentifier": "MiKTeX.MiKTeX" },
-        { "PackageIdentifier": "Ookla.Speedtest.CLI" },
         { "PackageIdentifier": "Termius.Termius" },
-        { "PackageIdentifier": "Perplexity.Comet" },
         {
           "PackageIdentifier": "Spotify.Spotify",
           "Version": "1.2.82.428.g0ac8be2b"
         },
-        { "PackageIdentifier": "aria2.aria2" },
         { "PackageIdentifier": "Obsidian.Obsidian" },
         { "PackageIdentifier": "ElementLabs.LMStudio" },
         { "PackageIdentifier": "jdx.mise" },

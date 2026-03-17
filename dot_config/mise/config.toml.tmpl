@@ -1,5 +1,8 @@
 [tools]
 
+{{- if eq .chezmoi.os "linux" }}
+imagemagick = "latest"
+{{- end }}
 node = "latest"
 rust = "latest"
 bun = "latest"
@@ -30,9 +33,11 @@ sccache = "latest"
 cargo-binstall = "latest"
 oh-my-posh = "latest"
 
+{{- if eq .chezmoi.os "windows" }}
 "http:ffmpeg" = { version = "latest", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z", bin = "ffmpeg.exe", extract = true }
 
 "pipx:ocrmypdf" = { version = "latest", uvx_args = "--with git+https://github.com/ocrmypdf/OCRmyPDF-EasyOCR.git --python 3.12 --index https://download.pytorch.org/whl/cu130" }
+{{- end }}
 "pipx:markitdown" = { version = "latest", uvx_args = "--python 3.12 --with python-pptx --with mammoth~=1.11.0 --with pandas --with openpyxl --with xlrd --with lxml --with pdfminer.six>=20251230 --with pdfplumber>=0.11.9 --with olefile --with pydub --with SpeechRecognition --with youtube-transcript-api~=1.0.0 --with azure-ai-documentintelligence --with azure-identity" }
 "pipx:thefuck" = { version = "latest", uvx_args = "--python 3.11" }
 
@@ -51,12 +56,16 @@ oh-my-posh = "latest"
 "npm:convex" = "latest"
 "npm:tokscale" = "latest"
 "npm:trash-cli" = "latest"
+"npm:fast-cli" = "latest"
 
 "github:GitOxideLabs/gitoxide" = "latest"
+{{- if eq .chezmoi.os "windows" }}
 "github:BetterDiscord/cli" = "latest"
 "github:Graphixa/FontGet" = "latest"
 "github:AlDanial/cloc" = { version = "latest", asset_pattern = "cloc-*.exe", bin = "cloc.exe" }
 "github:spicetify/cli" = "latest"
+"github:mpv-player/mpv" = "latest"
+{{- end }}
 "github:aria2/aria2" = "latest"
 "github:sharkdp/diskus" = "latest"
 

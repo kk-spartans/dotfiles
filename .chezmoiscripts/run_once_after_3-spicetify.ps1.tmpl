@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" }}
 Read-Host "Login to spotify"
 spicetify update
 Set-Location $env:TEMP
@@ -6,3 +7,4 @@ Set-Location Spicetify-Lucid
 deno run build
 Copy-Item -Recurse src/* $env:APPDATA\spicetify\Themes\Lucid
 spicetify backup apply enable-devtools
+{{- end }}

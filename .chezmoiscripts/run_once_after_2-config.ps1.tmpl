@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" }}
 function AddToPath {
       param([string]$pathToAdd)
       if (Test-Path $pathToAdd) {
@@ -62,3 +63,4 @@ if ((Get-Command docker -ErrorAction SilentlyContinue) -and -not [string]::IsNul
 bat cache --build
 komorebic enable-autostart --whkd
 yasbc enable-autostart
+{{- end }}
