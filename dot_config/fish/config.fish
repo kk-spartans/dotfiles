@@ -1,6 +1,4 @@
-~/.local/bin/mise activate fish | source
-
-fish_add_path -m ~/.local/bin ~/bin
+mise activate fish | source
 
 if status is-interactive
     zoxide init fish | source
@@ -21,3 +19,4 @@ if status is-interactive
 
     thefuck --alias | source
 end
+
