@@ -5,7 +5,7 @@ param(
 
 foreach ($path in $Paths) {
     try {
-        gomi "$path"
+        gomi -r -f "$path"
     } catch {
     }
 }
