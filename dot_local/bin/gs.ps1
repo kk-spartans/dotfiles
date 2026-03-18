@@ -1,6 +1,6 @@
 param(
-    [Parameter(Mandatory=$true, Position=0)]
-    [string]$m
+    [Parameter(Mandatory=$false, Position=0)]
+    [string]$m = 'wip'
 )
 
 git.exe add --all
