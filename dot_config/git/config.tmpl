@@ -43,12 +43,16 @@
     submoduleSummary = true
 [credential "https://github.com"]
 	helper = 
-	helper = gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = gh auth git-credential
+	helper = !gh auth git-credential
 [commit]
 	gpgsign = true
 [gpg]
 	format = openpgp
+{{- if eq .chezmoi.os "windows" }}
 	program = "C:\\Program Files\\Git\\usr\\bin\\gpg.exe"
+{{- else }}
+	program = gpg
+{{- end }}
