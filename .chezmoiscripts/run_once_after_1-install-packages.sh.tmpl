@@ -2,16 +2,26 @@
 #!/usr/bin/env bash
 set -e
 
-sudo apt-get install -y p7zip-full docker.io fish iperf3
+sudo apt-get install -y p7zip-full docker.io fish iperf3 ncdu
 echo "input password for chsh"
 chsh -s $(which fish)
-curl -fsSL https://tailscale.com/install.sh | sh
-curl https://mise.run | sh
+if ! command -v tailscale >/dev/null 2>&1; then
+  curl -fsSL https://tailscale.com/install.sh | sh
+fi
 
-"$HOME/.local/bin/mise" install
+if ! command -v mise >/dev/null 2>&1 && [ ! -x "$HOME/.local/bin/mise" ]; then
+  curl https://mise.run | sh
+fi
+
+MISE_BIN="$(command -v mise || true)"
+if [ -z "$MISE_BIN" ]; then
+  MISE_BIN="$HOME/.local/bin/mise"
+fi
+
+"$MISE_BIN" install
 
 cd "$HOME"
-eval "$("$HOME/.local/bin/mise" activate bash)"
+eval "$("$MISE_BIN" activate bash)"
 cp ".agents/.skill-lock.json" "skills-lock.json"
 bun x skills experimental_install
 rm -f "skills-lock.json"
