@@ -1,4 +1,6 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env fish
 set -Ux NODE_COMPILE_CACHE /var/tmp/node-compile-cache
 mkdir -p /var/tmp/node-compile-cache
 fish_add_path -m ~/.local/bin ~/bin
-
+{{- end }}
