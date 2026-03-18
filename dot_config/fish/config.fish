@@ -7,7 +7,7 @@ if status is-interactive
 
     function cd --description "cd uses zoxide; no args goes up one level"
         if test (count $argv) -eq 0
-            builtin cd ..
+            builtin cd -
             return
         end
 

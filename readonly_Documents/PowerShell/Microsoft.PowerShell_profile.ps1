@@ -26,7 +26,7 @@ function cd {
     )
 
     if ([string]::IsNullOrWhiteSpace($Path)) {
-        Set-Location ..
+        Set-Location -
         return
     }
 

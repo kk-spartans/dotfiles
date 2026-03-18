@@ -1,9 +1,17 @@
 [include]
     path = ~/.config/catppuccin.gitconfig
+{{- $signingKey := "" }}
+{{- if eq .chezmoi.os "windows" }}
+{{- $signingKey = (output "powershell" "-NoProfile" "-Command" "$gpg='C:\\Program Files\\Git\\usr\\bin\\gpg.exe'; if (Test-Path $gpg) { $sec = & $gpg --list-secret-keys --with-colons --keyid-format LONG 2>$null | Select-String '^sec:' | Select-Object -First 1; if ($sec) { ($sec.ToString().Split(':'))[4] } }") | trim }}
+{{- else if lookPath "gpg" }}
+{{- $signingKey = (output "sh" "-c" "gpg --list-secret-keys --with-colons --keyid-format LONG 2>/dev/null | awk -F: '/^sec:/{print $5; exit}'") | trim }}
+{{- end }}
 [user]
 	name = Karthikeyan KK
 	email = kcube.jan+github@gmail.com
-	signingkey = 7FFC07EF617D1A01
+{{- if ne $signingKey "" }}
+	signingkey = {{ $signingKey }}
+{{- end }}
 [core]
 	autocrlf = input
 	eol = lf
@@ -48,7 +56,7 @@
 	helper = 
 	helper = !gh auth git-credential
 [commit]
-	gpgsign = true
+	gpgsign = {{ if ne $signingKey "" }}true{{ else }}false{{ end }}
 [gpg]
 	format = openpgp
 {{- if eq .chezmoi.os "windows" }}
