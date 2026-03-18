@@ -5,7 +5,7 @@ param(
 
 foreach ($path in $Paths) {
     try {
-        trash $path --verbose *>$null
+        gomi "$path" 2*>$null
     } catch {
     }
 }
