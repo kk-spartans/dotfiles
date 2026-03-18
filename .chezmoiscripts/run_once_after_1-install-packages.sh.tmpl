@@ -2,8 +2,10 @@
 #!/usr/bin/env bash
 set -e
 
-sudo apt-get install -y p7zip-full docker.io fish iperf3 ncdu
+sudo apt-get install -y p7zip-full docker.io fish iperf3 ncdu docker-compose-plugin
+
 FISH_SHELL="$(command -v fish)"
+
 CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
 if [ "$CURRENT_SHELL" != "$FISH_SHELL" ]; then
   echo "input password for chsh"
