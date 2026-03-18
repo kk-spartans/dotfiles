@@ -42,24 +42,24 @@
             "keys": "ctrl+c"
         },
         {
-            "id": "User.closeTab.0",
-            "keys": "ctrl+f4"
-        },
-        {
             "id": "Terminal.PasteFromClipboard",
             "keys": "ctrl+v"
+        },
+        {
+            "id": "User.closeTab.0",
+            "keys": "ctrl+f4"
         },
         {
             "id": "Terminal.DuplicatePaneAuto",
             "keys": "alt+shift+d"
         },
         {
-            "id": "User.scrollToMark.D3F0B923",
-            "keys": "ctrl+alt+s"
-        },
-        {
             "id": "User.toggleFocusMode",
             "keys": "ctrl+shift+t"
+        },
+        {
+            "id": "User.scrollToMark.D3F0B923",
+            "keys": "ctrl+alt+s"
         },
         {
             "id": "User.addMark.0",
@@ -101,6 +101,14 @@
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "commandline": "ssh.exe raspi",
+                "guid": "{a985c6a1-344c-4af4-b852-881a0d0322dd}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "SSH Raspi",
+                "startingDirectory": "%USERPROFILE%"
             },
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -166,5 +174,5 @@
     ],
     "useAcrylicInTabRow": true,
     "warning.largePaste": false,
-    "warning.multiLinePaste": false
+    "warning.multiLinePaste": "never"
 }
