@@ -6,6 +6,7 @@ email="kcube.jan+github@gmail.com"
 name="Karthikeyan KK"
 preferred_key="7FFC07EF617D1A01"
 user_gpg_home="$HOME/.gnupg"
+selected_key="$preferred_key"
 
 # Ensure gpg is installed
 command -v gpg >/dev/null 2>&1 || { echo "gpg not found"; exit 1; }
@@ -20,17 +21,16 @@ gpgconf --homedir "$user_gpg_home" --launch gpg-agent >/dev/null 2>&1 || true
 user_key=$(gpg --homedir "$user_gpg_home" --list-secret-keys --with-colons --keyid-format LONG "$preferred_key" 2>/dev/null | grep "^sec" | head -n1)
 
 if [[ -z "$user_key" ]]; then
+    selected_key=""
     # Check if any key for email exists
     any_user_key=$(gpg --homedir "$user_gpg_home" --list-secret-keys --with-colons --keyid-format LONG "$email" 2>/dev/null | grep "^sec" | head -n1)
     
     if [[ -n "$any_user_key" ]]; then
-        gpg --homedir "$user_gpg_home" --list-secret-keys --keyid-format LONG "$email"
-        exit 0
-    fi
-
-    # Generate a new key if none found
-    tmpfile=$(mktemp)
-    cat > "$tmpfile" <<EOF
+        selected_key=$(printf '%s' "$any_user_key" | cut -d: -f5)
+    else
+        # Generate a new key if none found
+        tmpfile=$(mktemp)
+        cat > "$tmpfile" <<EOF
 Key-Type: eddsa
 Key-Curve: ed25519
 Subkey-Type: eddsa
@@ -42,10 +42,18 @@ Expire-Date: 0
 %commit
 EOF
 
-    gpg --homedir "$user_gpg_home" --batch --generate-key "$tmpfile"
-    rm -f "$tmpfile"
+        gpg --homedir "$user_gpg_home" --batch --generate-key "$tmpfile"
+        rm -f "$tmpfile"
+
+        generated_user_key=$(gpg --homedir "$user_gpg_home" --list-secret-keys --with-colons --keyid-format LONG "$email" 2>/dev/null | grep "^sec" | head -n1)
+        selected_key=$(printf '%s' "$generated_user_key" | cut -d: -f5)
+    fi
 fi
 
-# List the secret key at the end
-gpg --homedir "$user_gpg_home" --list-secret-keys --keyid-format LONG "$preferred_key"
+# List the selected secret key at the end
+if [[ -n "$selected_key" ]]; then
+    gpg --homedir "$user_gpg_home" --list-secret-keys --keyid-format LONG "$selected_key"
+else
+    gpg --homedir "$user_gpg_home" --list-secret-keys --keyid-format LONG "$email"
+fi
 {{- end }}
