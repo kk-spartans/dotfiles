@@ -5,7 +5,7 @@ param(
 
 foreach ($path in $Paths) {
     try {
-        gomi "$path" 2*>$null
+        gomi "$path"
     } catch {
     }
 }
