@@ -68,6 +68,10 @@ rust = "latest"
 {{- end }}
 "github:aria2/aria2" = "latest"
 "github:sharkdp/diskus" = "latest"
+"github:pimalaya/himalaya" = "latest"
+{{- if eq .chezmoi.os "linux" }}
+ffmpeg = "latest"
+{{- end }}
 
 [settings]
 pipx.uvx = true

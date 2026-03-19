@@ -1,4 +1,5 @@
 mise activate fish | source
+brew shellenv fish | source
 
 if status is-interactive
     zoxide init fish | source
