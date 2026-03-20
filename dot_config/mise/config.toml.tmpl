@@ -32,6 +32,8 @@ oh-my-posh = "latest"
 rust = "latest"
 {{- end }}
 
+"github:sharkdp/hexyl" = "latest"
+
 {{- if eq .chezmoi.os "windows" }}
 "http:ffmpeg" = { version = "latest", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z", bin = "ffmpeg.exe", extract = true }
 
