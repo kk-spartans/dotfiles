@@ -32,6 +32,7 @@
         { "PackageIdentifier": "gerardog.gsudo" },
         { "PackageIdentifier": "Google.GoogleDrive" },
         { "PackageIdentifier": "voidtools.Everything" },
+        { "PackageIdentifier": "Insecure.Nmap" },
         { "PackageIdentifier": "LGUG2Z.whkd" },
         { "PackageIdentifier": "LGUG2Z.komorebi" },
         { "PackageIdentifier": "Microsoft.PowerShell" },

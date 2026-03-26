@@ -30,6 +30,8 @@ cargo-binstall = "latest"
 {{- if eq .chezmoi.os "windows" }}
 oh-my-posh = "latest"
 rust = "latest"
+"github:resend/resend-cli" = "latest"
+"github:axiomhq/cli" = "latest"
 {{- end }}
 
 "github:sharkdp/hexyl" = "latest"
@@ -37,6 +39,7 @@ rust = "latest"
 {{- if eq .chezmoi.os "windows" }}
 "http:ffmpeg" = { version = "latest", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z", bin = "ffmpeg.exe", extract = true }
 
+"npm:workos" = "latest"
 "pipx:ocrmypdf" = { version = "latest", uvx_args = "--with git+https://github.com/ocrmypdf/OCRmyPDF-EasyOCR.git --python 3.12 --index https://download.pytorch.org/whl/cu130" }
 {{- end }}
 "pipx:markitdown" = { version = "latest", uvx_args = "--python 3.12 --with python-pptx --with mammoth~=1.11.0 --with pandas --with openpyxl --with xlrd --with lxml --with pdfminer.six>=20251230 --with pdfplumber>=0.11.9 --with olefile --with pydub --with SpeechRecognition --with youtube-transcript-api~=1.0.0 --with azure-ai-documentintelligence --with azure-identity" }
