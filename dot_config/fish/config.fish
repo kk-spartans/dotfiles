@@ -19,6 +19,9 @@ if status is-interactive
     end
 
     thefuck --alias | source
+    if not set -q TMUX
+        tmux
+    end
 end
 
 
