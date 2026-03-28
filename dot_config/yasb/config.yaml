@@ -40,16 +40,14 @@ bars:
         "clock",
       ]
       right: [
+        "battery",
         "copilot",
         "memory",
         "cpu",
         "gpu_usage",
         "gpu_memory",
-        "media",
-        "wifi",
-        "bluetooth",
-        "battery",
         "volume",
+        "media",
         #  "counter",
       ]
 widgets:
@@ -238,43 +236,10 @@ widgets:
         - "\uf028"
       callbacks:
         on_right: "exec cmd.exe /c start ms-settings:sound"
-  wifi:
-    type: "yasb.wifi.WifiWidget"
-    options:
-      label: "<span>{wifi_icon}</span>"
-      label_alt: "<span>{wifi_icon}</span> {wifi_name} {wifi_strength}%"
-      update_interval: 5000
-      get_exact_wifi_strength: false
-      callbacks:
-        on_left: "toggle_menu"
-        on_middle: "exec cmd.exe /c start ms-settings:network"
-        on_right: "toggle_label"
-      menu_config:
-        blur: true
-        round_corners: true
-        round_corners_type: "normal"
-        border_color: "System"
-        alignment: "right"
-        direction: "down"
-        offset_top: 6
-        offset_left: 0
-  bluetooth:
-    type: "yasb.bluetooth.BluetoothWidget"
-    options:
-      label: "<span>{icon}</span>"
-      label_alt: "{device_name}"
-      label_no_device: "No devices"
-      max_length: 16
-      max_length_ellipsis: "..."
-      callbacks:
-        on_left: "toggle_label"
-        on_middle: "exec cmd.exe /c start ms-settings:bluetooth"
-        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
   battery:
     type: "yasb.battery.BatteryWidget"
     options:
       label: "<span>{icon}</span> {percent}%"
-      label_alt: "<span>{icon}</span> {percent}% {is_charging} {time_remaining}"
       update_interval: 5000
       time_remaining_natural: true
       hide_unsupported: true
@@ -283,5 +248,5 @@ widgets:
         blink_charging_icon: true
         blink_interval: 500
       callbacks:
-        on_left: "toggle_label"
+        on_left: "do_nothing"
         on_right: "exec cmd.exe /c start ms-settings:batterysaver"
