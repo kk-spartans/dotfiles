@@ -5,6 +5,7 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "ActivityWatch.ActivityWatch" },
         { "PackageIdentifier": "Balena.Etcher" },
         { "PackageIdentifier": "RaspberryPiFoundation.RaspberryPiImager" },
         { "PackageIdentifier": "AntibodySoftware.WizTree" },
