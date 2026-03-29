@@ -7,4 +7,5 @@ Set-Location Spicetify-Lucid
 deno run build
 Copy-Item -Recurse src/* $env:APPDATA\spicetify\Themes\Lucid
 spicetify backup apply enable-devtools
+rm "$env:TEMP/Spicetify-Lucid"
 {{- end }}
