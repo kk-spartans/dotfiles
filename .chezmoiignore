@@ -3,6 +3,8 @@ AppData
 .config/yasb/
 .config/whkdrc
 .local/bin/*.ps1
+.local/bin/*.vbs
+.local/bin/mousemaster.properties
 Documents
 applications.json
 komorebi.json

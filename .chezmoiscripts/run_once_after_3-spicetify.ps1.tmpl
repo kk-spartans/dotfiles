@@ -2,7 +2,7 @@
 Read-Host "Login to spotify"
 spicetify update
 Set-Location $env:TEMP
-gix.exe clone https://codeberg.org/sanoojes/spicetify-lucid.git
+gix.exe clone https://gitlab.com/Sanoojes/spicetify-lucid.git
 Set-Location Spicetify-Lucid
 deno run build
 Copy-Item -Recurse src/* $env:APPDATA\spicetify\Themes\Lucid

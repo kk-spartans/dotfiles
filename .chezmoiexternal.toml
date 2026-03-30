@@ -4,6 +4,11 @@ type = "file"
 url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
 refreshPeriod = "168h"
 
+[".local/bin/mousemaster.exe"]
+type = "file"
+url = '{{ gitHubLatestReleaseAssetURL "petoncle/mousemaster" "mousemaster.exe" }}'
+refreshPeriod = "48h"
+
 ["catppuccin.omp.json"]
 type = "file"
 url = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/catppuccin_mocha.omp.json"
