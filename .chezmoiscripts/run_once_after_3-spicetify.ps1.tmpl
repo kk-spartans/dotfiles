@@ -2,9 +2,9 @@
 Read-Host "Login to spotify"
 spicetify update
 Set-Location $env:TEMP
+Remove-Item "$env:TEMP/Spicetify-Lucid" -Recurse -Force -ErrorAction SilentlyContinue
 gix.exe clone https://gitlab.com/Sanoojes/spicetify-lucid.git
 Set-Location Spicetify-Lucid
 bun install
 bun run build -a
-Remove-Item "$env:TEMP/Spicetify-Lucid" -Recurse -Force
 {{- end }}
