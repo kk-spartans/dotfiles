@@ -4,8 +4,7 @@ spicetify update
 Set-Location $env:TEMP
 gix.exe clone https://gitlab.com/Sanoojes/spicetify-lucid.git
 Set-Location Spicetify-Lucid
-deno run build
-Copy-Item -Recurse src/* $env:APPDATA\spicetify\Themes\Lucid
-spicetify backup apply enable-devtools
-rm "$env:TEMP/Spicetify-Lucid"
+bun install
+bun run build -a
+Remove-Item "$env:TEMP/Spicetify-Lucid" -Recurse -Force
 {{- end }}

@@ -2,6 +2,7 @@
 - NEVER run any dev servers, assume they're already running
 - If you are doing something not related to code/an existing project (just a chore, like sorting pdfs), make sure to clean up any scripts/leftover files you created after running them
 - Run the format and lint commands when you're done with something in a project, fix all the warnings/errors, and only return when it's clean.
+- Avoid globbing/searching large directories like root or userhome when the user already gave a specific path (it is too slow).
 
 ---
 
