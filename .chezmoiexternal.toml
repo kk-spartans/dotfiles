@@ -21,7 +21,7 @@ refreshPeriod = "2h"
 
 ["AppData/Roaming/spicetify/Extensions/spicy-lyrics.mjs"]
 type = "file"
-url = "https://github.com/Spikerko/spicy-lyrics/blob/main/builds/spicy-lyrics.mjs"
+url = "https://raw.githubusercontent.com/Spikerko/spicy-lyrics/refs/heads/main/builds/spicy-lyrics.mjs"
 refreshPeriod = "2h"
 {{- end }}
 
