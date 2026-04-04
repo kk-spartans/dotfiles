@@ -63,6 +63,25 @@
       "skillFolderHash": "384d1a07ba1fd59ff626b141caa65f51a44ccc73",
       "installedAt": "2026-03-12T12:45:12.759Z",
       "updatedAt": "2026-03-12T12:45:12.759Z"
+    },
+    "opentui": {
+      "source": "msmps/opentui-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/msmps/opentui-skill.git",
+      "skillPath": "skill/opentui/SKILL.md",
+      "skillFolderHash": "5762c20998971757745d9c3dc8d55e9b64539fd3",
+      "installedAt": "2026-04-03T08:13:54.427Z",
+      "updatedAt": "2026-04-03T08:13:54.427Z"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "skillFolderHash": "3b319028d5e51497e251a3481d2c7d8521a860eb",
+      "pluginName": "agent-browser",
+      "installedAt": "2026-04-03T12:48:59.106Z",
+      "updatedAt": "2026-04-03T12:48:59.106Z"
     }
   },
   "dismissed": {
@@ -70,12 +89,16 @@
   },
   "lastSelectedAgents": [
     "amp",
+    "antigravity",
     "cline",
     "codex",
     "cursor",
+    "deepagents",
+    "firebender",
     "gemini-cli",
     "github-copilot",
     "kimi-cli",
-    "opencode"
+    "opencode",
+    "warp"
   ]
 }
