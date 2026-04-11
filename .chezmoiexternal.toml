@@ -14,7 +14,7 @@ type = "file"
 url = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/catppuccin_mocha.omp.json"
 refreshPeriod = "168h"
 
-["komorebi.json"]
+["applications.json"]
 type = "file"
 url = "https://raw.githubusercontent.com/LGUG2Z/komorebi-application-specific-configuration/refs/heads/master/applications.json"
 refreshPeriod = "168h"
@@ -27,6 +27,21 @@ refreshPeriod = "2h"
 ["AppData/Roaming/spicetify/Extensions/spicy-lyrics.mjs"]
 type = "file"
 url = "https://raw.githubusercontent.com/Spikerko/spicy-lyrics/refs/heads/main/builds/spicy-lyrics.mjs"
+refreshPeriod = "2h"
+
+["AppData/Roaming/spicetify/Themes/Glassify/theme.js"]
+type = "file"
+url = "https://spicetify-glassify.sanooj.uk/spice/theme.js"
+refreshPeriod = "2h"
+
+["AppData/Roaming/spicetify/Themes/Glassify/color.ini"]
+type = "file"
+url = "https://spicetify-glassify.sanooj.uk/spice/color.ini"
+refreshPeriod = "2h"
+
+["AppData/Roaming/spicetify/Themes/Glassify/user.css"]
+type = "file"
+url = "https://spicetify-glassify.sanooj.uk/spice/user.css"
 refreshPeriod = "2h"
 {{- end }}
 

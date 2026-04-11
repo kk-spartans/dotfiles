@@ -1,10 +1,4 @@
 {{- if eq .chezmoi.os "windows" }}
-Read-Host "Login to spotify"
 spicetify update
-Set-Location $env:TEMP
-Remove-Item "$env:TEMP/Spicetify-Lucid" -Recurse -Force -ErrorAction SilentlyContinue
-gix.exe clone https://gitlab.com/Sanoojes/spicetify-lucid.git
-Set-Location Spicetify-Lucid
-bun install
-bun run build -a
+spicetify restore backup apply
 {{- end }}

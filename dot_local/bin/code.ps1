@@ -37,6 +37,22 @@ function Find-CodeWorkspaceRoot {
 
 $codeCmd = Get-Command code.cmd -CommandType Application -ErrorAction SilentlyContinue
 $currentDir = [System.IO.Path]::GetFullPath((Get-Location).Path)
+$disableGpuArg = '--disable-gpu-compositing'
+$launchArgs = if ($UserArgs -and $UserArgs -contains $disableGpuArg) { $UserArgs } else { @($disableGpuArg) + $UserArgs }
+$ignoredWarning = "Warning: 'disable-gpu-compositing' is not in the list of known options"
+
+function Invoke-CodeCmd {
+    param(
+        [Parameter(Mandatory=$true)]
+        [string[]]$Args
+    )
+
+    & $codeCmd.Source @Args 2>&1 | ForEach-Object {
+        if ($_ -notmatch [regex]::Escape($ignoredWarning)) {
+            Write-Output $_
+        }
+    }
+}
 
 if (-not $codeCmd) {
     Write-Error 'VS Code command not found in PATH.'
@@ -44,7 +60,7 @@ if (-not $codeCmd) {
 }
 
 if (-not $UserArgs -or $UserArgs.Count -eq 0) {
-    & $codeCmd.Source .
+    Invoke-CodeCmd @($disableGpuArg, '.')
     return
 }
 
@@ -81,8 +97,9 @@ foreach ($arg in $UserArgs) {
 }
 
 if ($workspaceRoot) {
-    & $codeCmd.Source $workspaceRoot @UserArgs
+    $workspaceArgs = @($workspaceRoot) + $launchArgs
+    Invoke-CodeCmd $workspaceArgs
     return
 }
 
-& $codeCmd.Source @UserArgs
+Invoke-CodeCmd $launchArgs

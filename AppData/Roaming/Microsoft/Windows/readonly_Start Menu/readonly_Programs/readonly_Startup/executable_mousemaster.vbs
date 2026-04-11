@@ -1,3 +1,4 @@
+WScript.Sleep 60000
 Set WshShell = CreateObject("WScript.Shell")
 
 binPath = WshShell.ExpandEnvironmentStrings("%USERPROFILE%") & "\.local\bin"
