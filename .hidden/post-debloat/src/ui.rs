@@ -1,11 +1,11 @@
-use windows::core::Result as WinResult;
 use windows::Win32::Foundation::LPARAM;
 use windows::Win32::UI::Shell::{
-    SHAppBarMessage, ABM_GETSTATE, ABM_SETSTATE, ABS_ALWAYSONTOP, ABS_AUTOHIDE, APPBARDATA,
+    ABM_GETSTATE, ABM_SETSTATE, ABS_ALWAYSONTOP, ABS_AUTOHIDE, APPBARDATA, SHAppBarMessage,
 };
 use windows::Win32::UI::WindowsAndMessaging::{
-    SystemParametersInfoW, SPIF_SENDCHANGE, SPI_SETSNAPTODEFBUTTON,
+    SPI_SETSNAPTODEFBUTTON, SPIF_SENDCHANGE, SystemParametersInfoW,
 };
+use windows::core::Result as WinResult;
 
 #[allow(clippy::cast_possible_wrap)]
 pub fn set_taskbar_autohide(enable: bool) {

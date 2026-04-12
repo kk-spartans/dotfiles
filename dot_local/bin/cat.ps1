@@ -56,9 +56,9 @@ process {
             }
 
             if ($target -eq '-') {
-                bat --paging=never --style=full --wrap=never --color=always --theme="Catppuccin Mocha" -
+                bat -
             } else {
-                bat --paging=never --style=full --wrap=never --color=always --theme="Catppuccin Mocha" $target
+                bat $target
             }
         }
     }

@@ -29,6 +29,10 @@ fn run() -> Result<(), String> {
     system::enable_powershell_execution()?;
     println!("[OK] PowerShell execution policy updated.");
 
+    println!("[START] Installing latest ExplorerBlurMica release...");
+    system::install_explorer_blur_mica_latest()?;
+    println!("[OK] ExplorerBlurMica installed and registered.");
+
     println!("[START] Applying power settings...");
     power::apply_power_settings()?;
     println!("[OK] Power settings applied.");

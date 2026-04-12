@@ -1,7 +1,7 @@
-use windows::core::w;
 use windows::Win32::System::Registry::{
-    RegCloseKey, RegCreateKeyExW, RegSetValueExW, HKEY, HKEY_CURRENT_USER, REG_BINARY,
+    HKEY, HKEY_CURRENT_USER, REG_BINARY, RegCloseKey, RegCreateKeyExW, RegSetValueExW,
 };
+use windows::core::w;
 
 pub fn apply_post_debloat_registry_tweaks() -> Result<(), String> {
     set_user_preferences_mask()?;

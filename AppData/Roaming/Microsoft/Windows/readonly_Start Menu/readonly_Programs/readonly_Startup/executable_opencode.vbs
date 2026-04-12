@@ -4,4 +4,4 @@ binPath = WshShell.ExpandEnvironmentStrings("%USERPROFILE%") & "\AppData\Local\M
 repoPath = WshShell.ExpandEnvironmentStrings("%USERPROFILE%") & "\things\repos"
 
 WshShell.CurrentDirectory = repoPath
-WshShell.Run """" & binPath & "\mise.exe""" & " exec -- opencode serve --port 6767", 0, False
+WshShell.Run """" & binPath & "\mise.exe""" & " exec -- opencode serve --port 6767 --hostname 0.0.0.0", 0, False

@@ -1,7 +1,9 @@
 {
+    "MicaKomorebi": false,
     "Translucence": false,
     "ClearVision V7 for BetterDiscord": false,
     "Dark Matter": false,
     "Frosted Glass": false,
-    "ClearVision": true
+    "ClearVision": false,
+    "TransparentMochaPink": false
 }

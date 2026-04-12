@@ -38,7 +38,7 @@ function Find-CodeWorkspaceRoot {
 $codeCmd = Get-Command code.cmd -CommandType Application -ErrorAction SilentlyContinue
 $currentDir = [System.IO.Path]::GetFullPath((Get-Location).Path)
 $disableGpuArg = '--disable-gpu-compositing'
-$launchArgs = if ($UserArgs -and $UserArgs -contains $disableGpuArg) { $UserArgs } else { @($disableGpuArg) + $UserArgs }
+$launchArgs = if ($UserArgs -and $UserArgs -contains $disableGpuArg) { $UserArgs } else { $UserArgs + @($disableGpuArg)}
 $ignoredWarning = "Warning: 'disable-gpu-compositing' is not in the list of known options"
 
 function Invoke-CodeCmd {

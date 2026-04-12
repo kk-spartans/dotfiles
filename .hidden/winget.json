@@ -44,10 +44,7 @@
         { "PackageIdentifier": "Git.Git", "Scope": "user" },
         { "PackageIdentifier": "MiKTeX.MiKTeX" },
         { "PackageIdentifier": "Termius.Termius" },
-        {
-          "PackageIdentifier": "Spotify.Spotify",
-          "Version": "1.2.82.428.g0ac8be2b"
-        },
+        { "PackageIdentifier": "Spotify.Spotify" },
         { "PackageIdentifier": "Obsidian.Obsidian" },
         { "PackageIdentifier": "ElementLabs.LMStudio" },
         { "PackageIdentifier": "jdx.mise" },

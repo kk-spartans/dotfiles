@@ -22,6 +22,27 @@
   "float_rule_placement": "Center",
   "float_override_placement": "Center",
   "window_container_behaviour": "Create",
+  "layered_applications": [
+    {
+      "kind": "Exe",
+      "id": "Discord.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
+  "manage_rules": [
+    {
+      "kind": "Exe",
+      "id": "Discord.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
+  "tray_and_multi_window_applications": [
+    {
+      "kind": "Exe",
+      "id": "Discord.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
   "mouse_follows_focus": true,
   "monitors": [
     {
