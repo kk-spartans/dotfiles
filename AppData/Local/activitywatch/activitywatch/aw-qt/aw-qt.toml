@@ -1,5 +1,11 @@
 [aw-qt]
-autostart_modules = ["aw-server", "aw-watcher-afk", "aw-watcher-window", "aw-watcher-lastfm", "aw-watcher-utilization"]
+autostart_modules = [
+  "aw-server",
+  "aw-watcher-afk",
+  "aw-watcher-window",
+  "aw-watcher-lastfm",
+  "aw-watcher-utilization",
+]
 
 [aw-qt-testing]
 #autostart_modules = ["aw-server", "aw-watcher-afk", "aw-watcher-window"]

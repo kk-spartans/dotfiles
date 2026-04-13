@@ -16,7 +16,7 @@ Set-Alias pb Get-Clipboard
 Set-Alias sc Set-Clipboard
 Set-Alias npx bunx
 Set-Alias ocrmypdf "$env:USERPROFILE\.local\bin\ocrmypdf.ps1"
-Set-Alias wignet winget
+Set-Alias bash C:\msys64\usr\bin\bash.exe
 
 function cd {
     [CmdletBinding()]

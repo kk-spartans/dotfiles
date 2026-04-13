@@ -1,1 +1,37 @@
-{"rules":[{"type":"global","priority":0,"titleBarColor":"Custom","backdropPreference":"Acrylic","cornerPreference":"Rounded","extendFrameIntoClientArea":true,"enableBlurBehind":true,"titleBarColorCode":"#000000"},{"type":"process","processName":"explorer","priority":1,"titleBarColor":"Default","backdropPreference":"Default","cornerPreference":"Default","extendFrameIntoClientArea":false,"enableBlurBehind":false,"titleBarColorCode":null},{"type":"process","processName":"WindowsTerminal","priority":1,"titleBarColor":"Default","backdropPreference":"Default","cornerPreference":"Default","extendFrameIntoClientArea":false,"enableBlurBehind":false,"titleBarColorCode":null}],"telemetryEnabled":true}
+{
+  "rules": [
+    {
+      "type": "global",
+      "priority": 0,
+      "titleBarColor": "Custom",
+      "backdropPreference": "Acrylic",
+      "cornerPreference": "Rounded",
+      "extendFrameIntoClientArea": true,
+      "enableBlurBehind": true,
+      "titleBarColorCode": "#000000"
+    },
+    {
+      "type": "process",
+      "processName": "explorer",
+      "priority": 1,
+      "titleBarColor": "Default",
+      "backdropPreference": "Default",
+      "cornerPreference": "Default",
+      "extendFrameIntoClientArea": false,
+      "enableBlurBehind": false,
+      "titleBarColorCode": null
+    },
+    {
+      "type": "process",
+      "processName": "WindowsTerminal",
+      "priority": 1,
+      "titleBarColor": "Default",
+      "backdropPreference": "Default",
+      "cornerPreference": "Default",
+      "extendFrameIntoClientArea": false,
+      "enableBlurBehind": false,
+      "titleBarColorCode": null
+    }
+  ],
+  "telemetryEnabled": true
+}

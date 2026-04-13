@@ -37,14 +37,16 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
+  for (var name in all) __defProp(target, name, { get: all[name], enumerable: true });
 };
 var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
+  if ((from && typeof from === "object") || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
       if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+        __defProp(to, key, {
+          get: () => from[key],
+          enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable,
+        });
   }
   return to;
 };
@@ -52,9 +54,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 
 // src/plugins/DoNotTrack/index.ts
 var DoNotTrack_exports = {};
-__export(DoNotTrack_exports, {
-  default: () => DoNotTrack
-});
+__export(DoNotTrack_exports, { default: () => DoNotTrack });
 module.exports = __toCommonJS(DoNotTrack_exports);
 
 // src/common/plugin.ts
@@ -94,7 +94,10 @@ var Plugin = class {
       this.#showChangelog();
       BdApi.Data.save(this.meta.name, "version", this.meta.version);
     }
-    if (this.manifest.strings) this.LocaleManager = BdApi.Webpack.getModule((m) => m?.Messages && Object.keys(m?.Messages).length > 0);
+    if (this.manifest.strings)
+      this.LocaleManager = BdApi.Webpack.getModule(
+        (m) => m?.Messages && Object.keys(m?.Messages).length > 0,
+      );
     if (this.manifest.config && !this.getSettingsPanel) {
       this.getSettingsPanel = () => {
         this.#updateConfig();
@@ -103,7 +106,7 @@ var Plugin = class {
             this.settings[id] = value;
             this.saveSettings();
           },
-          settings: this.manifest.config
+          settings: this.manifest.config,
         });
       };
     }
@@ -122,7 +125,7 @@ var Plugin = class {
     const changelog = {
       title: this.meta.name + " Changelog",
       subtitle: `v${this.meta.version}`,
-      changes: []
+      changes: [],
     };
     if (!Array.isArray(this.manifest.changelog)) Object.assign(changelog, this.manifest.changelog);
     else changelog.changes = this.manifest.changelog;
@@ -132,7 +135,11 @@ var Plugin = class {
     BdApi.Data.save(this.meta.name, "settings", this.settings);
   }
   loadSettings() {
-    return BdApi.Utils.extend({}, this.defaultSettings ?? {}, BdApi.Data.load(this.meta.name, "settings"));
+    return BdApi.Utils.extend(
+      {},
+      this.defaultSettings ?? {},
+      BdApi.Data.load(this.meta.name, "settings"),
+    );
   }
   #updateConfig() {
     if (!this.manifest.config) return;
@@ -154,7 +161,7 @@ var Plugin = class {
         onChange?.(groupId, id, value);
         this.saveSettings();
       },
-      settings: this.manifest.config
+      settings: this.manifest.config,
     });
   }
 };
@@ -163,16 +170,19 @@ var Plugin = class {
 var manifest = {
   info: {
     name: "DoNotTrack",
-    authors: [{
-      name: "Zerebos",
-      discord_id: "249746236008169473",
-      github_username: "zerebos",
-      twitter_username: "IAmZerebos"
-    }],
+    authors: [
+      {
+        name: "Zerebos",
+        discord_id: "249746236008169473",
+        github_username: "zerebos",
+        twitter_username: "IAmZerebos",
+      },
+    ],
     version: "0.1.0",
     description: "Stops Discord from tracking everything you do like Sentry and Analytics.",
     github: "https://github.com/zerebos/BetterDiscordAddons/tree/master/Plugins/DoNotTrack",
-    github_raw: "https://raw.githubusercontent.com/zerebos/BetterDiscordAddons/master/Plugins/DoNotTrack/DoNotTrack.plugin.js"
+    github_raw:
+      "https://raw.githubusercontent.com/zerebos/BetterDiscordAddons/master/Plugins/DoNotTrack/DoNotTrack.plugin.js",
   },
   changelog: [
     {
@@ -180,17 +190,14 @@ var manifest = {
       type: "added",
       items: [
         "Plugin no longer relies on ZeresPluginLibrary!",
-        "DoNotTrack should be more resilient to Discord's changes."
-      ]
+        "DoNotTrack should be more resilient to Discord's changes.",
+      ],
     },
     {
       title: "Fixes",
       type: "fixed",
-      items: [
-        "Fixed startup issues.",
-        "Hopefully fixed issues with the process monitor."
-      ]
-    }
+      items: ["Fixed startup issues.", "Hopefully fixed issues with the process monitor."],
+    },
   ],
   main: "index.ts",
   config: [
@@ -199,15 +206,17 @@ var manifest = {
       id: "stopProcessMonitor",
       name: "Stop Process Monitor",
       note: "This setting stops Discord from monitoring the processes on your PC and prevents your currently played game from showing.",
-      value: true
-    }
-  ]
+      value: true,
+    },
+  ],
 };
 var config_default = manifest;
 
 // src/plugins/DoNotTrack/index.ts
 var { Patcher, Webpack, UI } = BdApi;
-var SettingsManager = Webpack.getModule((m) => m?.updateAsync && m?.type === 1, { searchExports: true });
+var SettingsManager = Webpack.getModule((m) => m?.updateAsync && m?.type === 1, {
+  searchExports: true,
+});
 var BoolSetting = Webpack.getModule((m) => m?.typeName?.includes("Bool"), { searchExports: true });
 var Analytics = Webpack.getByKeys("AnalyticEventConfigs");
 var NativeModule = Webpack.getByKeys("getDiscordUtils");
@@ -217,16 +226,23 @@ var DoNotTrack = class extends Plugin {
   }
   onStart() {
     if (Analytics) {
-      Patcher.instead(this.meta.name, Analytics.default, "track", () => {
-      });
+      Patcher.instead(this.meta.name, Analytics.default, "track", () => {});
     }
     if (NativeModule) {
-      Patcher.instead(this.meta.name, NativeModule, "ensureModule", (_, [moduleName], originalFunction) => {
-        if (moduleName?.includes("discord_rpc")) return;
-        return originalFunction(moduleName);
-      });
+      Patcher.instead(
+        this.meta.name,
+        NativeModule,
+        "ensureModule",
+        (_, [moduleName], originalFunction) => {
+          if (moduleName?.includes("discord_rpc")) return;
+          return originalFunction(moduleName);
+        },
+      );
     }
-    window?.__SENTRY__?.globalEventProcessors?.splice(0, window?.__SENTRY__?.globalEventProcessors?.length);
+    window?.__SENTRY__?.globalEventProcessors?.splice(
+      0,
+      window?.__SENTRY__?.globalEventProcessors?.length,
+    );
     window?.__SENTRY__?.logger?.disable();
     const SentryHub = window.DiscordSentry?.getCurrentHub?.();
     if (SentryHub) {
@@ -249,21 +265,27 @@ var DoNotTrack = class extends Plugin {
     Patcher.unpatchAll(this.meta.name);
   }
   disableProcessMonitor() {
-    SettingsManager?.updateAsync("status", (settings) => settings.showCurrentGame = BoolSetting?.create({ value: false }), 0);
+    SettingsManager?.updateAsync(
+      "status",
+      (settings) => (settings.showCurrentGame = BoolSetting?.create({ value: false })),
+      0,
+    );
     const DiscordUtils = NativeModule?.getDiscordUtils();
     if (!DiscordUtils) return UI.alert("DoNotTrack", "Unable to disable process monitor!");
-    DiscordUtils.setObservedGamesCallback([], () => {
-    });
-    Patcher.instead(this.meta.name, DiscordUtils, "setObservedGamesCallback", () => {
-    });
+    DiscordUtils.setObservedGamesCallback([], () => {});
+    Patcher.instead(this.meta.name, DiscordUtils, "setObservedGamesCallback", () => {});
   }
   enableProcessMonitor() {
-    SettingsManager?.updateAsync("status", (settings) => settings.showCurrentGame = BoolSetting?.create({ value: true }), 0);
-    UI.showConfirmationModal("Reload Discord?", "To reenable the process monitor Discord needs to be reloaded.", {
-      confirmText: "Reload",
-      cancelText: "Later",
-      onConfirm: () => window.location.reload()
-    });
+    SettingsManager?.updateAsync(
+      "status",
+      (settings) => (settings.showCurrentGame = BoolSetting?.create({ value: true })),
+      0,
+    );
+    UI.showConfirmationModal(
+      "Reload Discord?",
+      "To reenable the process monitor Discord needs to be reloaded.",
+      { confirmText: "Reload", cancelText: "Later", onConfirm: () => window.location.reload() },
+    );
   }
   getSettingsPanel() {
     return this.buildSettingsPanel((_, id, value) => {

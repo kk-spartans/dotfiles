@@ -43,6 +43,7 @@ refreshPeriod = "2h"
 type = "file"
 url = "https://spicetify-glassify.sanooj.uk/spice/user.css"
 refreshPeriod = "2h"
+
 {{- end }}
 
 [".config/eza/theme.yml"]

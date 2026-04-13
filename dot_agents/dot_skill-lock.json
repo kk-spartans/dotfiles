@@ -84,9 +84,7 @@
       "updatedAt": "2026-04-03T12:48:59.106Z"
     }
   },
-  "dismissed": {
-    "findSkillsPrompt": true
-  },
+  "dismissed": { "findSkillsPrompt": true },
   "lastSelectedAgents": [
     "amp",
     "antigravity",

@@ -19,11 +19,7 @@
       "text": "Uninstall Outlook & OneDrive",
       "enabled": true
     },
-    {
-      "key": "browser-installation",
-      "text": "Install web browser: None",
-      "enabled": false
-    },
+    { "key": "browser-installation", "text": "Install web browser: None", "enabled": false },
     {
       "key": "debloat-windows-phase-one",
       "text": "Debloat Windows phase one (WinUtil)",
@@ -39,20 +35,10 @@
       "text": "Apply debloat.rs-aligned registry tweaks",
       "enabled": true
     },
-    {
-      "key": "configure-updates",
-      "text": "Set security-only update policy",
-      "enabled": true
-    },
-    {
-      "key": "apply-background",
-      "text": "Apply debloat.rs wallpaper",
-      "enabled": true
-    }
+    { "key": "configure-updates", "text": "Set security-only update policy", "enabled": true },
+    { "key": "apply-background", "text": "Apply debloat.rs wallpaper", "enabled": true }
   ],
-  "winutil_config": {
-    "WPFTweaks": ["WPFTweaksServices"]
-  },
+  "winutil_config": { "WPFTweaks": ["WPFTweaksServices"] },
   "win11debloat_args": "-Silent -RemoveApps -RemoveGamingApps -ClearStartAllUsers",
   "registry_changes": [
     {

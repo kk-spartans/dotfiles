@@ -2,13 +2,7 @@
   "bg": {
     "mode": "animated",
     "options": {
-      "filter": {
-        "blur": 32,
-        "saturation": 150,
-        "contrast": 100,
-        "brightness": 40,
-        "opacity": 50
-      },
+      "filter": { "blur": 32, "saturation": 150, "contrast": 100, "brightness": 40, "opacity": 50 },
       "color": "#060606",
       "imageMode": "page",
       "imageSrc": "https://picsum.photos/1920/1080",
@@ -19,13 +13,7 @@
     "type": "playing",
     "isScrolling": true,
     "isScaling": true,
-    "filter": {
-      "blur": 16,
-      "saturation": 150,
-      "contrast": 100,
-      "brightness": 80,
-      "opacity": 80
-    },
+    "filter": { "blur": 16, "saturation": 150, "contrast": 100, "brightness": 80, "opacity": 80 },
     "customColor": "#060606",
     "customUrl": "https://picsum.photos/1920/1080"
   },

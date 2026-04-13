@@ -5,6 +5,14 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "Zen-Team.Zen-Browser" },
+        { "PackageIdentifier": "Nvidia.CUDA" },
+        { "PackageIdentifier": "WiresharkFoundation.Wireshark" },
+        { "PackageIdentifier": "rocksdanister.LivelyWallpaper" },
+        { "PackageIdentifier": "CambridgeUniversityPress.CambridgeReader" },
+        { "PackageIdentifier": "ChrisBagwell.SoX" },
+        { "PackageIdentifier": "MicaForEveryone.MicaForEveryone" },
+        { "PackageIdentifier": "MicaForEveryone.MicaForEveryone" },
         { "PackageIdentifier": "ActivityWatch.ActivityWatch" },
         { "PackageIdentifier": "Balena.Etcher" },
         { "PackageIdentifier": "RaspberryPiFoundation.RaspberryPiImager" },
@@ -42,16 +50,13 @@
         { "PackageIdentifier": "Tailscale.Tailscale" },
         { "PackageIdentifier": "GIMP.GIMP.2" },
         { "PackageIdentifier": "Git.Git", "Scope": "user" },
-        { "PackageIdentifier": "MiKTeX.MiKTeX" },
         { "PackageIdentifier": "Termius.Termius" },
         { "PackageIdentifier": "Spotify.Spotify" },
         { "PackageIdentifier": "Obsidian.Obsidian" },
-        { "PackageIdentifier": "ElementLabs.LMStudio" },
         { "PackageIdentifier": "jdx.mise" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.PowerToys" },
-        { "PackageIdentifier": "ImputNet.Helium" },
-        { "PackageIdentifier": "NVidia.CUDA" }
+        { "PackageIdentifier": "ImputNet.Helium" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",

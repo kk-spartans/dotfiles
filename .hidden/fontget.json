@@ -5,14 +5,10 @@
   "fonts": [
     {
       "font_id": "google.geist",
-      "family_names": [
-        "Geist"
-      ],
+      "family_names": ["Geist"],
       "source": "Google Fonts",
       "license": "OFL",
-      "categories": [
-        "Sans Serif"
-      ],
+      "categories": ["Sans Serif"],
       "variants": [
         "Black",
         "Bold",
@@ -28,14 +24,10 @@
     },
     {
       "font_id": "google.geist-mono",
-      "family_names": [
-        "Geist Mono"
-      ],
+      "family_names": ["Geist Mono"],
       "source": "Google Fonts",
       "license": "OFL",
-      "categories": [
-        "Monospace"
-      ],
+      "categories": ["Monospace"],
       "variants": [
         "Black",
         "Bold",
@@ -51,14 +43,10 @@
     },
     {
       "font_id": "google.google-sans",
-      "family_names": [
-        "Google Sans"
-      ],
+      "family_names": ["Google Sans"],
       "source": "Google Fonts",
       "license": "OFL",
-      "categories": [
-        "Sans Serif"
-      ],
+      "categories": ["Sans Serif"],
       "variants": [
         "Bold",
         "Bold Italic",
@@ -73,14 +61,10 @@
     },
     {
       "font_id": "google.inter",
-      "family_names": [
-        "Inter"
-      ],
+      "family_names": ["Inter"],
       "source": "Google Fonts",
       "license": "OFL",
-      "categories": [
-        "Sans Serif"
-      ],
+      "categories": ["Sans Serif"],
       "variants": [
         "Black",
         "Black Italic",
@@ -115,9 +99,7 @@
       ],
       "source": "Nerd Fonts",
       "license": "Mixed",
-      "categories": [
-        "Nerd Font"
-      ],
+      "categories": ["Nerd Font"],
       "variants": [
         "Bold",
         "Bold Italic",
@@ -139,9 +121,5 @@
       "scope": "user"
     }
   ],
-  "metadata": {
-    "total_fonts": 5,
-    "total_variants": 60,
-    "only_matched": true
-  }
+  "metadata": { "total_fonts": 5, "total_variants": 60, "only_matched": true }
 }

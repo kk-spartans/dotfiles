@@ -32,24 +32,19 @@ bars:
       bottom: 0
       right: 6
     widgets:
-      left: [
-        "komorebi_workspaces",
-        "komorebi_active_layout",
-      ]
-      center: [
-        "clock",
-      ]
+      left: ["komorebi_workspaces", "komorebi_active_layout"]
+      center: ["clock"]
       right: [
-        "battery",
-        "copilot",
-        "memory",
-        "cpu",
-        "gpu_usage",
-        "gpu_memory",
-        "volume",
-        "media",
-        #  "counter",
-      ]
+          "battery",
+          "copilot",
+          "memory",
+          "cpu",
+          "gpu_usage",
+          "gpu_memory",
+          "volume",
+          "media",
+          #  "counter",
+        ]
 widgets:
   media:
     type: "yasb.media.MediaWidget"

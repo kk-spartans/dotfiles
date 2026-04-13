@@ -1,0 +1,104 @@
+{
+  "audioReact": { "value": true, "text": "Audio Visualiser", "type": "checkbox", "help": null },
+  "randomSplats": { "value": false, "text": "Random Splats", "type": "checkbox", "help": null },
+  "quality": {
+    "value": 0,
+    "items": ["High", "Medium", "Low", "Very Low"],
+    "text": "Quality",
+    "type": "dropdown",
+    "help": null
+  },
+  "simResolution": {
+    "value": 2,
+    "items": ["32", "64", "128", "256"],
+    "text": "Sim Resolution",
+    "type": "dropdown",
+    "help": null
+  },
+  "densityDiffusion": {
+    "min": 0.0,
+    "max": 40.0,
+    "value": 5.0,
+    "step": 1.0,
+    "text": "Density Diffusion",
+    "type": "slider",
+    "help": null
+  },
+  "velocityDiffusion": {
+    "min": 0.0,
+    "max": 400.0,
+    "value": 51.0,
+    "step": 1.0,
+    "text": "Velocity Diffusion",
+    "type": "slider",
+    "help": null
+  },
+  "pressure": {
+    "min": 0.0,
+    "max": 100.0,
+    "value": 10.0,
+    "step": 1.0,
+    "text": "Pressure",
+    "type": "slider",
+    "help": null
+  },
+  "vorticity": {
+    "min": 0.0,
+    "max": 50.0,
+    "value": 20.0,
+    "step": 1.0,
+    "text": "Vorticity",
+    "type": "slider",
+    "help": null
+  },
+  "splatRadius": {
+    "min": 1.0,
+    "max": 100.0,
+    "value": 20.0,
+    "step": 1.0,
+    "text": "Splat Radius",
+    "type": "slider",
+    "help": null
+  },
+  "shading": { "value": true, "text": "Shading", "type": "checkbox", "help": null },
+  "colorful": { "value": true, "text": "Colorful", "type": "checkbox", "help": null },
+  "bloomEnable": { "value": true, "text": "Bloom", "type": "checkbox", "help": null },
+  "bloomIntensity": {
+    "min": 10.0,
+    "max": 200.0,
+    "value": 15.0,
+    "step": 1.0,
+    "text": "Bloom Intensity",
+    "type": "slider",
+    "help": null
+  },
+  "bloomThreshold": {
+    "min": 0.0,
+    "max": 100.0,
+    "value": 75.0,
+    "step": 1.0,
+    "text": "Bloom Threshold",
+    "type": "slider",
+    "help": null
+  },
+  "sunRaysEnable": { "value": true, "text": "Sunrays", "type": "checkbox", "help": null },
+  "sunRaysWeight": {
+    "min": 30.0,
+    "max": 100.0,
+    "value": 40.0,
+    "step": 1.0,
+    "text": "Sunray Weight",
+    "type": "slider",
+    "help": null
+  },
+  "bgColor": { "value": "#000000", "text": "BG Color", "type": "color", "help": null },
+  "imgSelect": {
+    "value": "pexels-neosiam-601798.jpg",
+    "folder": "wallpapers",
+    "filter": "*.jpg|*.png",
+    "text": "Image",
+    "type": "folderDropdown",
+    "help": null
+  },
+  "bgImgChk": { "value": false, "text": "Background", "type": "checkbox", "help": null }
+}
