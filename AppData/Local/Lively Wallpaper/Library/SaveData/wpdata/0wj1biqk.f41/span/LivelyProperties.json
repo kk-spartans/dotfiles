@@ -1,16 +1,36 @@
 {
-  "audioReact": { "value": true, "text": "Audio Visualiser", "type": "checkbox", "help": null },
-  "randomSplats": { "value": false, "text": "Random Splats", "type": "checkbox", "help": null },
+  "audioReact": {
+    "value": false,
+    "text": "Audio Visualiser",
+    "type": "checkbox",
+    "help": null
+  },
+  "randomSplats": {
+    "value": false,
+    "text": "Random Splats",
+    "type": "checkbox",
+    "help": null
+  },
   "quality": {
     "value": 0,
-    "items": ["High", "Medium", "Low", "Very Low"],
+    "items": [
+      "High",
+      "Medium",
+      "Low",
+      "Very Low"
+    ],
     "text": "Quality",
     "type": "dropdown",
     "help": null
   },
   "simResolution": {
     "value": 2,
-    "items": ["32", "64", "128", "256"],
+    "items": [
+      "32",
+      "64",
+      "128",
+      "256"
+    ],
     "text": "Sim Resolution",
     "type": "dropdown",
     "help": null
@@ -60,9 +80,24 @@
     "type": "slider",
     "help": null
   },
-  "shading": { "value": true, "text": "Shading", "type": "checkbox", "help": null },
-  "colorful": { "value": true, "text": "Colorful", "type": "checkbox", "help": null },
-  "bloomEnable": { "value": true, "text": "Bloom", "type": "checkbox", "help": null },
+  "shading": {
+    "value": true,
+    "text": "Shading",
+    "type": "checkbox",
+    "help": null
+  },
+  "colorful": {
+    "value": true,
+    "text": "Colorful",
+    "type": "checkbox",
+    "help": null
+  },
+  "bloomEnable": {
+    "value": false,
+    "text": "Bloom",
+    "type": "checkbox",
+    "help": null
+  },
   "bloomIntensity": {
     "min": 10.0,
     "max": 200.0,
@@ -81,7 +116,12 @@
     "type": "slider",
     "help": null
   },
-  "sunRaysEnable": { "value": true, "text": "Sunrays", "type": "checkbox", "help": null },
+  "sunRaysEnable": {
+    "value": true,
+    "text": "Sunrays",
+    "type": "checkbox",
+    "help": null
+  },
   "sunRaysWeight": {
     "min": 30.0,
     "max": 100.0,
@@ -91,7 +131,12 @@
     "type": "slider",
     "help": null
   },
-  "bgColor": { "value": "#000000", "text": "BG Color", "type": "color", "help": null },
+  "bgColor": {
+    "value": "#000000",
+    "text": "BG Color",
+    "type": "color",
+    "help": null
+  },
   "imgSelect": {
     "value": "pexels-neosiam-601798.jpg",
     "folder": "wallpapers",
@@ -100,5 +145,10 @@
     "type": "folderDropdown",
     "help": null
   },
-  "bgImgChk": { "value": false, "text": "Background", "type": "checkbox", "help": null }
+  "bgImgChk": {
+    "value": false,
+    "text": "Background",
+    "type": "checkbox",
+    "help": null
+  }
 }
