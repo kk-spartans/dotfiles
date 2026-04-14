@@ -1,6 +1,6 @@
 [Spotify]
-spotify_path = C:\Users\kk-spartans\AppData\Local\Spotify\Spotify.exe
-prefs_path   = C:\Users\kk-spartans\AppData\Roaming\Spotify\prefs
+spotify_path = C:\Users\{{ .chezmoi.username }}\AppData\Local\Spotify\Spotify.exe
+prefs_path   = C:\Users\{{ .chezmoi.username }}\AppData\Roaming\Spotify\prefs
 
 [Behavior]
 check_update    = true
@@ -23,8 +23,8 @@ experimental_features = 1
 [Patch]
 
 [Setting]
-spotify_path           = C:\Users\kk-spartans\AppData\Roaming\Spotify
-prefs_path             = C:\Users\kk-spartans\AppData\Roaming\Spotify\prefs
+spotify_path           = C:\Users\{{ .chezmoi.username }}\AppData\Roaming\Spotify
+prefs_path             = C:\Users\{{ .chezmoi.username }}\AppData\Roaming\Spotify\prefs
 inject_theme_js        = 1
 inject_css             = 1
 replace_colors         = 1
