@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 set -e
 
-sudo apt-get install -y p7zip-full fish iperf3 ncdu ffmpeg btop
+sudo apt-get install -y p7zip-full fish iperf3 ncdu ffmpeg btop tmux speedtest-cli
 
 if ! command -v docker >/dev/null 2>&1; then
   curl -fsSL https://get.docker.com | sh
