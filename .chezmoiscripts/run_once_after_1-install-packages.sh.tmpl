@@ -17,6 +17,7 @@ if [ "$CURRENT_SHELL" != "$FISH_SHELL" ]; then
 fi
 if ! command -v tailscale >/dev/null 2>&1; then
   curl -fsSL https://tailscale.com/install.sh | sh
+  sudo tailscale set --operator=$USER
 fi
 
 if ! command -v brew >/dev/null 2>&1; then
