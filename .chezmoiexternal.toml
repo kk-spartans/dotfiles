@@ -44,6 +44,16 @@ type = "file"
 url = "https://spicetify-glassify.sanooj.uk/spice/user.css"
 refreshPeriod = "2h"
 
+["AppData/Roaming/BetterDiscord/plugins/1XenoLib.plugin.js"]
+type = "file"
+url = "https://raw.githubusercontent.com/Ashesh3/MessageLoggerV3-BetterDiscord/refs/heads/master/1XenoLib.plugin.js"
+refreshPeriod = "730h"
+
+["AppData/Roaming/BetterDiscord/plugins/MessageLoggerV2.plugin.js"]
+type = "file"
+url = "https://raw.githubusercontent.com/Ashesh3/MessageLoggerV3-BetterDiscord/refs/heads/master/MessageLoggerV2.plugin.js"
+refreshPeriod = "730h"
+
 {{- end }}
 
 [".config/eza/theme.yml"]

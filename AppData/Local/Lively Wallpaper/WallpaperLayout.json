@@ -1,0 +1,18 @@
+[
+  {
+    "LivelyScreen": {
+      "isStale": false,
+      "Bounds": "0, 0, 1920, 1080",
+      "DeviceId": "\\\\?\\DISPLAY#ACR0B31#5&2eda4519&0&UID4355#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}",
+      "DeviceName": "\\\\.\\DISPLAY5",
+      "DisplayName": "Generic PnP Monitor",
+      "HMonitor": {
+        "value": 65643
+      },
+      "Index": 1,
+      "IsPrimary": true,
+      "WorkingArea": "0, 36, 1920, 1044"
+    },
+    "LivelyInfoPath": "C:\\Users\\kk-spartans\\AppData\\Local\\Lively Wallpaper\\Library\\wallpapers\\0wj1biqk.f41"
+  }
+]

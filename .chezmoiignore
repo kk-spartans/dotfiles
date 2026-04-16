@@ -13,6 +13,7 @@ wallpaper.jpg
 
 {{- if ne .chezmoi.os "linux" }}
 .config/fish/
+.tmux.conf
 {{- end }}
 
 README.md
