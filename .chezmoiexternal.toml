@@ -24,6 +24,11 @@ type = "file"
 url = "https://raw.githubusercontent.com/rxri/spicetify-extensions/refs/heads/main/adblock/adblock.js"
 refreshPeriod = "2h"
 
+["AppData/Roaming/spicetify/Extensions/phraseToPlaylist.js"]
+type = "file"
+url = "https://raw.githubusercontent.com/rxri/spicetify-extensions/refs/heads/main/phraseToPlaylist/phraseToPlaylist.js"
+refreshPeriod = "2h"
+
 ["AppData/Roaming/spicetify/Extensions/spicy-lyrics.mjs"]
 type = "file"
 url = "https://raw.githubusercontent.com/Spikerko/spicy-lyrics/refs/heads/main/builds/spicy-lyrics.mjs"
@@ -44,15 +49,20 @@ type = "file"
 url = "https://spicetify-glassify.sanooj.uk/spice/user.css"
 refreshPeriod = "2h"
 
-["AppData/Roaming/BetterDiscord/plugins/1XenoLib.plugin.js"]
+["AppData/Roaming/spicetify/Themes/Lucid/theme.js"]
 type = "file"
-url = "https://raw.githubusercontent.com/Ashesh3/MessageLoggerV3-BetterDiscord/refs/heads/master/1XenoLib.plugin.js"
-refreshPeriod = "730h"
+url = "https://spicetify-lucid.sanooj.uk/spice/theme.js"
+refreshPeriod = "2h"
 
-["AppData/Roaming/BetterDiscord/plugins/MessageLoggerV2.plugin.js"]
+["AppData/Roaming/spicetify/Themes/Lucid/color.ini"]
 type = "file"
-url = "https://raw.githubusercontent.com/Ashesh3/MessageLoggerV3-BetterDiscord/refs/heads/master/MessageLoggerV2.plugin.js"
-refreshPeriod = "730h"
+url = "https://spicetify-lucid.sanooj.uk/spice/color.ini"
+refreshPeriod = "2h"
+
+["AppData/Roaming/spicetify/Themes/Lucid/user.css"]
+type = "file"
+url = "https://spicetify-lucid.sanooj.uk/spice/user.css"
+refreshPeriod = "2h"
 
 {{- end }}
 
