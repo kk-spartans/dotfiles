@@ -9,6 +9,7 @@ Documents
 applications.json
 komorebi.json
 wallpaper.jpg
+.wsl
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
