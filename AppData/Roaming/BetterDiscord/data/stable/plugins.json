@@ -8,5 +8,6 @@
     "RevealAllSpoilers": true,
     "SpotifyEnhance": true,
     "BetterImageViewer": true,
-    "Translator": true
+    "Translator": true,
+    "ZeresPluginLibrary": false
 }

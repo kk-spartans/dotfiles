@@ -2,6 +2,7 @@
 	"all": {
 		"ClassModuleCache": {
 			"AccountDetailsButtons": "690738",
+			"AppBase": "325593",
 			"AppMount": "704686",
 			"AppOuter": "883140",
 			"Avatar": "774659",
@@ -24,6 +25,7 @@
 			"HoverCard": "8350",
 			"Input": "199228",
 			"ItemLayerContainer": "125625",
+			"Layers": "708015",
 			"Margins": "885106",
 			"Menu": "945375",
 			"Message": "480972",
@@ -68,6 +70,7 @@
 			"EmojiPickerListRow": "923861",
 			"Menu": "861672",
 			"MessageButtons": "907495",
+			"MessageContent": "291812",
 			"MessageReply": "162792",
 			"Messages": "371648",
 			"Spoiler": "302031"
@@ -76,7 +79,7 @@
 			"BDFDB": "4.4.8",
 			"RevealAllSpoilers": "1.1.2",
 			"ShowConnections": "1.3.2",
-			"Translator": "2.8.0"
+			"Translator": "2.8.2"
 		},
 		"choices": {
 			"toastPosition": "right"
@@ -89,7 +92,7 @@
 			"useChromium": false
 		},
 		"hashes": {
-			"0BDFDB.data.json": "dd78349397cd7d386041d5c01a9dc10ab97270f8",
+			"0BDFDB.data.json": "48e91e9a1015916a017bad36ecaa5edd834b3dcc",
 			"0BDFDB.raw.css": "edada1edc762888eebc5aa44e5b8c1baf2e60104"
 		}
 	}
