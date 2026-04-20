@@ -1,4 +1,8 @@
-mise activate pwsh | Out-String | Invoke-Expression
+$isInteractiveShell = $Host.Name -eq 'ConsoleHost' -and -not [Console]::IsInputRedirected -and -not [Console]::IsOutputRedirected -and ([Environment]::CommandLine -notmatch '-NonInteractive')
+
+if ($isInteractiveShell -and (Get-Command mise -ErrorAction SilentlyContinue)) {
+    mise activate pwsh | Out-String | Invoke-Expression
+}
 
 Remove-Item Alias:rm -ErrorAction SilentlyContinue
 Remove-Item Alias:ls -ErrorAction SilentlyContinue
@@ -33,10 +37,22 @@ function cd {
     z $Path
 }
 
-oh-my-posh init pwsh --config "$env:userprofile/catppuccin.omp.json" | Out-String | Invoke-Expression
-zoxide init powershell | Out-String | Invoke-Expression
-thefuck --alias | Out-String | Invoke-Expression
+if ($isInteractiveShell) {
+    if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+        oh-my-posh init pwsh --config "$env:userprofile/catppuccin.omp.json" | Out-String | Invoke-Expression
+    }
 
-Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-Set-PSReadLineOption -PredictionViewStyle InlineView
-Set-PSReadLineOption -EditMode Vi
+    if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+        zoxide init powershell | Out-String | Invoke-Expression
+    }
+
+    if (Get-Command thefuck -ErrorAction SilentlyContinue) {
+        thefuck --alias | Out-String | Invoke-Expression
+    }
+
+    if (Get-Module -ListAvailable -Name PSReadLine) {
+        Set-PSReadLineOption -PredictionSource HistoryAndPlugin -ErrorAction SilentlyContinue
+        Set-PSReadLineOption -PredictionViewStyle InlineView -ErrorAction SilentlyContinue
+        Set-PSReadLineOption -EditMode Vi -ErrorAction SilentlyContinue
+    }
+}

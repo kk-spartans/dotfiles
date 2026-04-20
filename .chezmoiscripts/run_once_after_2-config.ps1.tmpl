@@ -4,8 +4,7 @@ function AddToPath {
       if (Test-Path $pathToAdd) {
           $userPath = [Environment]::GetEnvironmentVariable("PATH", "User")
           if ($userPath -notlike "*$pathToAdd*") {
-               $pathToAdd += ";$userPath"
-              [Environment]::SetEnvironmentVariable("PATH", $userPath, "User")
+              [Environment]::SetEnvironmentVariable("PATH", "$userPath;$pathToAdd", "User")
           }
       }
 }
@@ -22,7 +21,15 @@ AddToPath "$env:USERPROFILE\.local\bin"
 
 $Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
-bat cache --build
-komorebic enable-autostart --whkd
-yasbc enable-autostart
+if (Get-Command bat -ErrorAction SilentlyContinue) {
+  bat cache --build
+}
+
+if (Get-Command komorebic -ErrorAction SilentlyContinue) {
+  komorebic enable-autostart --whkd
+}
+
+if (Get-Command yasbc -ErrorAction SilentlyContinue) {
+  yasbc enable-autostart
+}
 {{- end }}

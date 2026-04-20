@@ -28,8 +28,8 @@ pnpm = "latest"
 ripgrep = "latest"
 sccache = "latest"
 uv = "latest"
-aws-cli = "latest"
 zoxide = "latest"
+"github:endevco/aube" = "latest"
 
 # ──────────────
 # GitHub
@@ -64,10 +64,22 @@ zoxide = "latest"
 "pipx:thefuck" = { version = "latest", uvx_args = "--python 3.11" }
 "pipx:yt-dlp" = "latest"
 
+{{- if eq .chezmoi.os "linux" }}
+
+# ──────────────
+# Linux-only
+# ──────────────
+
+## standalone
+aws-cli = "latest"
+
+{{- end }}
+
+{{- if eq .chezmoi.os "windows" }}
+
 # ──────────────
 # Windows-only
 # ──────────────
-{{- if eq .chezmoi.os "windows" }}
 
 ## standalone
 oh-my-posh = "latest"
