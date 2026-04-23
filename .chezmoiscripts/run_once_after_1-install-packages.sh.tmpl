@@ -12,8 +12,7 @@ FISH_SHELL="$(command -v fish)"
 
 CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
 if [ "$CURRENT_SHELL" != "$FISH_SHELL" ]; then
-  echo "input password for chsh"
-  chsh -s "$FISH_SHELL"
+  sudo usermod -s "$FISH_SHELL" "$USER"
 fi
 if ! command -v tailscale >/dev/null 2>&1; then
   curl -fsSL https://tailscale.com/install.sh | sh
@@ -21,7 +20,7 @@ if ! command -v tailscale >/dev/null 2>&1; then
 fi
 
 if ! command -v brew >/dev/null 2>&1; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  NONINTERACTIVE=1 CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 if ! command -v mise >/dev/null 2>&1 && [ ! -x "$HOME/.local/bin/mise" ]; then
