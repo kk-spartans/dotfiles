@@ -1,3 +1,8 @@
+if status is-interactive
+    if not set -q TMUX
+        tmux
+    end
+end
 mise activate fish | source
 brew shellenv fish | source
 
@@ -19,9 +24,6 @@ if status is-interactive
     end
 
     thefuck --alias | source
-    if not set -q TMUX
-        tmux
-    end
 end
 
 
