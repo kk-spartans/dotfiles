@@ -34,6 +34,7 @@ if [ -z "$MISE_BIN" ]; then
 fi
 
 "$MISE_BIN" install
+"$MISE_BIN" activate bash | source
 
 pnpm setup
 

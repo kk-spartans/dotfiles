@@ -1,5 +1,12 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
+MISE_BIN="$(command -v mise || true)"
+if [ -z "$MISE_BIN" ]; then
+  MISE_BIN="$HOME/.local/bin/mise"
+fi
+
+"$MISE_BIN" activate bash | source
+
 set -e
 
 bat cache --build
