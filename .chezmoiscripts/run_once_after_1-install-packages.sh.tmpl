@@ -32,13 +32,9 @@ if ! command -v mise >/dev/null 2>&1 && [ ! -x "$HOME/.local/bin/mise" ]; then
   curl https://mise.run | sh
 fi
 
-MISE_BIN="$(command -v mise || true)"
-if [ -z "$MISE_BIN" ]; then
-  MISE_BIN="$HOME/.local/bin/mise"
-fi
 
-"$MISE_BIN" install
-eval $("$MISE_BIN" activate bash)
+~/.local/bin/mise install
+eval "$(~/.local/bin/mise activate bash --shims)"
 
 pnpm setup
 
