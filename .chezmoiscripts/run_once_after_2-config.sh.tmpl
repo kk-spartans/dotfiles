@@ -5,7 +5,7 @@ if [ -z "$MISE_BIN" ]; then
   MISE_BIN="$HOME/.local/bin/mise"
 fi
 
-"$MISE_BIN" activate bash | source
+eval $("$MISE_BIN" activate bash)
 
 set -e
 
