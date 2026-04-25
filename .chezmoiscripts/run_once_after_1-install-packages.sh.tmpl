@@ -20,6 +20,10 @@ if ! command -v tailscale >/dev/null 2>&1; then
   sudo tailscale set --operator=$USER
 fi
 
+if ! command -v ollama >/dev/null 2>&1; then
+  curl -fsSL https://ollama.com/install.sh | sh
+fi
+
 if ! command -v brew >/dev/null 2>&1; then
   NONINTERACTIVE=1 CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
