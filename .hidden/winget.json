@@ -21,6 +21,7 @@
         { "PackageIdentifier": "RustDesk.RustDesk" },
         { "PackageIdentifier": "QPDF.QPDF" },
         { "PackageIdentifier": "TheDocumentFoundation.LibreOffice" },
+        { "PackageIdentifier": "T3Tools.T3Code" },
         {
           "PackageIdentifier": "Microsoft.VisualStudio.Community",
           "Overrides": [
