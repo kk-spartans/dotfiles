@@ -21,6 +21,7 @@ Set-Alias sc Set-Clipboard
 Set-Alias npx bunx
 Set-Alias ocrmypdf "$env:USERPROFILE\.local\bin\ocrmypdf.ps1"
 Set-Alias bash C:\msys64\usr\bin\bash.exe
+Set-Alias ab agent-browser
 
 function cd {
     [CmdletBinding()]

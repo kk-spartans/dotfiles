@@ -43,4 +43,6 @@ eval "$("$MISE_BIN" activate bash)"
 cp ".agents/.skill-lock.json" "skills-lock.json"
 bun x skills experimental_install
 rm -f "skills-lock.json"
+
+agent-browser install
 {{- end }}

@@ -21,4 +21,7 @@ Remove-Item -Path "skills-lock.json"
 # choco
 
 Start-Process "choco" -ArgumentList "install", "$env:USERPROFILE\.local\share\chezmoi\.hidden\packages.config", "-y" -Verb RunAs
+
+# agent-browser
+agent-browser install
 {{- end }}
