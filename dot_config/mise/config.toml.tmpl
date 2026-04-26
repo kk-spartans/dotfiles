@@ -122,7 +122,7 @@ node = "latest"
 "pipx:aw-watcher-netstatus" = "latest"
 
 ## http
-"http:ffmpeg" = { version = "latest", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z", bin = "ffmpeg.exe", extract = true }
+"http:ffmpeg" = { version = "release", url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-{{"{{ version }}"}}-full.7z", bin = "ffmpeg.exe", extract = true }
 
 {{- end }}
 
