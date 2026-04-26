@@ -82,9 +82,21 @@
       "pluginName": "agent-browser",
       "installedAt": "2026-04-03T12:48:59.106Z",
       "updatedAt": "2026-04-03T12:48:59.106Z"
+    },
+    "electron": {
+      "source": "teachingai/full-stack-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/teachingai/full-stack-skills.git",
+      "skillPath": "skills/electron-skills/electron/SKILL.md",
+      "skillFolderHash": "2b889701cf0fba3fb968fbeaaf5dfb243a2c6a8e",
+      "pluginName": "electron-skills",
+      "installedAt": "2026-04-26T07:09:58.532Z",
+      "updatedAt": "2026-04-26T07:09:58.532Z"
     }
   },
-  "dismissed": { "findSkillsPrompt": true },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
   "lastSelectedAgents": [
     "amp",
     "antigravity",
