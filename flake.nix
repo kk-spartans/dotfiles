@@ -187,7 +187,7 @@
           nvidia = false;
         };
 
-        kk-spartans = mkHost {
+        raspi = mkHost {
           system = "aarch64-linux";
           hostname = "raspi";
           pc = false;

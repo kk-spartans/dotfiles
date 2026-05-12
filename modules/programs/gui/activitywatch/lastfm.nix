@@ -1,7 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  imports = [ inputs.sops-nix.nixosModules.sops ];
-
   sops.secrets.LASTFM_API_KEY = { };
 
   services.activitywatch.watchers.aw-watcher-lastfm = {
@@ -34,7 +32,7 @@
 
   xdg.configFile."activitywatch/aw-watcher-lastfm/config.yaml".text = ''
     username: kk-spartans
-    apikey: ${builtins.readFile /run/secrets/LASTFM_API_KEY}
+    apikey: ${config.sops.secrets."LASTFM_API_KEY".path}
     polling_interval: 10
   '';
 }

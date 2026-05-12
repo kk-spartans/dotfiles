@@ -43,12 +43,12 @@
     useGlobalPkgs = true;
     backupFileExtension = "bak";
 
-    users.kk-spartans.home = {
-      username = "kk-spartans";
-      homeDirectory = "/home/kk-spartans";
-      stateVersion = "26.05";
+    users.kk-spartans = {
+      home.username = "kk-spartans";
+      home.homeDirectory = "/home/kk-spartans";
+      home.stateVersion = "26.05";
 
-      sessionVariables = {
+      home.sessionVariables = {
         EDITOR = "nvim";
         VISUAL = "nvim";
         SUDO_EDITOR = "nvim";
