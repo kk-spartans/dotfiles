@@ -137,7 +137,6 @@
             pc
             laptop
             nvidia
-            wallpaper
             ;
         };
         modules = [
@@ -159,7 +158,6 @@
                 inputs
                 laptop
                 nvidia
-                wallpaper
                 ;
             };
           }
