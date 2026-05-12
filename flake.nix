@@ -130,45 +130,70 @@
       ...
     }@inputs:
     let
-      pc = true;
-      laptop = true;
-      nvidia = false; # turn off to save battery, and storage
+      mkHost =
+        {
+          system,
+          hostname,
+          pc,
+          laptop,
+          nvidia,
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+
+          specialArgs = {
+            inherit
+              inputs
+              pc
+              laptop
+              nvidia
+              ;
+          };
+
+          modules = [
+            ./modules/programs/cli/cli.nix
+            ./modules/user/user.nix
+            ./modules/boot.nix
+
+            ./options/nvidia.nix
+            ./options/pc.nix
+            ./options/laptop.nix
+
+            ./hosts/${hostname}.nix
+
+            { networking.hostName = hostname; }
+
+            inputs.home-manager.nixosModules.default
+
+            {
+              home-manager.extraSpecialArgs = {
+                inherit
+                  inputs
+                  laptop
+                  nvidia
+                  ;
+              };
+            }
+          ];
+        };
     in
     {
-      nixosConfigurations.kk-spartans = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit
-            inputs
-            pc
-            laptop
-            nvidia
-            ;
+      nixosConfigurations = {
+        kk-spartans = mkHost {
+          system = "x86_64-linux";
+          hostname = "kk-spartans";
+          pc = true;
+          laptop = true;
+          nvidia = false;
         };
-        modules = [
-          ./modules/programs/cli/cli.nix
-          ./modules/user/user.nix
-          ./modules/boot.nix
 
-          ./options/nvidia.nix
-          ./options/pc.nix
-          ./options/laptop.nix
-
-          ./hosts/hardware-configuration.kk-spartans.nix
-	  { networking.hostName = "kk-spartans"; }
-
-          inputs.home-manager.nixosModules.default
-
-          {
-            home-manager.extraSpecialArgs = {
-              inherit
-                inputs
-                laptop
-                nvidia
-                ;
-            };
-          }
-        ];
+        kk-spartans = mkHost {
+          system = "aarch64-linux";
+          hostname = "raspi";
+          pc = false;
+          laptop = false;
+          nvidia = false;
+        };
       };
     };
 }

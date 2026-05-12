@@ -21,15 +21,15 @@
 
   programs.fish = {
     functions.rat = ''
-          for target in $argv
-              if test "$target" = "-"
-                  command bat -
-              else if string match -rq -- '\.(md)$' "$target"
-                  command glow "$target"
-              else
-                  command bat "$target"
-              end
+      for target in $argv
+          if test "$target" = "-"
+              command bat -
+          else if string match -rq -- '\.(md)$' "$target"
+              command glow "$target"
+          else
+              command bat "$target"
           end
+      end
     '';
 
     shellAliases = {
