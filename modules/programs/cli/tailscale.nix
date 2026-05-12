@@ -5,8 +5,10 @@
   ...
 }:
 {
+  imports = [ inputs.sops-nix.nixosModules.sops ];
+
   services.tailscale = {
     enable = true;
-    authKeyFile = ../../../secrets/tailscale; # i do not care that my secrets are in the nix store, they aren't that important.
+    authKeyFile = /run/secrets/TS_AUTHKEY;
   };
 }

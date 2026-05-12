@@ -24,9 +24,13 @@
         install -Dm755 "$src/aw-watcher-lastfm" "$out/bin/aw-watcher-lastfm"
         runHook postInstall
       '';
-
-      # The upstream release zip is a generic Linux binary; patch it for NixOS.
     };
     executable = "aw-watcher-lastfm";
   };
+
+  xdg.configFile."activitywatch/aw-watcher-lastfm/config.yaml".text = ''
+    username: kk-spartans
+    apikey: 
+    polling_interval: 10
+  '';
 }

@@ -8,6 +8,7 @@
   imports = [
     ./locale.nix
     ./networking.nix
+    ./sops.nix
   ];
 
   nix.settings.trusted-users = [

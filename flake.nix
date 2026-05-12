@@ -103,6 +103,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -120,6 +125,7 @@
       helium,
       nixcord,
       spicetify-nix,
+      sops-nix,
       rust-overlay,
       ...
     }@inputs:
@@ -144,11 +150,12 @@
           ./modules/user/user.nix
           ./modules/boot.nix
 
-          ./hosts/nvidia.nix
-          ./hosts/pc.nix
-          ./hosts/laptop.nix
+          ./options/nvidia.nix
+          ./options/pc.nix
+          ./options/laptop.nix
 
-          ./hardware-configuration.nix
+          ./hosts/hardware-configuration.kk-spartans.nix
+	  { networking.hostName = "kk-spartans" };
 
           inputs.home-manager.nixosModules.default
 

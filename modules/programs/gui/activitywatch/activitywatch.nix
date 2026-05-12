@@ -8,9 +8,9 @@
     ./window-wayland.nix
     ./netstatus.nix
     ./lastfm.nix
+    ./lid.nix
     # ./utilization.nix // broken, don't really need it
     # ./input.nix // broken on wayland
-    ./lid.nix
   ];
 
   programs.vscode.profiles.default.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
