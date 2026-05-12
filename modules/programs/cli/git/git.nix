@@ -14,7 +14,10 @@
     enable = true;
     lfs.enable = true;
     attributes = [ "* text=auto eol=lf" ];
-    hooks.pre-commit = ./pre-commit;
+    hooks.pre-commit = pkgs.writeShellScript "pre-commit" ''
+      #!/usr/bin/env bash
+      gitleaks git --pre-commit --verbose
+    '';
 
     settings = {
       user = {
