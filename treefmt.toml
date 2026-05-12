@@ -11,8 +11,7 @@ excludes = [
 command = "nixfmt"
 includes = [
   "flake.nix",
-  "hardware-configuration.nix",
+  "options/**/*.nix",
   "hosts/**/*.nix",
   "modules/**/*.nix",
-  "template.nix",
 ]
