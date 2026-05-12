@@ -155,7 +155,7 @@
           ./options/laptop.nix
 
           ./hosts/hardware-configuration.kk-spartans.nix
-	  { networking.hostName = "kk-spartans" };
+	  { networking.hostName = "kk-spartans"; }
 
           inputs.home-manager.nixosModules.default
 
