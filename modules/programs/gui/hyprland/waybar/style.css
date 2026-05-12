@@ -1,0 +1,141 @@
+@import 'catppuccin.css';
+@define-color mantle #000000;
+@define-color surface0 #000000;
+@define-color base #000000;
+
+* {
+     border: none;
+     border-radius: 0px;
+
+     font-family: "GeistMono Nerd Font Propo", sans-serif;
+     font-size: 19px;
+     font-weight: normal;
+
+     min-height: 0;
+     padding: 0;
+     margin: 0;
+ }
+
+window#waybar {
+    background: transparent;
+}
+
+tooltip {
+    background: @mantle;
+    border: 1px solid @surface0;
+    border-radius: 15px;
+}
+tooltip label {
+    color: @text;
+    padding: 8px;
+}
+
+#workspaces {
+    background: @mantle;
+    padding: 6px 4px;
+    margin: 0 0 0 10px;
+    border-radius: 23px;
+    border: 1px solid @surface0;
+    color: @crust;
+}
+
+#workspaces button {
+    padding: 0px 8px;
+    margin: 0px 4px;
+    border-radius: 63px;
+    color: transparent;
+    background: @surface0;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    background: @blue;
+    color: @mantle;
+    min-width: 63px;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+}
+
+#workspaces button:hover {
+    background: @pink;
+    color: @mantle;
+    border-radius: 20px;
+    min-width: 63px;
+    background-size: 400% 400%;
+}
+
+#workspaces button.urgent {
+    background: @red;
+    color: @mantle;
+    border-radius: 20px;
+    min-width: 63px;
+    background-size: 500px 500px;
+    transition: all 0.3s ease-in-out;
+}
+
+#battery,
+#pulseaudio,
+#network,
+#custom-clock,
+#mpris,
+#custom-media-prev,
+#custom-media-play-pause,
+#custom-media-next,
+#cpu,
+#custom-ram,
+#custom-vram,
+#custom-notification {
+    background: @base;
+    padding: 0 14px 0 14px;
+    margin: 0 0 0 10px;
+    border-radius: 63px;
+    border: 1px solid @surface0;
+}
+
+#custom-clock { color: @blue; }
+#mpris { color: @mauve; }
+#custom-media-prev,
+#custom-media-play-pause,
+#custom-media-next {
+    color: @mauve;
+    padding: 0 10px 0 10px;
+}
+#pulseaudio { color: @yellow; }
+#network { color: @lavender; }
+#cpu { color: @peach; }
+#custom-ram { color: @sapphire; }
+#custom-vram { color: @lavender; }
+#battery { color: @green; }
+#custom-notification {
+  color: @pink;
+  margin: 0 10px 0 10px;
+}
+
+#tray {
+  background: @base;
+  padding: 0 14px;
+  margin: 0 10px;
+  border-radius: 63px;
+  border: 1px solid @surface0;
+}
+
+#tray > .item {
+  padding: 0 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+#tray > .item:hover {
+  background: @surface0;
+  border-radius: 10px;
+}
+
+#tray > .item.active {
+  background: @surface0;
+  border-radius: 10px;
+}
+
+#tray icon {
+  padding: 2px;
+  transition: all 0.2s ease;
+}
+

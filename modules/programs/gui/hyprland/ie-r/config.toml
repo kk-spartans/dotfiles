@@ -1,0 +1,75 @@
+[magnifier]
+aperture = 15
+aim_size = 1
+size = 141
+offset_x = 100
+offset_y = 0
+jump_threshold = 10
+
+[colors]
+frame       = "#cba6f7"
+aim         = "#f5c2e7"
+grid        = "#1e1e2e"
+foreground  = "#cdd6f4"
+background  = "#11111b"
+
+[hud]
+show = true
+heavy_glitch_chance = 12
+light_glitch_chance = 35
+chromatic_chance    = 80
+scanlines_intensity = 0.1
+
+[font]
+family = "JetBrainsMono Nerd Font"
+size = 48.0
+dim_zeros = 0.2
+padding_left = "  "
+padding_right = "  "
+
+[physics]
+blur_radius = 14
+glass_opacity = 0.55
+stiffness = 1000.0
+damping = 45.0
+pop_effect = 2.0
+blink_effect = "converge"
+
+[templates]
+selected = "html"
+float_precision = 20
+deck_separator = "{nl}"
+
+[templates.copy]
+html    = "#{R}{G}{B}"
+hex     = "0x{R}{G}{B}"
+rgb     = "{rd}, {gd}, {bd}"
+float   = "{rf}, {gf}, {bf}"
+hsl     = "hsl({h}, {s}%, {l}%)"
+hsv     = "hsv({h}, {s}%, {v}%)"
+cmyk    = "cmyk({c}%, {m}%, {y}%, {k}%)"
+delphi  = "$00{B}{G}{R}"
+vb      = "&H00{B}{G}{R}&"
+long    = "{long}"
+
+[templates.show]
+line_spacing = 1.5
+html    = "#{R}{G}{B}"
+hex     = "0x{R}{G}{B}"
+rgb     = "{rd}, {gd}, {bd}"
+float   = "{rf}{nl}{gf}{nl}{bf}"
+hsl     = "{h}, {s}%, {l}%"
+hsv     = "{h}, {s}%, {v}%"
+cmyk    = "{c}%, {m}%, {y}%, {k}%"
+
+[history]
+size = 15
+reverse_order = true
+
+[system]
+tray_icon = "color"
+auto_cancel = 60
+welcome_balloon = true
+hotkey = "Alt+Shift+X"
+poll_interval_ms = 50 
+menu_command = ["vicinae", "dmenu", "--placeholder", "ie-r"]

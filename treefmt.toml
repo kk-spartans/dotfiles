@@ -1,0 +1,18 @@
+formatters = ["nixfmt"]
+
+[global]
+excludes = [
+  ".git",
+  "result",
+  "secrets",
+]
+
+[formatter.nixfmt]
+command = "nixfmt"
+includes = [
+  "flake.nix",
+  "hardware-configuration.nix",
+  "hosts/**/*.nix",
+  "modules/**/*.nix",
+  "template.nix",
+]

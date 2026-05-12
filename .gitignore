@@ -1,1 +1,2 @@
-.hidden/backups/*
+hardware-configuration.nix
+secrets/*

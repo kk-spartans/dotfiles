@@ -1,0 +1,16 @@
+{ config, pkgs, ... }:
+let
+  ocrmypdf = pkgs.writeShellApplication {
+    name = "ocrmypdf";
+    runtimeInputs = [ pkgs.uv ];
+    text = ''
+      exec uvx --with git+https://github.com/ocrmypdf/OCRmyPDF-EasyOCR.git --python 3.12 ocrmypdf "$@"
+    '';
+  };
+in
+{
+  home.packages = [ ocrmypdf ];
+  programs.fish.functions.ocrmypdf = ''
+    ocrmypdf --language eng --output-type pdf --verbose 1 --rotate-pages --deskew --clean --force-ocr --pdf-renderer sandwich --optimize 1 $argv
+  '';
+}
