@@ -112,6 +112,11 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -159,7 +164,6 @@
             ./options/pc.nix
             ./options/laptop.nix
 
-            ./hosts/${hostname}/hardware-configuration.nix
             ./hosts/${hostname}/${hostname}.nix
 
             { networking.hostName = hostname; }
@@ -185,7 +189,7 @@
           hostname = "kk-spartans";
           pc = true;
           laptop = true;
-          nvidia = false;
+          nvidia = true;
         };
       };
     };
