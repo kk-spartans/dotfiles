@@ -160,6 +160,8 @@
             ./modules/user/user.nix
             ./modules/boot.nix
 
+            disko.nixosModules.disko
+
             ./options/nvidia.nix
             ./options/pc.nix
             ./options/laptop.nix
