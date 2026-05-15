@@ -30,7 +30,7 @@ in
     skills.enable = [ "agent-browser" ];
   };
 
-  home.file.".agent-browser".text = ''
+  home.file.".agent-browser/config.json".text = ''
     {
       "$schema": "https://agent-browser.dev/schema.json",
       "profile": "~/.agent-browser/browser-data",

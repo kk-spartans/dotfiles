@@ -159,7 +159,8 @@
             ./options/pc.nix
             ./options/laptop.nix
 
-            ./hosts/${hostname}.nix
+            ./hosts/${hostname}/hardware-configuration.nix
+            ./hosts/${hostname}/${hostname}.nix
 
             { networking.hostName = hostname; }
 
@@ -184,14 +185,6 @@
           hostname = "kk-spartans";
           pc = true;
           laptop = true;
-          nvidia = false;
-        };
-
-        raspi = mkHost {
-          system = "aarch64-linux";
-          hostname = "raspi";
-          pc = false;
-          laptop = false;
           nvidia = false;
         };
       };
