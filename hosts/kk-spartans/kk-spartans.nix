@@ -7,5 +7,5 @@
   ];
 
   boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
