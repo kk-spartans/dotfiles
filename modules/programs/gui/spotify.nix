@@ -39,7 +39,7 @@ in
 
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.lucid;
+    theme = spicePkgs.themes.hazy;
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
       spicy-lyrics
