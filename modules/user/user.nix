@@ -15,6 +15,7 @@
     "root"
     "kk-spartans"
   ];
+
   users.users.kk-spartans = {
     isNormalUser = true;
     description = "Karthikeyan KK";
@@ -24,6 +25,7 @@
       "input"
       "video"
     ];
+    initialPassword = "123456789"; # pls change
   };
 
   security.sudo.extraRules = [
