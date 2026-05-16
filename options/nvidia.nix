@@ -22,6 +22,8 @@
       boot.kernelParams = [ "nvidia-drm.modeset=1" ];
       nixpkgs.config.cudaSupport = true;
 
+      hardware.graphics.enable32Bit = true;
+
       services.xserver.videoDrivers = [ "nvidia" ];
 
       hardware.nvidia = {
@@ -36,11 +38,6 @@
           nvidiaBusId = "PCI:1:0:0";
         };
       };
-
-hardware.opengl = {
-  enable = true;
-  driSupport32Bit = true;
-};
 
       boot.initrd.kernelModules = [ "nvidia" ];
 
