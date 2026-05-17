@@ -31,8 +31,8 @@
 
       ./hypr/binds.nix
       ./hypr/looks.nix
-      ./hypr/plugins.nix
       ./hypr/rules.nix
+      # ./hypr/plugins.nix
 
       ./waybar/waybar.nix
       ./wallpaper/wallpaper.nix
@@ -49,6 +49,7 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
+      configType = "hyprlang";
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;

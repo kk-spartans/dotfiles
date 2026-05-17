@@ -94,9 +94,12 @@
       cloc
       fast-cli-zig
       nix-index
+      totp-cli
+      sqlite
     ];
 
     programs.neovim.enable = true;
+    catppuccin.mpv.enable = true;
     programs.pay-respects.enable = true;
     programs.go.enable = true;
     programs.fastfetch.enable = true;

@@ -22,28 +22,7 @@
             };
           };
 
-          msr = {
-            size = "16M";
-            type = "0C01";
-          };
-
-          windows = {
-            size = "128G";
-
-            content = {
-              type = "filesystem";
-              format = "ntfs";
-            };
-          };
-
-          winre = {
-            size = "1G";
-
-            content = {
-              type = "filesystem";
-              format = "ntfs";
-            };
-          };
+          gap.size = "128G";
 
           swap = {
             size = "32G";

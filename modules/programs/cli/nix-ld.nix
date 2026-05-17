@@ -13,6 +13,7 @@
       openssl
       libselinux
       glibc
+      nss
     ];
   };
 

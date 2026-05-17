@@ -7,7 +7,10 @@
   ...
 }:
 {
-  catppuccin.waybar.enable = true;
+  catppuccin.waybar = {
+    enable = true;
+    mode = "createLink";
+  };
 
   wayland.windowManager.hyprland.settings.exec-once = [ "uwsm app -- waybar" ];
 

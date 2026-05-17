@@ -73,15 +73,11 @@
       url = "github:vicinaehq/vicinae";
     };
 
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins/6acc0738f298f5efe40a99db2c12449112d65633";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprland-easymotion = {
-      url = "github:zakk4223/hyprland-easymotion/eeb0ed676a07c18d10a2cabeb968b4cd5a9e9ae5";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # if i delete it ill forget when the author updates
+    # hyprland-easymotion = {
+    #   url = "github:zakk4223/hyprland-easymotion/eeb0ed676a07c18d10a2cabeb968b4cd5a9e9ae5";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     snappy-switcher = {
       url = "github:OpalAayan/snappy-switcher";

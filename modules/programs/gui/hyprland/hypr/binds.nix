@@ -7,16 +7,13 @@
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "SUPER CTRL, W, plugin:xtd:closeunfocused"
-      "SUPER, D, hyprexpo:expo, toggle"
-
       "SUPER CTRL, T, exec, hyprctl dispatch togglefloating active && hyprctl dispatch pin active && hyprctl dispatch bringactivetotop"
 
       "SUPER, E, exec, uwsm app -- nautilus"
       "SUPER, Z, exec, playerctl play-pause"
 
       "SUPER, G, layoutmsg, togglesplit"
-      "SUPER, K, easymotion, action:hyprctl dispatch focuswindow address:{}"
+      # "SUPER, K, easymotion, action:hyprctl dispatch focuswindow address:{}"
       "SUPER SHIFT, W, killactive"
       "SUPER SHIFT, SPACE, togglefloating"
 
