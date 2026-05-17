@@ -96,6 +96,7 @@
       nix-index
       totp-cli
       sqlite
+      pi-coding-agent
     ];
 
     programs.neovim.enable = true;
