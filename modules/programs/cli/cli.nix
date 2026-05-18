@@ -97,6 +97,7 @@
       totp-cli
       sqlite
       pi-coding-agent
+      scrcpy
     ];
 
     programs.neovim.enable = true;
