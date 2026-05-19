@@ -1,4 +1,4 @@
-{inputs, ...}: 
+{ inputs, ... }:
 {
   imports = [ inputs.disko.nixosModules.disko ];
 
@@ -26,8 +26,8 @@
 
           swap = {
             size = "32G";
-	    content.type = "swap";
-	    label = "swap";
+            content.type = "swap";
+            label = "swap";
           };
 
           nixos = {
