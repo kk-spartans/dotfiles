@@ -96,7 +96,6 @@
       tldr
       iperf3
       cloc
-      fast-cli-zig
       nix-index
       sqlite
       pi-coding-agent

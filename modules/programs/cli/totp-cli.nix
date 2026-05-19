@@ -5,6 +5,6 @@
   ...
 }:
 {
-  imports = [ pkgs.totp-cli ];
+  home.packages = [ pkgs.totp-cli ];
   programs.fish.shellAliases.totp = "totp-cli";
 }

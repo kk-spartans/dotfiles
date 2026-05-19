@@ -5,6 +5,6 @@
   ...
 }:
 {
-  imports = [ pkgs.totp-cli-zig ];
+  home.packages = [ pkgs.fast-cli-zig ];
   programs.fish.shellAliases.fast = "fast-cli";
 }
