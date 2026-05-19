@@ -100,7 +100,7 @@
     chat.agent.maxRequests = 1000;
     vim.useCtrlKeys = false;
     custom-ui-style.font.sansSerif = "JetBrainsMono Nerd Font";
-    nix.formatterPath = "alejandra";
+    nix.formatterPath = "nixfmt";
     redhat.telemetry.enabled = false;
   };
 }

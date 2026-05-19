@@ -42,7 +42,6 @@
       alsa-utils
       nautilus
       lutgen
-      mpv
       usbutils
       aircrack-ng
       nmap

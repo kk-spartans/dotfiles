@@ -55,11 +55,15 @@
       ./tokscale.nix
       ./wacli.nix
       ./tmux.nix
+      ./mpv.nix
+      ./totp-cli.nix
+      ./fast-cli.nix
       ./agent-browser.nix # nixpkgs doesn't have latest
     ];
 
     home.packages = with pkgs; [
       psmisc
+      pwgen
       nixfmt
       treefmt
       perl
@@ -94,14 +98,12 @@
       cloc
       fast-cli-zig
       nix-index
-      totp-cli
       sqlite
       pi-coding-agent
       scrcpy
     ];
 
     programs.neovim.enable = true;
-    catppuccin.mpv.enable = true;
     programs.pay-respects.enable = true;
     programs.go.enable = true;
     programs.fastfetch.enable = true;
