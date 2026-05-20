@@ -14,6 +14,7 @@
       libselinux
       glibc
       nss
+      (lib.getLib config.hardware.nvidia.package)
     ];
   };
 
