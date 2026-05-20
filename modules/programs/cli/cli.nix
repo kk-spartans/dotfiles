@@ -96,7 +96,6 @@
       cloc
       nix-index
       sqlite
-      where
       pi-coding-agent
       scrcpy
     ];

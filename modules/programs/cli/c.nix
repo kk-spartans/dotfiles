@@ -9,6 +9,7 @@
     enable = true;
     icons = "auto";
     git = true;
+    enableFishIntegration = false; # aliases ls to eza
     extraOptions = [
       "--group-directories-first"
       "--all"

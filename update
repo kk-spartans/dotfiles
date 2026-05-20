@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+sudo nixos-rebuild switch
 git add --all
 sudo treefmt
 git commit -m "$*"
 git push
-sudo nixos-rebuild switch
