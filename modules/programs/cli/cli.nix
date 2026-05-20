@@ -43,6 +43,7 @@
       ./fd.nix
       ./fzf.nix
       ./lazy.nix
+      ./hf.nix
       ./javascript.nix
       ./rust.nix
       ./python.nix
