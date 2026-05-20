@@ -9,7 +9,7 @@
     enable = true;
     icons = "auto";
     git = true;
-    enableFishIntegration = false; # aliases ls to eza
+    enableFishIntegration = false; # aliases ls to eza by default
     extraOptions = [
       "--group-directories-first"
       "--all"
@@ -34,16 +34,6 @@
 
   catppuccin.bat.enable = true;
   catppuccin.eza.enable = true;
-
-  # i have an idea for this i want to execute later:
-
-  # images - kitten icat
-  # markdown - glow
-  # plaintext - bat
-  # binary - hexyl
-  # directories - eza
-  # no args - eza
-  # if only one file in dir, execute whatever is needed for it, and display the filename relative to the dir (in case of recursion) if the cli won't (bat and hexyl do)
 
   programs.fish = {
     functions.c = ''

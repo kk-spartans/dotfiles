@@ -98,6 +98,7 @@
       sqlite
       pi-coding-agent
       scrcpy
+      cage
     ];
 
     programs.neovim.enable = true;

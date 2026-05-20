@@ -12,12 +12,12 @@
   ];
 
   nix.settings = {
-  trusted-users = [
-    "root"
-    "kk-spartans"
-  ];
-  
-  access-tokens = [ "github.com=${config.sops.secrets."GITHUB_TOKEN".path}" ];
+    trusted-users = [
+      "root"
+      "kk-spartans"
+    ];
+
+    access-tokens = [ "github.com=${config.sops.secrets."GITHUB_TOKEN".path}" ];
   };
 
   sops.secrets.GITHUB_TOKEN = { };
