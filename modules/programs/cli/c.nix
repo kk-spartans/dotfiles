@@ -44,10 +44,8 @@
           set argv $argv[2..-1]
       end
 
-            # no args → list current dir
       if test (count $argv) -eq 0
-          eza
-          return
+          set argv .
       end
 
       for target in $argv
