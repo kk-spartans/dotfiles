@@ -39,7 +39,7 @@
       ./opencode.nix
       ./btop.nix
       ./git/git.nix
-      ./c.nix
+      ./view.nix
       ./fd.nix
       ./fzf.nix
       ./lazy.nix
@@ -55,7 +55,6 @@
       ./tokscale.nix
       ./wacli.nix
       ./tmux.nix
-      ./mpv.nix
       ./totp-cli.nix
       ./fast-cli.nix
       ./agent-browser.nix # nixpkgs doesn't have latest

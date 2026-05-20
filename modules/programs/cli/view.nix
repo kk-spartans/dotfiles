@@ -5,6 +5,9 @@
   ...
 }:
 {
+  programs.mpv.enable = true;
+  catppuccin.mpv.enable = true;
+
   programs.eza = {
     enable = true;
     icons = "auto";
@@ -87,6 +90,16 @@
                   end
 
                   kitten icat "$target"
+                  continue
+              end
+
+              # video
+              if string match -rq '\.(mp4|mkv|avi|mov|webm|m4v|ogv|wmv|flv)$' "$target"
+                  if test $recursive -eq 1
+                      echo "$target"
+                  end
+
+                  mpv "$target"
                   continue
               end
 
