@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+git add --all
+sudo treefmt
+git commit -m "$*"
+git push
+sudo nixos-rebuild switch
