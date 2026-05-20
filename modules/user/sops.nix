@@ -16,6 +16,8 @@
   home-manager.users.kk-spartans = {
     imports = [ inputs.sops-nix.homeManagerModules.sops ];
 
+    home.packages = [ pkgs.sops ];
+
     sops = {
       defaultSopsFile = ../../secrets.yaml;
       defaultSopsFormat = "yaml";

@@ -47,6 +47,13 @@
 
   programs.fish = {
     functions.c = ''
+      set -l recursive 0
+
+      if test (count $argv) -gt 0 -a "$argv[1]" = "--recursive"
+          set recursive 1
+          set argv $argv[2..-1]
+      end
+
             # no args → list current dir
       if test (count $argv) -eq 0
           eza
@@ -56,7 +63,7 @@
       for target in $argv
           # stdin
           if test "$target" = "-"
-              bat -
+              bat -p -
               continue
           end
 
@@ -66,9 +73,7 @@
 
               if test (count $files) -eq 1
                   set single "$target/$files[1]"
-                  echo "$single"
-
-                  c "$single"
+                  c --recursive "$single"
               else
                   eza "$target"
               end
@@ -79,18 +84,30 @@
           if test -f "$target"
               # markdown
               if string match -rq '\.(md)$' "$target"
+                  if test $recursive -eq 1
+                      echo "$target"
+                  end
+
                   glow "$target"
                   continue
               end
 
               # image
               if string match -rq '\.(png|jpg|jpeg|gif|webp|bmp)$' "$target"
+                  if test $recursive -eq 1
+                      echo "$target"
+                  end
+
                   kitten icat "$target"
                   continue
               end
 
               # binary vs text
               if file --mime "$target" | string match -rq 'charset=binary'
+                  if test $recursive -eq 1
+                      echo "$target"
+                  end
+
                   hexyl "$target"
               else
                   bat "$target"

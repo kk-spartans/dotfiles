@@ -52,8 +52,8 @@
     ];
 
     bindm = [
-      "SUPER, mouse:273, movewindow"
-      "SUPER, mouse:272, resizewindow"
+      "SUPER, mouse:272, movewindow"
+      "SUPER, mouse:273, resizewindow"
     ];
 
     bindel = [

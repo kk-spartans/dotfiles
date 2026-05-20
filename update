@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+# sudo nix flake update
 sudo nixos-rebuild switch
 git add --all
 sudo treefmt
