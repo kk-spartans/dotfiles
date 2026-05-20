@@ -4,7 +4,7 @@ let
     name = "ocrmypdf";
     runtimeInputs = [ pkgs.uv ];
     text = ''
-      exec uvx --with git+https://github.com/ocrmypdf/OCRmyPDF-EasyOCR.git --python 3.12 ocrmypdf "$@"
+      exec uvx --extra-index-url https://download.pytorch.org/whl/cu121 --with git+https://github.com/ocrmypdf/OCRmyPDF-EasyOCR.git --python 3.12 ocrmypdf "$@"
     '';
   };
 in
