@@ -63,9 +63,21 @@
       launcher_window = {
         opacity = 0.7;
       };
-      providers.applications.preferences = {
-        defaultAction = "launch";
-        launchPrefix = "uwsm app -- ";
+      providers = {
+        applications = {
+          "@dagimg-dot/vicinae-extension-player-pilot-0".entrypoints = {
+            next-track.alias = "n";
+            previous-track.alias = "p";
+          };
+          preferences = {
+            defaultAction = "launch";
+            launchPrefix = "uwsm app -- ";
+          };
+          entrypoints = {
+            code.alias = "code"; # it indexes against "Visual Studio Code"
+            obsidian.alias = "ob";
+          };
+        };
       };
     };
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
@@ -88,8 +100,6 @@
       hypr-keybinds
       it-tools
       player-pilot
-      # systemd
-      # dbus
       wifi-commander
       process-manager
     ];

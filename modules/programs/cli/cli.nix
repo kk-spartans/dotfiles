@@ -39,8 +39,7 @@
       ./opencode.nix
       ./btop.nix
       ./git/git.nix
-      ./bat.nix
-      ./eza.nix
+      ./c.nix
       ./fd.nix
       ./fzf.nix
       ./lazy.nix
@@ -83,7 +82,6 @@
       aube
       gitoxide
       diskus
-      hexyl
       immich-go
       gogcli
       rclone
