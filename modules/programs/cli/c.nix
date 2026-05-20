@@ -68,7 +68,7 @@
                   set single "$target/$files[1]"
                   echo "$single"
 
-                  view "$single"
+                  c "$single"
               else
                   eza "$target"
               end
