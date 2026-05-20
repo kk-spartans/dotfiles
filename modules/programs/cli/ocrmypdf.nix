@@ -11,6 +11,6 @@ in
 {
   home.packages = [ ocrmypdf ];
   programs.fish.functions.ocrmypdf = ''
-    ocrmypdf --language eng --output-type pdf --verbose 1 --rotate-pages --deskew --clean --force-ocr --pdf-renderer sandwich --optimize 1 $argv
+    command ocrmypdf --language eng --output-type pdf --verbose 1 --rotate-pages --deskew --clean --force-ocr --pdf-renderer sandwich --optimize 1 $argv
   '';
 }
