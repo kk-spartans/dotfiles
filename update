@@ -3,9 +3,9 @@
 set -euo pipefail
 
 # sudo nix flake update
+sudo treefmt
 git add --all
 git diff --cached
-sudo treefmt
 sudo nixos-rebuild switch
 git commit -m "$*"
 git push
