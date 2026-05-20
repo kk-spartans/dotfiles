@@ -11,13 +11,17 @@
     ./sops.nix
   ];
 
+  sops.templates."nix/netrc".content = ''
+    machine github.com login x-access-token password ${config.sops.placeholder.GITHUB_TOKEN}
+  '';
+
   nix.settings = {
     trusted-users = [
       "root"
       "kk-spartans"
     ];
 
-    access-tokens = [ "github.com=${config.sops.secrets."GITHUB_TOKEN".path}" ];
+    netrc-file = config.sops.templates."nix/netrc".path;
   };
 
   sops.secrets.GITHUB_TOKEN = { };
