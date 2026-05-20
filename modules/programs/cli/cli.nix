@@ -99,6 +99,7 @@
       pi-coding-agent
       scrcpy
       cage
+      llama-cpp
     ];
 
     programs.neovim.enable = true;
