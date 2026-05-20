@@ -9,7 +9,7 @@ let
     name = "hf";
     runtimeInputs = [ pkgs.uv ];
     text = ''
-      exec uvx hf
+      exec uvx hf "$@"
     '';
   };
 in
