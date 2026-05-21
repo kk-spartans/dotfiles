@@ -109,7 +109,13 @@
                       echo "$target"
                   end
 
-                  hexyl "$target"
+                  set size (stat -c%s $target)
+
+                  if test $size -lt 102400
+                      hexyl $target
+                  else
+                      eza $target
+                  end
               else
                   bat "$target"
               end
