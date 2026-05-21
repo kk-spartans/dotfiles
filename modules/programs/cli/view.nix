@@ -60,14 +60,7 @@
 
           # directory
           if test -d "$target"
-              set files (ls -A "$target")
-
-              if test (count $files) -eq 1
-                  set single "$target/$files[1]"
-                  c --recursive "$single"
-              else
-                  eza "$target"
-              end
+              eza "$target"
               continue
           end
 
@@ -111,11 +104,7 @@
 
                   set size (stat -c%s $target)
 
-                  if test $size -lt 102400
-                      hexyl $target
-                  else
-                      eza $target
-                  end
+                  hexyl $target
               else
                   bat "$target"
               end
