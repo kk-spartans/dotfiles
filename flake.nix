@@ -113,6 +113,11 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ik_llama-cpp = {
+      url = "github:ikawrakow/ik_llama.cpp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -128,6 +133,7 @@
       spicetify-nix,
       sops-nix,
       rust-overlay,
+      ik_llama-cpp,
       ...
     }@inputs:
     let
