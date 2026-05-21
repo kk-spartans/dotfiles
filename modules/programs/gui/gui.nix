@@ -47,7 +47,8 @@
       nmap
       gimp
       obsidian
-      inputs.ik_llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda
+      llama-cpp
+      # inputs.ik_llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda
     ];
   };
 }
