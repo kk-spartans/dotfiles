@@ -11,6 +11,7 @@
       stdenv.cc.cc.lib
       zlib
       (lib.getLib openssl)
+      (lib.getLib systemd)
       libselinux
       glibc
       nss
