@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # sudo nix flake update
-sudo treefmt
+sudo nix fmt # needs sudo or breaks bcz of random permission stuff
 git add --all
 git diff --cached
 sudo nixos-rebuild switch

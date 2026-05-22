@@ -137,6 +137,14 @@
       ...
     }@inputs:
     let
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+
       mkHost =
         {
           system,
@@ -185,6 +193,8 @@
         };
     in
     {
+      formatter = nixpkgs.lib.genAttrs systems (system: nixpkgs.legacyPackages.${system}.treefmt);
+
       nixosConfigurations = {
         kk-spartans = mkHost {
           system = "x86_64-linux";

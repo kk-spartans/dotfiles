@@ -10,7 +10,7 @@
     libraries = with pkgs; [
       stdenv.cc.cc.lib
       zlib
-      openssl
+      (lib.getLib openssl)
       libselinux
       glibc
       nss
