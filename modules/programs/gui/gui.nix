@@ -23,6 +23,7 @@
       inputs.vicinae.homeManagerModules.default
 
       ./kitty.nix
+      ./minecraft.nix
       ./opencode.nix
       ./fish.nix
       ./vscode/vscode.nix
