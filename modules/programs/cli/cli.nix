@@ -57,6 +57,7 @@
       ./tmux.nix
       ./totp-cli.nix
       ./fast-cli.nix
+      ./llms.nix
       ./agent-browser.nix # nixpkgs doesn't have latest
     ];
 
