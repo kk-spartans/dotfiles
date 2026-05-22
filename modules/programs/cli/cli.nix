@@ -97,6 +97,7 @@
       pi-coding-agent
       scrcpy
       cage
+      portablemc
     ];
 
     programs.neovim.enable = true;
