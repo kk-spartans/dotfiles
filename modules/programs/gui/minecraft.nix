@@ -20,6 +20,7 @@ in
 {
   home.packages = [
     pkgs.jdk25
+    pkgs.flite
 
     (pkgs.stdenv.mkDerivation {
       pname = "portablemc";
