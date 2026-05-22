@@ -34,13 +34,28 @@ in
       buildInputs = [
         pkgs.stdenv.cc.cc
         pkgs.openssl
+        pkgs.systemd
       ];
 
       installPhase = ''
         mkdir -p $out/bin
         cp -r * $out/
         chmod +x $out/portablemc
-        ln -s $out/portablemc $out/bin/portablemc
+        mv $out/portablemc $out/portablemc-real
+
+        cat > $out/bin/portablemc <<EOF
+        #!${pkgs.bash}/bin/bash
+        export LD_LIBRARY_PATH=${
+          lib.makeLibraryPath [
+            pkgs.systemd
+            pkgs.libglvnd
+          ]
+        }:''${LD_LIBRARY_PATH:-}
+        exec nvidia-offload \
+          "$out/portablemc-real" "\$@"
+        EOF
+
+        chmod +x $out/bin/portablemc
       '';
     })
   ];
