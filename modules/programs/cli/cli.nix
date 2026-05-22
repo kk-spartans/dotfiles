@@ -7,7 +7,7 @@
 {
   imports = [
     ./fish.nix
-    ./nix-ld.nix
+    ./nix/nix.nix
     ./docker.nix
     ./tailscale.nix
   ];
@@ -64,8 +64,6 @@
     home.packages = with pkgs; [
       psmisc
       pwgen
-      nixfmt
-      treefmt
       perl
       tree
       wget
@@ -95,12 +93,10 @@
       tldr
       iperf3
       cloc
-      nix-index
       sqlite
       pi-coding-agent
       scrcpy
       cage
-      # llama-cpp
     ];
 
     programs.neovim.enable = true;
