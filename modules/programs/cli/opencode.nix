@@ -7,10 +7,12 @@
 {
   programs.opencode = {
     enable = true;
+    settings.permissions."*" = "allow";
     tui = {
       theme = "system";
       scroll_acceleration.enabled = true;
     };
+
     context = ''
       - ALWAYS use `uv` or `uvx` when doing anything related to python. Use `uvx python -c ""` if you want to run a command.
       - NEVER run any dev servers, assume they're already running
