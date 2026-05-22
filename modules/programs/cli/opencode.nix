@@ -7,7 +7,12 @@
 {
   programs.opencode = {
     enable = true;
-    settings.permissions."*" = "allow";
+
+    settings.permission = {
+      "*" = "allow";
+      "external_directory"."/**" = "allow";
+    };
+
     tui = {
       theme = "system";
       scroll_acceleration.enabled = true;
