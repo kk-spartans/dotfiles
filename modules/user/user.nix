@@ -24,6 +24,8 @@
     netrc-file = config.sops.templates."nix/netrc".path;
   };
 
+  environment.pathsToLink = [ "/sbin" ];
+
   sops.secrets.GITHUB_TOKEN = { };
 
   users.users.kk-spartans = {
