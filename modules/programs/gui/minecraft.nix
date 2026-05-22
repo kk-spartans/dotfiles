@@ -52,8 +52,8 @@ in
             pkgs.libglvnd
           ]
         }:''${LD_LIBRARY_PATH:-}
-        exec nvidia-offload \
-          "$out/portablemc-real" "\$@"
+        "$out/portablemc-real" "\$@"
+
         EOF
 
         chmod +x $out/bin/portablemc
