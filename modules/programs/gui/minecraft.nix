@@ -21,6 +21,7 @@ in
   home.packages = [
     pkgs.jdk25
     pkgs.flite
+    pkgs.openal
 
     (pkgs.stdenv.mkDerivation {
       pname = "portablemc";
