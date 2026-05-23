@@ -18,15 +18,17 @@ let
     .${system} or (throw "portablemc: unsupported platform ${system}");
 in
 {
-
-  environment.etc."openal/alsoft.conf".text = ''
-    drivers=pulse
+  environment.etc."xdg/alsoft.conf".text = ''
+    drivers=pipewire,pulse,alsa,
   '';
+
+  programs.nix-ld.libraries = with pkgs; [
+    flite
+    openal
+  ];
 
   home-manager.users.kk-spartans.home.packages = [
     pkgs.jdk25
-    pkgs.flite
-    pkgs.openal
 
     (pkgs.stdenv.mkDerivation {
       pname = "portablemc";
@@ -37,7 +39,10 @@ in
         sha256 = "cc1ca6b0529ac4df552ba794c79c0a40f979b7549124753f0e4446c2b71d81f5";
       };
 
-      nativeBuildInputs = [ pkgs.autoPatchelfHook ];
+      nativeBuildInputs = [
+        pkgs.autoPatchelfHook
+        pkgs.makeWrapper
+      ];
       buildInputs = [
         pkgs.stdenv.cc.cc
         pkgs.openssl
@@ -45,24 +50,28 @@ in
       ];
 
       installPhase = ''
+        runHook preInstall
+
         mkdir -p $out/bin
-        cp -r * $out/
+        cp -r ./* $out/
         chmod +x $out/portablemc
         mv $out/portablemc $out/portablemc-real
 
-        cat > $out/bin/portablemc <<EOF
-        #!${pkgs.bash}/bin/bash
-        export LD_LIBRARY_PATH=${
-          lib.makeLibraryPath [
-            pkgs.systemd
-            pkgs.libglvnd
-          ]
-        }:''${LD_LIBRARY_PATH:-}
-        "$out/portablemc-real" "\$@"
+        makeWrapper $out/portablemc-real $out/bin/portablemc \
+          --set ALSOFT_CONF /etc/xdg/alsoft.conf \
+          --set ALSOFT_DRIVERS pipewire,pulse,alsa \
+          --prefix LD_LIBRARY_PATH : ${
+            lib.makeLibraryPath [
+              pkgs.systemd
+              pkgs.libglvnd
+              pkgs.openal
+              pkgs.flite
+              pkgs.pipewire
+              pkgs.pulseaudio
+            ]
+          }
 
-        EOF
-
-        chmod +x $out/bin/portablemc
+        runHook postInstall
       '';
     })
   ];
