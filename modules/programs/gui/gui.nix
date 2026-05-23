@@ -14,6 +14,7 @@
     ./wireshark.nix
     ./bluetooth.nix
     ./obs.nix
+    ./minecraft.nix
   ];
 
   home-manager.users.kk-spartans = {
@@ -23,7 +24,6 @@
       inputs.vicinae.homeManagerModules.default
 
       ./kitty.nix
-      ./minecraft.nix
       ./opencode.nix
       ./fish.nix
       ./vscode/vscode.nix

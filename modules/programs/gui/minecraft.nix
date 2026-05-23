@@ -18,7 +18,12 @@ let
     .${system} or (throw "portablemc: unsupported platform ${system}");
 in
 {
-  home.packages = [
+
+  environment.etc."openal/alsoft.conf".text = ''
+    drivers=pulse
+  '';
+
+  home-manager.users.kk-spartans.home.packages = [
     pkgs.jdk25
     pkgs.flite
     pkgs.openal
