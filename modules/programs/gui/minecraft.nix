@@ -19,7 +19,7 @@ let
 in
 {
   home.packages = [
-    pkgs.jdk21
+    pkgs.jdk25
     pkgs.flite
 
     (pkgs.stdenv.mkDerivation {
