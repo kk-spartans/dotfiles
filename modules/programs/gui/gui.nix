@@ -24,6 +24,7 @@
       inputs.vicinae.homeManagerModules.default
 
       ./kitty.nix
+      ./kanata.nix
       ./opencode.nix
       ./fish.nix
       ./vscode/vscode.nix

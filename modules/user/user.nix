@@ -35,10 +35,13 @@
       "networkmanager"
       "wheel"
       "input"
+      "uinput"
       "video"
     ];
     initialPassword = "123456789"; # pls change
   };
+
+  users.groups.uinput = { };
 
   security.sudo.extraRules = [
     {
