@@ -11,7 +11,7 @@
 
   wayland.windowManager.hyprland = {
     settings = {
-      exec-once = [ "uwsm app -- vicinae server" ];
+      exec-once = [ "vicinae server" ];
       bind = [
         "SUPER, SPACE, exec, uwsm app -- vicinae toggle"
         "SUPER, V, exec, uwsm app -- vicinae \"vicinae://launch/clipboard/history\""

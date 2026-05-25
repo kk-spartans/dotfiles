@@ -7,42 +7,21 @@
 }:
 {
   home.packages = [ pkgs.kanata ];
-  wayland.windowManager.hyprland.settings.exec-once = [
-    "sudo kanata -c ~/.config/kanata/config.kbd"
-  ];
   xdg.configFile."kanata/config.kbd".text = ''
-      (defcfg
-      process-unmapped-keys yes
-      concurrent-tap-hold true
-    )
+    (defcfg process-unmapped-keys yes)
 
-    (defsrc
-      caps i d h j k l b w 4 0 v
+    (defsrc caps h j k l w b 4 0 v)
+
+    (defalias
+      cap (tap-hold 200 200 esc (layer-while-held nav))
     )
 
     (deflayer base
-      ;; caps taps Escape; hold caps for nav motions
-      (tap-hold-press 0 200 esc (layer-while-held nav))
-      i
-      bspc
-      h
-      j
-      k
-      l
-      b
-      w
-      4
-      0
-      v
+      @cap use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc
     )
 
     (deflayer nav
-      _ _ XX left down up right C-left C-right end home (layer-while-held visual)
+      _    left        down      up       rght      C-rght    C-lft     end       home      lsft
     )
-
-    (deflayer visual
-      _ _ XX S-left S-down S-up S-right C-S-left C-S-right S-end S-home _
-    )
-
   '';
 }
