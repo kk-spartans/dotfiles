@@ -15,6 +15,10 @@ while true; do
   playerctl --follow metadata mpris:artUrl -p spotify # resizing youtube thumbnails does *not* look good
   sleep 1
 done | while IFS= read -r url; do
+  if [ -z "$url" ]; then
+    continue
+  fi
+
   curl -s "$url" -o /tmp/art
 
   magick /tmp/art -resize ${IMG_SIZE}x${IMG_SIZE}\> /tmp/art_${IMG_SIZE}.png
@@ -38,3 +42,6 @@ done | while IFS= read -r url; do
 
   awww img /tmp/wall.png --transition-type any
 done
+
+magick -size ${CANVAS_W}x${CANVAS_H} xc:black /tmp/wall.png
+awww img /tmp/wall.png --transition-type any
