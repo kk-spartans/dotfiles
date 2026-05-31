@@ -33,7 +33,7 @@
 
       ./hypr/binds.nix
       ./hypr/looks.nix
-      ./hypr/monitors.nix
+      ./hypr/workspaces.nix
       ./hypr/rules.nix
       # ./hypr/plugins.nix
 
