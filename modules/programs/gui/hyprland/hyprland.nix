@@ -55,7 +55,10 @@
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
       settings = {
-        monitor = "eDP-1,1920x1080@60,0x0,1";
+        monitor = [
+          "eDP-1,1920x1080@60,0x0,1"
+          "HDMI-A-2,1920x1080@100,0x0,1"
+        ];
         exec-once = [ "mpris-proxy" ];
       };
     };
