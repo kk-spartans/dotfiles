@@ -24,6 +24,8 @@
   };
 
   home-manager.users.kk-spartans = {
+    wayland.windowManager.hyprland.systemd.enable = false; # conflicts with uwsm
+
     imports = [
       ./hyprshot.nix
       ./vicinae.nix

@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -29,6 +30,7 @@
   services.devmon.enable = true;
   services.openssh.enable = true;
   services.dbus.enable = true;
+  services.dbus.implementation = lib.mkForce "dbus";
   security.rtkit.enable = true;
   programs.usbtop.enable = true;
 

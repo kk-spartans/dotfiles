@@ -62,23 +62,18 @@
   ];
   home-manager.users.kk-spartans = {
     xdg.configFile."uwsm/env".text = ''
-      # export AQ_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
+      export AQ_DRM_DEVICES=/dev/dri/card1
       export XCURSOR_THEME=macOS
       export HYPRCURSOR_THEME=macOS
       export XCURSOR_SIZE=32
       export HYPRCURSOR_SIZE=32
       export LIBVA_DRIVER_NAME=nvidia
       export XDG_SESSION_TYPE=wayland
-      export GBM_BACKEND=nvidia-drm
       export __GLX_VENDOR_LIBRARY_NAME=nvidia
-      export NVD_BACKEND=direct
-      export AQ_NO_MODIFIERS=1
-      export ADW_DISABLE_PORTAL=1
       export QT_QPA_PLATFORMTHEME=gtk3
       export QT_STYLE_OVERRIDE=adwaita-dark
       export QT_FONT_DPI=96
       export GSETTINGS_SCHEMA_DIR=${pkgs.gsettings-desktop-schemas}/share/glib-2.0/schemas
-      export ADW_DISABLE_PORTAL=1
     '';
   };
 }
