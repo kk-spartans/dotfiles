@@ -12,7 +12,7 @@
     mode = "createLink";
   };
 
-  wayland.windowManager.hyprland.settings.exec-once = [ "uwsm app -- waybar" ];
+  wayland.windowManager.hyprland.settings.exec-once = [ "waybar -l info" ];
 
   xdg.configFile."waybar/vram.sh" = {
     source = ./vram.sh;
