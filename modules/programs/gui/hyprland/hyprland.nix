@@ -28,6 +28,7 @@
 
     imports = [
       ./hyprshot.nix
+      ./kanata.nix
       ./vicinae.nix
       # ./hypridle.nix
 
