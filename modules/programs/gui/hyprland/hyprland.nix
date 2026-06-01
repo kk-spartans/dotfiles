@@ -7,6 +7,7 @@
 {
   imports = [
     ./sddm.nix
+    ./kanata.nix
   ];
 
   programs.hyprland = {
@@ -28,7 +29,6 @@
 
     imports = [
       ./hyprshot.nix
-      ./kanata.nix
       ./vicinae.nix
       # ./hypridle.nix
 

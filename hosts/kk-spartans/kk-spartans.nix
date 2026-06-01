@@ -17,7 +17,7 @@
   home-manager.users.kk-spartans.wayland.windowManager.hyprland.settings = {
     monitor = [
       "eDP-1,1920x1080@60.00Hz,0x0,1"
-      "HDMI-A-1,1920x1080@100.00Hz,1920x0,1"
+      "HDMI-A-1,1920x1080@100.00Hz,1920x0,0.8"
     ];
     workspace = [
       "1,monitor:HDMI-A-1,default:true,persistent:false"
