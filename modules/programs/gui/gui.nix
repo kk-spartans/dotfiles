@@ -48,6 +48,7 @@
       nmap
       gimp
       obsidian
+      naps2
     ];
   };
 }

@@ -16,7 +16,13 @@
     cups
     cups-filters
     system-config-printer
+    avahi
   ];
 
   hardware.printers.ensurePrinters = [ ];
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
 }
