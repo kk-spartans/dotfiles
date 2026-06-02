@@ -15,6 +15,7 @@
     ./bluetooth.nix
     ./obs.nix
     ./minecraft.nix
+    ./printing.nix
   ];
 
   home-manager.users.kk-spartans = {
