@@ -19,7 +19,6 @@
 
   home-manager.users.kk-spartans = {
     imports = [
-      inputs.catppuccin.homeModules.catppuccin
       inputs.zen-browser.homeModules.default
       inputs.vicinae.homeManagerModules.default
 
@@ -29,7 +28,7 @@
       ./vscode/vscode.nix
       ./helium.nix
       ./discord.nix
-      ./activitywatch/activitywatch.nix
+      # ./activitywatch/activitywatch.nix
       ./zen-browser/zen-browser.nix
     ];
 

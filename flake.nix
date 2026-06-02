@@ -203,6 +203,14 @@
           laptop = true;
           nvidia = true;
         };
+
+        raspi = mkHost {
+          system = "aarch64-linux";
+          hostname = "raspi";
+          pc = false;
+          laptop = false;
+          nvidia = false;
+        };
       };
     };
 }

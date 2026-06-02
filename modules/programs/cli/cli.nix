@@ -37,6 +37,7 @@
   home-manager.users.kk-spartans = {
     imports = [
       inputs.agent-skills.homeManagerModules.default
+      inputs.catppuccin.homeModules.catppuccin
       ./skills.nix
       ./opencode.nix
       ./btop.nix
