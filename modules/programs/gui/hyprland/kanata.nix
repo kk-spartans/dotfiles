@@ -12,15 +12,14 @@
 
         (defalias
           cap (tap-hold 200 200 esc (layer-while-held nav))
-          ddel (tap-hold 200 200 d (layer-while-held del))
         )
 
         (deflayer base
-          @cap bspc @ddel use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc
+          @cap use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc use-defsrc
         )
 
         (deflayer nav
-          _    _    _      left      down     up        rght      C-rght    C-lft     end       home      lsft
+          _    bspc (layer-while-held del) left down up rght C-rght C-lft end home lsft
         )
 
         (deflayer del

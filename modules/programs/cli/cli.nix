@@ -98,7 +98,9 @@
       sqlite
       pi-coding-agent
       scrcpy
-      cage
+      cage # useful on headless raspis
+      dig
+      mesa-demos # glxinfo
     ];
 
     programs.neovim.enable = true;
