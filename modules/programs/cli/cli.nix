@@ -102,6 +102,8 @@
       cage # useful on headless raspis
       dig
       mesa-demos # glxinfo
+      devenv
+      usage
     ];
 
     programs.neovim.enable = true;
