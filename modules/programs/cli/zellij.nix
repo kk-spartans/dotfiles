@@ -17,7 +17,7 @@
 
   programs.fish.interactiveShellInit = ''
     if not set -q ZELLIJ
-        zellij attach || zellij --session main
+        zellij attach main || zellij --session main
     end
   '';
 }
