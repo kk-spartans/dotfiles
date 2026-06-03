@@ -3,22 +3,22 @@ let
   anthropic-skills = pkgs.fetchFromGitHub {
     owner = "anthropics";
     repo = "skills";
-    rev = "f458cee31a7577a47ba0c9a101976fa599385174";
-    hash = "sha256-jKNYFom6R+Qw7LQ8vFPBe51JpqIP0tTSY8LM4aPlnT4=";
+    rev = "da20c92503b2e8ff1cf28ca81a0df4673debdbf7";
+    hash = "sha256-BiZvEV7VK1AwhiGg+pNMgTUQmt4exevLWwL0Brx4YyE=";
   };
 
   find-skills = pkgs.fetchFromGitHub {
     owner = "vercel-labs";
     repo = "skills";
-    rev = "c99a72b371b5b4da865f5afa87c5a686f3a46766";
-    hash = "sha256-RYwgUf173N4lGalTta4HkBR7sdZwuzRoAY6M8JsT+RY=";
+    rev = "87dc3636c59d38d7336a1d857f1364699bf38038";
+    hash = "sha256-nISOazYZ9I786Nn4TKmFXyK6WiTPdULdAG0aeRUVXvA=";
   };
 
   uv-package-manager = pkgs.fetchFromGitHub {
     owner = "wshobson";
     repo = "agents";
-    rev = "9f9ba3237022cd88d8660060fc58e0492002f978";
-    hash = "sha256-VIl3qp6wWCfZm+407cyr8/y4B6PelurQ4wvDEw4vfKo=";
+    rev = "767d969a73ce6608d10ac713e52be9ac7f061ab9";
+    hash = "sha256-iCG2MUyJ5l9wknWQ/SQuSG/RlA+ddUkcdU/dLGvWVIU=";
   };
 
   convex = pkgs.fetchFromGitHub {
@@ -31,8 +31,8 @@ let
   frontend-slides = pkgs.fetchFromGitHub {
     owner = "zarazhangrui";
     repo = "frontend-slides";
-    rev = "8dca834fc61abc9dd633cbe6a74ed7be3d82a608";
-    hash = "sha256-PFxTnFWLsK1FycBw6ZD4OW5y6zDx0KMW6l0sHfQ5DJk=";
+    rev = "24e420e4acef9850505142c449415ac867e43633";
+    hash = "sha256-635wzPcpJtkmtZsSQWlP5IAQGu3dtDac5I/rWUBYQ8w=";
   };
 
   opentui = pkgs.fetchFromGitHub {
@@ -45,8 +45,15 @@ let
   electron = pkgs.fetchFromGitHub {
     owner = "teachingai";
     repo = "full-stack-skills";
-    rev = "aed23d528f0f5517f7ac2e5303baa7ab33c4b1d6";
-    hash = "sha256-hkgTYfonSDUUY35YKz7zsv6cETZHhGnVo2SQT4HateU=";
+    rev = "b7fc6a870dcef766663952eaf757032a464e989a";
+    hash = "sha256-AdCnNNM4OGu1v9ZbChlCEJyrSKUqBoanPpkkAQR0HBQ=";
+  };
+
+  react-doctor = pkgs.fetchFromGitHub {
+    owner = "millionco";
+    repo = "react-doctor";
+    rev = "4dc48d7bc5dbb5ba46cd63e5bd20082485630f97";
+    hash = "sha256-p1fp2+E7elHyZNaB5EQykQ79F7NFegHjI8EvTMfKDu0=";
   };
 in
 {
@@ -89,6 +96,11 @@ in
         path = electron;
         subdir = "skills/electron-skills";
       };
+
+      react-doctor = {
+        path = react-doctor;
+        subdir = ".agents/skills/react-doctor";
+      };
     };
 
     skills.enable = [
@@ -99,6 +111,7 @@ in
       "frontend-slides"
       "opentui"
       "electron"
+      "react-doctor"
     ];
 
     targets.agents.enable = true;

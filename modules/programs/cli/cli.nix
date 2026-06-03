@@ -57,7 +57,7 @@
       ./ocrmypdf.nix
       ./tokscale.nix
       ./wacli.nix
-      ./tmux.nix
+      ./zellij.nix
       ./totp-cli.nix
       ./fast-cli.nix
       ./llms.nix

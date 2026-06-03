@@ -13,6 +13,7 @@
     icons = "auto";
     git = true;
     enableFishIntegration = false; # aliases ls to eza by default
+
     extraOptions = [
       "--group-directories-first"
       "--all"
@@ -97,7 +98,7 @@
               end
 
               # binary vs text
-              if file --mime "$target" | string match -rq 'charset=binary'
+              if file -L --mime "$target" | string match -rq 'charset=binary'
                   if test $recursive -eq 1
                       echo "$target"
                   end

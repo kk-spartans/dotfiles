@@ -13,7 +13,7 @@
     enable = true;
     settings = {
       font_family = "GeistMono Nerd Font";
-      font_size = 15;
+      font_size = 13;
 
       disable_ligatures = false;
       enable_audio_bell = false;
