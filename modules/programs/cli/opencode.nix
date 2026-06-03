@@ -13,6 +13,16 @@
       "external_directory"."/**" = "allow";
     };
 
+    settings.provider.openrouter-unsupported = {
+      npm = "@ai-sdk/openai-compatible";
+      name = "OpenRouter Unsupported";
+      options = {
+        baseURL = "https://openrouter.ai/api/v1";
+        apiKey = "{env:OPENROUTER_API_KEY}";
+      };
+      models."openrouter/owl-alpha".name = "OWL Alpha";
+    };
+
     tui = {
       theme = "system";
       scroll_acceleration.enabled = true;

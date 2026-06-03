@@ -8,7 +8,12 @@
 {
   services.printing = {
     enable = true;
-    drivers = [ pkgs.gutenprint ];
+    drivers = [
+      pkgs.gutenprint
+      pkgs.brgenml1lpr
+      pkgs.brgenml1cupswrapper
+      pkgs.brlaser
+    ];
     webInterface = true;
   };
 
