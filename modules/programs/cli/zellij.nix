@@ -16,7 +16,7 @@
   catppuccin.zellij.enable = true;
 
   programs.fish.interactiveShellInit = ''
-    if not set -q ZELLIJ; and isatty 1
+    if not set -q ZELLIJ; and not isatty 1
       zellij attach main || zellij --session main
     end
   '';
