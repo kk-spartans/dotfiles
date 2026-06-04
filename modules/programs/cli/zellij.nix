@@ -16,8 +16,9 @@
   catppuccin.zellij.enable = true;
 
   programs.fish.interactiveShellInit = ''
-    if not set -q ZELLIJ; and not isatty 1
-      zellij attach main || zellij --session main
+    tty | rg -q "/dev/tty1"
+    if not set -q ZELLIJ; and test $status -eq 0
+        zellij attach main || zellij --session main
     end
   '';
 }

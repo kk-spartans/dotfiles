@@ -19,20 +19,21 @@
     }
 
     (lib.mkIf nvidia {
-      boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+      
+      boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
       nixpkgs.config.cudaSupport = true;
-      boot.extraModprobeConfig = ''
-    options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
-  '';
-
       hardware.graphics.enable32Bit = true;
-
       services.xserver.videoDrivers = [ "nvidia" ];
 
       hardware.nvidia = {
         open = false;
         modesetting.enable = true;
         package = config.boot.kernelPackages.nvidiaPackages.production;
+        
+	powerManagement = {
+	  enable = true;
+	  finegrained = true;
+	};
 
         prime = {
           offload.enable = true;
