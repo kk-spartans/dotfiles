@@ -8,6 +8,7 @@
   imports = [
     ./sddm.nix
     ./kanata.nix
+    ./autologin.nix
   ];
 
   programs.hyprland = {
