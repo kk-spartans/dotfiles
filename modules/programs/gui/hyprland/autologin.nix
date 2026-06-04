@@ -5,7 +5,7 @@
   ];
   home-manager.users.kk-spartans.programs.fish.loginShellInit = ''
     tty | rg -q "/dev/tty1"
-    if test $status -eq 1
+    if test $status -eq 0
       uwsm start default
     end
   '';

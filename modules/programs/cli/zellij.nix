@@ -17,7 +17,7 @@
 
   programs.fish.interactiveShellInit = ''
     tty | rg -q "/dev/tty1"
-    if not set -q ZELLIJ; and test $status -eq 0
+    if not set -q ZELLIJ; and test $status -eq 1
         zellij attach main || zellij --session main
     end
   '';
