@@ -40,7 +40,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/521ece463c4a9d3d128670688a34756805a4328f";
+      url = "github:hyprwm/Hyprland";
     };
 
     catppuccin = {

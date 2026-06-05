@@ -8,20 +8,16 @@
     hyprshot
     satty
   ];
-  wayland.windowManager.hyprland = {
-    settings.bind = [
-      ", Print, exec, hyprshot --freeze --mode region --clipboard-only --notif-timeout 3000"
-      "SHIFT, Print, exec, hyprshot --freeze --mode region --clipboard-only --notif-timeout 3000 --raw | satty --filename -"
+  wayland.windowManager.hyprland.extraConfig = ''
+    hl.bind("Print", hl.dsp.exec_cmd("hyprshot --freeze --mode region --clipboard-only --notif-timeout 3000"))
+    hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot --freeze --mode region --clipboard-only --notif-timeout 3000 --raw | satty --filename -"))
+    hl.bind("SUPER + Print", hl.dsp.exec_cmd("hyprshot --freeze --mode window --clipboard-only --notif-timeout 3000"))
+    hl.bind("SUPER + SHIFT + Print", hl.dsp.exec_cmd("hyprshot --freeze --mode window --clipboard-only --notif-timeout 3000 --raw | satty --filename -"))
 
-      "SUPER, Print, exec, hyprshot --freeze --mode window --clipboard-only --notif-timeout 3000"
-      "SUPER SHIFT, Print, exec, hyprshot --freeze --mode window --clipboard-only --notif-timeout 3000 --raw | satty --filename -"
-    ];
-    extraConfig = ''
-      layerrule {
-         name = hyprshot-fade
-         animation = fade
-         match:namespace = hyprshot
-        }
-    '';
-  };
+    hl.layer_rule({
+      name = "hyprshot-fade",
+      match = { namespace = "hyprshot" },
+      animation = "fade",
+    })
+  '';
 }

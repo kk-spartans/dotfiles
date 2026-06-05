@@ -10,16 +10,31 @@
   ];
 
   wayland.windowManager.hyprland = {
-    settings.exec-once = [ "uwsm app -- swaync" ];
     extraConfig = ''
-      layerrule = blur on, match:namespace swaync-control-center
-      layerrule = blur_popups on, match:namespace swaync-control-center
-      layerrule = ignore_alpha 0.5, match:namespace swaync-control-center
-      layerrule = blur on, match:namespace swaync-notification-window
-      layerrule = blur_popups on, match:namespace swaync-notification-window
-      layerrule = ignore_alpha 0.5, match:namespace swaync-notification-window
-      layerrule = animation slide right, match:namespace swaync-control-center
-      layerrule = animation slide right, match:namespace swaync-notification-window
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("uwsm app -- swaync")
+      end)
+
+      hl.layer_rule({
+        match = { namespace = "swaync-control-center" },
+        blur = true,
+        blur_popups = true,
+        ignore_alpha = 0.5,
+      })
+      hl.layer_rule({
+        match = { namespace = "swaync-notification-window" },
+        blur = true,
+        blur_popups = true,
+        ignore_alpha = 0.5,
+      })
+      hl.layer_rule({
+        match = { namespace = "swaync-control-center" },
+        animation = "slide right",
+      })
+      hl.layer_rule({
+        match = { namespace = "swaync-notification-window" },
+        animation = "slide right",
+      })
     '';
   };
 

@@ -11,12 +11,16 @@
 
 # but one day, i broke the theme
 # and i saw a screen that looked extremely familiar:
-# almost all enterprise (gas stations, supermarkets, whatever) running linux use sddm.
+# almost all enterprises (gas stations, supermarkets, whatever) running linux use sddm.
 
 # a peice of legacy software was making its way into my computer
 # i had to nuke it.
 
 {
+  imports = [
+    ./autologin.nix # i feel its better importing it here since they're mutually exclusive
+  ];
+
   programs.hyprland.withUWSM = true;
   services.displayManager.sddm.wayland.enable = false; # you dont need one, do you? save some battery
 

@@ -11,6 +11,10 @@
 
   home-manager.users.kk-spartans = {
     home.packages = [ pkgs.udiskie ];
-    wayland.windowManager.hyprland.settings.exec-once = [ "udiskie --automount --tray" ];
+    wayland.windowManager.hyprland.extraConfig = ''
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("udiskie --automount --tray")
+      end)
+    '';
   };
 }

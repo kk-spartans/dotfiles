@@ -15,11 +15,14 @@ in
     "writeBoundary"
   ] "${snappy}/bin/snappy-install-config";
 
-  wayland.windowManager.hyprland.settings = {
-    exec-once = [ "snappy-switcher --daemon" ];
-    bind = [
-      "ALT, Tab, exec, snappy-switcher next"
-      "ALT SHIFT, Tab, exec, snappy-switcher prev"
-    ];
+  wayland.windowManager.hyprland = {
+    extraConfig = ''
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("snappy-switcher --daemon")
+      end)
+
+      hl.bind("ALT + Tab", hl.dsp.exec_cmd("snappy-switcher next"))
+      hl.bind("ALT + SHIFT + Tab", hl.dsp.exec_cmd("snappy-switcher prev"))
+    '';
   };
 }

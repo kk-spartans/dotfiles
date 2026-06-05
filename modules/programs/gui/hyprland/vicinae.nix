@@ -9,25 +9,19 @@
     extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
   };
 
-  wayland.windowManager.hyprland = {
-    settings = {
-      exec-once = [ "vicinae server" ];
-      bind = [
-        "SUPER, SPACE, exec, uwsm app -- vicinae toggle"
-        "SUPER, V, exec, uwsm app -- vicinae \"vicinae://launch/clipboard/history\""
-        "SUPER, SEMICOLON, exec, uwsm app -- vicinae \"vicinae://launch/core/search-emojis\""
-      ];
-    };
-    extraConfig = ''
-      layerrule {
-         name = vicinae-fade
-         blur = on
-         ignore_alpha = 0
-         animation = fade
-         match:namespace = vicinae
-        }
-    '';
-  };
+  wayland.windowManager.hyprland.extraConfig = ''
+    hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("uwsm app -- vicinae toggle"))
+    hl.bind("SUPER + V", hl.dsp.exec_cmd("uwsm app -- vicinae 'vicinae://launch/clipboard/history'"))
+    hl.bind("SUPER + SEMICOLON", hl.dsp.exec_cmd("uwsm app -- vicinae 'vicinae://launch/core/search-emojis'"))
+
+    hl.layer_rule({
+      name = "vicinae-fade",
+      match = { namespace = "vicinae" },
+      blur = true,
+      ignore_alpha = 0,
+      animation = "fade",
+    })
+  '';
 
   services.vicinae = {
     enable = true;
@@ -74,7 +68,7 @@
             launchPrefix = "uwsm app -- ";
           };
           entrypoints = {
-            code.alias = "code"; # it indexes against "Visual Studio Code"
+            code.alias = "code";
             obsidian.alias = "ob";
           };
         };

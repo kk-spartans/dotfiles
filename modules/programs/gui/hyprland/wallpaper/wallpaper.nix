@@ -12,5 +12,9 @@
     executable = true;
   };
 
-  wayland.windowManager.hyprland.settings.exec-once = [ "~/.config/hypr/hyprlock/wall" ];
+  wayland.windowManager.hyprland.extraConfig = ''
+    hl.on("hyprland.start", function()
+      hl.exec_cmd("~/.config/hypr/hyprlock/wall")
+    end)
+  '';
 }

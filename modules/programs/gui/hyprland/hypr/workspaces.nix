@@ -1,30 +1,24 @@
 {
   ...
 }:
+let
+  moveBinds = builtins.concatStringsSep "\n" (
+    builtins.map (n: ''
+      hl.bind("SUPER + SHIFT + ${toString n}", hl.dsp.window.move({ workspace = ${toString n} }))
+    '') (builtins.genList (i: i + 1) 9)
+  );
+  focusBinds = builtins.concatStringsSep "\n" (
+    builtins.map (n: ''
+      hl.bind("SUPER + ${toString n}", hl.dsp.focus({ workspace = ${toString n} }))
+    '') (builtins.genList (i: i + 1) 9)
+  );
+in
 {
-  wayland.windowManager.hyprland.settings = {
-    bind = [
-      "SUPER SHIFT, 1, movetoworkspace, 1"
-      "SUPER SHIFT, 2, movetoworkspace, 2"
-      "SUPER SHIFT, 3, movetoworkspace, 3"
-      "SUPER SHIFT, 4, movetoworkspace, 4"
-      "SUPER SHIFT, 5, movetoworkspace, 5"
-      "SUPER SHIFT, 6, movetoworkspace, 6"
-      "SUPER SHIFT, 7, movetoworkspace, 7"
-      "SUPER SHIFT, 8, movetoworkspace, 8"
-      "SUPER SHIFT, 9, movetoworkspace, 9"
-      "SUPER SHIFT, 0, movetoworkspace, 10"
+  wayland.windowManager.hyprland.extraConfig = ''
+    ${moveBinds}
+    hl.bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
-      "SUPER, 1, workspace, 1"
-      "SUPER, 2, workspace, 2"
-      "SUPER, 3, workspace, 3"
-      "SUPER, 4, workspace, 4"
-      "SUPER, 5, workspace, 5"
-      "SUPER, 6, workspace, 6"
-      "SUPER, 7, workspace, 7"
-      "SUPER, 8, workspace, 8"
-      "SUPER, 9, workspace, 9"
-      "SUPER, 0, workspace, 10"
-    ];
-  };
+    ${focusBinds}
+    hl.bind("SUPER + 0", hl.dsp.focus({ workspace = 10 }))
+  '';
 }

@@ -8,7 +8,6 @@
   imports = [
     ./sddm.nix
     ./kanata.nix
-    ./autologin.nix
   ];
 
   programs.hyprland = {
@@ -26,7 +25,7 @@
   };
 
   home-manager.users.kk-spartans = {
-    wayland.windowManager.hyprland.systemd.enable = false; # conflicts with uwsm
+    wayland.windowManager.hyprland.systemd.enable = false;
 
     imports = [
       ./hyprshot.nix
@@ -47,21 +46,23 @@
       ./hyprlock/hyprlock.nix
       ./hyprsunset/hyprsunset.nix
 
-      # ./cava/cava.nix // extremely broken right now
+      # ./cava/cava.nix
     ];
 
     home.packages = [ pkgs.hyprshutdown ];
 
     wayland.windowManager.hyprland = {
       enable = true;
-      configType = "hyprlang";
+      configType = "lua";
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
-      settings = {
-        exec-once = [ "mpris-proxy" ];
-      };
+      extraConfig = ''
+        hl.on("hyprland.start", function()
+          hl.exec_cmd("mpris-proxy")
+        end)
+      '';
     };
   };
 }

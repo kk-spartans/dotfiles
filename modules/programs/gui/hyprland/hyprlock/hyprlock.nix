@@ -4,16 +4,16 @@
   ...
 }:
 {
-  programs.hyprlock.enable = true; # can't set settings here...?
-  wayland.windowManager.hyprland.settings.bind = [
-    "SUPER, L, exec, hyprctl dispatch dpms on && hyprlock -c ~/.config/hypr/hyprlock/hyprlock.conf"
-  ];
+  programs.hyprlock.enable = true;
+  wayland.windowManager.hyprland.extraConfig = ''
+    hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprctl dispatch dpms on && hyprlock -c ~/.config/hypr/hyprlock/hyprlock.conf"))
+  '';
   xdg.configFile."hypr/hyprlock/hyprlock.conf".source = ./hyprlock.conf;
   xdg.configFile."hyprlock.conf".source = ./hyprlock.conf;
   xdg.configFile."hypr/hyprlock/current-song.sh" = {
     source = ./current-song.sh;
     executable = true;
-  }; # can't use {{title}} in hyprlang
+  };
 
   xdg.configFile."hypr/hypridle.conf".text = ''
     general {

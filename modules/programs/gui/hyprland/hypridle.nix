@@ -9,7 +9,11 @@
   config = lib.mkMerge [
     (lib.mkIf laptop {
       home.packages = [ pkgs.hypridle ];
-      wayland.windowManager.hyprland.settings.exec-once = [ "hypridle" ];
+      wayland.windowManager.hyprland.extraConfig = ''
+        hl.on("hyprland.start", function()
+          hl.exec_cmd("hypridle")
+        end)
+      '';
       xdg.configFile."hypr/hypridle.conf".text = ''
         listener {
             timeout = 30

@@ -6,35 +6,42 @@
 }:
 {
   wayland.windowManager.hyprland.extraConfig = ''
-    gesture = 3, horizontal, workspace
+    hl.gesture({
+      fingers = 3,
+      direction = "horizontal",
+      action = "workspace",
+    })
 
-    windowrule {
-      name = suppress-maximize-events
-      match:class = .*
-      suppress_event = maximize
-    }
+    hl.window_rule({
+      name = "suppress-maximize-events",
+      match = { class = ".*" },
+      suppress_event = "maximize",
+    })
 
-    windowrule {
-      name = fix-xwayland-drags
-      match:class = ^''$
-      match:title = ^''$
-      match:xwayland = true
-      match:float = true match:fullscreen = false
-      match:pin = false
-      no_focus = true
-    }
+    hl.window_rule({
+      name = "fix-xwayland-drags",
+      match = {
+        class = "^$",
+        title = "^$",
+        xwayland = true,
+        float = true,
+        fullscreen = false,
+        pin = false,
+      },
+      no_focus = true,
+    })
 
-    windowrule {
-      name = move-hyprland-run
-      match:class = hyprland-run
-      move = 20 monitor_h-120
-      float = yes
-    }
+    hl.window_rule({
+      name = "move-hyprland-run",
+      match = { class = "hyprland-run" },
+      move = "20 monitor_h-120",
+      float = true,
+    })
 
-    windowrule {
-      name = swaync-noborder
-      match:class = ^(swaync)$
-      border_size = 0
-    }
+    hl.window_rule({
+      name = "swaync-noborder",
+      match = { class = "^(swaync)$" },
+      border_size = 0,
+    })
   '';
 }

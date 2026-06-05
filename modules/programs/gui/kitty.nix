@@ -7,7 +7,9 @@
 {
   catppuccin.kitty.enable = true;
 
-  wayland.windowManager.hyprland.settings.bind = [ "SUPER, Q, exec, uwsm app -- kitty" ];
+  wayland.windowManager.hyprland.extraConfig = ''
+    hl.bind("SUPER + Q", hl.dsp.exec_cmd("uwsm app -- kitty"))
+  '';
 
   programs.kitty = {
     enable = true;

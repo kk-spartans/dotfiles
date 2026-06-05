@@ -7,7 +7,7 @@
 {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false; # breaks my tty too...
     settings = {
       show_startup_tips = false;
       allow_kitty_graphics = true;

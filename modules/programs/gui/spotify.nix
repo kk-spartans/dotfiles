@@ -14,17 +14,26 @@ in
 
   home-manager.users.kk-spartans = {
     wayland.windowManager.hyprland = {
-      settings = {
-        bind = [ "SUPER, A, togglespecialworkspace, spotify" ];
-        exec-once = [ "spotify" ];
-      };
       extraConfig = ''
-                windowrule {
-                  name = spotify
-                  match:class = ^(spotify)$
-                  workspace = special:spotify silent
-        	  fullscreen = true;
-                }
+        hl.on("hyprland.start", function()
+          hl.exec_cmd("spotify")
+        end)
+
+        hl.bind("SUPER + A", hl.dsp.workspace.toggle_special("spotify"))
+
+        hl.window_rule({
+          name = "spotify",
+          match = { class = "^([Ss]potify)$" },
+          workspace = "special:spotify silent",
+          fullscreen = true,
+        })
+
+        hl.window_rule({
+          name = "spotify-fallback",
+          match = { initialTitle = "^Spotify" },
+          workspace = "special:spotify silent",
+          fullscreen = true,
+        })
       '';
     };
 

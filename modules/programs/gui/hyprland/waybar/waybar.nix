@@ -12,16 +12,23 @@
     mode = "createLink";
   };
 
-  wayland.windowManager.hyprland.settings.exec-once = [ "uwsm app -- waybar -l info" ];
+  wayland.windowManager.hyprland = {
+    extraConfig = ''
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("uwsm app -- waybar -l info")
+      end)
+
+      hl.layer_rule({
+        match = { namespace = "waybar" },
+        animation = "slide top",
+      })
+    '';
+  };
 
   xdg.configFile."waybar/vram.sh" = {
     source = ./vram.sh;
     executable = true;
   };
-
-  wayland.windowManager.hyprland.extraConfig = ''
-    layerrule = match:namespace waybar, animation slide top
-  '';
 
   programs.waybar = {
     enable = true;
@@ -82,7 +89,6 @@
 
         "hyprland/workspaces" = {
           format = "{name}";
-          # format = "{name} {icon}";
           format-icons = {
             "1" = "";
             "2" = "";

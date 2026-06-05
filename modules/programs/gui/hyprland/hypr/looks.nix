@@ -7,80 +7,79 @@
 {
   catppuccin.hyprland.enable = true;
 
-  wayland.windowManager.hyprland.settings = {
-    general = {
-      gaps_in = 5;
-      gaps_out = 10;
-      border_size = 0;
-      resize_on_border = false;
-      allow_tearing = false;
-      # layout = "scrolling"; // i dont get the hype
-      layout = "dwindle";
-    };
+  wayland.windowManager.hyprland = {
+    extraConfig = ''
+      hl.curve("smoothOut", { type = "bezier", points = {{ 0.36, 0 }, { 0.66, -0.56 }} })
+      hl.curve("smoothIn", { type = "bezier", points = {{ 0.25, 1 }, { 0.5, 1 }} })
+      hl.curve("overshot", { type = "bezier", points = {{ 0.05, 0.9 }, { 0.1, 1.05 }} })
+      hl.curve("softSnap", { type = "bezier", points = {{ 0.4, 0 }, { 0.2, 1 }} })
+      hl.curve("fluent", { type = "bezier", points = {{ 0.0, 0.0 }, { 0.2, 1.0 }} })
 
-    decoration = {
-      rounding = 10;
-      rounding_power = 2;
-      active_opacity = 1.0;
-      inactive_opacity = 0.9;
+      hl.animation({ leaf = "windows", enabled = true, speed = 5, bezier = "overshot", style = "popin 80%" })
+      hl.animation({ leaf = "windowsIn", enabled = true, speed = 5, bezier = "overshot", style = "popin 80%" })
+      hl.animation({ leaf = "windowsOut", enabled = true, speed = 4, bezier = "smoothOut", style = "popin 95%" })
+      hl.animation({ leaf = "windowsMove", enabled = true, speed = 3, bezier = "smoothIn" })
+      hl.animation({ leaf = "layersIn", enabled = true, speed = 3, bezier = "smoothIn", style = "fade" })
+      hl.animation({ leaf = "layersOut", enabled = true, speed = 3, bezier = "smoothIn", style = "fade" })
+      hl.animation({ leaf = "fade", enabled = true, speed = 4, bezier = "smoothIn" })
+      hl.animation({ leaf = "fadeIn", enabled = true, speed = 4, bezier = "smoothIn" })
+      hl.animation({ leaf = "fadeOut", enabled = true, speed = 4, bezier = "smoothOut" })
+      hl.animation({ leaf = "fadeSwitch", enabled = true, speed = 4, bezier = "smoothIn" })
+      hl.animation({ leaf = "fadeShadow", enabled = true, speed = 4, bezier = "smoothIn" })
+      hl.animation({ leaf = "fadeDim", enabled = true, speed = 4, bezier = "smoothIn" })
+      hl.animation({ leaf = "fadeDpms", enabled = true, speed = 4, bezier = "smoothIn" })
+      hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "overshot", style = "slidefade 30%" })
+      hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 5, bezier = "overshot", style = "slidefadevert 30%" })
+    '';
 
-      shadow = {
-        enabled = true;
-        range = 10;
-        render_power = 3;
-        color = "rgba(121212ee)";
+    settings.config = {
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 0;
+        resize_on_border = false;
+        allow_tearing = false;
+        layout = "dwindle";
       };
 
-      blur = {
+      animations = {
         enabled = true;
-        size = 5;
-        passes = 3;
-        vibrancy = 0.05;
-        ignore_opacity = true;
       };
-    };
 
-    animations = {
-      enabled = true;
+      decoration = {
+        rounding = 10;
+        rounding_power = 2;
+        active_opacity = 1.0;
+        inactive_opacity = 0.9;
 
-      bezier = [
-        "smoothOut, 0.36, 0, 0.66, -0.56"
-        "smoothIn, 0.25, 1, 0.5, 1"
-        "overshot, 0.05, 0.9, 0.1, 1.05"
-        "softSnap, 0.4, 0, 0.2, 1"
-        "fluent, 0.0, 0.0, 0.2, 1.0"
-      ];
+        shadow = {
+          enabled = true;
+          range = 10;
+          render_power = 3;
+          color = "rgba(121212ee)";
+        };
 
-      animation = [
-        "windows, 1, 5, overshot, popin 80%"
-        "windowsIn, 1, 5, overshot, popin 80%"
-        "windowsOut, 1, 4, smoothOut, popin 95%"
-        "windowsMove, 1, 3, smoothIn"
-        "layersIn, 1, 3, smoothIn, fade"
-        "layersOut, 1, 3, smoothIn, fade"
-        "fade, 1, 4, smoothIn"
-        "fadeIn, 1, 4, smoothIn"
-        "fadeOut, 1, 4, smoothOut"
-        "fadeSwitch, 1, 4, smoothIn"
-        "fadeShadow, 1, 4, smoothIn"
-        "fadeDim, 1, 4, smoothIn"
-        "fadeDpms, 1, 4, smoothIn"
-        "workspaces, 1, 5, overshot, slidefade 30%"
-        "specialWorkspace, 1, 5, overshot, slidefadevert 30%"
-      ];
-    };
+        blur = {
+          enabled = true;
+          size = 5;
+          passes = 3;
+          vibrancy = 0.05;
+          ignore_opacity = true;
+        };
+      };
 
-    dwindle = {
-      preserve_split = true;
-    };
+      dwindle = {
+        preserve_split = true;
+      };
 
-    master = {
-      new_status = "master";
-    };
+      master = {
+        new_status = "master";
+      };
 
-    misc = {
-      force_default_wallpaper = -1;
-      disable_hyprland_logo = false;
+      misc = {
+        force_default_wallpaper = -1;
+        disable_hyprland_logo = false;
+      };
     };
   };
 }
