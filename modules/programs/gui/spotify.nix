@@ -30,7 +30,7 @@ in
 
         hl.window_rule({
           name = "spotify-fallback",
-          match = { initialTitle = "^Spotify" },
+          match = { initial_title = "^Spotify" },
           workspace = "special:spotify silent",
           fullscreen = true,
         })
