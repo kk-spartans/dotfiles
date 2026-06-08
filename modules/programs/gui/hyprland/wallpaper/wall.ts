@@ -87,14 +87,13 @@ async function processUrl(url: string) {
     convert(resizedPath, "-modulate", "100", darkPath);
   }
 
-  // Round corners — create mask from scratch so it's clean regardless of alpha
-  const maskPath = `${t}/mask.png`;
-  convert("-size", `${IMG_SIZE}x${IMG_SIZE}`, "xc:black",
-    "-fill", "white",
-    "-draw", `roundrectangle 0,0,${IMG_SIZE},${IMG_SIZE},${ROUNDNESS},${ROUNDNESS}`,
-    maskPath);
-  convert(darkPath, maskPath,
-    "-alpha", "on",
+  // Round corners — exactly like the original working bash script
+  convert(darkPath,
+    "(", "-size", `${IMG_SIZE}x${IMG_SIZE}`, "xc:none",
+      "-fill", "white",
+      "-draw", `roundrectangle 0,0,${IMG_SIZE},${IMG_SIZE},${ROUNDNESS},${ROUNDNESS}`,
+    ")",
+    "-alpha", "set",
     "-compose", "CopyOpacity", "-composite",
     roundedPath);
 
@@ -107,7 +106,7 @@ async function processUrl(url: string) {
   await setWallpaper("/tmp/wall.png");
 
   // Cleanup temp files
-  for (const f of [inputPath, resizedPath, darkPath, maskPath, roundedPath, outputPath]) {
+  for (const f of [inputPath, resizedPath, darkPath, roundedPath, outputPath]) {
     unlink(f).catch(() => {});
   }
   unlink(t).catch(() => {});
