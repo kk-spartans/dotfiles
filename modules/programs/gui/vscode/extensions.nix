@@ -8,6 +8,7 @@
   programs.vscode.profiles.default.extensions =
     with pkgs.vscode-extensions;
     [
+      ms-vscode.cpptools
       usernamehw.errorlens
       tamasfe.even-better-toml
       mhutchie.git-graph

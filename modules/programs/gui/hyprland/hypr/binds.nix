@@ -43,26 +43,28 @@
       hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
       hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
     '';
-    settings.config = {
-      input = {
-        kb_layout = "us";
-        kb_variant = "";
-        kb_model = "";
-        kb_options = "";
-        kb_rules = "";
-        follow_mouse = 1;
-        sensitivity = 0.4;
+    settings = {
+      config = {
+        input = {
+          kb_layout = "us";
+          kb_variant = "";
+          kb_model = "";
+          kb_options = "";
+          kb_rules = "";
+          follow_mouse = 1;
+          sensitivity = 0.4;
 
-        touchpad = {
-          natural_scroll = true;
-          disable_while_typing = false;
+          touchpad = {
+            natural_scroll = true;
+            disable_while_typing = false;
+          };
         };
       };
-    };
 
-    settings.device = {
-      name = "epic-mouse-v1";
-      sensitivity = -0.5;
+      device = {
+        name = "epic-mouse-v1";
+        sensitivity = -0.5;
+      };
     };
   };
 }

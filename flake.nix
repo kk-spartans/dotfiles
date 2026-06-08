@@ -1,7 +1,7 @@
 {
   description = "nixos";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=master";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable"; # master makes me compile mars
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,30 +14,30 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    aw-watcher-lid = {
-      url = "github:tobixen/aw-watcher-lid";
-      flake = false;
-    };
+    # aw-watcher-lid = {
+    #   url = "github:tobixen/aw-watcher-lid";
+    #   flake = false;
+    # };
 
-    aw-watcher-netstatus = {
-      url = "github:sameersismail/aw-watcher-netstatus";
-      flake = false;
-    };
+    # aw-watcher-netstatus = {
+    #   url = "github:sameersismail/aw-watcher-netstatus";
+    #   flake = false;
+    # };
 
-    aw-watcher-lastfm = {
-      url = "github:0xbrayo/aw-watcher-lastfm";
-      flake = false;
-    };
+    # aw-watcher-lastfm = {
+    #   url = "github:0xbrayo/aw-watcher-lastfm";
+    #   flake = false;
+    # };
 
-    aw-watcher-utilization = {
-      url = "github:Alwinator/aw-watcher-utilization";
-      flake = false;
-    };
+    # aw-watcher-utilization = {
+    #   url = "github:Alwinator/aw-watcher-utilization";
+    #   flake = false;
+    # };
 
-    aw-watcher-input = {
-      url = "github:ActivityWatch/aw-watcher-input";
-      flake = false;
-    };
+    # aw-watcher-input = {
+    #   url = "github:ActivityWatch/aw-watcher-input";
+    #   flake = false;
+    # };
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -114,10 +114,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ik_llama-cpp = {
-      url = "github:ikawrakow/ik_llama.cpp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ik_llama-cpp = {
+    #   url = "github:ikawrakow/ik_llama.cpp";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
@@ -133,7 +133,7 @@
       spicetify-nix,
       sops-nix,
       rust-overlay,
-      ik_llama-cpp,
+      # ik_llama-cpp,
       ...
     }@inputs:
     let

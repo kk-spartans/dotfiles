@@ -10,6 +10,9 @@
     ./lastfm.nix
     ./lid.nix
     ./vscode.nix
+
+    # ./utilization.nix
+    # ./input.nix
   ];
 
   services.activitywatch = {

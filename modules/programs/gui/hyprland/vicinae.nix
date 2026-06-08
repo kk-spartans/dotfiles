@@ -40,11 +40,11 @@
       search_files_in_root = true;
       theme = {
         light = {
-          name = "evergarden-summer";
+          name = "catppuccin-frappe";
           icon_theme = "default";
         };
         dark = {
-          name = "tokyo-night";
+          name = "catppuccin-mocha";
           icon_theme = "default";
         };
       };

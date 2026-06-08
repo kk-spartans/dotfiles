@@ -21,6 +21,7 @@
     (lib.mkIf nvidia {
       
       boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+      nixpkgs.config.cudaSupport = true;
       hardware.graphics.enable32Bit = true;
       services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -43,6 +44,10 @@
       };
 
       boot.initrd.kernelModules = [ "nvidia" ];
+      environment.systemPackages = with pkgs.cudaPackages; [
+        cudatoolkit
+	cuda-samples
+      ];
     })
 
     (lib.mkIf (!nvidia) {

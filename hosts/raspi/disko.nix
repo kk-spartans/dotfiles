@@ -14,7 +14,6 @@
         partitions = {
           boot = {
             size = "512M";
-            type = "EF00";
 
             content = {
               type = "filesystem";
@@ -42,6 +41,7 @@
                   mountpoint = "/home";
                 };
 
+                # for home-server stuff
                 "@docker" = {
                   mountpoint = "/home/kk-spartans/docker";
                 };

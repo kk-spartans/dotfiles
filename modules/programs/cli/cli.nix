@@ -73,7 +73,6 @@
       ripgrep
       ffmpeg
       tshark
-      nom
       yt-dlp
       sox
       age

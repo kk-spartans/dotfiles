@@ -6,6 +6,7 @@ set -euo pipefail
 sudo nix fmt # needs sudo or breaks bcz of random permission stuff
 git add --all
 git diff --cached
+# nix build /etc/nixos#nixosConfigurations.kk-spartans.config.system.build.toplevel --log-format internal-json -v |& nom --json
 sudo nixos-rebuild switch
 git commit -m "$*"
 git push

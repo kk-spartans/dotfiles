@@ -15,6 +15,7 @@
     ./bluetooth.nix
     ./obs.nix
     ./minecraft.nix
+    ./obsidian.nix
     ./printing.nix
   ];
 
@@ -29,8 +30,10 @@
       ./vscode/vscode.nix
       ./helium.nix
       ./discord.nix
-      # ./activitywatch/activitywatch.nix
+      ./files.nix
       ./zen-browser/zen-browser.nix
+
+      # ./activitywatch/activitywatch.nix
     ];
 
     home.packages = with pkgs; [
@@ -41,13 +44,11 @@
       libreoffice
       playerctl
       alsa-utils
-      nautilus
       lutgen
       usbutils
       aircrack-ng
       nmap
       gimp
-      obsidian
       naps2
     ];
   };

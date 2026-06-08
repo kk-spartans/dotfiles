@@ -25,7 +25,7 @@
   };
 
   home-manager.users.kk-spartans = {
-    wayland.windowManager.hyprland.systemd.enable = false;
+    wayland.windowManager.hyprland.systemd.enable = false; # conflicts with uwsm
 
     imports = [
       ./hyprshot.nix
@@ -46,7 +46,7 @@
       ./hyprlock/hyprlock.nix
       ./hyprsunset/hyprsunset.nix
 
-      # ./cava/cava.nix
+      # ./cava/cava.nix # hyprwinwrap is broken
     ];
 
     home.packages = [ pkgs.hyprshutdown ];
