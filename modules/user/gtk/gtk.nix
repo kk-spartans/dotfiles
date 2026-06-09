@@ -33,6 +33,7 @@
       gtk3
       gsettings-desktop-schemas
       glib
+      keepassxc
     ];
   };
 }

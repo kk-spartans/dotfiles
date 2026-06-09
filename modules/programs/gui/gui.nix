@@ -15,7 +15,6 @@
     ./bluetooth.nix
     ./obs.nix
     ./minecraft.nix
-    ./obsidian.nix
     ./printing.nix
   ];
 
@@ -50,6 +49,7 @@
       nmap
       gimp
       naps2
+      obsidian
     ];
   };
 }
