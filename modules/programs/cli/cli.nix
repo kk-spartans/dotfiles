@@ -39,6 +39,7 @@
       inputs.agent-skills.homeManagerModules.default
       inputs.catppuccin.homeModules.catppuccin
       ./skills.nix
+      ./crypto.nix
       ./opencode.nix
       ./btop.nix
       ./git/git.nix
