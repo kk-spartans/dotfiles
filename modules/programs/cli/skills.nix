@@ -7,6 +7,13 @@ let
     hash = "sha256-BiZvEV7VK1AwhiGg+pNMgTUQmt4exevLWwL0Brx4YyE=";
   };
 
+  remotion-skills = pkgs.fetchFromGitHub {
+    owner = "remotion-dev";
+    repo = "skills";
+    rev = "277510e78245ac0fa275d7cb6520d52e0ac2e212";
+    hash = "sha256-XklSJY8xZMExl+BFtbYo+nQ8qLnmwWipkSZh9ykwt1s=";
+  };
+
   find-skills = pkgs.fetchFromGitHub {
     owner = "vercel-labs";
     repo = "skills";
@@ -71,6 +78,12 @@ in
         subdir = "skills";
       };
 
+      remotion-skills = {
+        path = remotion-skills;
+        subdir = "skills";
+        filter.nameRegex = "remotion";
+      };
+
       uv-package-manager = {
         path = uv-package-manager;
         subdir = "plugins/python-development/skills";
@@ -105,6 +118,7 @@ in
 
     skills.enable = [
       "frontend-design"
+      "remotion"
       "find-skills"
       "uv-package-manager"
       "convex"
