@@ -118,6 +118,11 @@
     #   url = "github:ikawrakow/ik_llama.cpp";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    diffusion-llama-cpp = {
+      url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

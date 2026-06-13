@@ -100,11 +100,17 @@
       scrcpy
       cage # useful on headless raspis
       dig
-      mesa-demos # glxinfo
       devenv
       usage
       zip
       unzip
+
+      (mesa-demos.overrideAttrs (old: {
+        # glxinfo
+        postInstall = (old.postInstall or "") + ''
+          rm -f $out/bin/engine
+        '';
+      }))
     ];
 
     programs.neovim.enable = true;
