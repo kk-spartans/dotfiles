@@ -20,6 +20,6 @@ in
     pkgs.jbig2dec
   ];
   programs.fish.functions.ocrmypdf = ''
-    command ocrmypdf --language eng --output-type pdf --verbose 1 --rotate-pages --deskew --clean --force-ocr --pdf-renderer sandwich --optimize 1 $argv
+    command ocrmypdf --language eng --output-type pdf --verbose 1 --rotate-pages --deskew --clean --force-ocr --pdf-renderer auto --optimize 1 $argv
   '';
 }
