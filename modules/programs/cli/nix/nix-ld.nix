@@ -15,6 +15,33 @@
       libselinux
       glibc
       nss
+      nspr
+      expat
+      glib
+      cups
+      libdrm
+      libxkbcommon
+      libxcomposite
+      libxdamage
+      libxrandr
+      libxfixes
+      libxext
+      libxrender
+      mesa
+      pango
+      cairo
+      freetype
+      fontconfig
+      harfbuzz
+      at-spi2-atk
+      atk
+      pulseaudio
+      alsa-lib
+      pcre
+      elfutils
+      libffi
+      dbus
+      libpng
       (lib.getLib config.hardware.nvidia.package)
     ];
   };
