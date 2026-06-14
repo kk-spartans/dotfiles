@@ -16,6 +16,7 @@
     with pkgs;
     [
       pi-coding-agent
+      claude-code
     ]
     ++ (
       if minimal then
