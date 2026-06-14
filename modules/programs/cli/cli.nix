@@ -45,6 +45,7 @@
       ./files.nix
       ./media.nix
       ./networking.nix
+      ./utils/utils.nix
     ];
 
     programs.home-manager.enable = true;
