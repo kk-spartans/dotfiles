@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   anthropic-skills = pkgs.fetchFromGitHub {
     owner = "anthropics";
@@ -64,6 +64,10 @@ let
   };
 in
 {
+  imports = [
+    inputs.agent-skills.homeManagerModules.default
+  ];
+
   programs.agent-skills = {
     enable = true;
 

@@ -8,6 +8,7 @@
   imports = [
     ./sddm.nix
     ./kanata.nix
+    ./udiskie.nix
   ];
 
   programs.hyprland = {
@@ -49,7 +50,26 @@
       # ./cava/cava.nix # hyprwinwrap is broken
     ];
 
-    home.packages = [ pkgs.hyprshutdown ];
+    home.packages = with pkgs; [
+      hyprshutdown
+      playerctl
+    ];
+
+    systemd.user.services.mpris-proxy = {
+      Unit = {
+        Description = "MPRIS proxy";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.playerctl}/bin/mpris-proxy";
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -57,12 +77,6 @@
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-
-      extraConfig = ''
-        hl.on("hyprland.start", function()
-          hl.exec_cmd("mpris-proxy")
-        end)
-      '';
     };
   };
 }

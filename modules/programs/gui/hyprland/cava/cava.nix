@@ -31,10 +31,6 @@
     };
 
     extraConfig = ''
-      hl.on("hyprland.start", function()
-        hl.exec_cmd("kitty -c ~/.config/hypr/hyprwinwrap/kitty.bg.conf --class kitty-bg ~/.config/hypr/hyprwinwrap/cava.sh")
-      end)
-
       hl.window_rule({
         name = "kitty-bg-no-effects",
         match = { class = "^(kitty-bg)$" },
@@ -44,5 +40,21 @@
         render_unfocused = true,
       })
     '';
+  };
+
+  systemd.user.services.cava = {
+    Unit = {
+      Description = "Cava audio visualizer";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.kitty}/bin/kitty -c %h/.config/hypr/hyprwinwrap/kitty.bg.conf --class kitty-bg %h/.config/hypr/hyprwinwrap/cava.sh";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
   };
 }

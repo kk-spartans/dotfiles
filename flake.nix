@@ -155,6 +155,7 @@
           system,
           hostname,
           pc,
+          minimal,
           laptop,
           nvidia,
         }:
@@ -164,6 +165,7 @@
           specialArgs = {
             inherit
               inputs
+              minimal
               pc
               laptop
               nvidia
@@ -189,6 +191,8 @@
               home-manager.extraSpecialArgs = {
                 inherit
                   inputs
+                  minimal
+                  pc
                   laptop
                   nvidia
                   ;
@@ -204,7 +208,9 @@
         kk-spartans = mkHost {
           system = "x86_64-linux";
           hostname = "kk-spartans";
+
           pc = true;
+          minimal = false;
           laptop = true;
           nvidia = true;
         };
@@ -212,7 +218,9 @@
         raspi = mkHost {
           system = "aarch64-linux";
           hostname = "raspi";
+
           pc = false;
+          minimal = true;
           laptop = false;
           nvidia = false;
         };

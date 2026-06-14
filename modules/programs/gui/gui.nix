@@ -8,7 +8,6 @@
 {
   imports = [
     ./hyprland/hyprland.nix
-    ./udiskie.nix
     ./spotify.nix
     ./android.nix
     ./wireshark.nix
@@ -20,23 +19,19 @@
 
   home-manager.users.kk-spartans = {
     imports = [
-      inputs.zen-browser.homeModules.default
-      inputs.vicinae.homeManagerModules.default
+      # ./activitywatch/activitywatch.nix
+      ./vscode/vscode.nix
+      ./zen-browser/zen-browser.nix
 
       ./kitty.nix
-      ./opencode.nix
       ./fish.nix
-      ./vscode/vscode.nix
       ./helium.nix
       ./discord.nix
       ./files.nix
-      ./zen-browser/zen-browser.nix
-
-      # ./activitywatch/activitywatch.nix
     ];
 
     home.packages = with pkgs; [
-      t3code
+      # t3code # takes up 8gb worth of nix derivations?
       blender
       audacity
       brightnessctl

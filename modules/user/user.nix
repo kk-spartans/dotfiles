@@ -24,8 +24,6 @@
     netrc-file = config.sops.templates."nix/netrc".path;
   };
 
-  environment.pathsToLink = [ "/sbin" ];
-
   sops.secrets.GITHUB_TOKEN = { };
 
   users.users.kk-spartans = {
@@ -63,7 +61,7 @@
     users.kk-spartans = {
       home.username = "kk-spartans";
       home.homeDirectory = "/home/kk-spartans";
-      home.stateVersion = "26.05";
+      home.stateVersion = "26.11";
 
       home.sessionVariables = {
         EDITOR = "nvim";

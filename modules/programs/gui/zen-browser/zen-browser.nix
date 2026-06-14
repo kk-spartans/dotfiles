@@ -6,6 +6,8 @@
 }:
 {
   imports = [
+    inputs.zen-browser.homeModules.default
+
     ./extensions.nix
     ./search.nix
     ./mods.nix

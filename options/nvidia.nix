@@ -10,6 +10,10 @@
     {
       hardware.graphics.enable = true;
 
+      home-manager.users.kk-spartans.home.packages = with pkgs; [
+        mesa-demos
+      ];
+
       services.xserver = {
         xkb = {
           layout = "us";

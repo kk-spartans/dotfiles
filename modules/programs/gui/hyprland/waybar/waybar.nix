@@ -12,12 +12,24 @@
     mode = "createLink";
   };
 
+  systemd.user.services.waybar = {
+    Unit = {
+      Description = "Waybar";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.waybar}/bin/waybar -l info";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   wayland.windowManager.hyprland = {
     extraConfig = ''
-      hl.on("hyprland.start", function()
-        hl.exec_cmd("uwsm app -- waybar -l info")
-      end)
-
       hl.layer_rule({
         match = { namespace = "waybar" },
         animation = "slide top",

@@ -58,5 +58,8 @@
   };
 
   programs.gh.enable = true;
-  home.packages = [ pkgs.gitleaks ];
+  home.packages = with pkgs; [
+    gitleaks
+    gitoxide
+  ];
 }

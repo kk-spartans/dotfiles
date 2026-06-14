@@ -1,0 +1,32 @@
+{
+  config,
+  pkgs,
+  inputs,
+  minimal,
+  ...
+}:
+{
+  imports = [
+    ./opencode.nix
+    ./skills.nix
+    ./agent-browser.nix
+  ];
+
+  home.packages =
+    with pkgs;
+    [
+      pi-coding-agent
+    ]
+    ++ (
+      if minimal then
+        [ ]
+      else
+        [
+          # llama-cpp
+          inputs.diffusion-llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda
+          # ollama
+          # vllm
+          # inputs.ik_llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda
+        ]
+    );
+}

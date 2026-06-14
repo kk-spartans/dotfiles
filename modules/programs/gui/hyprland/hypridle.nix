@@ -9,11 +9,21 @@
   config = lib.mkMerge [
     (lib.mkIf laptop {
       home.packages = [ pkgs.hypridle ];
-      wayland.windowManager.hyprland.extraConfig = ''
-        hl.on("hyprland.start", function()
-          hl.exec_cmd("hypridle")
-        end)
-      '';
+      systemd.user.services.hypridle = {
+        Unit = {
+          Description = "Hyprland idle daemon";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.hypridle}/bin/hypridle";
+          Restart = "on-failure";
+          RestartSec = 5;
+        };
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+      };
       xdg.configFile."hypr/hypridle.conf".text = ''
         listener {
             timeout = 30

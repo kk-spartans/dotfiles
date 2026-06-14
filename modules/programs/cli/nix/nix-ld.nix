@@ -5,6 +5,8 @@
   ...
 }:
 {
+  environment.pathsToLink = [ "/sbin" ];
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [

@@ -11,10 +11,6 @@
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
-      hl.on("hyprland.start", function()
-        hl.exec_cmd("uwsm app -- swaync")
-      end)
-
       hl.layer_rule({
         match = { namespace = "swaync-control-center" },
         blur = true,

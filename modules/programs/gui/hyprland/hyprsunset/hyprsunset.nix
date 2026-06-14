@@ -6,9 +6,20 @@
 {
   home.packages = [ pkgs.hyprsunset ];
   xdg.configFile."hypr/hyprsunset.conf".source = ./hyprsunset.conf;
-  wayland.windowManager.hyprland.extraConfig = ''
-    hl.on("hyprland.start", function()
-      hl.exec_cmd("hyprsunset")
-    end)
-  '';
+
+  systemd.user.services.hyprsunset = {
+    Unit = {
+      Description = "Hyprsunset (blue light filter)";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.hyprsunset}/bin/hyprsunset";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 }
