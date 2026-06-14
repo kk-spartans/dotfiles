@@ -14,10 +14,6 @@
     enable = true;
     lfs.enable = true;
     attributes = [ "* text=auto eol=lf" ];
-    hooks.pre-commit = pkgs.writeShellScript "pre-commit" ''
-      #!/usr/bin/env bash
-      gitleaks git --pre-commit --verbose
-    '';
 
     settings = {
       user = {
@@ -58,8 +54,8 @@
   };
 
   programs.gh.enable = true;
+
   home.packages = with pkgs; [
-    gitleaks
     gitoxide
   ];
 }

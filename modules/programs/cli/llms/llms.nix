@@ -17,6 +17,7 @@
     [
       pi-coding-agent
       claude-code
+      codex
     ]
     ++ (
       if minimal then
