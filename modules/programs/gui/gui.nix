@@ -8,6 +8,7 @@
 {
   imports = [
     ./hyprland/hyprland.nix
+    ./files.nix
     ./spotify.nix
     ./android.nix
     ./wireshark.nix
@@ -27,7 +28,6 @@
       ./fish.nix
       ./helium.nix
       ./discord.nix
-      ./files.nix
     ];
 
     home.packages = with pkgs; [

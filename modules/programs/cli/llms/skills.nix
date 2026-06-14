@@ -62,6 +62,20 @@ let
     rev = "4dc48d7bc5dbb5ba46cd63e5bd20082485630f97";
     hash = "sha256-p1fp2+E7elHyZNaB5EQykQ79F7NFegHjI8EvTMfKDu0=";
   };
+
+  impeccable = pkgs.fetchFromGitHub {
+    owner = "pbakaus";
+    repo = "impeccable";
+    rev = "50f68ffffcc7a64b469e3e2a542b6b793b3a4e39";
+    hash = "sha256-CuZU5Qq6FcQC/aoKZzbDy+nGAPCT4BnaFNwuehln+FY=";
+  };
+
+  taste-skill = pkgs.fetchFromGitHub {
+    owner = "Leonxlnx";
+    repo = "taste-skill";
+    rev = "01d850496846d21f1f8f89fc8e08c58f76e4ae3e";
+    hash = "sha256-UHBfmy3zACd/YzD3lfg8C6yEW2SH5XPkA8ekzvzN7GQ=";
+  };
 in
 {
   imports = [
@@ -118,10 +132,21 @@ in
         path = react-doctor;
         subdir = ".agents/skills/react-doctor";
       };
+
+      impeccable = {
+        path = impeccable;
+        subdir = ".opencode/skills/impeccable";
+      };
+
+      taste-skill = {
+        path = taste-skill;
+        subdir = "skills";
+      };
     };
 
     skills.enable = [
-      "frontend-design"
+      "impeccable"
+      "taste-skill"
       "remotion"
       "find-skills"
       "uv-package-manager"

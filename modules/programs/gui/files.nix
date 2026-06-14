@@ -5,10 +5,11 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
+  home-manager.users.kk-spartans.home.packages = with pkgs; [
     libimobiledevice
     nautilus
     ifuse
-    usbmuxd
   ];
+
+  services.usbmuxd.enable = true;
 }
