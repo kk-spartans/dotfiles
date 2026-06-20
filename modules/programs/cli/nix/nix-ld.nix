@@ -29,6 +29,7 @@
       libxfixes
       libxext
       libxrender
+      libxcb
       mesa
       pango
       cairo

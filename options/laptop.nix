@@ -18,10 +18,7 @@
       };
 
       services.auto-cpufreq.enable = true;
-      environment.systemPackages = with pkgs; [
-        powertop
-        upower
-      ];
+      services.upower.enable = true;
     })
   ];
 }

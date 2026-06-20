@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   minimal,
+  laptop,
   ...
 }:
 {
@@ -19,10 +20,13 @@
         else
           [
             hyperfine
+            dmidecode
+            lshw
             fio
             sysbench
           ]
-      );
+      )
+      ++ (if laptop then [ powertop ] else [ ]);
 
     catppuccin.btop.enable = true;
 

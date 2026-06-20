@@ -14,6 +14,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    debatable = {
+      url = "github:kk-spartans/debatable";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     # aw-watcher-lid = {
     #   url = "github:tobixen/aw-watcher-lid";
     #   flake = false;

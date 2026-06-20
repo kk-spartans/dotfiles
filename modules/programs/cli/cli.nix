@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  minimal,
   ...
 }:
 {
@@ -46,6 +47,10 @@
       ./media.nix
       ./networking.nix
       ./utils/utils.nix
+    ]
+    ++ lib.optionals (!minimal) [
+      inputs.debatable.homeManagerModules.default
+      ./debatable.nix
     ];
 
     programs.home-manager.enable = true;
