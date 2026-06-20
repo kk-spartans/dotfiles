@@ -12,7 +12,8 @@ let
       nodejs
     ];
     text = ''
-      exec pnpm dlx agent-browser "$@"
+      # docker run -d --name cloak -p 127.0.0.1:9222:9222 cloakhq/cloakbrowser cloakserve
+      exec pnpm dlx agent-browser --cdp 9222 "$@"
     '';
   };
 in
