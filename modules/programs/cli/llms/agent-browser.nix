@@ -10,10 +10,25 @@ let
     runtimeInputs = with pkgs; [
       pnpm
       nodejs
+      docker
     ];
     text = ''
-      # docker run -d --name cloak -p 127.0.0.1:9222:9222 cloakhq/cloakbrowser cloakserve
-      exec pnpm dlx agent-browser --cdp 9222 "$@"
+      set -euo pipefail
+
+      CONTAINER_NAME="cloak"
+      IMAGE="cloakhq/cloakbrowser"
+      CDP_PORT="9222"
+
+      if ! docker inspect "$CONTAINER_NAME" >/dev/null 2>&1; then
+        docker run -d \
+          --name "$CONTAINER_NAME" \
+          -p 127.0.0.1:''${CDP_PORT}:9222 \
+          "$IMAGE" cloakserve >/dev/null
+      elif [ "$(docker inspect -f '{{.State.Running}}' "$CONTAINER_NAME")" != "true" ]; then
+        docker start "$CONTAINER_NAME" >/dev/null
+      fi
+
+      exec pnpm dlx agent-browser --cdp "$CDP_PORT" "$@"
     '';
   };
 in
