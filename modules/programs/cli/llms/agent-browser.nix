@@ -7,9 +7,12 @@
 let
   agent-browser = pkgs.writeShellApplication {
     name = "agent-browser";
-    runtimeInputs = [ pkgs.bun ];
+    runtimeInputs = with pkgs; [
+      pnpm
+      nodejs
+    ];
     text = ''
-      exec bunx agent-browser "$@"
+      exec pnpm dlx agent-browser "$@"
     '';
   };
 in
