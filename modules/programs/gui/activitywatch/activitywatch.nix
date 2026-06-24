@@ -10,6 +10,7 @@
     ./lastfm.nix
     ./lid.nix
     ./vscode.nix
+    ./zen-browser.nix
 
     # ./utilization.nix
     # ./input.nix

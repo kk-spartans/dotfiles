@@ -1,7 +1,7 @@
 {
   description = "nixos";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable"; # master makes me compile mars
+    nixpkgs.url = "github:nixos/nixpkgs?ref=master"; # master makes me compile mars, but i'm fine with it
 
     home-manager = {
       url = "github:nix-community/home-manager";

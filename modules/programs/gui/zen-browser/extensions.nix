@@ -6,10 +6,6 @@
 }:
 {
   programs.zen-browser.policies.ExtensionSettings = {
-    "aw-watcher-web-configurable@local" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/file/4786499/activitywatch_web_watcher_plus-0.5.4.xpi";
-      installation_mode = "force_installed";
-    };
     "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}" = {
       install_url = "https://addons.mozilla.org/firefox/downloads/file/4647055/catppuccin_web_file_icons-1.6.1.xpi";
       installation_mode = "force_installed";
@@ -60,10 +56,5 @@
     #   install_url = "https://addons.mozilla.org/firefox/downloads/file/4782673/wappalyzer-6.12.1.xpi";
     #   installation_mode = "force_installed";
     # };
-
-    "{91aa3897-2634-4a8a-9092-279db23a7689}" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/file/4741120/zen_internet-3.1.2.xpi";
-      installation_mode = "force_installed";
-    };
   };
 }

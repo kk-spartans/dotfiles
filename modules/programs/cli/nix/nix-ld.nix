@@ -30,6 +30,7 @@
       libxext
       libxrender
       libxcb
+      libX11
       mesa
       pango
       cairo
@@ -45,6 +46,7 @@
       libffi
       dbus
       libpng
+      libgbm
       (lib.getLib config.hardware.nvidia.package)
     ];
   };
