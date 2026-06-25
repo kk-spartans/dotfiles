@@ -14,6 +14,7 @@
     ./fkill.nix
     ./tokscale.nix
     ./wacli.nix
+    ./discrawl.nix
     ./fast-cli.nix
     ./gogcli.nix
   ]
