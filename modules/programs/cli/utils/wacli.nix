@@ -13,6 +13,15 @@ let
 
     subPackages = [ "cmd/wacli" ];
     vendorHash = "sha256-N5VIGCfMuaMbSuxwQLXUOCBGJ23WM4+3UA6vZhvxOPs=";
+
+    nativeBuildInputs = [
+      pkgs.installShellFiles
+    ];
+
+    postInstall = ''
+      $out/bin/wacli completion fish > wacli.fish
+      installShellCompletion --fish --name wacli.fish wacli.fish
+    '';
   };
 in
 {

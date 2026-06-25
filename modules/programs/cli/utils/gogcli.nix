@@ -13,6 +13,15 @@ let
 
     subPackages = [ "cmd/gog" ];
     vendorHash = "sha256-fof2DVm6Cn1ZW7gKSYLHX6M6nPbtYBn6EKinptjhhrE=";
+
+    nativeBuildInputs = [
+      pkgs.installShellFiles
+    ];
+
+    postInstall = ''
+      $out/bin/gog completion fish > gog.fish
+      installShellCompletion --fish --name gog.fish gog.fish
+    '';
   };
 in
 {
