@@ -29,7 +29,7 @@
         "mod.sameerasw_zen_empty_tab_logo" = "0";
         "mod.sameerasw_zen_compact_sidebar_type" = "2";
         "mod.sameerasw.zen_compact_sidebar_width" = "165px";
-        "mod.sameerasw.zen_tab_switch_anim" = true;
+        "mod.sameerasw.zen_tab_switch_anim" = false;
         "mod.sameerasw.zen_urlbar_zoom_anim" = false;
         "mod.sameerasw.zen_trackpad_anim" = false;
         "mod.sameerasw_zen_animations" = "1";

@@ -51,6 +51,8 @@
       environment.systemPackages = with pkgs.cudaPackages; [
         cudatoolkit
 	cuda-samples
+	cuda_nvcc
+	cuda_cudart
       ];
     })
 

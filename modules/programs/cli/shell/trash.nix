@@ -11,5 +11,5 @@
   # context: https://github.com/oberblastmeister/trashy#should-i-alias-rmtrashy-put
 
   programs.fish.shellAliases.rm = "trash put";
-  programs.fish.shellAliases.yeet = "command rm -rf";
+  programs.fish.shellAliases.yeet = "sudo rm -rf";
 }

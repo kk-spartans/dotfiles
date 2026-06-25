@@ -42,8 +42,8 @@
       install_url = "https://addons.mozilla.org/firefox/downloads/file/4624137/tampermonkey-5.4.1.xpi";
       installation_mode = "force_installed";
     };
-    "uBlock0@raymondhill.net" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/file/4768040/ublock_origin-1.70.0.xpi";
+    "adnauseam@rednoise.org" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/file/4821708/adnauseam-3.28.6.xpi";
       installation_mode = "force_installed";
     };
     "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" = {
