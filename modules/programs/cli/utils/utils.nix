@@ -15,6 +15,7 @@
     ./tokscale.nix
     ./wacli.nix
     ./fast-cli.nix
+    ./gogcli.nix
   ]
   ++ lib.optionals (!minimal) [
     ./ocrmypdf.nix
@@ -28,7 +29,6 @@
       psmisc
       ripgrep
       immich-go
-      gogcli
       sqlite
       cage # useful on headless raspis
     ]
