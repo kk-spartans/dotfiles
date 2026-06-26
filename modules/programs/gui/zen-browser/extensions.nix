@@ -50,6 +50,10 @@
       install_url = "https://addons.mozilla.org/firefox/downloads/file/4773733/user_agent_string_switcher-0.6.7.xpi";
       installation_mode = "force_installed";
     };
+    "better-hub@extension" = {
+      install_url = "https://www.better-hub.com/api/extension-download?browser=firefox";
+      installation_mode = "force_installed";
+    };
 
     # takes 16gbs of memory out of nowhere doing nothing, and slows down page loads *by a lot*
     # "wappalyzer@crunchlabz.com" = {
