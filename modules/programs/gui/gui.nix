@@ -17,7 +17,6 @@
     ./minecraft.nix
     ./printing.nix
   ];
-
   home-manager.users.kk-spartans = {
     imports = [
       # ./activitywatch/activitywatch.nix
@@ -32,6 +31,7 @@
 
     home.packages = with pkgs; [
       # t3code # takes up 8gb worth of nix derivations?
+      gnome-network-displays
       blender
       audacity
       brightnessctl

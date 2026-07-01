@@ -20,6 +20,7 @@ in
         end)
 
         hl.bind("SUPER + A", hl.dsp.workspace.toggle_special("spotify"))
+        hl.bind("SUPER + ALT + S", hl.dsp.exec_cmd("sh -c 'case $(playerctl --player=spotify volume 2>/dev/null) in 0.3*) playerctl --player=spotify volume 1.0 ;; *) playerctl --player=spotify volume 0.3 ;; esac'"))
 
         hl.window_rule({
           name = "spotify",
