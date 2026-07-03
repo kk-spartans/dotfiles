@@ -23,8 +23,7 @@
     }
 
     (lib.mkIf nvidia {
-      
-      boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+      boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
       nixpkgs.config.cudaSupport = true;
       hardware.graphics.enable32Bit = true;
       services.xserver.videoDrivers = [ "nvidia" ];
@@ -33,11 +32,11 @@
         open = false;
         modesetting.enable = true;
         package = config.boot.kernelPackages.nvidiaPackages.production;
-        
-	powerManagement = {
-	  enable = true;
-	  finegrained = true;
-	};
+
+        powerManagement = {
+          enable = true;
+          finegrained = true;
+        };
 
         prime = {
           offload.enable = true;
@@ -50,9 +49,8 @@
       boot.initrd.kernelModules = [ "nvidia" ];
       environment.systemPackages = with pkgs.cudaPackages; [
         cudatoolkit
-	cuda-samples
-	cuda_nvcc
-	cuda_cudart
+        cuda_nvcc
+        cuda_cudart
       ];
     })
 
