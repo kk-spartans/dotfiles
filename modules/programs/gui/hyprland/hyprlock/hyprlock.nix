@@ -6,10 +6,9 @@
 {
   programs.hyprlock.enable = true;
   wayland.windowManager.hyprland.extraConfig = ''
-    hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprctl dispatch dpms on && hyprlock -c ~/.config/hypr/hyprlock/hyprlock.conf"))
+    hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprctl dispatch 'hl.dsp.dpms({ action = \"on\" })' && hyprlock -c ~/.config/hypr/hyprlock/hyprlock.conf"))
   '';
   xdg.configFile."hypr/hyprlock/hyprlock.conf".source = ./hyprlock.conf;
-  xdg.configFile."hyprlock.conf".source = ./hyprlock.conf;
   xdg.configFile."hypr/hyprlock/current-song.sh" = {
     source = ./current-song.sh;
     executable = true;

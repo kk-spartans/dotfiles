@@ -31,7 +31,7 @@
     imports = [
       ./hyprshot.nix
       ./vicinae.nix
-      # ./hypridle.nix
+      ./hypridle.nix
 
       ./hypr/binds.nix
       ./hypr/looks.nix

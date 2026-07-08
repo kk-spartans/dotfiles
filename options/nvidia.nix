@@ -8,7 +8,18 @@
 {
   config = lib.mkMerge [
     {
-      hardware.graphics.enable = true;
+      hardware.graphics = {
+        enable = true;
+        extraPackages = with pkgs; [
+          intel-media-driver
+	  libva-vdpau-driver
+          libvdpau-va-gl
+        ];
+      };
+
+      environment.sessionVariables = {
+        LIBVA_DRIVER_NAME = "iHD";
+      };
 
       home-manager.users.kk-spartans.home.packages = with pkgs; [
         mesa-demos
@@ -23,7 +34,10 @@
     }
 
     (lib.mkIf nvidia {
-      boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+      boot.kernelParams = [
+        "nvidia-drm.modeset=1"
+        "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      ];
       nixpkgs.config.cudaSupport = true;
       hardware.graphics.enable32Bit = true;
       services.xserver.videoDrivers = [ "nvidia" ];

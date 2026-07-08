@@ -51,6 +51,9 @@
         "zen.view.compact.toolbar-flash-popup" = false;
         "zen.view.compact.should-enable-at-startup" = true;
 
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.hardware-video-decoding.enabled" = true;
+
         "sine.engine.auto-update" = false;
       };
 
