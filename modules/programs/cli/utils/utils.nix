@@ -31,6 +31,7 @@
       ripgrep
       immich-go
       sqlite
+      bc
       cage # useful on headless raspis
     ]
     ++ lib.optionals (!minimal) [
