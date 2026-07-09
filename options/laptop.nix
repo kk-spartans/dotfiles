@@ -76,6 +76,10 @@
 
           # USB autosuspend
           USB_AUTOSUSPEND = 1;
+
+          # Battery charging
+          START_CHARGE_THRESH_BAT0 = 96;
+          STOP_CHARGE_THRESH_BAT0 = 100;
         };
       };
     })
