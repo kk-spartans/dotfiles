@@ -19,16 +19,8 @@
     home.packages = with pkgs; [
       usage
       tldr
+      inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.herdr
     ];
-
-    programs.zellij = {
-      enable = true;
-      enableFishIntegration = false; # breaks my tty too...
-      settings = {
-        show_startup_tips = false;
-        allow_kitty_graphics = true;
-      };
-    };
 
     catppuccin.zellij.enable = true;
 
