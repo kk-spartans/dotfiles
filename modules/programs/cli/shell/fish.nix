@@ -22,6 +22,8 @@
       inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.herdr
     ];
 
+    xdg.configFile."herdr/config.toml".source = ./config.toml;
+
     catppuccin.zellij.enable = true;
 
     programs.fastfetch.enable = true;
