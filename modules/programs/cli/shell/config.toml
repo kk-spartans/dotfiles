@@ -1,5 +1,14 @@
 onboarding = false
 
+[keys]
+prefix = "ctrl+g"
+new_workspace = "prefix+n"
+rename_workspace = "prefix+shift+n"
+new_tab = "prefix+c"
+rename_tab = "prefix+shift+c"
+split_vertical = "prefix+p"
+rename_pane = "prefix+shift+p"
+
 [ui.toast]
 delivery = "system"
 
