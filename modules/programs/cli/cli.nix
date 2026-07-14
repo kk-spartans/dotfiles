@@ -49,6 +49,7 @@
       ./utils/utils.nix
     ];
 
+    catppuccin.autoEnable = false;
     programs.home-manager.enable = true;
   };
 }
