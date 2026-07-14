@@ -169,7 +169,7 @@
           pc,
           minimal,
           laptop,
-          nvidia,
+          gpu,
         }:
         nixpkgs.lib.nixosSystem {
           inherit system;
@@ -180,7 +180,7 @@
               minimal
               pc
               laptop
-              nvidia
+              gpu
               ;
           };
 
@@ -189,7 +189,7 @@
             ./modules/user/user.nix
             ./modules/boot.nix
 
-            ./options/nvidia.nix
+            ./options/gpu.nix
             ./options/pc.nix
             ./options/laptop.nix
 
@@ -206,7 +206,7 @@
                   minimal
                   pc
                   laptop
-                  nvidia
+                  gpu
                   ;
               };
             }
@@ -224,7 +224,7 @@
           pc = true;
           minimal = false;
           laptop = true;
-          nvidia = false;
+          gpu = "nvidia";
         };
 
         raspi = mkHost {
@@ -234,7 +234,17 @@
           pc = false;
           minimal = true;
           laptop = false;
-          nvidia = false;
+          gpu = "none";
+        };
+
+        mac-pro = mkHost {
+          system = "x86_64-linux";
+          hostname = "mac-pro";
+
+          pc = false;
+          minimal = false;
+          laptop = false;
+          gpu = "amd-si";
         };
       };
     };

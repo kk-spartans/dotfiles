@@ -14,7 +14,7 @@ in
 
   config = lib.mkMerge [
     (lib.mkIf laptop {
-      my.laptop.tlp.useBatterySettingsOnAc = lib.mkDefault true;
+      my.laptop.tlp.useBatterySettingsOnAc = lib.mkDefault false;
 
       powerManagement.enable = true;
 

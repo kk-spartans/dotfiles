@@ -3,7 +3,7 @@
   pkgs,
   lib,
   inputs,
-  nvidia,
+  gpu,
   ...
 }:
 
@@ -19,7 +19,7 @@
 
       users.users.kk-spartans.extraGroups = [ "docker" ];
     }
-    (lib.mkIf nvidia {
+    (lib.mkIf (gpu == "nvidia") {
       hardware.nvidia-container-toolkit.enable = true;
     })
   ];

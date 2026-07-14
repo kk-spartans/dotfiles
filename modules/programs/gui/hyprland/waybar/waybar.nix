@@ -1,7 +1,7 @@
 {
   lib,
   laptop,
-  nvidia,
+  gpu,
   pkgs,
   inputs,
   ...
@@ -64,7 +64,7 @@
           "cpu"
           "custom/ram"
         ]
-        ++ lib.optionals nvidia [
+        ++ lib.optionals (gpu == "nvidia") [
           "custom/vram"
         ]
         ++ lib.optionals laptop [

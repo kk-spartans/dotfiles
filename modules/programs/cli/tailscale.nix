@@ -8,6 +8,7 @@
 
   services.tailscale = {
     enable = true;
+    extraUpFlags = [ "--accept-routes" ];
     authKeyFile = config.sops.secrets."TS_AUTHKEY".path;
   };
 }
