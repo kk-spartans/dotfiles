@@ -153,29 +153,6 @@
         "type": "github"
       }
     },
-    "debatable": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1782474599,
-        "narHash": "sha256-cbRleJP2u1PjuWKqU63Ld0Rtuq3BHbiY22yJAef9KHE=",
-        "owner": "kk-spartans",
-        "repo": "debatable",
-        "rev": "69293d72fdd3247353c9c76d715b9093eec7841f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kk-spartans",
-        "repo": "debatable",
-        "type": "github"
-      }
-    },
     "diffusion-llama-cpp": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -951,7 +928,6 @@
         "agent-skills": "agent-skills",
         "apple-fonts": "apple-fonts",
         "catppuccin": "catppuccin",
-        "debatable": "debatable",
         "diffusion-llama-cpp": "diffusion-llama-cpp",
         "disko": "disko",
         "helium": "helium",
