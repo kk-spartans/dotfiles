@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   minimal,
+  gpu,
   ...
 }:
 {
@@ -20,7 +21,7 @@
       codex
     ]
     ++ (
-      if minimal then
+      if minimal || gpu != "nvidia" then
         [ ]
       else
         [
