@@ -22,8 +22,6 @@
             };
           };
 
-          gap.size = "128G";
-
           swap = {
             size = "32G";
             content.type = "swap";
