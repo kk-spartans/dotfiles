@@ -2,11 +2,38 @@
 
 set -euo pipefail
 
+usage() {
+  echo "Usage: $0 <commit message>" >&2
+  echo "       $0 --amend" >&2
+}
+
+amend=false
+case "${1-}" in
+  --amend | -a)
+    amend=true
+    shift
+    if (( $# != 0 )); then
+      echo "error: --amend does not accept a commit message" >&2
+      usage
+      exit 2
+    fi
+    ;;
+  "")
+    echo "error: a commit message is required (or use --amend)" >&2
+    usage
+    exit 2
+    ;;
+esac
+
 # sudo nix flake update
 sudo nix fmt # needs sudo or breaks bcz of random permission stuff
 git add --all
 git diff --cached
 # nix build /etc/nixos#nixosConfigurations.kk-spartans.config.system.build.toplevel --log-format internal-json -v |& nom --json
 sudo nixos-rebuild switch
-git commit -m "$*"
+if [[ "$amend" == true ]]; then
+  git commit --amend --no-edit
+else
+  git commit -m "$*"
+fi
 git push
