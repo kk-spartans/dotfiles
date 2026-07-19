@@ -11,7 +11,7 @@
     hl.window_rule({
       name = "obsidian-blur",
       match = { class = "^([Oo]bsidian)$" },
-      blur = true,
+      opacity = "0.99",
     })
   '';
 
