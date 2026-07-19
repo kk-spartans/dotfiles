@@ -1,0 +1,110 @@
+/* Give the whole Obsidian window ONE translucent layer */
+body,
+.app-container {
+  background: rgba(10, 10, 12, 0.22) !important;
+}
+
+/* Everything inside should be fully transparent */
+.workspace,
+.workspace-split,
+.workspace-leaf,
+.workspace-tabs,
+.workspace-tab-container,
+.workspace-tab-header-container,
+.workspace-tab-header-container-inner,
+.workspace-tab-header,
+.workspace-tab-header-inner,
+.workspace-ribbon,
+.workspace-sidedock,
+.mod-left-split,
+.mod-right-split,
+.view-content,
+.markdown-source-view,
+.markdown-preview-view,
+.cm-editor,
+.cm-scroller,
+.cm-content,
+.nav-files-container,
+.nav-folder,
+.nav-file,
+.titlebar,
+.titlebar-inner,
+.titlebar-button-container,
+.status-bar {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Override Obsidian/theme background variables */
+.theme-dark,
+.theme-light {
+  --background-primary: transparent;
+  --background-primary-alt: transparent;
+  --background-secondary: transparent;
+  --background-secondary-alt: transparent;
+  --titlebar-background: transparent;
+  --titlebar-background-focused: transparent;
+  --tab-container-background: transparent;
+  --ribbon-background: transparent;
+  --status-bar-background: transparent;
+}
+
+/* Remove theme gradients and overlays */
+.workspace::before,
+.workspace::after,
+.workspace-tabs::before,
+.workspace-tabs::after,
+.titlebar::before,
+.titlebar::after {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Force every part of Obsidian's top strip transparent */
+body {
+  --titlebar-background: transparent !important;
+  --titlebar-background-focused: transparent !important;
+  --tab-container-background: transparent !important;
+}
+
+.titlebar,
+.titlebar-inner,
+.titlebar-text,
+.titlebar-button-container,
+.titlebar-button,
+.titlebar-button-group,
+.titlebar-button-icon,
+.titlebar-button-glyph,
+
+.workspace-tabs.mod-top,
+.workspace-tabs.mod-top > .workspace-tab-header-container,
+.workspace-tab-header-container,
+.workspace-tab-header-container-inner,
+.workspace-tab-header-spacer,
+.workspace-tab-header-tab-list,
+.workspace-tab-header-new-tab,
+.workspace-tab-header,
+.workspace-tab-header-inner,
+.workspace-tab-header-inner-title,
+
+.mod-root .workspace-tab-header-container,
+.mod-left-split .workspace-tab-header-container,
+.mod-right-split .workspace-tab-header-container {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Remove overlays or gradients added by themes */
+.titlebar::before,
+.titlebar::after,
+.workspace-tab-header-container::before,
+.workspace-tab-header-container::after,
+.workspace-tabs.mod-top::before,
+.workspace-tabs.mod-top::after {
+  content: none !important;
+  display: none !important;
+}

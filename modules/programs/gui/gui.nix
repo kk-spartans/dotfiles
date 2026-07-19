@@ -20,6 +20,7 @@
   home-manager.users.kk-spartans = {
     imports = [
       # ./activitywatch/activitywatch.nix
+      ./obsidian.nix
       ./vscode/vscode.nix
       ./zen-browser/zen-browser.nix
 
@@ -44,7 +45,6 @@
       nmap
       gimp
       naps2
-      obsidian
     ];
   };
 }

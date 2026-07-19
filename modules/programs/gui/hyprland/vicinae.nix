@@ -71,10 +71,7 @@
             defaultAction = "launch";
             launchPrefix = "uwsm app -- ";
           };
-          entrypoints = {
-            code.alias = "code";
-            obsidian.alias = "ob";
-          };
+          entrypoints = { };
         };
       };
     };

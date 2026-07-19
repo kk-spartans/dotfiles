@@ -18,6 +18,8 @@
     };
   };
 
+  programs.vicinae.settings.providers.applications.entrypoints.code.alias = "code";
+
   programs.git.settings = {
     mergetool.vscode.cmd = "code --wait --diff $LOCAL $REMOTE";
     merge.tool = "vscode";

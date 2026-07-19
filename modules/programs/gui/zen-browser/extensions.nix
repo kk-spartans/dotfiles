@@ -18,10 +18,6 @@
       install_url = "https://addons.mozilla.org/firefox/downloads/file/4752025/librezam-5.9.xpi";
       installation_mode = "force_installed";
     };
-    "{4cfbf13b-f27f-4f03-91dc-2aa17644029a}" = {
-      install_url = "https://addons.mozilla.org/firefox/downloads/file/3727203/obsidian_web_clipper-0.1.xpi";
-      installation_mode = "force_installed";
-    };
     "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}" = {
       install_url = "https://addons.mozilla.org/firefox/downloads/file/4642595/react_developer_tools-6.1.0.xpi";
       installation_mode = "force_installed";
