@@ -14,6 +14,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # aw-watcher-lid = {
     #   url = "github:tobixen/aw-watcher-lid";
     #   flake = false;
