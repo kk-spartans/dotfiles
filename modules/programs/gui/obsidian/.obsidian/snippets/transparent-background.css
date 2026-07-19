@@ -73,9 +73,6 @@ body {
 .titlebar-text,
 .titlebar-button-container,
 .titlebar-button,
-.titlebar-button-group,
-.titlebar-button-icon,
-.titlebar-button-glyph,
 
 .workspace-tabs.mod-top,
 .workspace-tabs.mod-top > .workspace-tab-header-container,
@@ -86,7 +83,6 @@ body {
 .workspace-tab-header-new-tab,
 .workspace-tab-header,
 .workspace-tab-header-inner,
-.workspace-tab-header-inner-title,
 
 .mod-root .workspace-tab-header-container,
 .mod-left-split .workspace-tab-header-container,

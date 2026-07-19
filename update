@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 usage() {
   echo "Usage: $0 <commit message>" >&2
   echo "       $0 --amend" >&2

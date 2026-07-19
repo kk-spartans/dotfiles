@@ -1,0 +1,19 @@
+{
+  "cssTheme": "OLED.Black",
+  "interfaceFontFamily": "JetBrainsMono Nerd Font Propo,Inter",
+  "textFontFamily": "JetBrainsMono Nerd Font Propo,Inter",
+  "monospaceFontFamily": "JetBrainsMono Nerd Font Mono,Inter",
+  "enabledCssSnippets": [
+    "Colored Sidebar Items",
+    "General Tweaks",
+    "Daily Note Themes",
+    "status-top",
+    "transparent-background"
+  ],
+  "accentColor": "#f5c2e7",
+  "baseFontSizeAction": true,
+  "baseFontSize": 27,
+  "theme": "obsidian",
+  "showRibbon": true,
+  "showViewHeader": true
+}

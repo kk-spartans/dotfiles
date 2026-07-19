@@ -22,7 +22,7 @@
       inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.herdr
     ];
 
-    xdg.configFile."herdr/config.toml".source = ./config.toml;
+    xdg.configFile."herdr/config.toml".source = ./herdr-config.toml;
 
     catppuccin.zellij.enable = true;
 

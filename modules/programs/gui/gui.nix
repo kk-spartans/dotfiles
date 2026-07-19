@@ -20,7 +20,7 @@
   home-manager.users.kk-spartans = {
     imports = [
       # ./activitywatch/activitywatch.nix
-      ./obsidian.nix
+      ./obsidian/obsidian.nix
       ./vscode/vscode.nix
       ./zen-browser/zen-browser.nix
 
