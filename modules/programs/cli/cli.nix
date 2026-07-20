@@ -52,6 +52,10 @@
       ./utils/utils.nix
     ];
 
+    home.packages = with pkgs; [
+      gnupg
+    ];
+
     catppuccin.autoEnable = false;
     programs.home-manager.enable = true;
   };
