@@ -11,7 +11,7 @@
     # ./lazy.nix
 
     ./spogo.nix
-    ./fkill.nix
+    ./fkill/fkill.nix
     ./tokscale.nix
     ./wacli.nix
     ./discrawl.nix

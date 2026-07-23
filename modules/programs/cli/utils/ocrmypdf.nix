@@ -1,9 +1,12 @@
 {
   config,
   pkgs,
+  gpu,
   ...
 }:
 let
+  extraIndex =
+    if gpu == "nvidia" then "--extra-index-url https://download.pytorch.org/whl/cu124" else "";
   ocrmypdf = pkgs.stdenv.mkDerivation {
     pname = "ocrmypdf";
     version = "17.8.1";
@@ -19,10 +22,11 @@ let
       export HOME=$(mktemp -d)
       uv venv --python ${pkgs.python312}/bin/python3
       source .venv/bin/activate
-      uv pip install \
-        --extra-index-url https://download.pytorch.org/whl/cu124 \
+
+      uv pip install ${extraIndex} \
         ocrmypdf==17.8.1 \
         ocrmypdf-easyocr==0.3.0
+
       mkdir -p $out/bin
       cp $PWD/.venv/bin/ocrmypdf $out/bin/ocrmypdf
       chmod +x $out/bin/ocrmypdf
@@ -39,6 +43,7 @@ in
   home.packages = [
     ocrmypdf
     pkgs.tesseract
+    pkgs.python312
     pkgs.unpaper
     pkgs.ghostscript
     pkgs.pngquant
