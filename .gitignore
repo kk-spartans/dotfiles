@@ -1,1 +1,6 @@
-result
+/result
+!*.nix
+
+# ripgrep annoys me
+/chezmoi
+/modules/program/gui/obsidian
