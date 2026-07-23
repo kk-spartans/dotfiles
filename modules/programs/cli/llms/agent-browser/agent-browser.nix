@@ -5,13 +5,27 @@
   ...
 }:
 let
+  agent-browser-bin = pkgs.rustPlatform.buildRustPackage rec {
+    pname = "agent-browser";
+    version = "0.32.3";
+
+    src = pkgs.fetchurl {
+      url = "https://github.com/vercel-labs/agent-browser/archive/v${version}.tar.gz";
+      hash = "sha256-u6fi6GwQ0nCH7GbO4TDwKyOWb8NkT+vMMB8UtDIpM9M=";
+    };
+
+    buildAndTestSubdir = "cli";
+    cargoRoot = "cli";
+
+    doCheck = false;
+
+    cargoHash = "sha256-t+Lk72YPMH5SEl0HsS57WOFnvX6ryUA5Ec10jvOFeCk=";
+  };
+
   agent-browser = pkgs.writeShellApplication {
     name = "agent-browser";
-    runtimeInputs = with pkgs; [
-      pnpm
-      nodejs
-      docker
-    ];
+    runtimeInputs = [ agent-browser-bin pkgs.docker ];
+
     text = ''
       set -euo pipefail
 
@@ -28,7 +42,7 @@ let
         docker start "$CONTAINER_NAME" >/dev/null
       fi
 
-      exec pnpm dlx agent-browser --cdp "$CDP_PORT" "$@"
+      exec ${agent-browser-bin}/bin/agent-browser --cdp "$CDP_PORT" "$@"
     '';
   };
 in

@@ -10,7 +10,7 @@
   imports = [
     ./opencode.nix
     ./skills.nix
-    ./agent-browser.nix
+    ./agent-browser/agent-browser.nix
   ];
 
   home.packages =

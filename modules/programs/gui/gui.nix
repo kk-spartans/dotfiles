@@ -17,7 +17,12 @@
     ./minecraft.nix
     ./printing.nix
   ];
+
+  programs.zoom-us.enable = true;
+
   home-manager.users.kk-spartans = {
+
+
     imports = [
       # ./activitywatch/activitywatch.nix
       ./obsidian/obsidian.nix
