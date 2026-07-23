@@ -10,7 +10,7 @@
     tshark
     aria2
     wget
-    mitmproxy
+    # mitmproxy # broken
     iperf3
     dig
   ];
