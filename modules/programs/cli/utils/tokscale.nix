@@ -18,7 +18,13 @@ let
 
     doCheck = false;
 
-    buildInputs = with pkgs; [ openssl sqlite ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+    buildInputs =
+      with pkgs;
+      [
+        openssl
+        sqlite
+      ]
+      ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
     nativeBuildInputs = with pkgs; [ perl ];
 

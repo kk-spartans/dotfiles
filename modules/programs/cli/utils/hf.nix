@@ -9,7 +9,10 @@ let
     pname = "hf";
     version = "1.24.0";
 
-    nativeBuildInputs = [ pkgs.uv pkgs.python312 ];
+    nativeBuildInputs = [
+      pkgs.uv
+      pkgs.python312
+    ];
 
     dontUnpack = true;
 

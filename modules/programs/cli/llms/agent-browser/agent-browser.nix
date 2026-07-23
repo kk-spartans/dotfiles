@@ -24,7 +24,10 @@ let
 
   agent-browser = pkgs.writeShellApplication {
     name = "agent-browser";
-    runtimeInputs = [ agent-browser-bin pkgs.docker ];
+    runtimeInputs = [
+      agent-browser-bin
+      pkgs.docker
+    ];
 
     text = ''
       set -euo pipefail

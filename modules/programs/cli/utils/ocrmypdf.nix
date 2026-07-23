@@ -8,7 +8,10 @@ let
     pname = "ocrmypdf";
     version = "17.8.1";
 
-    nativeBuildInputs = [ pkgs.uv pkgs.python312 ];
+    nativeBuildInputs = [
+      pkgs.uv
+      pkgs.python312
+    ];
 
     dontUnpack = true;
 
