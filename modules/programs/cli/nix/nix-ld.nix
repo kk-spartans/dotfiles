@@ -57,12 +57,16 @@
       ];
   };
 
-  environment.systemPackages = with pkgs; [
-    steam-run
-    gnumake
-    pkg-config
-    autoconf
-    automake
-    libtool
-  ];
+  environment.systemPackages =
+    with pkgs;
+    lib.optionals pkgs.stdenv.hostPlatform.isx86 [
+      steam-run
+    ]
+    ++ [
+      gnumake
+      pkg-config
+      autoconf
+      automake
+      libtool
+    ];
 }

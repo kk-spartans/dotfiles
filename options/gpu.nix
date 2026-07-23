@@ -34,18 +34,20 @@ in
     {
       hardware.graphics = {
         enable = true;
-        extraPackages = with pkgs; [
-          intel-media-driver
-          libva-vdpau-driver
-          libvdpau-va-gl
-        ]
-        ++ lib.optionals isModernAmd [
-          rocmPackages.clr.icd
-        ]
-        ++ lib.optionals isIntel [
-          intel-compute-runtime
-          vpl-gpu-rt
-        ];
+        extraPackages =
+          with pkgs;
+          lib.optionals isIntel [
+            intel-media-driver
+            libva-vdpau-driver
+            libvdpau-va-gl
+          ]
+          ++ lib.optionals isModernAmd [
+            rocmPackages.clr.icd
+          ]
+          ++ lib.optionals isIntel [
+            intel-compute-runtime
+            vpl-gpu-rt
+          ];
       };
 
       environment.sessionVariables = {

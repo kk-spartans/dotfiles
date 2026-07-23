@@ -22,5 +22,4 @@
   boot.extraModulePackages = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
