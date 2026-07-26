@@ -7,6 +7,7 @@
 }:
 {
   imports = [
+    (import ./bun.nix).module
     ./javascript.nix
     ./rust.nix
     ./python.nix

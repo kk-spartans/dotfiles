@@ -22,15 +22,16 @@
     ]
     ++ (
       if minimal || gpu != "nvidia" then
-        [ ]
+        [
+	  pkgs.llama-cpp
+	]
       else
         [
-          # llama-cpp
-          (inputs.diffusion-llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda.override {
-            cudaPackages = pkgs.cudaPackages // {
-              cuda_cccl = pkgs.cudaPackages.cccl;
-            };
-          })
+          # (inputs.diffusion-llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda.override {
+          #   cudaPackages = pkgs.cudaPackages // {
+          #     cuda_cccl = pkgs.cudaPackages.cccl;
+          #  };
+          # })
           # inputs.ik_llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda
           # ollama
           # vllm

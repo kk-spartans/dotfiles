@@ -165,6 +165,7 @@
         {
           system,
           hostname,
+          instructionSets,
           pc,
           minimal,
           laptop,
@@ -176,6 +177,7 @@
           specialArgs = {
             inherit
               inputs
+              instructionSets
               minimal
               pc
               laptop
@@ -184,6 +186,12 @@
           };
 
           modules = [
+            {
+              nixpkgs.overlays = [
+                ((import ./modules/programs/cli/dev/bun.nix).overlay instructionSets)
+              ];
+            }
+
             ./modules/programs/cli/cli.nix
             ./modules/user/user.nix
             ./modules/boot.nix
@@ -202,6 +210,7 @@
               home-manager.extraSpecialArgs = {
                 inherit
                   inputs
+                  instructionSets
                   minimal
                   pc
                   laptop
@@ -219,6 +228,7 @@
         kk-spartans = mkHost {
           system = "x86_64-linux";
           hostname = "kk-spartans";
+          instructionSets = [ "avx2" ];
 
           pc = true;
           minimal = false;
@@ -229,6 +239,7 @@
         raspi = mkHost {
           system = "aarch64-linux";
           hostname = "raspi";
+          instructionSets = [ ];
 
           pc = false;
           minimal = true;
@@ -239,6 +250,10 @@
         mac-pro = mkHost {
           system = "x86_64-linux";
           hostname = "mac-pro";
+          instructionSets = [
+            "sse4_2"
+            "avx"
+          ];
 
           pc = false;
           minimal = false;

@@ -112,6 +112,9 @@ in
         "radeon.si_support=0"
         "amdgpu.si_support=1"
       ];
+      services.xserver.videoDrivers = [ "amdgpu" ];
+      boot.initrd.kernelModules = [ "amdgpu" ];
+      hardware.graphics.enable32Bit = true;
     })
 
     (lib.mkIf isIntel {
