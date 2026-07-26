@@ -193,7 +193,9 @@
           modules = [
             {
               nixpkgs.overlays = [
-                ((import ./modules/programs/cli/dev/bun.nix).overlay instructionSets)
+                inputs.nix-packages.overlays.default
+              ] ++ nixpkgs.lib.optionals (!builtins.elem "avx2" instructionSets) [
+                inputs.nix-packages.overlays.bun-baseline
               ];
             }
 

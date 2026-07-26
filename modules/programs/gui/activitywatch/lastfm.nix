@@ -1,9 +1,9 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, ... }:
 {
   sops.secrets.LASTFM_API_KEY = { };
 
   services.activitywatch.watchers.aw-watcher-lastfm = {
-    package = inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system}.aw-watcher-lastfm;
+    package = pkgs.aw-watcher-lastfm;
     executable = "aw-watcher-lastfm";
   };
 

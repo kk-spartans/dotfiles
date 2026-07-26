@@ -1,14 +1,10 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
-let
-  tokscale = inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system}.tokscale;
-in
 {
-  home.packages = [ tokscale ];
+  home.packages = [ pkgs.tokscale ];
 
   systemd.user.services.tokscale-submit = {
     Unit = {
@@ -16,7 +12,7 @@ in
     };
     Service = {
       Type = "oneshot";
-      ExecStart = "${tokscale}/bin/tokscale submit";
+      ExecStart = "${pkgs.tokscale}/bin/tokscale submit";
     };
   };
 

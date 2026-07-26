@@ -2,13 +2,9 @@
   config,
   lib,
   pkgs,
-  inputs,
   minimal,
   ...
 }:
-let
-  npkgs = inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system};
-in
 {
   imports = [
     # ./lazy.nix
@@ -29,13 +25,12 @@ in
       immich-go
       sqlite
       bc
-      cage # useful on headless raspis
-
-      npkgs.spogo
-      npkgs.fkill
-      npkgs.wacli
-      npkgs.discrawl
-      npkgs.hf
+      cage
+      spogo
+      fkill
+      wacli
+      discrawl
+      hf
     ]
     ++ lib.optionals (!minimal) [
       pwgen

@@ -1,16 +1,13 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
 let
-  agent-browser-bin = inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system}.agent-browser-bin;
-
   agent-browser = pkgs.writeShellApplication {
     name = "agent-browser";
     runtimeInputs = [
-      agent-browser-bin
+      pkgs.agent-browser-bin
       pkgs.docker
     ];
 
@@ -30,7 +27,7 @@ let
         docker start "$CONTAINER_NAME" >/dev/null
       fi
 
-      exec ${agent-browser-bin}/bin/agent-browser --cdp "$CDP_PORT" "$@"
+      exec ${pkgs.agent-browser-bin}/bin/agent-browser --cdp "$CDP_PORT" "$@"
     '';
   };
 in

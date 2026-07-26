@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   gpu,
   ...
 }:
@@ -52,7 +51,7 @@
   };
 
   environment.systemPackages = [
-    (inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system}.pixie-sddm)
+    pkgs.pixie-sddm
   ];
   home-manager.users.kk-spartans = {
     xdg.configFile."uwsm/env".text = ''

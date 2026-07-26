@@ -1,10 +1,7 @@
-{ config, pkgs, inputs, ... }:
-let
-  gogcli = inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system}.gogcli;
-in
+{ config, pkgs, ... }:
 {
-  home.packages = [
+  home.packages = with pkgs; [
     gogcli
-    pkgs.google-cloud-sdk
+    google-cloud-sdk
   ];
 }
