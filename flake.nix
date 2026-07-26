@@ -130,10 +130,10 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    diffusion-llama-cpp = {
-      url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # diffusion-llama-cpp = {
+    #   url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nix-packages = {
       url = "github:kk-spartans/nix-packages?ref=main";
