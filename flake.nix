@@ -1,7 +1,7 @@
 {
   description = "nixos";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=master"; # master makes me compile mars, but i'm fine with it
+    nixpkgs.url = "github:nixos/nixpkgs?ref=master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -132,6 +132,11 @@
 
     diffusion-llama-cpp = {
       url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-packages = {
+      url = "github:kk-spartans/nix-packages?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

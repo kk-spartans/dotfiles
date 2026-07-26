@@ -6,21 +6,18 @@
   minimal,
   ...
 }:
+let
+  npkgs = inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   imports = [
     # ./lazy.nix
-
-    ./spogo.nix
-    ./fkill/fkill.nix
     ./tokscale.nix
-    ./wacli.nix
-    ./discrawl.nix
     ./fast-cli.nix
     ./gogcli.nix
   ]
   ++ lib.optionals (!minimal) [
     ./ocrmypdf.nix
-    ./hf.nix
     ./totp-cli.nix
   ];
 
@@ -33,6 +30,12 @@
       sqlite
       bc
       cage # useful on headless raspis
+
+      npkgs.spogo
+      npkgs.fkill
+      npkgs.wacli
+      npkgs.discrawl
+      npkgs.hf
     ]
     ++ lib.optionals (!minimal) [
       pwgen

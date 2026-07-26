@@ -718,6 +718,27 @@
         "type": "github"
       }
     },
+    "nix-packages": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784982593,
+        "narHash": "sha256-0v7k7OfpZue1byyC0hzHiG/KFPALJdeIIG64GVGdKyU=",
+        "owner": "kk-spartans",
+        "repo": "nix-packages",
+        "rev": "f1e86222b539f658d1f83fd84c3a8728d5033874",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kk-spartans",
+        "ref": "main",
+        "repo": "nix-packages",
+        "type": "github"
+      }
+    },
     "nixcord": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -872,11 +893,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1784804352,
-        "narHash": "sha256-FUz+bR8XE/UeTCH8mJeIio/CO22paztyLqKouY7FuJ0=",
+        "lastModified": 1785057735,
+        "narHash": "sha256-4fbLgo0bJguV1Fa28VID+WO2rXhGuVY78jDfDk7DQ1U=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "67296d631eee469546623c021f8f6844811c150a",
+        "rev": "6ce5365c3a4fdb360d523898c726dd71c116f3ef",
         "type": "github"
       },
       "original": {
@@ -964,6 +985,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "ie-r": "ie-r",
+        "nix-packages": "nix-packages",
         "nixcord": "nixcord",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",

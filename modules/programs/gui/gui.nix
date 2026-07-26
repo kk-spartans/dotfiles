@@ -16,6 +16,7 @@
     ./obs.nix
     ./minecraft.nix
     ./printing.nix
+    ./blender.nix
   ];
 
   programs.zoom-us.enable = true;
@@ -37,7 +38,6 @@
     home.packages = with pkgs; [
       # t3code # takes up 8gb worth of nix derivations?
       gnome-network-displays
-      blender
       audacity
       brightnessctl
       libreoffice
