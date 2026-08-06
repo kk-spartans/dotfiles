@@ -19,13 +19,13 @@
       {
         output = "HDMI-A-1";
         mode = "1920x1080@100.00Hz";
-        position = "1920x0";
+        position = "0x0";
         scale = 1;
       }
       {
         output = "eDP-1";
         mode = "1920x1080@60.00Hz";
-        position = "0x0";
+        position = "0x1080";
         scale = 1;
       }
     ];

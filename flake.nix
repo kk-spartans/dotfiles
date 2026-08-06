@@ -240,7 +240,7 @@
           pc = true;
           minimal = false;
           laptop = true;
-          gpu = "nvidia";
+          gpu = "none";
         };
 
         raspi = mkHost {
