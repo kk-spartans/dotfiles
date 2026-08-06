@@ -5,15 +5,22 @@
   inputs,
   minimal,
   laptop,
+  gpu,
   ...
 }:
 {
   home-manager.users.kk-spartans = {
     home.packages =
       with pkgs;
-      [
-        btop
-      ]
+      (
+        if gpu == "amd" || gpu == "amd-si" then
+          [
+            btop-rocm
+            rocmPackages.rocm-smi
+          ]
+        else
+          [ btop ]
+      )
       ++ (
         if minimal then
           [ ]
