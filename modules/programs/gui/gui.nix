@@ -25,7 +25,7 @@
 
     imports = [
       # ./activitywatch/activitywatch.nix
-      ./obsidian/obsidian.nix
+      ./obsidian.nix
       ./vscode/vscode.nix
       ./zen-browser/zen-browser.nix
 

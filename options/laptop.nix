@@ -22,6 +22,8 @@ in
         HandleLidSwitch = "lock";
         HandleLidSwitchExternalPower = "lock";
         HandleLidSwitchDocked = "lock";
+        HandlePowerKey = "ignore";
+        HandlePowerKeyLongPress = "ignore";
       };
 
       environment.systemPackages = [

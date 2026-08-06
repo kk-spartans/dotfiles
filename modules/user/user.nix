@@ -35,6 +35,7 @@
       "input"
       "uinput"
       "video"
+      "dialout"
     ];
     initialPassword = "123456789"; # pls change
   };

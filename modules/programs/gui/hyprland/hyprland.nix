@@ -62,7 +62,7 @@
         After = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStart = "${pkgs.playerctl}/bin/mpris-proxy";
+        ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
         Restart = "on-failure";
         RestartSec = 5;
       };
