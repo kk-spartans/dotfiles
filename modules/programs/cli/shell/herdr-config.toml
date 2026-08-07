@@ -3,14 +3,22 @@ onboarding = false
 [keys]
 prefix = "ctrl+g"
 new_workspace = "prefix+n"
-rename_workspace = "prefix+shift+n"
+rename_workspace = "prefix+ctrl+n"
 new_tab = "prefix+c"
-rename_tab = "prefix+shift+c"
+rename_tab = "prefix+ctrl+c"
 split_vertical = "prefix+p"
-rename_pane = "prefix+shift+p"
+rename_pane = "prefix+ctrl+p"
+next_tab = "ctrl+n"
+previous_tab = "ctrl+p"
 
 [ui.toast]
 delivery = "system"
 
 [ui]
 show_agent_labels_on_pane_borders = true
+
+[experimental]
+kitty_graphics = true
+
+[session]
+resume_agents_on_restore = true
