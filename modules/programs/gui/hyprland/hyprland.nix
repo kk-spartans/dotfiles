@@ -42,7 +42,7 @@
       ./waybar/waybar.nix
       ./wallpaper/wallpaper.nix
       ./swaync/swaync.nix
-      ./snappy-switcher/snappy-switcher.nix
+      # ./snappy-switcher/snappy-switcher.nix
       ./ie-r/ie-r.nix
       ./hyprlock/hyprlock.nix
       ./hyprsunset/hyprsunset.nix

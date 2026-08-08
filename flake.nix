@@ -139,6 +139,8 @@
       url = "github:kk-spartans/nix-packages?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
   };
 
   outputs =
@@ -194,7 +196,8 @@
             {
               nixpkgs.overlays = [
                 inputs.nix-packages.overlays.default
-              ] ++ nixpkgs.lib.optionals (!builtins.elem "avx2" instructionSets) [
+              ]
+              ++ nixpkgs.lib.optionals (!builtins.elem "avx2" instructionSets) [
                 inputs.nix-packages.overlays.bun-baseline
               ];
             }
@@ -212,6 +215,7 @@
             { networking.hostName = hostname; }
 
             inputs.home-manager.nixosModules.default
+            inputs.nix-flatpak.nixosModules.nix-flatpak
 
             {
               home-manager.extraSpecialArgs = {

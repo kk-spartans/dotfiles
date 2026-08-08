@@ -38,8 +38,7 @@
   };
 
   environment.sessionVariables.ALSA_CONFIG_DIR = "/etc/alsa";
-  environment.sessionVariables.VK_ICD_FILENAMES =
-    "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+  environment.sessionVariables.VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
 
   services.hardware.bolt.enable = true;
 

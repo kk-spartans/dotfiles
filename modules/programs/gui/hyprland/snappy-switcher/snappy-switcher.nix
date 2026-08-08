@@ -7,14 +7,15 @@
 }:
 let
   snappy =
-    inputs.snappy-switcher.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-      # The upstream package still tries to patch /usr/local in its service
-      # file, but the current service uses /usr/bin instead.
-      postPatch = lib.removeSuffix ''
-        substituteInPlace snappy-switcher.service \
-          --replace-fail "/usr/local" "$out"
-      '' old.postPatch;
-    });
+    inputs.snappy-switcher.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+      (old: {
+        # The upstream package still tries to patch /usr/local in its service
+        # file, but the current service uses /usr/bin instead.
+        postPatch = lib.removeSuffix ''
+          substituteInPlace snappy-switcher.service \
+            --replace-fail "/usr/local" "$out"
+        '' old.postPatch;
+      });
 in
 {
   xdg.configFile."snappy-switcher/config.ini".source = ./config.ini;

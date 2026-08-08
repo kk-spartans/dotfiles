@@ -23,8 +23,8 @@
     ++ (
       if minimal || gpu != "nvidia" then
         [
-	  pkgs.llama-cpp
-	]
+          pkgs.llama-cpp
+        ]
       else
         [
           # (inputs.diffusion-llama-cpp.packages.${pkgs.stdenv.hostPlatform.system}.cuda.override {
