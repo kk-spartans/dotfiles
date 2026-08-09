@@ -12,7 +12,7 @@
   wayland.windowManager.hyprland.extraConfig = ''
     hl.window_rule({
       name = "obsidian-blur",
-      match = { class = "^([Oo]bsidian)$" },
+      match = { class = "md.Obsidian" },
       opacity = "0.99",
     })
   '';
