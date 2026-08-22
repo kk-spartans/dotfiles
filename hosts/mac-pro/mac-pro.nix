@@ -3,6 +3,7 @@
   lib,
   pkgs,
   modulesPath,
+  inputs,
   ...
 }:
 {
@@ -62,6 +63,34 @@
   };
 
   users.users.kk-spartans.extraGroups = [ "audio" ];
+
+  # t3-server runs as a user unit and needs to call `tailscale serve`;
+  # keep the operator assignment declarative in case tailscale state resets.
+  systemd.services.tailscale-operator = {
+    description = "Set tailscale operator for the t3-server user service";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "tailscaled.service" ];
+    wants = [ "tailscaled.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.tailscale}/bin/tailscale set --operator kk-spartans";
+      RemainAfterExit = true;
+    };
+  };
+
+  # Let the t3-server user manager (and its services) run without login.
+  users.users.kk-spartans.linger = true;
+
+  home-manager.users.kk-spartans = {
+    imports = [ inputs.nix-packages.homeManagerModules.default ];
+
+    services.t3-server = {
+      enable = true;
+      harnesses.enableClaude = true;
+      harnesses.enableOpencode = true;
+      tailscale.enable = true;
+    };
+  };
 
   environment.systemPackages = [
     pkgs.libva-utils
