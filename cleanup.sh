@@ -158,7 +158,7 @@ fi
 log "Removing everything inside /tmp while preserving /tmp itself"
 if [[ -d /tmp ]]; then
   tmp_bytes="$(dir_size_bytes /tmp sudo)"
-  sudo find /tmp -mindepth 1 ! -path /tmp/opencode\* -exec rm -rf -- {} +
+  sudo find /tmp -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
   record_recovered "/tmp" "$tmp_bytes"
 else
   log "/tmp does not exist; skipping"
