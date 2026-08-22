@@ -38,6 +38,7 @@ in
   "resume=/dev/disk/by-label/swap"
   "pcie_aspm.policy=powersupersave"
 ];
+
       services.tlp = {
         enable = true;
 
