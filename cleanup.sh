@@ -74,5 +74,19 @@ else
   log "$CACHE_DIR does not exist; skipping"
 fi
 
+log "Removing misc caches and trash directories"
+for path in \
+  "$HOME/.local/share/Trash" \
+  "$HOME/.local/share/pnpm" \
+  "$HOME/.bun/install/cache" \
+  "$HOME/.npm/_cacache" \
+  "$HOME/.npm/_npx" \
+  "$HOME/.codex/.tmp" \
+  "$HOME/.codex/cache" \
+  "$HOME/.agent-browser/tmp" \
+  "$HOME/.docker/buildx"; do
+  rm -rf -- "$path"
+done
+
 sync
 log "Cleanup complete"
