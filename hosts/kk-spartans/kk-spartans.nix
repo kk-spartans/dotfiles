@@ -10,6 +10,7 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
+    ../../modules/services/t3-server.nix
   ];
 
   boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
