@@ -10,7 +10,8 @@ let
   cfg = config.my.laptop;
 in
 {
-  options.my.laptop.tlp.useBatterySettingsOnAc = lib.mkEnableOption "battery TLP limits while plugged in";
+  options.my.laptop.tlp.useBatterySettingsOnAc =
+    lib.mkEnableOption "battery TLP limits while plugged in";
 
   config = lib.mkMerge [
     (lib.mkIf laptop {
@@ -35,17 +36,16 @@ in
       # services.auto-cpufreq.enable = true;
       services.upower.enable = true;
       boot.kernelParams = [
-  "resume=/dev/disk/by-label/swap"
-  "pcie_aspm.policy=powersupersave"
-];
+        "resume=/dev/disk/by-label/swap"
+        "pcie_aspm.policy=powersupersave"
+      ];
 
       services.tlp = {
         enable = true;
 
         settings = {
           # CPU
-          CPU_SCALING_GOVERNOR_ON_AC =
-            if cfg.tlp.useBatterySettingsOnAc then "powersave" else "performance";
+          CPU_SCALING_GOVERNOR_ON_AC = if cfg.tlp.useBatterySettingsOnAc then "powersave" else "performance";
           CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
           CPU_ENERGY_PERF_POLICY_ON_AC =
@@ -63,13 +63,11 @@ in
           CPU_MAX_PERF_ON_BAT = 40;
 
           # Platform profile
-          PLATFORM_PROFILE_ON_AC =
-            if cfg.tlp.useBatterySettingsOnAc then "low-power" else "performance";
+          PLATFORM_PROFILE_ON_AC = if cfg.tlp.useBatterySettingsOnAc then "low-power" else "performance";
           PLATFORM_PROFILE_ON_BAT = "low-power";
 
           # PCIe
-          PCIE_ASPM_ON_AC =
-            if cfg.tlp.useBatterySettingsOnAc then "powersupersave" else "default";
+          PCIE_ASPM_ON_AC = if cfg.tlp.useBatterySettingsOnAc then "powersupersave" else "default";
           PCIE_ASPM_ON_BAT = "powersupersave";
 
           # Runtime power management
@@ -85,8 +83,7 @@ in
           SOUND_POWER_SAVE_ON_BAT = 1;
 
           # SATA
-          SATA_LINKPWR_ON_AC =
-            if cfg.tlp.useBatterySettingsOnAc then "min_power" else "med_power_with_dipm";
+          SATA_LINKPWR_ON_AC = if cfg.tlp.useBatterySettingsOnAc then "min_power" else "med_power_with_dipm";
           SATA_LINKPWR_ON_BAT = "min_power";
 
           # USB autosuspend

@@ -31,6 +31,10 @@ in
   home-manager.users.kk-spartans = {
     imports = [ inputs.nix-packages.homeManagerModules.default ];
 
+    # operator is set by the tailscale-operator oneshot above; the upstream
+    # module warns unconditionally when serve is enabled
+    warnings = lib.mkForce [ ];
+
     services.t3-server = {
       enable = true;
       package = t3code;
