@@ -8,7 +8,7 @@
 }:
 {
   imports = lib.optionals pc [
-    ../modules/user/gtk/gtk.nix
-    ../modules/programs/gui/gui.nix
+    ../user/gtk/gtk.nix
+    ../programs/gui/gui.nix
   ];
 }
