@@ -6,15 +6,12 @@
   ...
 }:
 let
-  # Single closure shared by the user service and the interactive `t3` CLI.
   t3code = pkgs.t3code.override {
-    enableClaude = true;
+    enableCodex = true;
     enableOpencode = true;
   };
 in
 {
-  # t3-server runs as a user unit and needs to call `tailscale serve`;
-  # keep the operator assignment declarative in case tailscale state resets.
   systemd.services.tailscale-operator = {
     description = "Set tailscale operator for the t3-server user service";
     wantedBy = [ "multi-user.target" ];
@@ -27,7 +24,6 @@ in
     };
   };
 
-  # Let the t3-server user manager (and its services) run without login.
   users.users.kk-spartans.linger = true;
 
   environment.systemPackages = [ t3code ];

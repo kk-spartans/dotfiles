@@ -64,9 +64,6 @@
 
   users.users.kk-spartans.extraGroups = [ "audio" ];
 
-  # For t3 webui appearance settings: fonts resolve client-side.
-  fonts.packages = [ pkgs.inter ];
-
   environment.systemPackages = [
     pkgs.libva-utils
     pkgs.vulkan-tools

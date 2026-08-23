@@ -206,9 +206,9 @@
             ./modules/user/user.nix
             ./modules/boot.nix
 
-            ./options/gpu.nix
-            ./options/pc.nix
-            ./options/laptop.nix
+            ./modules/platforms/gpu.nix
+            ./modules/platforms/pc.nix
+            ./modules/platforms/laptop.nix
 
             ./hosts/${hostname}/${hostname}.nix
 
