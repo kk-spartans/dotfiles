@@ -20,7 +20,7 @@
         baseURL = "https://openrouter.ai/api/v1";
         apiKey = "{env:OPENROUTER_API_KEY}";
       };
-      models."openrouter/stealth/ox-alpha".name = "Ox Alpha (Openrouter)";
+      models."stealth/ox-alpha".name = "Ox Alpha (Openrouter)";
     };
 
     tui = {
