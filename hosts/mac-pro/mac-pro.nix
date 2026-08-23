@@ -62,6 +62,25 @@
     '';
   };
 
+  systemd.services.obsidian-bisync = {
+    description = "Bisync Obsidian vault to remote";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "kk-spartans";
+      ExecStart = "${pkgs.rclone}/bin/rclone bisync /home/kk-spartans/things/vault/ obsidian:vault";
+    };
+  };
+
+  systemd.timers.obsidian-bisync = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "3min";
+      OnUnitActiveSec = "3min";
+    };
+  };
+
   users.users.kk-spartans.extraGroups = [ "audio" ];
 
   environment.systemPackages = [
