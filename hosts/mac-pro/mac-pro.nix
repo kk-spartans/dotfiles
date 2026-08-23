@@ -69,7 +69,8 @@
     serviceConfig = {
       Type = "oneshot";
       User = "kk-spartans";
-      ExecStart = "${pkgs.rclone}/bin/rclone bisync /home/kk-spartans/things/vault/ obsidian:vault";
+      WorkingDirectory = "/home/kk-spartans/things/vault";
+      ExecStart = "${pkgs.rclone}/bin/rclone bisync . obsidian:vault";
     };
   };
 
