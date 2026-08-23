@@ -54,6 +54,7 @@
 
     home.packages = with pkgs; [
       gnupg
+      jq
     ];
 
     catppuccin.autoEnable = false;
