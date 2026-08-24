@@ -15,6 +15,24 @@
 
   boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  nix.distributedBuilds = true;
+  nix.buildMachines = [
+    {
+      hostName = "mac-pro";
+      system = "x86_64-linux";
+      protocol = "ssh-ng";
+      sshUser = "kk-spartans";
+      maxJobs = 24;
+      speedFactor = 2;
+      supportedFeatures = [
+        "nixos-test"
+        "benchmark"
+        "big-parallel"
+        "kvm"
+      ];
+    }
+  ];
   home-manager.users.kk-spartans.wayland.windowManager.hyprland.settings = {
     monitor = [
       {
