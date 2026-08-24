@@ -55,6 +55,7 @@
     home.packages = with pkgs; [
       gnupg
       jq
+      bitwarden-cli
     ];
 
     catppuccin.autoEnable = false;
