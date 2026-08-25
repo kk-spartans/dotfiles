@@ -19,12 +19,7 @@
     ./blender.nix
   ];
 
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "us.zoom.Zoom"
-    ];
-  };
+  programs.zoom-us.enable = true;
 
   home-manager.users.kk-spartans = {
 
