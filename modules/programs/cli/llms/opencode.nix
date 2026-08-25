@@ -29,6 +29,8 @@
     };
 
     context = ''
+        - If you need a tool/binary that isn't found, just run it from a nix shell (`nix shell nixpkgs#<package>` or `nix-shell -p <package> --run "<command>"`) — don't ask, just do it.
+        - Whenever you use a nix shell for a tool, tell the user at the end what package you used so they can decide whether to add it to global config.
         - Use `uv` or `uvx` when doing anything related to python. Use `uvx python -c ""` if you want to run a command.
         - NEVER run any dev servers, assume they're already running
         - If you are doing something not related to code/an existing project (just a chore, like sorting pdfs), make sure to clean up any scripts/leftover files you created after running them
