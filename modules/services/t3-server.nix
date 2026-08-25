@@ -6,7 +6,7 @@
   ...
 }:
 let
-  t3code = pkgs.t3code.override {
+  t3-nightly = pkgs.t3-nightly.override {
     enableCodex = true;
     enableOpencode = true;
   };
@@ -26,7 +26,7 @@ in
 
   users.users.kk-spartans.linger = true;
 
-  environment.systemPackages = [ t3code ];
+  environment.systemPackages = [ t3-nightly ];
 
   home-manager.users.kk-spartans = {
     imports = [ inputs.nix-packages.homeManagerModules.default ];
@@ -37,7 +37,7 @@ in
 
     services.t3-server = {
       enable = true;
-      package = t3code;
+      package = t3-nightly;
       tailscale.enable = true;
     };
   };
