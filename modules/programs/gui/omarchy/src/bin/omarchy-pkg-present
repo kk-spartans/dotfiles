@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# omarchy:summary=Returns true if all of the named commands are available on the system (or false if any of them are missing).
+# omarchy:args=<commands...>
+
+# NixOS adaptation: package presence is command presence. The system closure
+# is declarative, so a binary being on PATH is the source of truth.
+
+for cmd in "$@"; do
+  command -v "$cmd" &>/dev/null || exit 1
+done
+
+exit 0
