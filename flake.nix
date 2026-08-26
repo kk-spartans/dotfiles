@@ -207,6 +207,7 @@
             ./modules/boot.nix
 
             ./modules/platforms/gpu.nix
+            ./modules/platforms/vfio.nix
             ./modules/platforms/pc.nix
             ./modules/platforms/laptop.nix
 

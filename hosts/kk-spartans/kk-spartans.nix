@@ -16,6 +16,9 @@
   boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # VFIO passthrough: flip BIOS to Hybrid (Discrete disables Intel 00:02.0), then set true and change flake gpu to "intel"
+  my.vfio.enable = false;
+
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
