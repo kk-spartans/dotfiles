@@ -9,8 +9,6 @@ o.bind("SUPER + ESCAPE", "System menu", "omarchy-menu toggle system")
 o.bind("XF86PowerOff", "Power menu", "omarchy-menu toggle system", { locked = true })
 o.bind("SUPER + K", "Keybindings", "omarchy-menu-keybindings")
 o.bind("SUPER + CTRL + K", "Herdr keybindings", "omarchy-menu-herdr-keybindings")
-o.bind("SUPER + CTRL + Q", "Calculator", "omacalc")
-o.bind("XF86Calculator", "Calculator", "omacalc")
 
 o.bind_toggle("SUPER + SHIFT + SPACE", "Toggle top bar", "bar")
 o.bind("SUPER + CTRL + SPACE", "Background switcher", "omarchy-menu toggle background")
@@ -27,7 +25,6 @@ o.bind("SUPER + ALT + comma", "Invoke last notification", "omarchy-shell notific
 o.bind("SUPER + SHIFT + ALT + comma", "Open notification history", "omarchy-shell notifications showHistory")
 
 o.bind_toggle("SUPER + CTRL + I", "Toggle locking on idle", "idle")
-o.bind_toggle("SUPER + CTRL + N", "Toggle nightlight", "nightlight")
 o.bind("SUPER + CTRL + Delete", "Toggle laptop display", "omarchy-hyprland-monitor-internal toggle")
 o.bind("SUPER + CTRL + ALT + Delete", "Toggle laptop display mirroring", "omarchy-hyprland-monitor-internal-mirror toggle")
 o.bind("switch:on:Lid Switch", nil, "omarchy-system-lid-close", { locked = true })

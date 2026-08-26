@@ -14,12 +14,33 @@ Item {
   readonly property string home: Quickshell.env("HOME")
   readonly property string stayAwakeStateDir: home + "/.local/state/omarchy/indicators"
   readonly property string stayAwakeStatePath: stayAwakeStateDir + "/stay-awake"
-  readonly property int defaultScreensaverSeconds: 150
-  readonly property int defaultLockSeconds: 300
+  // NixOS adaptation: the ASCII screensaver is not shipped and lock-on-idle
+  // starts disabled, matching this flake's previous hypridle behavior. Both
+  // come back via [idle] screensaver=<s> / lock=<s> in shell.toml.
+  readonly property int defaultScreensaverSeconds: 0
+  readonly property int defaultLockSeconds: 0
   readonly property var idleConfig: shell && shell.shellConfig && shell.shellConfig.idle ? shell.shellConfig.idle : ({})
   readonly property int screensaverTimeoutSeconds: secondsFromConfig(idleConfig.screensaver, defaultScreensaverSeconds)
   readonly property int lockTimeoutSeconds: secondsFromConfig(idleConfig.lock, defaultLockSeconds)
-  readonly property int firstIdleTimeoutSeconds: Math.min(screensaverTimeoutSeconds, lockTimeoutSeconds)
+  readonly property bool screensaverEnabled: screensaverTimeoutSeconds > 0
+  readonly property bool lockEnabled: lockTimeoutSeconds > 0
+
+  // Host idle ladder, ported verbatim from this flake's former hypridle
+  // listeners. Each stage fires once per idle cycle at its timeout; resume
+  // commands run when the cycle is cancelled (activity or wake).
+  readonly property var extraStages: [
+    { timeout: 30, command: "omarchy-idle-ladder dim", resume: "omarchy-idle-ladder restore-brightness" },
+    { timeout: 32, command: "brightnessctl -d tpacpi::kbd_backlight -s set 0", resume: "brightnessctl -d tpacpi::kbd_backlight -r" },
+    { timeout: 60, command: "omarchy-idle-ladder dpms-off", resume: "omarchy-idle-ladder dpms-on" },
+    { timeout: 1800, command: "systemctl hibernate" }
+  ]
+  readonly property var stageTimeouts: extraStages.map(function(stage) { return stage.timeout })
+  readonly property var candidateTimeouts: (screensaverEnabled ? [screensaverTimeoutSeconds] : [])
+    .concat(lockEnabled ? [lockTimeoutSeconds] : [])
+    .concat(stageTimeouts)
+  readonly property int firstIdleTimeoutSeconds: candidateTimeouts.length > 0
+    ? Math.min.apply(null, candidateTimeouts)
+    : 3600
   readonly property int screensaverDelaySeconds: Math.max(0, screensaverTimeoutSeconds - firstIdleTimeoutSeconds)
   readonly property int lockDelaySeconds: Math.max(0, lockTimeoutSeconds - firstIdleTimeoutSeconds)
   readonly property bool idleEnabled: stayAwakeStateLoaded && !stayAwake
@@ -87,16 +108,23 @@ Item {
       return
     }
 
-    logEvent("idle-cycle-start", "screensaver=" + root.screensaverTimeoutSeconds + " lock=" + root.lockTimeoutSeconds)
+    logEvent("idle-cycle-start", "first=" + root.firstIdleTimeoutSeconds + " lock=" + root.lockTimeoutSeconds + " stages=" + root.extraStages.length)
     root.idledThisCycle = true
     root.screensaverStartedThisCycle = false
     resetScreensaverWindows()
+    resetStageFired()
 
-    if (root.screensaverDelaySeconds === 0) launchScreensaver()
-    else screensaverTimer.restart()
+    if (root.screensaverEnabled) {
+      if (root.screensaverDelaySeconds === 0) launchScreensaver()
+      else screensaverTimer.restart()
+    }
 
-    if (root.lockDelaySeconds === 0) lockSystem("lock-timeout-immediate")
-    else lockTimer.restart()
+    if (root.lockEnabled) {
+      if (root.lockDelaySeconds === 0) lockSystem("lock-timeout-immediate")
+      else lockTimer.restart()
+    }
+
+    restartStageTimers()
   }
 
   function cancelIdleCycle(reason) {
@@ -104,6 +132,8 @@ Item {
     screensaverTimer.stop()
     lockTimer.stop()
     screensaverLaunchGraceTimer.stop()
+    stopStageTimers()
+    runStageResumes()
 
     if (root.idledThisCycle) runProcess(wakeProcess, "wake", "omarchy-system-wake")
 
@@ -278,6 +308,88 @@ Item {
     onTriggered: {
       if (root.idleEnabled && root.idledThisCycle && root.screensaverStartedThisCycle && root.screensaverWindowCount === 0 && !idleMonitor.isIdle) {
         root.cancelIdleCycle("screensaver-not-running")
+      }
+    }
+  }
+
+  // Host idle ladder: one timer + process pair per configured stage. A timer
+  // firing marks its stage and execs the command; cycle cancellation stops
+  // pending timers and runs resume commands for every fired stage.
+  property var stageFired: ({})
+
+  function resetStageFired() {
+    var next = {}
+    for (var i = 0; i < root.extraStages.length; i++) next[i] = false
+    root.stageFired = next
+  }
+
+  function restartStageTimers() {
+    for (var i = 0; i < stageObjects.count; i++) {
+      var object = stageObjects.objectAt(i)
+      if (!object) continue
+      if (object.delaySeconds <= 0) object.fire()
+      else object.timer.restart()
+    }
+  }
+
+  function stopStageTimers() {
+    for (var i = 0; i < stageObjects.count; i++) {
+      var object = stageObjects.objectAt(i)
+      if (object) object.timer.stop()
+    }
+  }
+
+  function runStageResumes() {
+    for (var i = 0; i < stageObjects.count; i++) {
+      var object = stageObjects.objectAt(i)
+      if (object && root.stageFired[i] && object.stage.resume) object.runResume()
+    }
+  }
+
+  Instantiator {
+    id: stageObjects
+    model: root.extraStages.length
+
+    delegate: QtObject {
+      id: object
+
+      required property int index
+      readonly property var stage: root.extraStages[index]
+      readonly property int delaySeconds: Math.max(0, stage.timeout - root.firstIdleTimeoutSeconds)
+
+      readonly property Timer timer: Timer {
+        interval: object.delaySeconds * 1000
+        repeat: false
+        onTriggered: object.fire()
+      }
+
+      readonly property Process process: Process {
+        stdout: StdioCollector {}
+        stderr: StdioCollector {}
+        onExited: function(exitCode, exitStatus) {
+          root.logEvent("stage-exit", "stage=" + object.index + " exitCode=" + exitCode)
+        }
+      }
+
+      readonly property Process resumeProcess: Process {
+        stdout: StdioCollector {}
+        stderr: StdioCollector {}
+        onExited: function(exitCode, exitStatus) {
+          root.logEvent("stage-resume-exit", "stage=" + object.index + " exitCode=" + exitCode)
+        }
+      }
+
+      function fire() {
+        root.stageFired[index] = true
+        root.logEvent("stage-fire", "stage=" + index + " command=" + stage.command)
+        process.command = ["bash", "-c", stage.command]
+        process.running = true
+      }
+
+      function runResume() {
+        root.logEvent("stage-resume", "stage=" + index)
+        resumeProcess.command = ["bash", "-c", stage.resume]
+        resumeProcess.running = true
       }
     }
   }

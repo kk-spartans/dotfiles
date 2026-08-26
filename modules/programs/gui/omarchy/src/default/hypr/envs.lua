@@ -35,8 +35,9 @@ end
 table.insert(kept, 1, bin_dir)
 hl.env("PATH", table.concat(kept, ":"))
 
--- Hardware-specific environment.
-require("default.hypr.nvidia")
+-- Hardware-specific environment. The vendored tree drops the NVIDIA detector
+-- (this flake's gpu.nix owns driver env), so tolerate its absence.
+pcall(require, "default.hypr.nvidia")
 
 hl.config({
   xwayland = {

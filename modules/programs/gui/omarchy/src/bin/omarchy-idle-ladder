@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# omarchy:summary=Idle ladder helpers: battery-aware display dimming and DPMS
+# omarchy:hidden=true
+
+# Ported from this flake's former hypridle listener scripts. The shell idle
+# service fires these at the configured stage timeouts.
+
+set -euo pipefail
+
+state_dir="${XDG_RUNTIME_DIR:-/tmp}/omarchy-idle"
+marker="$state_dir/display-dimmed"
+
+is_laptop() {
+  local chassis
+  chassis=$(cat /sys/class/dmi/id/chassis_type 2>/dev/null || echo 0)
+  # 8 = portable/laptop, 9,10,14 = laptop variants per SMBIOS spec
+  [[ $chassis == 8 || $chassis == 9 || $chassis == 10 || $chassis == 14 ]]
+}
+
+is_on_battery() {
+  local supply type online found=0
+  for supply in /sys/class/power_supply/*; do
+    type="$supply/type"
+    online="$supply/online"
+    [[ -e $type ]] || continue
+    found=1
+    case "$(cat "$type")" in
+      Mains|USB|USB_C|USB_PD)
+        [[ -e $online ]] && [[ $(cat "$online") == 1 ]] && return 1
+        ;;
+    esac
+  done
+  # No power supplies at all (desktop): report on-battery so callers that dim
+  # only on battery still work, but the laptop gate keeps desktops out.
+  (( found )) && return 0
+  return 0
+}
+
+case "${1:-}" in
+  dim)
+    is_laptop || exit 0
+    is_on_battery || exit 0
+    mkdir -p "$state_dir"
+    brightnessctl -s set 0 && touch "$marker"
+    ;;
+  restore-brightness)
+    if [[ -e $marker ]]; then
+      brightnessctl -r
+      rm -f "$marker"
+    fi
+    ;;
+  dpms-off)
+    hyprctl dispatch 'hl.dsp.dpms({ action = "off" })' >/dev/null 2>&1 ||
+      hyprctl dispatch dpms off >/dev/null 2>&1 || true
+    ;;
+  dpms-on)
+    hyprctl dispatch 'hl.dsp.dpms({ action = "on" })' >/dev/null 2>&1 ||
+      hyprctl dispatch dpms on >/dev/null 2>&1 || true
+    ;;
+  *)
+    echo "Usage: omarchy-idle-ladder <dim|restore-brightness|dpms-off|dpms-on>" >&2
+    exit 1
+    ;;
+esac

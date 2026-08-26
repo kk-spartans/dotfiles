@@ -5,7 +5,6 @@ hl.on("hyprland.start", function()
 
   hl.exec_cmd("omarchy-launch-shell")
   -- Provisioning is handled declaratively by the NixOS/home-manager layer.
-  hl.exec_cmd("omarchy-powerprofiles-init")
   hl.exec_cmd(o.launch("omarchy-hyprland-monitor-watch"))
   -- udiskie runs as a home-manager user service on this host.
 
