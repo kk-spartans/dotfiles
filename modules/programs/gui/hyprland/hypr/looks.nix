@@ -5,7 +5,7 @@
   ...
 }:
 {
-  catppuccin.hyprland.enable = true;
+  catppuccin.hyprland.enable = false; # Omarchy theme engine owns Hyprland colors
 
   wayland.windowManager.hyprland = {
     extraConfig = ''

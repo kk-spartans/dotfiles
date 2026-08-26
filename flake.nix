@@ -247,6 +247,18 @@
           gpu = "nvidia";
         };
 
+        # VM test rig for the Omarchy layer (nixos-rebuild build-vm).
+        omarchy-dev = mkHost {
+          system = "x86_64-linux";
+          hostname = "omarchy-dev";
+          instructionSets = [ "avx2" ];
+
+          pc = true;
+          minimal = false;
+          laptop = false;
+          gpu = "none";
+        };
+
         raspi = mkHost {
           system = "aarch64-linux";
           hostname = "raspi";

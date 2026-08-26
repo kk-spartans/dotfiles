@@ -29,9 +29,16 @@
     wayland.windowManager.hyprland.systemd.enable = false; # conflicts with uwsm
 
     imports = [
-      ./hyprshot.nix
+      # Replaced by the Omarchy shell (modules/programs/gui/omarchy):
+      # ./hyprshot.nix        capture suite owns screenshots/recording/OCR
+      # ./waybar/waybar.nix   Omarchy Quickshell bar
+      # ./wallpaper/wallpaper.nix  Omarchy background/theme system
+      # ./swaync/swaync.nix   Omarchy notification daemon
+      # ./hypridle.nix        shell idle service (ported listeners)
+      # ./hyprlock/hyprlock.nix  QML lock screen with PAM
+      # ./hyprsunset/hyprsunset.nix  superseded: this host keeps its own
+      #                       hyprsunset profile; nightlight toggles dropped
       ./vicinae.nix
-      ./hypridle.nix
 
       ./hypr/binds.nix
       ./hypr/looks.nix
@@ -39,13 +46,8 @@
       ./hypr/rules.nix
       # ./hypr/plugins.nix
 
-      ./waybar/waybar.nix
-      ./wallpaper/wallpaper.nix
-      ./swaync/swaync.nix
       # ./snappy-switcher/snappy-switcher.nix
       ./ie-r/ie-r.nix
-      ./hyprlock/hyprlock.nix
-      ./hyprsunset/hyprsunset.nix
 
       # ./cava/cava.nix # hyprwinwrap is broken
     ];

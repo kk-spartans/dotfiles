@@ -14,7 +14,7 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
-    hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("uwsm app -- vicinae toggle"))
+    hl.bind("SUPER + TAB", hl.dsp.exec_cmd("uwsm app -- vicinae toggle")) -- Omarchy menu owns SUPER + SPACE
     hl.bind("SUPER + V", hl.dsp.exec_cmd("uwsm app -- vicinae 'vicinae://launch/clipboard/history'"))
     hl.bind("SUPER + SEMICOLON", hl.dsp.exec_cmd("uwsm app -- vicinae 'vicinae://launch/core/search-emojis'"))
 
