@@ -17,6 +17,7 @@
     ./minecraft.nix
     ./printing.nix
     ./blender.nix
+    ./virt-manager.nix
   ];
 
   programs.zoom-us.enable = true;
