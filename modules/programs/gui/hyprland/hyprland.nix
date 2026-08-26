@@ -29,7 +29,7 @@
     wayland.windowManager.hyprland.systemd.enable = false; # conflicts with uwsm
 
     imports = [
-      # Replaced by the Omarchy shell (modules/programs/gui/omarchy):
+      # Replaced by the Quickshell island shell (modules/programs/gui/hyprland/quickshell):
       # ./hyprshot.nix        capture suite owns screenshots/recording/OCR
       # ./waybar/waybar.nix   Omarchy Quickshell bar
       # ./wallpaper/wallpaper.nix  Omarchy background/theme system

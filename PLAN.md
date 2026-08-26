@@ -9,7 +9,7 @@ reviewing this branch.
 
 - Everything ships inside this repo. No Omarchy flake input: the needed subset
   of `kk-spartans/omarchy` (quattro) is vendored under
-  `modules/programs/gui/omarchy/src/`.
+  `modules/programs/gui/hyprland/quickshell/src/`.
 - Follow the repo's existing structure idioms: component directory with an
   entry `.nix`, sibling `.nix` files per concern, derivations inline in the
   module that consumes them, home-manager written directly as
@@ -88,8 +88,8 @@ wrappers, gaming installers, hw-* detectors, debug ISO binaries.
 ## Repo layout
 
 ```
-modules/programs/gui/omarchy/
-├── omarchy.nix        entry: imports siblings; NixOS-level integration
+modules/programs/gui/hyprland/quickshell/
+├── shell.nix        entry: imports siblings; NixOS-level integration
 ├── src/               vendored trimmed omarchy tree
 ├── runtime.nix        inline derivations: share tree, tool closure, wrapped bin/*
 ├── idle.nix           extended idle Service.qml + the four listeners above

@@ -329,6 +329,12 @@ Item {
   readonly property bool vertical: position === "left" || position === "right"
   readonly property int barSize: vertical ? Style.bar.sizeVertical : Style.bar.sizeHorizontal
 
+  // Floating-island look: the bar surface is inset from screen edges and the
+  // slab itself is a fully rounded pill instead of an edge-to-edge strip.
+  readonly property int barInset: 6
+  readonly property int pillRadius: Math.floor(barSize / 2)
+  readonly property int pillPad: Math.max(2, pillRadius - 6)
+
   function normalizePosition(value) {
     return BarModel.normalizePosition(value)
   }
@@ -1003,10 +1009,10 @@ Item {
     }
 
     margins {
-      top: root.barHidden && root.position === "top" ? -root.barSize : 0
-      bottom: root.barHidden && root.position === "bottom" ? -root.barSize : 0
-      left: root.barHidden && root.position === "left" ? -root.barSize : 0
-      right: root.barHidden && root.position === "right" ? -root.barSize : 0
+      top: root.barHidden && root.position === "top" ? -root.barSize : (root.position === "top" && !root.vertical ? root.barInset : 0)
+      bottom: root.barHidden && root.position === "bottom" ? -root.barSize : (root.position === "bottom" && !root.vertical ? root.barInset : 0)
+      left: root.barHidden && root.position === "left" ? -root.barSize : (root.vertical && root.position === "left" ? root.barInset : (!root.vertical ? root.barInset : 0))
+      right: root.barHidden && root.position === "right" ? -root.barSize : (root.vertical && root.position === "right" ? root.barInset : (!root.vertical ? root.barInset : 0))
     }
 
     anchors {
@@ -1018,14 +1024,27 @@ Item {
 
     implicitWidth: root.vertical ? root.barSize : 0
     implicitHeight: root.vertical ? 0 : root.barSize
-    color: root.transparent ? "transparent" : root.background
+    color: "transparent"
     surfaceFormat.opaque: false
     WlrLayershell.namespace: "omarchy-bar"
     WlrLayershell.layer: WlrLayer.Top
 
-    Loader {
+    // The pill slab. Fully rounded; content keeps off the curves.
+    Rectangle {
       anchors.fill: parent
-      sourceComponent: root.vertical ? verticalBar : horizontalBar
+      radius: root.pillRadius
+      color: root.transparent ? "transparent" : root.background
+      border.width: 1
+      border.color: Qt.rgba(Color.foreground.r, Color.foreground.g, Color.foreground.b, 0.06)
+
+      Loader {
+        anchors.fill: parent
+        anchors.leftMargin: root.vertical ? 0 : root.pillPad
+        anchors.rightMargin: root.vertical ? 0 : root.pillPad
+        anchors.topMargin: root.vertical ? root.pillPad : 0
+        anchors.bottomMargin: root.vertical ? root.pillPad : 0
+        sourceComponent: root.vertical ? verticalBar : horizontalBar
+      }
 
       // A child of the loader, not a sibling of the sections: an ancestor stays
       // hovered while the pointer is over a widget, where a sibling would lose

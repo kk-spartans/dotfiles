@@ -10,7 +10,7 @@
 
     # The Omarchy layer lives here alone until sign-off, then moves into
     # modules/programs/gui/gui.nix for every pc host.
-    ../../modules/programs/gui/omarchy/omarchy.nix
+    ../../modules/programs/gui/hyprland/quickshell/shell.nix
   ];
 
   # GUI test rig for the Omarchy layer: same pc chain as kk-spartans,
