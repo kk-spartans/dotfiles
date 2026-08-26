@@ -4,3 +4,6 @@
 # ripgrep annoys me
 /chezmoi
 /modules/program/gui/obsidian
+
+# local demo/verification artifacts (videos, stills, VM junk)
+.demo-artifacts/
