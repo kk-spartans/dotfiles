@@ -12,6 +12,11 @@
     ../../modules/services/t3-server.nix
   ];
 
+  home-manager.users.kk-spartans = {
+    imports = [ inputs.nix-packages.homeManagerModules.wacli-sync ];
+    services.wacli-sync.enable = true;
+  };
+
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   hardware.enableRedistributableFirmware = true;
