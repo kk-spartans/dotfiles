@@ -3,6 +3,7 @@
   lib,
   pkgs,
   modulesPath,
+  inputs,
   ...
 }:
 {
@@ -82,8 +83,8 @@
   systemd.timers.obsidian-bisync = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnBootSec = "3min";
-      OnUnitActiveSec = "3min";
+      OnBootSec = "1min";
+      OnUnitActiveSec = "1min";
     };
   };
 
