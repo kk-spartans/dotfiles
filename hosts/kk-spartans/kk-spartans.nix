@@ -36,6 +36,7 @@
       ];
     }
   ];
+  home-manager.users.kk-spartans.home.packages = [ pkgs.kiwix-tools ];
   home-manager.users.kk-spartans.wayland.windowManager.hyprland.settings = {
     monitor = [
       {
