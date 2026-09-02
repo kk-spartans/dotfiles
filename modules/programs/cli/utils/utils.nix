@@ -32,6 +32,9 @@
       discrawl
       hf
     ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+      terminal-browser
+    ]
     ++ lib.optionals (!minimal) [
       pwgen
     ];

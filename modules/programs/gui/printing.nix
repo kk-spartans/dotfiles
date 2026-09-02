@@ -20,6 +20,8 @@
   environment.systemPackages = with pkgs; [
     cups
     cups-filters
+    ghostscript
+    poppler-utils
     system-config-printer
     avahi
   ];
