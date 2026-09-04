@@ -1,5 +1,15 @@
 onboarding = false
 
+# Per-tab browser sessions (terminal-agent-browser):
+# herdr already injects HERDR_TAB_ID / HERDR_PANE_ID / HERDR_WORKSPACE_ID into
+# every pane. terminal-browser keys its "current terminal tab" off HERDR_TAB_ID,
+# and the terminal-agent-browser wrapper
+# (nix-packages homeManagerModules.terminal-agent-browser) derives its
+# per-tab session from HERDR_TAB_ID at invocation time -- no shell integration
+# and no plugin needed (plugin v1 has no hook into default pane launches, and
+# `herdr config check` rejects unknown keys, so there is nothing to set here).
+# Same tab shares a session, different tabs are isolated.
+
 [keys]
 prefix = "ctrl+g"
 new_workspace = "prefix+n"

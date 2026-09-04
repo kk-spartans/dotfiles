@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   minimal,
   ...
 }:
@@ -15,7 +16,12 @@
   ++ lib.optionals (!minimal) [
     ./ocrmypdf.nix
     ./totp-cli.nix
+    inputs.nix-packages.homeManagerModules.terminal-agent-browser
   ];
+
+  # Per-herdr-tab agent control for terminal-browser. Same toggle pattern as
+  # the terminal-browser package above: off on minimal hosts.
+  programs.terminal-agent-browser.enable = !minimal;
 
   home.packages =
     with pkgs;
