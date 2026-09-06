@@ -1,10 +1,21 @@
 {
   config,
   pkgs,
+  osConfig ? { },
   ...
 }:
 let
-  agent-browser = pkgs.writeShellApplication {
+  isMacPro = (osConfig.networking.hostName or "") == "mac-pro";
+
+  # mac-pro only: drives the persistent real-Chrome service over the tailnet
+  # (~/things/docker/browsers on mac-pro: branded google-chrome-stable
+  # under Xvfb, profile in ./profile; no ports published on any host —
+  # Tailscale Serve at https://browsers.gute-degree.ts.net routes
+  # /json/* + /devtools/* to Chrome and everything else to the noVNC UI).
+  # Watch the live session at .../vnc.html — same browser the agent drives.
+  # Log into Google by hand once in that UI; the agent inherits the
+  # persisted session. No license keys. Override with BROWSERS_BASE.
+  agent-browser-tailnet = pkgs.writeShellApplication {
     name = "agent-browser";
     runtimeInputs = [
       pkgs.agent-browser-bin
@@ -12,14 +23,6 @@ let
       pkgs.python3
     ];
 
-    # Drives the persistent real-Chrome service over the tailnet only
-    # (~/things/docker/browsers on mac-pro: branded google-chrome-stable
-    # under Xvfb, profile in ./profile; no ports published on any host —
-    # Tailscale Serve at https://browsers.gute-degree.ts.net routes
-    # /json/* + /devtools/* to Chrome and everything else to the noVNC UI).
-    # Watch the live session at .../vnc.html — same browser the agent drives.
-    # Log into Google by hand once in that UI; the agent inherits the
-    # persisted session. No license keys. Override with BROWSERS_BASE.
     text = ''
       set -euo pipefail
 
@@ -35,6 +38,38 @@ let
       exec ${pkgs.agent-browser-bin}/bin/agent-browser --cdp "$WS" "$@"
     '';
   };
+
+  # Restored from pre-027b1a1 (local cloak container): everything that is
+  # not mac-pro (kk-spartans, raspi) drives its own cloakhq/cloakbrowser
+  # container on 127.0.0.1:9222 instead of the tailnet Chrome.
+  agent-browser-cloak = pkgs.writeShellApplication {
+    name = "agent-browser";
+    runtimeInputs = [
+      pkgs.agent-browser-bin
+      pkgs.docker
+    ];
+
+    text = ''
+      set -euo pipefail
+
+      CONTAINER_NAME="cloak"
+      IMAGE="cloakhq/cloakbrowser"
+      CDP_PORT="9222"
+
+      if ! docker inspect "$CONTAINER_NAME" >/dev/null 2>&1; then
+        docker run -d \
+          --name "$CONTAINER_NAME" \
+          -p 127.0.0.1:''${CDP_PORT}:9222 \
+          "$IMAGE" cloakserve >/dev/null
+      elif [ "$(docker inspect -f '{{.State.Running}}' "$CONTAINER_NAME")" != "true" ]; then
+        docker start "$CONTAINER_NAME" >/dev/null
+      fi
+
+      exec ${pkgs.agent-browser-bin}/bin/agent-browser --cdp "$CDP_PORT" "$@"
+    '';
+  };
+
+  agent-browser = if isMacPro then agent-browser-tailnet else agent-browser-cloak;
 in
 {
   home.packages = [ agent-browser ];
