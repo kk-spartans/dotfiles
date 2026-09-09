@@ -81,7 +81,9 @@ in
         package = config.boot.kernelPackages.nvidiaPackages.production;
 
         powerManagement = {
-          enable = false;
+          # Required with PreserveVideoMemoryAllocations so systemd can save
+          # and restore NVIDIA VRAM around suspend and hibernate.
+          enable = true;
           finegrained = false;
         };
 

@@ -6,6 +6,7 @@
 }:
 let
   isMacPro = (osConfig.networking.hostName or "") == "mac-pro";
+  isKkSpartans = (osConfig.networking.hostName or "") == "kk-spartans";
 
   # mac-pro only: drives the persistent real-Chrome service over the tailnet
   # (~/things/docker/browsers on mac-pro: branded google-chrome-stable
@@ -39,9 +40,9 @@ let
     '';
   };
 
-  # Restored from pre-027b1a1 (local cloak container): everything that is
-  # not mac-pro (kk-spartans, raspi) drives its own cloakhq/cloakbrowser
-  # container on 127.0.0.1:9222 instead of the tailnet Chrome.
+  # kk-spartans only (local cloak container, pre-027b1a1 behavior): starts
+  # its own cloakhq/cloakbrowser container on 127.0.0.1:9222 instead of
+  # the tailnet Chrome.
   agent-browser-cloak = pkgs.writeShellApplication {
     name = "agent-browser";
     runtimeInputs = [
@@ -69,7 +70,15 @@ let
     '';
   };
 
-  agent-browser = if isMacPro then agent-browser-tailnet else agent-browser-cloak;
+  # Only mac-pro gets the tailnet wrapper, only kk-spartans gets the cloak
+  # wrapper; every other host gets stock upstream agent-browser, no wrapper.
+  agent-browser =
+    if isMacPro then
+      agent-browser-tailnet
+    else if isKkSpartans then
+      agent-browser-cloak
+    else
+      pkgs.agent-browser-bin;
 in
 {
   home.packages = [ agent-browser ];
