@@ -14,8 +14,12 @@
   ];
 
   home-manager.users.kk-spartans = {
-    imports = [ inputs.nix-packages.homeManagerModules.wacli-sync ];
+    imports = [
+      inputs.nix-packages.homeManagerModules.wacli-sync
+      inputs.nix-packages.homeManagerModules.discord-cli-sync
+    ];
     services.wacli-sync.enable = true;
+    services.discord-cli-sync.enable = true;
   };
 
   boot.kernelPackages = pkgs.linuxPackages_6_12;
