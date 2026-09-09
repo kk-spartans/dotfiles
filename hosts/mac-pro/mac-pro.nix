@@ -18,6 +18,9 @@
       inputs.nix-packages.homeManagerModules.wacli-sync
       inputs.nix-packages.homeManagerModules.discord-cli-sync
     ];
+
+    home.packages = [ pkgs.discord-cli ];
+
     services.wacli-sync.enable = true;
     services.discord-cli-sync.enable = true;
   };

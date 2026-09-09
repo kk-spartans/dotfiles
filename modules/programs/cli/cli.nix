@@ -56,7 +56,6 @@
       gnupg
       jq
       bitwarden-cli
-      discord-cli
     ];
 
     catppuccin.autoEnable = false;
