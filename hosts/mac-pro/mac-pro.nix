@@ -23,6 +23,16 @@
 
     services.wacli-sync.enable = true;
     services.discord-cli-sync.enable = true;
+
+    systemd.user.services.discord-cli-sync.Service.EnvironmentFile =
+      config.sops.templates."discord-token.env".path;
+  };
+
+  sops.secrets.DISCORD_TOKEN.owner = "kk-spartans";
+
+  sops.templates."discord-token.env" = {
+    content = "DISCORD_TOKEN=${config.sops.placeholder.DISCORD_TOKEN}";
+    owner = "kk-spartans";
   };
 
   boot.kernelPackages = pkgs.linuxPackages_6_12;
