@@ -56,6 +56,7 @@
       gnupg
       jq
       bitwarden-cli
+      cowsay
     ];
 
     catppuccin.autoEnable = false;
