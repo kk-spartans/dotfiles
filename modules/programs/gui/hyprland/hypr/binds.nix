@@ -46,10 +46,10 @@
     settings = {
       config = {
         input = {
-          kb_layout = "us";
-          kb_variant = "";
+          kb_layout = "us,us";
+          kb_variant = ",colemak_dh";
           kb_model = "";
-          kb_options = "";
+          kb_options = "grp:shifts_toggle";
           kb_rules = "";
           follow_mouse = 1;
           sensitivity = 0.4;
