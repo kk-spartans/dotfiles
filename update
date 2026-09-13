@@ -2,4 +2,4 @@
 set -euo pipefail
 
 git pull
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch --flake .#$(hostname)
