@@ -10,6 +10,7 @@
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.nerd-fonts.geist-mono
     inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
+    (pkgs.noto-fonts.override { variants = [ "Noto Sans Tamil" ]; })
   ];
 
   fonts.fontconfig = {
