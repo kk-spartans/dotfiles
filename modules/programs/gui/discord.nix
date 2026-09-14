@@ -165,6 +165,7 @@
         alwaysAnimate.enable = true;
         messageLogger.enable = true;
         noTypingAnimation.enable = true;
+        spotifyCrack.enable = true;
         messageClickActions = {
           enable = true;
           enableDoubleClickToEdit = true;
