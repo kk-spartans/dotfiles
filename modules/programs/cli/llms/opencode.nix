@@ -38,6 +38,7 @@
         - Avoid globbing/searching large directories like root or userhome when the user already gave a specific path (it is too slow).
         - Use web search extensively for up-to-date info on stuff
         - When using agent-browser to open urls on localhost, PLEASE use "172.17.0.1" as the host, and use `http://` as the protocol if you're sure it's something like a dev server. The browser isn't running locally.
+        - When I ask you to put up a PR, you're already on a new branch/worktree — don't make a new one. Just make a PR when you're done.
 
         ---
 
