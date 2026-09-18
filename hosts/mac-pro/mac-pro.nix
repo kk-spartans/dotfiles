@@ -112,19 +112,21 @@
     pkgs.vulkan-tools
     pkgs.efibootmgr
     pkgs.efivar
+    pkgs.pciutils
   ];
 
   # Headless boot on MacPro6,1: skip the systemd-boot menu entirely.
   boot.loader.timeout = 0;
   boot.loader.systemd-boot.editor = false;
 
-  # Apple Startup Manager shows its "EFI Boot" picker on every boot because
-  # NVRAM holds stale entries (Boot0001/Boot0002 with zero GUIDs, Boot0000
-  # pointing at a pre-disko PARTUUID, efi-boot-device blessed to a dead macOS
-  # installer). The systemd-boot installer (canTouchEfiVariables, see
-  # modules/boot.nix) recreates the valid entry on rebuild; this service
-  # deletes the stale ones, puts the valid "Linux Boot Manager" entry first,
-  # and clears Apple's stale blessed device so the firmware auto-boots.
+  # The Apple Startup Manager picker on every boot was forced by NVRAM
+  # manufacturing-enter-picker=true (plus stale entries: Boot0001/Boot0002
+  # with zero GUIDs, Boot0000 pointing at a pre-disko PARTUUID,
+  # efi-boot-device blessed to a dead macOS installer). The systemd-boot
+  # installer (canTouchEfiVariables, see modules/boot.nix) recreates the
+  # valid entry on rebuild; this service deletes the stale ones, puts the
+  # valid "Linux Boot Manager" entry first, and clears Apple's stale
+  # blessed device + forced-picker flag so the firmware auto-boots.
   systemd.services.mac-pro-efi-boot-fix = {
     description = "Fix stale Apple/UEFI NVRAM boot entries on MacPro6,1";
     wantedBy = [ "multi-user.target" ];
@@ -168,15 +170,38 @@
       if [ -n "''${ENTRY:-}" ]; then
         $EFIBOOTMGR -o "$ENTRY" >/dev/null 2>&1 || true
       fi
-      # Clear Apple's stale blessed boot device (dead macOS installer) so the
-      # firmware follows BootOrder/fallback instead of showing the picker.
-      for VAR in efi-boot-device-7c436110-ab2a-4bbb-a880-fe41995c9f82 efi-boot-device-data-7c436110-ab2a-4bbb-a880-fe41995c9f82; do
+      # Clear Apple's stale blessed boot device (dead macOS installer) and the
+      # forced-picker flag so the firmware auto-boots instead of showing the
+      # Startup Manager.
+      for VAR in efi-boot-device-7c436110-ab2a-4bbb-a880-fe41995c9f82 efi-boot-device-data-7c436110-ab2a-4bbb-a880-fe41995c9f82 manufacturing-enter-picker-7c436110-ab2a-4bbb-a880-fe41995c9f82; do
         F="/sys/firmware/efi/efivars/$VAR"
         if [ -e "$F" ]; then
           ${pkgs.e2fsprogs}/bin/chattr -i "$F" >/dev/null 2>&1 || true
           rm -f "$F" >/dev/null 2>&1 || true
         fi
       done
+    '';
+  };
+
+  # Power on automatically after AC power loss. The C600/X79 PCH on this
+  # board exposes AFTERG3 in GEN_PMCON_3 (LPC 00:1f.0, config byte 0xA4,
+  # bit 0: 0 = boot after G3, 1 = stay in S5). The setting lives in the RTC
+  # well, not the EFI BootOrder, so enforce it on every boot.
+  systemd.services.mac-pro-power-restore = {
+    description = "Ensure MacPro6,1 boots after AC power loss";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      set -u
+      SETPCI=${pkgs.pciutils}/bin/setpci
+      CUR=$($SETPCI -s 00:1f.0 0xa4.b 2>/dev/null) || exit 0
+      case "$CUR" in
+        [0-9a-fA-F][0-9a-fA-F]) ;;
+        *) exit 0 ;;
+      esac
+      if [ $((16#$CUR & 1)) -ne 0 ]; then
+        $SETPCI -s 00:1f.0 0xa4.b=$(printf '%02x' $((16#$CUR & ~1)))
+      fi
     '';
   };
 }
