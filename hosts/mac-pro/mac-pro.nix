@@ -6,6 +6,24 @@
   inputs,
   ...
 }:
+let
+  # Minimal Apple SMC client (./smc-tool.c, ported from Linux's
+  # drivers/hwmon/applesmc.c). Needed because the in-tree applesmc driver
+  # exposes no generic key-write path, and we must arm the AUPO key.
+  smc-tool = pkgs.stdenv.mkDerivation {
+    pname = "smc-tool";
+    version = "1";
+    src = ./smc-tool.c;
+    dontUnpack = true;
+    buildPhase = ''
+      cc -O2 -o smc-tool "$src"
+    '';
+    installPhase = ''
+      mkdir -p $out/bin
+      cp smc-tool $out/bin/
+    '';
+  };
+in
 {
   imports = [
     ./disko.nix
@@ -183,10 +201,13 @@
     '';
   };
 
-  # Power on automatically after AC power loss. The C600/X79 PCH on this
-  # board exposes AFTERG3 in GEN_PMCON_3 (LPC 00:1f.0, config byte 0xA4,
-  # bit 0: 0 = boot after G3, 1 = stay in S5). The setting lives in the RTC
-  # well, not the EFI BootOrder, so enforce it on every boot.
+  # Power on automatically after AC power loss. Two layers:
+  # 1. PCH AFTERG3 bit (GEN_PMCON_3, LPC 00:1f.0 config byte 0xA4 bit 0).
+  #    Reads 0 (boot) already; enforce it in case firmware ever flips it.
+  # 2. SMC AUPO key (Auto Power-On): the SMC decides whether to bring the
+  #    rails up when AC returns, and it defaults to staying off (0). macOS
+  #    arms it on every boot via pmset autorestart; without macOS nothing
+  #    arms it, so do it here. Re-armed every boot in case it is one-shot.
   systemd.services.mac-pro-power-restore = {
     description = "Ensure MacPro6,1 boots after AC power loss";
     wantedBy = [ "multi-user.target" ];
@@ -194,14 +215,23 @@
     script = ''
       set -u
       SETPCI=${pkgs.pciutils}/bin/setpci
-      CUR=$($SETPCI -s 00:1f.0 0xa4.b 2>/dev/null) || exit 0
-      case "$CUR" in
-        [0-9a-fA-F][0-9a-fA-F]) ;;
-        *) exit 0 ;;
+      CUR=$($SETPCI -s 00:1f.0 0xa4.b 2>/dev/null) || CUR=""
+      case "''${CUR:-}" in
+        [0-9a-fA-F][0-9a-fA-F])
+          if [ $((16#$CUR & 1)) -ne 0 ]; then
+            $SETPCI -s 00:1f.0 0xa4.b=$(printf '%02x' $((16#$CUR & ~1)))
+          fi
+          ;;
       esac
-      if [ $((16#$CUR & 1)) -ne 0 ]; then
-        $SETPCI -s 00:1f.0 0xa4.b=$(printf '%02x' $((16#$CUR & ~1)))
-      fi
+      # The hwmon driver has no SMC key-write path, so talk to the SMC
+      # directly; unbind the driver first to avoid port races, rebind after.
+      SMC_TOOL=${smc-tool}/bin/smc-tool
+      DRV=/sys/bus/platform/drivers/applesmc
+      echo "applesmc.768" > "$DRV/unbind" 2>/dev/null || true
+      $SMC_TOOL write AUPO 01 2>/dev/null || echo "smc-tool: AUPO write failed"
+      VAL=$($SMC_TOOL read AUPO 1 2>/dev/null) || VAL=""
+      echo "smc-tool: AUPO=$VAL"
+      echo "applesmc.768" > "$DRV/bind" 2>/dev/null || true
     '';
   };
 }
