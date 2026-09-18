@@ -135,13 +135,26 @@
       BOOTCTL=${pkgs.systemd}/bin/bootctl
       BLKID=${pkgs.util-linux}/bin/blkid
       FINDMNT=${pkgs.util-linux}/bin/findmnt
-      # Delete the known-stale leftover entries (zero-GUID, pre-disko).
-      $EFIBOOTMGR -B -b 0001 >/dev/null 2>&1 || true
-      $EFIBOOTMGR -B -b 0002 >/dev/null 2>&1 || true
-      # The valid "Linux Boot Manager" entry must point at the current ESP.
-      # The NixOS installer skips rewriting it when binaries are unchanged,
-      # so repair it here if it still references the pre-disko PARTUUID.
       ESP_UUID=$($BLKID -s PARTUUID -o value "$($FINDMNT -no SOURCE /boot)" 2>/dev/null | tr '[:upper:]' '[:lower:]') || true
+      entry_guid() {
+        $EFIBOOTMGR -v 2>/dev/null | grep -E "^Boot$1[* ]" | grep -oiE 'GPT,[0-9a-f-]{36}' | head -n 1 | cut -d, -f2 | tr '[:upper:]' '[:lower:]' || true
+      }
+      is_linux_entry() {
+        $EFIBOOTMGR -v 2>/dev/null | grep -E "^Boot$1[* ]" | grep -qi 'linux boot manager'
+      }
+      # Delete a Linux entry only if it is stale: missing GUID, zero GUID,
+      # or pointing at a different ESP. Never touches valid entries
+      # (e.g. the fallback entry bootctl manages) or Apple entries.
+      delete_if_stale() {
+        G=$(entry_guid "$1")
+        if [ -z "''${G:-}" ] || [ "$G" = "00000000-0000-0000-0000-000000000000" ] || [ "$G" != "''${ESP_UUID:-$G}" ]; then
+          if is_linux_entry "$1"; then
+            $EFIBOOTMGR -B -b "$1" >/dev/null 2>&1 || true
+          fi
+        fi
+      };
+      delete_if_stale 0001
+      delete_if_stale 0002
       ENTRY=$($EFIBOOTMGR -v 2>/dev/null | grep -i 'linux boot manager' | head -n 1 | grep -oE 'Boot[0-9A-Fa-f]{4}' | head -n 1 | sed 's/^Boot//') || true
       if [ -n "''${ENTRY:-}" ] && [ -n "''${ESP_UUID:-}" ]; then
         ENTRY_UUID=$($EFIBOOTMGR -v 2>/dev/null | grep -E "^Boot''${ENTRY}\*" | grep -oiE 'GPT,[0-9a-f-]{36}' | head -n 1 | cut -d, -f2 | tr '[:upper:]' '[:lower:]') || true
