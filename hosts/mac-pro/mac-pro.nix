@@ -132,11 +132,26 @@
     script = ''
       set -u
       EFIBOOTMGR=${pkgs.efibootmgr}/bin/efibootmgr
+      BOOTCTL=${pkgs.systemd}/bin/bootctl
+      BLKID=${pkgs.util-linux}/bin/blkid
+      FINDMNT=${pkgs.util-linux}/bin/findmnt
       # Delete the known-stale leftover entries (zero-GUID, pre-disko).
       $EFIBOOTMGR -B -b 0001 >/dev/null 2>&1 || true
       $EFIBOOTMGR -B -b 0002 >/dev/null 2>&1 || true
-      # Put the valid "Linux Boot Manager" entry first.
+      # The valid "Linux Boot Manager" entry must point at the current ESP.
+      # The NixOS installer skips rewriting it when binaries are unchanged,
+      # so repair it here if it still references the pre-disko PARTUUID.
+      ESP_UUID=$($BLKID -s PARTUUID -o value "$($FINDMNT -no SOURCE /boot)" 2>/dev/null | tr '[:upper:]' '[:lower:]') || true
       ENTRY=$($EFIBOOTMGR -v 2>/dev/null | grep -i 'linux boot manager' | head -n 1 | grep -oE 'Boot[0-9A-Fa-f]{4}' | head -n 1 | sed 's/^Boot//') || true
+      if [ -n "''${ENTRY:-}" ] && [ -n "''${ESP_UUID:-}" ]; then
+        ENTRY_UUID=$($EFIBOOTMGR -v 2>/dev/null | grep -E "^Boot''${ENTRY}\*" | grep -oiE 'GPT,[0-9a-f-]{36}' | head -n 1 | cut -d, -f2 | tr '[:upper:]' '[:lower:]') || true
+        if [ "''${ENTRY_UUID:-}" != "$ESP_UUID" ]; then
+          $EFIBOOTMGR -B -b "$ENTRY" >/dev/null 2>&1 || true
+          $BOOTCTL install --esp-path=/boot >/dev/null 2>&1 || true
+          ENTRY=$($EFIBOOTMGR -v 2>/dev/null | grep -i 'linux boot manager' | head -n 1 | grep -oE 'Boot[0-9A-Fa-f]{4}' | head -n 1 | sed 's/^Boot//') || true
+        fi
+      fi
+      # Put the valid entry first.
       if [ -n "''${ENTRY:-}" ]; then
         $EFIBOOTMGR -o "$ENTRY" >/dev/null 2>&1 || true
       fi
