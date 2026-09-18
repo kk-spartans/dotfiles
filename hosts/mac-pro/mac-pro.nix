@@ -110,5 +110,45 @@
   environment.systemPackages = [
     pkgs.libva-utils
     pkgs.vulkan-tools
+    pkgs.efibootmgr
+    pkgs.efivar
   ];
+
+  # Headless boot on MacPro6,1: skip the systemd-boot menu entirely.
+  boot.loader.timeout = 0;
+  boot.loader.systemd-boot.editor = false;
+
+  # Apple Startup Manager shows its "EFI Boot" picker on every boot because
+  # NVRAM holds stale entries (Boot0001/Boot0002 with zero GUIDs, Boot0000
+  # pointing at a pre-disko PARTUUID, efi-boot-device blessed to a dead macOS
+  # installer). The systemd-boot installer (canTouchEfiVariables, see
+  # modules/boot.nix) recreates the valid entry on rebuild; this service
+  # deletes the stale ones, puts the valid "Linux Boot Manager" entry first,
+  # and clears Apple's stale blessed device so the firmware auto-boots.
+  systemd.services.mac-pro-efi-boot-fix = {
+    description = "Fix stale Apple/UEFI NVRAM boot entries on MacPro6,1";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      set -u
+      EFIBOOTMGR=${pkgs.efibootmgr}/bin/efibootmgr
+      # Delete the known-stale leftover entries (zero-GUID, pre-disko).
+      $EFIBOOTMGR -B -b 0001 >/dev/null 2>&1 || true
+      $EFIBOOTMGR -B -b 0002 >/dev/null 2>&1 || true
+      # Put the valid "Linux Boot Manager" entry first.
+      ENTRY=$($EFIBOOTMGR -v 2>/dev/null | grep -i 'linux boot manager' | head -n 1 | grep -oE 'Boot[0-9A-Fa-f]{4}' | head -n 1 | sed 's/^Boot//') || true
+      if [ -n "''${ENTRY:-}" ]; then
+        $EFIBOOTMGR -o "$ENTRY" >/dev/null 2>&1 || true
+      fi
+      # Clear Apple's stale blessed boot device (dead macOS installer) so the
+      # firmware follows BootOrder/fallback instead of showing the picker.
+      for VAR in efi-boot-device-7c436110-ab2a-4bbb-a880-fe41995c9f82 efi-boot-device-data-7c436110-ab2a-4bbb-a880-fe41995c9f82; do
+        F="/sys/firmware/efi/efivars/$VAR"
+        if [ -e "$F" ]; then
+          ${pkgs.e2fsprogs}/bin/chattr -i "$F" >/dev/null 2>&1 || true
+          rm -f "$F" >/dev/null 2>&1 || true
+        fi
+      done
+    '';
+  };
 }

@@ -42,6 +42,14 @@
 
   users.groups.uinput = { };
 
+  # Plain `sudo` resolves via /run/wrappers/bin (setuid wrappers, first in
+  # PATH on login shells via /etc/profile). /run/current-system/sw/bin/sudo
+  # is the raw store copy without setuid and always fails with "must be owned
+  # by uid 0 and have the setuid bit set" when it shadows the wrapper (e.g.
+  # in non-login shells with a custom PATH that never sourced /etc/profile).
+  # Nothing is broken system-side; this pins the intent.
+  security.sudo.enable = true;
+
   security.sudo.extraRules = [
     {
       users = [ "kk-spartans" ];
