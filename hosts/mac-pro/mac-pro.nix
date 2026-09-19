@@ -35,12 +35,19 @@ in
     imports = [
       inputs.nix-packages.homeManagerModules.wacli-sync
       inputs.nix-packages.homeManagerModules.discord-cli-sync
+      inputs.discord-cli.homeManagerModules.default
     ];
 
     home.packages = [ pkgs.discord-cli ];
 
     services.wacli-sync.enable = true;
     services.discord-cli-sync.enable = true;
+
+    services.discord-cli-follow = {
+      enable = true;
+      downloadMedia = true;
+      environmentFile = "%h/.config/discord-cli/env";
+    };
 
     systemd.user.services.discord-cli-sync.Service.EnvironmentFile =
       config.sops.templates."discord-token.env".path;
