@@ -176,6 +176,26 @@
         "type": "github"
       }
     },
+    "discord-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789798347,
+        "narHash": "sha256-IOjfRsgIwvQl7ZjbxBB9jAmXapWIcxuXZPlCYubtrs8=",
+        "owner": "kk-spartans",
+        "repo": "discord-cli",
+        "rev": "fb8a6d9590173db8d3e1ff46f4fb124546161276",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kk-spartans",
+        "repo": "discord-cli",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -954,6 +974,7 @@
         "agent-skills": "agent-skills",
         "apple-fonts": "apple-fonts",
         "catppuccin": "catppuccin",
+        "discord-cli": "discord-cli",
         "disko": "disko",
         "helium": "helium",
         "herdr": "herdr",
