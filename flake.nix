@@ -3,7 +3,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=master";
 
-    discord-cli.url = "github:kk-spartans/discord-cli";
+    discord-cli = {
+      url = "github:kk-spartans/discord-cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
