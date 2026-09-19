@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789798347,
+        "lastModified": 1789798305,
         "narHash": "sha256-IOjfRsgIwvQl7ZjbxBB9jAmXapWIcxuXZPlCYubtrs8=",
         "owner": "kk-spartans",
         "repo": "discord-cli",
-        "rev": "fb8a6d9590173db8d3e1ff46f4fb124546161276",
+        "rev": "d84d0244fc4048a8724efd5197953875449c4f8d",
         "type": "github"
       },
       "original": {
