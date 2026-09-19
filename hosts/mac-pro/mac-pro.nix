@@ -34,28 +34,15 @@ in
   home-manager.users.kk-spartans = {
     imports = [
       inputs.nix-packages.homeManagerModules.wacli-sync
-      inputs.nix-packages.homeManagerModules.discord-cli-sync
       inputs.discord-cli.homeManagerModules.default
     ];
 
     services.wacli-sync.enable = true;
-    services.discord-cli-sync.enable = true;
-
     services.discord-cli-follow = {
       enable = true;
       downloadMedia = true;
       environmentFile = "%h/.config/discord-cli/env";
     };
-
-    systemd.user.services.discord-cli-sync.Service.EnvironmentFile =
-      config.sops.templates."discord-token.env".path;
-  };
-
-  sops.secrets.DISCORD_TOKEN.owner = "kk-spartans";
-
-  sops.templates."discord-token.env" = {
-    content = "DISCORD_TOKEN=${config.sops.placeholder.DISCORD_TOKEN}";
-    owner = "kk-spartans";
   };
 
   boot.kernelPackages = pkgs.linuxPackages_6_12;
