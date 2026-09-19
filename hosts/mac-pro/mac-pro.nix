@@ -107,11 +107,49 @@ in
     };
   };
 
+  # Event-driven sync: inotify watches the vault, bisync runs after a quiet
+  # period so a save burst triggers one sync. Events arriving mid-sync sit
+  # buffered in the pipe and trigger a follow-up sync right after.
+  # Implemented as a system service (not systemd --user) so it runs on this
+  # headless host without lingering; User= gives the same identity.
+  systemd.services.obsidian-bisync-watch = {
+    description = "Watch Obsidian vault and bisync on change (debounced)";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
+    path = [
+      pkgs.rclone
+      pkgs.inotify-tools
+    ];
+    serviceConfig = {
+      User = "kk-spartans";
+      WorkingDirectory = "/home/kk-spartans/things/vault";
+      Restart = "always";
+      RestartSec = "5s";
+    };
+    script = ''
+      set -u
+      VAULT="/home/kk-spartans/things/vault"
+      DEBOUNCE=5
+      # Catch up on boot: pulls remote-side changes that inotify can't see.
+      rclone bisync . obsidian:vault || true
+      inotifywait -m -r \
+        -e modify,create,delete,move,close_write \
+        --format '%w%f' "$VAULT" |
+      while read -r _changed; do
+        # Debounce: drain the burst until a quiet period passes.
+        while read -r -t "$DEBOUNCE" _extra; do :; done
+        rclone bisync . obsidian:vault || true
+      done
+    '';
+  };
+
+  # Slow fallback for remote-side changes, which local inotify can't see.
   systemd.timers.obsidian-bisync = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnBootSec = "1min";
-      OnUnitActiveSec = "1min";
+      OnBootSec = "15min";
+      OnUnitActiveSec = "15min";
     };
   };
 
