@@ -141,7 +141,26 @@ for path in \
   "$HOME/.docker/buildx" \
   "$HOME/.local/share/opencode/log" \
   "$HOME/.local/share/opencode/tool-output" \
-  "$HOME/.t3/userdata/logs"; do
+  "$HOME/.t3/userdata/logs" \
+  "$HOME/.config/obsidian/Cache" \
+  "$HOME/.config/obsidian/Code Cache" \
+  "$HOME/.config/obsidian/GPUCache" \
+  "$HOME/.config/vesktop/sessionData/Cache" \
+  "$HOME/.config/vesktop/sessionData/Code Cache" \
+  "$HOME/.config/vesktop/sessionData/GPUCache" \
+  "$HOME/.config/discord/Cache" \
+  "$HOME/.config/discord/Code Cache" \
+  "$HOME/.config/discord/GPUCache" \
+  "$HOME/.config/Code/CachedExtensionVSIXs" \
+  "$HOME/.config/Code/Cache" \
+  "$HOME/.config/Code/CachedData" \
+  "$HOME/.config/Code/GPUCache" \
+  "$HOME/.config/terminal-browser/Cache" \
+  "$HOME/.config/terminal-browser/Code Cache" \
+  "$HOME/.config/terminal-browser/GPUCache" \
+  "$HOME/.config/terminal-browser-f46d9aae/Cache" \
+  "$HOME/.config/terminal-browser-f46d9aae/Code Cache" \
+  "$HOME/.config/terminal-browser-f46d9aae/GPUCache"; do
   if [[ -e "$path" || -L "$path" ]]; then
     rm -rf -- "$path" || true
     log "removed ${path/#"$HOME"/'~'}"
