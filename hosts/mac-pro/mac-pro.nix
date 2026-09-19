@@ -41,7 +41,7 @@ in
     services.discord-cli-follow = {
       enable = true;
       downloadMedia = true;
-      environmentFile = "%h/.config/discord-cli/env";
+      environmentFile = "%h/.local/share/discord-cli/env";
     };
   };
 
