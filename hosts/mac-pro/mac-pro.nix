@@ -38,8 +38,6 @@ in
       inputs.discord-cli.homeManagerModules.default
     ];
 
-    home.packages = [ pkgs.discord-cli ];
-
     services.wacli-sync.enable = true;
     services.discord-cli-sync.enable = true;
 
