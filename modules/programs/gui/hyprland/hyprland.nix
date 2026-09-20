@@ -39,12 +39,9 @@
       ./hypr/rules.nix
       # ./hypr/plugins.nix
 
-      ./waybar/waybar.nix
-      ./wallpaper/wallpaper.nix
-      ./swaync/swaync.nix
+      ./caelestia/caelestia.nix
       ./snappy-switcher/snappy-switcher.nix
       ./ie-r/ie-r.nix
-      ./hyprlock/hyprlock.nix
       ./hyprsunset/hyprsunset.nix
 
       # ./cava/cava.nix # hyprwinwrap is broken

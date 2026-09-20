@@ -90,7 +90,6 @@
       github
       pulseaudio
       port-killer
-      awww-switcher
       hypr-keybinds
       it-tools
       player-pilot
