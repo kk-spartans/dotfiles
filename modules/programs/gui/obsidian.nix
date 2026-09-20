@@ -12,7 +12,12 @@
   wayland.windowManager.hyprland.extraConfig = ''
     hl.window_rule({
       name = "obsidian-blur",
-      match = { class = "md.Obsidian" },
+      -- Class is md.obsidian.Obsidian (hyprctl). Match needs full-match
+      -- anchors (.*...*) — a bare "[Oo]bsidian" silently matches nothing.
+      -- Opacity just under 1 forces Hyprland onto the translucent path:
+      -- Chromium wrongly reports a full opaque region, which composites
+      -- the window solid otherwise (hyprwm/Hyprland#1332, #9474).
+      match = { class = ".*[Oo]bsidian.*" },
       opacity = "0.99",
     })
   '';
