@@ -94,7 +94,15 @@ in
       subdir = "skills";
     };
 
-    skills.enable = [ "agent-browser" ];
+    # Local policy overlay: plain `agent-browser` usage, no named sessions
+    # (see ./agent-browser-local/SKILL.md). This is what stops every agent
+    # from wrapping commands in AGENT_BROWSER_SESSION.
+    sources.agent-browser-local = {
+      path = ./agent-browser-local;
+      subdir = ".";
+    };
+
+    skills.enable = [ "agent-browser" "agent-browser-local" ];
   };
 
   home.file.".agent-browser/config.json".text = ''
