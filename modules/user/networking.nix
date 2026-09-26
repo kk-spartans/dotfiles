@@ -57,15 +57,22 @@ in
       RemainAfterExit = true;
       ExecStart = pkgs.writeShellScript "resolvconf-to-pihole" ''
         gateway=${gateway}
-        for uuid in $(${pkgs.networkmanager}/bin/nmcli -t -f UUID,TYPE connection show |
-          awk -F: '$2 ~ /^(802-3-ethernet|802-11-wireless|gsm|cdma)$/ { print $1 }'); do
-          ${pkgs.networkmanager}/bin/nmcli connection modify "$uuid" \
+        # Absolute paths: a systemd unit's PATH is almost empty, and awk
+        # missing here silently produced zero connections.
+        nmcli=${pkgs.networkmanager}/bin/nmcli
+        awk=${pkgs.gawk}/bin/awk
+
+        for uuid in $($nmcli -t -f UUID,TYPE connection show |
+          $awk -F: '$2 ~ /^(802-3-ethernet|802-11-wireless|gsm|cdma)$/ { print $1 }'); do
+          $nmcli connection modify "$uuid" \
             ipv4.ignore-auto-dns yes ipv4.dns "$gateway" \
             ipv6.ignore-auto-dns yes || true
         done
-        for dev in $(${pkgs.networkmanager}/bin/nmcli -t -f DEVICE,STATE device show |
-          awk -F: '$2 == "connected" && $1 != "lo" { print $1 }'); do
-          ${pkgs.networkmanager}/bin/nmcli device reapply "$dev" || true
+
+        # Reapply in place, so nothing has to reconnect and no lease is lost.
+        for dev in $($nmcli -t -f DEVICE,STATE dev status |
+          $awk -F: '$2 ~ /^connected/ && $1 != "lo" { print $1 }'); do
+          $nmcli device reapply "$dev" || true
         done
       '';
     };
