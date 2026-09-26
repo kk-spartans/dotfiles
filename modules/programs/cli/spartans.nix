@@ -36,7 +36,10 @@ let
       device: ${device}
       apex: spartans
       listen: "${cfg.helper.listen}"
-      target: http://127.0.0.1:${toString t3Port}
+      # t3 binds the tailnet address (see modules/services/t3-server.nix), so
+      # the helper aims at that rather than loopback; ${self} is resolved from
+      # the interface at startup.
+      target: http://${self}:${toString t3Port}
       api: https://home.spartans
       cert_dir: /home/kk-spartans/.t3/tls
       state_dir: /home/kk-spartans/.t3
