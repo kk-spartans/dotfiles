@@ -15,14 +15,14 @@
       "external_directory"."/**" = "allow";
     };
 
-    settings.provider.openrouter-unsupported = {
+    settings.provider.llama-cpp = {
       npm = "@ai-sdk/openai-compatible";
-      name = "OpenRouter Unsupported";
+      name = "llama.cpp";
       options = {
-        baseURL = "https://openrouter.ai/api/v1";
-        apiKey = "{env:OPENROUTER_API_KEY}";
+        baseURL = "http://localhost:8081";
+        apiKey = "hello";
       };
-      models."stealth/ox-alpha".name = "Ox Alpha (Openrouter)";
+      models."model".name = "loaded model";
     };
 
     tui = {

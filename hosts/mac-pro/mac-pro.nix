@@ -95,17 +95,17 @@ in
     '';
   };
 
-  systemd.services.obsidian-bisync = {
-    description = "Bisync Obsidian vault to remote";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      User = "kk-spartans";
-      WorkingDirectory = "/home/kk-spartans/things/vault";
-      ExecStart = "${pkgs.rclone}/bin/rclone bisync . obsidian:vault";
-    };
-  };
+  # systemd.services.obsidian-bisync = {
+  #   description = "Bisync Obsidian vault to remote";
+  #   after = [ "network-online.target" ];
+  #   wants = [ "network-online.target" ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     User = "kk-spartans";
+  #     WorkingDirectory = "/home/kk-spartans/things/vault";
+  #     ExecStart = "${pkgs.rclone}/bin/rclone bisync . obsidian:vault";
+  #   };
+  # };
 
   systemd.timers.obsidian-bisync = {
     wantedBy = [ "timers.target" ];
