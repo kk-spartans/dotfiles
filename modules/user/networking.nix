@@ -50,6 +50,46 @@ in
   # those win over the fallback. Its global dns= in conf.d is a dns *mode*
   # selector in NM 1.58 and its [connection] form is ignored, so say it
   # per connection instead and reapply in place — nothing has to reconnect.
+  # spartans writes the generated zone into a directory bind-mounted into the
+  # unbound container and asks for a reload over unbound-control, which wants a
+  # client certificate and so usually fails. This is the fallback that actually
+  # runs: notice the file changing and signal unbound, which re-reads its whole
+  # configuration on SIGHUP.
+  systemd.paths.spartans-dns-zone = {
+    description = "Reload unbound when spartans rewrites the zone";
+    wantedBy = [ "multi-user.target" ];
+    pathConfig = {
+      # The directory, not the file: spartans writes the zone atomically
+      # (temp file + rename), which shows up as a change to the directory and
+      # not as a modify to the file, so watching the file never fires.
+      PathChanged = "/home/kk-spartans/things/docker/edge/dns";
+      Unit = "spartans-dns-zone-reload.service";
+    };
+  };
+
+  systemd.services.spartans-dns-zone-reload = {
+    description = "Ask unbound to re-read its configuration";
+    serviceConfig = {
+      Type = "oneshot";
+      # No RemainAfterExit: a path unit will not re-trigger a service that is
+      # still active, so the zone would only ever reload once.
+      ExecStart = pkgs.writeShellScript "spartans-dns-zone-reload" ''
+        # A unit's PATH is nearly empty; docker is not on it by default.
+        docker=${pkgs.docker}/bin/docker
+
+        # A bad zone makes unbound exit on SIGHUP, and a dead resolver takes the
+        # whole tailnet's DNS with it, so check it came back and start it again
+        # if it did not.
+        $docker kill -s HUP unbound >/dev/null 2>&1 || true
+        sleep 1
+        if ! $docker inspect -f '{{.State.Running}}' unbound 2>/dev/null | grep -q true; then
+          echo "unbound did not survive the reload, restarting it" >&2
+          $docker start unbound >/dev/null
+        fi
+      '';
+    };
+  };
+
   systemd.services.resolvconf-to-pihole = {
     description = "Point NetworkManager connections at pihole instead of the router";
     wantedBy = [ "multi-user.target" ];
