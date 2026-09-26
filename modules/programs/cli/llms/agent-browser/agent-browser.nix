@@ -28,7 +28,23 @@ let
       set -euo pipefail
 
       BASE="''${BROWSERS_BASE:-https://browsers.services.spartans}"
-      WS="$(${pkgs.curl}/bin/curl -sf -m 15 "$BASE/json/version" | ${pkgs.python3}/bin/python3 -c 'import json,sys; print(json.load(sys.stdin)["webSocketDebuggerUrl"])')"
+
+      # agent-browser is a static binary with its own CA bundle, so it cannot be
+      # taught the gateway's private CA and would refuse the wss:// endpoint.
+      # Fetch /json/version over https (curl does trust it) and then dial the
+      # plaintext loopback port the cdp-proxy also publishes, which is the same
+      # nginx, same Chrome, same session. Override with BROWSERS_WS=... to point
+      # somewhere else.
+      WS="$(${pkgs.curl}/bin/curl -sf -m 15 "$BASE/json/version" | ${pkgs.python3}/bin/python3 -c '
+import json, os, sys, urllib.parse
+url = json.load(sys.stdin)["webSocketDebuggerUrl"]
+override = os.environ.get("BROWSERS_WS")
+if override:
+    print(override + urllib.parse.urlparse(url).path)
+else:
+    p = urllib.parse.urlparse(url)
+    print("ws://127.0.0.1:9222" + p.path)
+')"
       if [ -z "$WS" ]; then
         echo "agent-browser: no Chrome reachable via $BASE." >&2
         echo "On mac-pro: cd ~/things/docker/browsers && docker compose up -d" >&2
