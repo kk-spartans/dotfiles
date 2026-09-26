@@ -23,23 +23,20 @@ let
   # The device name the gateway knows this host by.
   device = lib.head (lib.splitString "." config.networking.hostName);
 
-  # Port t3code listens on. services.t3-server is a *home-manager* option
-  # (see the nix-packages input), and only forced on hosts that import it,
-  # which are exactly the hosts that enable the helper.
-  t3Port = config.home-manager.users.kk-spartans.services.t3-server.port;
-
-  # https://t3code.<device>.devices.spartans, served by the helper on a device
-  # that runs t3code, or by the gateway itself on the gateway's machine.
+  # The device half of the gateway. It serves whatever names the gateway
+  # assigns -- t3code, a dev server, a scratch page -- and keeps one
+  # certificate covering them, so nothing here names a single application. The
+  # port each name points at travels with the assignment, not with this file.
   helper = {
     home.file.".t3/helper.yaml".text = ''
       # Written by nix; change the spartans.helper options instead.
       device: ${device}
       apex: spartans
       listen: "${cfg.helper.listen}"
-      # t3 binds the tailnet address (see modules/services/t3-server.nix), so
-      # the helper aims at that rather than loopback. The placeholder below is
-      # escaped for nix; the helper expands it from the interface at startup.
-      target: http://''${self}:${toString t3Port}
+      # Where the gateway pushes assignments. Obscure on purpose and not the
+      # port clients reach this device on; the API token is what authenticates
+      # it. Must match the gateway's spartans.controlPort.
+      control_listen: "${toString cfg.helper.controlPort}"
       api: https://home.spartans
       cert_dir: /home/kk-spartans/.t3/tls
       state_dir: /home/kk-spartans/.t3
@@ -67,11 +64,20 @@ in
     enable = lib.mkEnableOption "the spartans gateway client and CA trust";
 
     helper = {
-      enable = lib.mkEnableOption "the t3code helper user service";
+      enable = lib.mkEnableOption "the device helper user service";
       listen = lib.mkOption {
         type = lib.types.str;
         default = ":443";
-        description = "Bind address for the helper. 443 on any device that is not the gateway.";
+        description = "Bind address clients reach this device on. 443 on any device that is not the gateway.";
+      };
+      controlPort = lib.mkOption {
+        type = lib.types.port;
+        default = 3785;
+        description = ''
+          Port the gateway pushes assignments to. Deliberately obscure and not
+          the client-facing port: the API token authenticates it, not obscurity.
+          Must match the gateway's SPARTANS_CONTROL_PORT.
+        '';
       };
     };
   };
