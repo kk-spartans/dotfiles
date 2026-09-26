@@ -37,9 +37,9 @@ let
       apex: spartans
       listen: "${cfg.helper.listen}"
       # t3 binds the tailnet address (see modules/services/t3-server.nix), so
-      # the helper aims at that rather than loopback. $${self} is a literal for
-      # nix and is resolved from the interface when the helper starts.
-      target: http://$${self}:${toString t3Port}
+      # the helper aims at that rather than loopback. The placeholder below is
+      # escaped for nix; the helper expands it from the interface at startup.
+      target: http://''${self}:${toString t3Port}
       api: https://home.spartans
       cert_dir: /home/kk-spartans/.t3/tls
       state_dir: /home/kk-spartans/.t3
