@@ -14,6 +14,11 @@ in
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
+  # The t3code helper is a systemd *user* service that has to bind :443, and
+  # ambient capabilities are not available to an unprivileged user manager. This
+  # is the same knob container hosts set for the same reason.
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 0;
+
   # A DNS outage on the gateway must not stop `nixos-rebuild` reaching this
   # machine over ssh, and nix.buildMachines resolves these names. The spartans
   # zone is the source of truth for everything else.
