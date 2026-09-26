@@ -12,18 +12,6 @@ let
   };
 in
 {
-  systemd.services.tailscale-operator = {
-    description = "Set tailscale operator for the t3-server user service";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "tailscaled.service" ];
-    wants = [ "tailscaled.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.tailscale}/bin/tailscale set --operator kk-spartans";
-      RemainAfterExit = true;
-    };
-  };
-
   users.users.kk-spartans.linger = true;
 
   environment.systemPackages = [ t3-nightly ];
@@ -31,14 +19,16 @@ in
   home-manager.users.kk-spartans = {
     imports = [ inputs.nix-packages.homeManagerModules.default ];
 
-    # operator is set by the tailscale-operator oneshot above; the upstream
-    # module warns unconditionally when serve is enabled
-    warnings = lib.mkForce [ ];
-
     services.t3-server = {
       enable = true;
       package = t3-nightly;
       tailscale.enable = true;
+      # t3 binds the tailnet address directly and the spartans gateway
+      # terminates TLS for it: t3code.<host>.devices.spartans. Using
+      # `tailscale serve` instead would make tailscaled own port 443 on the
+      # host, which is where the gateway needs to bind.
+      tailscale.bindIp = true;
+      tailscale.serve = false;
     };
   };
 }

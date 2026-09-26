@@ -10,8 +10,8 @@ let
 
   # mac-pro only: drives the persistent real-Chrome service over the tailnet
   # (~/things/docker/browsers on mac-pro: branded google-chrome-stable
-  # under Xvfb, profile in ./profile; no ports published on any host —
-  # Tailscale Serve at https://browsers.gute-degree.ts.net routes
+  # under Xvfb, profile in ./profile; no ports published on any host — the
+  # spartans gateway at https://browsers.services.spartans routes
   # /json/* + /devtools/* to Chrome and everything else to the noVNC UI).
   # Watch the live session at .../vnc.html — same browser the agent drives.
   # Log into Google by hand once in that UI; the agent inherits the
@@ -27,12 +27,12 @@ let
     text = ''
       set -euo pipefail
 
-      BASE="''${BROWSERS_BASE:-https://browsers.gute-degree.ts.net}"
+      BASE="''${BROWSERS_BASE:-https://browsers.services.spartans}"
       WS="$(${pkgs.curl}/bin/curl -sf -m 15 "$BASE/json/version" | ${pkgs.python3}/bin/python3 -c 'import json,sys; print(json.load(sys.stdin)["webSocketDebuggerUrl"])')"
       if [ -z "$WS" ]; then
         echo "agent-browser: no Chrome reachable via $BASE." >&2
         echo "On mac-pro: cd ~/things/docker/browsers && docker compose up -d" >&2
-        echo "Watch it at https://browsers.gute-degree.ts.net/vnc.html" >&2
+        echo "Watch it at https://browsers.services.spartans/vnc.html" >&2
         exit 1
       fi
 

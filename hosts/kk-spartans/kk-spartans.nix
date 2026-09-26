@@ -13,6 +13,13 @@
     ../../modules/services/t3-server.nix
   ];
 
+  # The laptop runs t3code but is not the gateway, so the helper serves
+  # t3code.kk-spartans.devices.spartans from the local t3 port.
+  spartans = {
+    enable = true;
+    helper.enable = true;
+  };
+
   boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

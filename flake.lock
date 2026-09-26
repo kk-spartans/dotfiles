@@ -975,6 +975,7 @@
         "rust-overlay": "rust-overlay_2",
         "snappy-switcher": "snappy-switcher",
         "sops-nix": "sops-nix",
+        "spartans": "spartans",
         "spicetify-nix": "spicetify-nix",
         "vicinae": "vicinae",
         "vicinae-extensions": "vicinae-extensions",
@@ -1163,6 +1164,26 @@
       "original": {
         "owner": "vicinaehq",
         "repo": "soulver-cpp",
+        "type": "github"
+      }
+    },
+    "spartans": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790407217,
+        "narHash": "sha256-Qa8zR08/MMnzH4dna57noIFLXV51BiUxJzoaRqMPnHE=",
+        "owner": "kk-spartans",
+        "repo": "spartans",
+        "rev": "cfea93712f5c03fd9f03a5f4341fa912cfffa861",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kk-spartans",
+        "repo": "spartans",
         "type": "github"
       }
     },

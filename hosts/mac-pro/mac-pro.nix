@@ -45,6 +45,10 @@ in
     };
   };
 
+  # The gateway host: trust its CA and put the CLI on PATH. No helper here —
+  # the gateway proxies this machine's t3code itself, and it needs port 443.
+  spartans.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   hardware.enableRedistributableFirmware = true;

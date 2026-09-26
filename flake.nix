@@ -145,6 +145,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # The internal gateway: CLI, device helper and the CA it signs with.
+    # Private, so this needs nix.settings.netrc-file (see modules/user/sops.nix).
+    spartans = {
+      url = "github:kk-spartans/spartans";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
   };
 
@@ -161,6 +168,7 @@
       spicetify-nix,
       sops-nix,
       rust-overlay,
+      spartans,
       # ik_llama-cpp,
       ...
     }@inputs:
