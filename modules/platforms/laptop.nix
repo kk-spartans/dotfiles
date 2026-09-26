@@ -20,8 +20,6 @@ in
       powerManagement.enable = true;
 
       services.logind.settings.Login = {
-        LidSwitch = "ignore";
-        HandleLidSwitch = "ignore";
         HandleLidSwitchExternalPower = "lock";
         HandleLidSwitchDocked = "lock";
         HandlePowerKey = "ignore";
