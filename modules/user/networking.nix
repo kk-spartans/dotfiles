@@ -70,8 +70,11 @@ in
         done
 
         # Reapply in place, so nothing has to reconnect and no lease is lost.
+        # Only devices NM actually manages: reapplying an *externally* managed
+        # one (tailscale0) makes NetworkManager flush the routes tailscaled put
+        # there, and the tailnet quietly stops routing.
         for dev in $($nmcli -t -f DEVICE,STATE dev status |
-          $awk -F: '$2 ~ /^connected/ && $1 != "lo" { print $1 }'); do
+          $awk -F: '$2 == "connected" && $1 != "lo" { print $1 }'); do
           $nmcli device reapply "$dev" || true
         done
       '';
