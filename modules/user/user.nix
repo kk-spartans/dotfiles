@@ -8,7 +8,6 @@
   imports = [
     ./locale.nix
     ./networking.nix
-    ./spartans-network.nix
     ./sops.nix
   ];
 
