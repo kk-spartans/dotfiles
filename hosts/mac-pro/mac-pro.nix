@@ -26,6 +26,7 @@ let
 in
 {
   imports = [
+    inputs.spartans.nixosModules.spartans
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/services/t3-server.nix
@@ -35,7 +36,6 @@ in
     imports = [
       inputs.nix-packages.homeManagerModules.wacli-sync
       inputs.discord-cli.homeManagerModules.default
-      inputs.spartans.homeManagerModules.spartans
     ];
 
     services.wacli-sync.enable = true;

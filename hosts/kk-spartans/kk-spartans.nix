@@ -2,12 +2,14 @@
   config,
   lib,
   pkgs,
+  inputs,
   modulesPath,
   ...
 }:
 
 {
   imports = [
+    inputs.spartans.nixosModules.spartans
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/services/t3-server.nix
@@ -45,10 +47,6 @@
       ];
     }
   ];
-  home-manager.users.kk-spartans = {
-    imports = [ inputs.spartans.homeManagerModules.spartans ];
-  };
-
   home-manager.users.kk-spartans.home.packages = [ pkgs.kiwix-tools ];
   home-manager.users.kk-spartans.wayland.windowManager.hyprland.settings = {
     monitor = [
