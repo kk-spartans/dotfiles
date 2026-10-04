@@ -13,7 +13,6 @@
 
     ./benchmarking.nix
     ./docker.nix
-    ./spartans.nix
     ./tailscale.nix
   ];
 
