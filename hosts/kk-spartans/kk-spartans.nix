@@ -14,10 +14,12 @@
   ];
 
   # The laptop runs t3code but is not the gateway, so the helper serves
-  # t3code.kk-spartans.devices.spartans from the local t3 port.
+  # t3code.kk-spartans.devices.spartans from the local t3 port. The gateway
+  # host does not need a helper -- it proxies its own applications.
   spartans = {
     enable = true;
     helper.enable = true;
+    caCertificate = ./../../certs/spartans-root.crt;
   };
 
   boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
@@ -43,6 +45,10 @@
       ];
     }
   ];
+  home-manager.users.kk-spartans = {
+    imports = [ inputs.spartans.homeManagerModules.spartans ];
+  };
+
   home-manager.users.kk-spartans.home.packages = [ pkgs.kiwix-tools ];
   home-manager.users.kk-spartans.wayland.windowManager.hyprland.settings = {
     monitor = [

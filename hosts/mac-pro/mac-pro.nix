@@ -35,6 +35,7 @@ in
     imports = [
       inputs.nix-packages.homeManagerModules.wacli-sync
       inputs.discord-cli.homeManagerModules.default
+      inputs.spartans.homeManagerModules.spartans
     ];
 
     services.wacli-sync.enable = true;
@@ -45,9 +46,12 @@ in
     };
   };
 
-  # The gateway host: trust its CA and put the CLI on PATH. No helper here —
+  # The gateway host: trust its CA and put the CLI on PATH. No helper here --
   # the gateway proxies this machine's t3code itself, and it needs port 443.
-  spartans.enable = true;
+  spartans = {
+    enable = true;
+    caCertificate = ./../../certs/spartans-root.crt;
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 

@@ -209,6 +209,11 @@
             {
               nixpkgs.overlays = [
                 inputs.nix-packages.overlays.default
+                # The client CLI, so the home-manager module can install it
+                # without every host having to thread the package through.
+                (final: prev: {
+                  spartans = inputs.spartans.packages.${final.stdenv.hostPlatform.system}.spartans;
+                })
               ]
               ++ nixpkgs.lib.optionals (!builtins.elem "avx2" instructionSets) [
                 inputs.nix-packages.overlays.bun-baseline

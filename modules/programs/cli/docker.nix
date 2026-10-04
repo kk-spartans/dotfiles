@@ -12,10 +12,12 @@
   config = lib.mkMerge [
     {
       virtualisation.docker = {
-        # Containers cannot use the host's systemd-resolved stub at 127.0.0.53,
-        # so dockerd needs real addresses. The spartans resolver answers the
-        # zone; the public one is there for everything else.
-        daemon.settings.dns = config.spartans.network.containerDNS;
+        # No custom DNS. Dockerd runs an embedded resolver at 127.0.0.11 inside
+        # every container's network namespace: it answers container names
+        # itself and forwards everything else to the host's resolv.conf, which
+        # Tailscale maintains. Handing it a fixed list instead meant every
+        # container resolved through one hardcoded resolver address, and a
+        # change to the tailnet's DNS silently broke all of them.
         enable = true;
         enableOnBoot = true;
         autoPrune.enable = true;
