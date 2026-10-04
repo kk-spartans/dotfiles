@@ -34,4 +34,14 @@
 
   # systemd-resolved owns /etc/resolv.conf; openresolv would fight it.
   networking.resolvconf.enable = false;
+
+  # Enabled, and configured not at all.
+  #
+  # Tailscale hands resolved the tailnet's names and the tailnet-wide nameserver
+  # over the tailscale0 link, and NetworkManager hands it the link resolvers.
+  # Setting Resolve.DNS here would override both by fiat, and that is how this
+  # machine ended up unable to resolve anything when the gateway's resolver was
+  # misconfigured: every lookup, including the ones for the machine's own
+  # hostname and the ssh session used to fix it, went through one container.
+  services.resolved.enable = true;
 }
