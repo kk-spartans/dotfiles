@@ -21,12 +21,25 @@
         default = "100.85.2.58";
         description = "Tailnet address of the laptop (kk-spartans).";
       };
-      # The resolver container's fixed address on its own docker bridge. Fixed so
-      # it does not move on recreate, because systemd-resolved is told about it.
+      # Where the resolver lives. Two forms, because the gateway can reach its
+      # own container on the docker bridge directly, while other machines have
+      # to come in over the tailnet on the published port.
       resolver = lib.mkOption {
         type = lib.types.str;
         default = "172.30.0.2";
-        description = "Address of the dnsmasq container that serves the spartans zone.";
+        description = ''
+          The dnsmasq container that serves the spartans zone, as reachable from
+          the gateway itself (its address on the spartans-dns bridge).
+        '';
+      };
+      resolverTailnet = lib.mkOption {
+        type = lib.types.str;
+        default = "100.67.45.93:5300";
+        description = ''
+          The same resolver as reachable from other machines: the gateway's
+          tailnet address and the published port. Port 53 cannot be published
+          because systemd-resolved already holds 127.0.0.53:53 on that host.
+        '';
       };
       # Where ordinary (non-spartans) lookups go. The router first so
       # tailnet-internal names resolve, a public resolver as a fallback. Nothing

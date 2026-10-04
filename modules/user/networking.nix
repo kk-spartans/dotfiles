@@ -23,6 +23,9 @@
 }:
 let
   net = config.spartans.network;
+  # On the gateway the container is reachable on the bridge; everywhere else it
+  # is published on the tailnet.
+  isGateway = config.networking.hostName == "mac-pro";
 in
 {
   networking.networkmanager.enable = true;
@@ -50,7 +53,12 @@ in
     # fallbacks behind the container means a dead or broken container degrades
     # to "the internet still works, *.spartans does not", which is the failure
     # mode that is actually recoverable, rather than "nothing resolves".
-    settings.Resolve.DNS = [ net.resolver ];
+    # The gateway reaches its own resolver on the bridge; a device uses the
+    # published tailnet address instead, which is why this is a per-host value
+    # rather than one constant.
+    settings.Resolve.DNS = [
+      (if isGateway then net.resolver else net.resolverTailnet)
+    ];
     settings.Resolve.FallbackDNS = net.upstreamDNS;
 
     # A plain search domain, so a bare `ssh mac-pro` still works now that
