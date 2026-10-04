@@ -21,6 +21,19 @@
         default = "100.85.2.58";
         description = "Tailnet address of the laptop (kk-spartans).";
       };
+      # Every tailnet device, so the gateway can resolve their names without the
+      # resolver it cannot run. Devices are few and their addresses are stable;
+      # this is the one place they are written down.
+      devices = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        default = {
+          mac-pro = "100.67.45.93";
+          kk-spartans = "100.85.2.58";
+          phone = "100.72.2.118";
+          tablet = "100.83.60.58";
+        };
+        description = "Tailnet address of each device, by name.";
+      };
       # Where the resolver lives. Two forms, because the gateway can reach its
       # own container on the docker bridge directly, while other machines have
       # to come in over the tailnet on the published port.

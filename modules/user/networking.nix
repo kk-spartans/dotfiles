@@ -2,19 +2,29 @@
 #
 # The design, and why it is this way:
 #
-#   - systemd-resolved is the only resolver on the box. /etc/resolv.conf points
+#   - systemd-resolved is the only resolver on the box; /etc/resolv.conf points
 #     at its stub.
 #   - Ordinary internet names go out the normal way, using whatever the link
-#     provides (the router, via DHCP). Nothing spartans-related sits in that path,
-#     so a problem with the zone can never take the internet down with it.
-#   - Only *.spartans is routed to the resolver container, via resolved's
-#     per-domain routing. That is what `~apex` below does.
+#     provides. Nothing spartans-related sits in that path.
+#   - Other machines get *.spartans from pihole on the gateway, and keep the
+#     router and a public resolver behind it as fallbacks.
 #
-# The earlier version pointed resolved's *global* fallback at the gateway and had
-# a systemd unit rewrite every NetworkManager connection to use it. That made
-# pihole the resolver for everything, so when pihole's forwarding chain broke --
-# which it did -- ordinary lookups stopped resolving too. The per-domain route is
-# the whole fix: the blast radius of a broken zone is the zone.
+# What went wrong before, because it explains most of the choices here:
+#
+#   A systemd unit rewrote every NetworkManager connection to use pihole as the
+#   only resolver, and pihole forwarded into unbound, which had no upstream
+#   configured. So one misconfigured hop made *every* lookup on the machine fail,
+#   and the damage was persisted into a dozen NetworkManager profiles. A DNS
+#   outage took everything with it.
+#
+#   The gateway host cannot use pihole at all: pihole binds the wildcard on port
+#   53 and systemd-resolved holds 127.0.0.53:53, and a wildcard bind and a
+#   specific-address bind on one port cannot coexist. pihole only accepts a
+#   listening mode of LOCAL/SINGLE/BIND/ALL/NONE -- never an interface name -- so
+#   there is no way to make it bind just the tailnet. Rather than pick a loser,
+#   the gateway resolves through resolved plus a small /etc/hosts list, which
+#   also means pihole dying costs the tailnet its zone and costs the gateway
+#   nothing.
 {
   config,
   lib,
@@ -23,69 +33,38 @@
 }:
 let
   net = config.spartans.network;
-  # The gateway is the machine pihole runs on, and pihole cannot have port 53
-  # here (systemd-resolved holds it). Every other machine uses pihole for the
-  # zone and gets normal internet DNS as a fallback.
+
+  # The machine pihole runs on, which is the one that cannot use it.
   isGateway = config.networking.hostName == "mac-pro";
+
+  # /etc/hosts entries, built as one flat list of lines.
+  #
+  # Bare device names plus their *.devices.spartans and t3code names. These go
+  # on every host, not just the gateway: the gateway needs them because it cannot
+  # ask pihole (see above), and on other machines a hosts entry that agrees with
+  # the zone costs nothing.
+  #
+  # Written down once, in spartans.network.devices, rather than per host.
+  hostEntries = lib.concatStringsSep "\n" (
+    lib.flatten (lib.mapAttrsToList (name: addr: [
+      "${addr} ${name}"
+      "${addr} ${name}.devices.${net.apex}"
+      "${addr} t3code.${name}.devices.${net.apex}"
+    ]) net.devices)
+    ++ [
+      "${net.gateway} home.${net.apex}"
+      "${net.gateway} ${net.apex}"
+    ]
+  );
 in
 {
-  networking.networkmanager.enable = true;
+  networking.extraHosts = hostEntries;
 
-  # Everything reachable here is already behind the tailnet, and the helper and
-  # the gateway both need to bind low ports without fighting a ruleset.
-  networking.firewall.enable = false;
-
-  # The device helper is a systemd *user* service that binds :443 and :80, and
-  # ambient capabilities are not available to an unprivileged user manager. This
-  # is the same knob container hosts set for the same reason.
-  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 0;
-
-  # resolved handles DNS; openresolv would fight it for /etc/resolv.conf.
-  networking.resolvconf.enable = false;
-
-
-  services.resolved = {
-    enable = true;
-
-    # Prefer our resolver (it knows the spartans zone and forwards the rest),
-    # but always keep real fallbacks behind it. This systemd (261) has no
-    # per-domain routing -- DomainsRoute is not a recognised key -- so the zone
-    # cannot be split off from the internet at the resolver. Putting the
-    # fallbacks behind the container means a dead or broken container degrades
-    # to "the internet still works, *.spartans does not", which is the failure
-    # mode that is actually recoverable, rather than "nothing resolves".
-    settings.Resolve.DNS = lib.optionals (!isGateway) [ net.resolver ];
-    settings.Resolve.FallbackDNS = net.upstreamDNS;
-
-    # A plain search domain, so a bare `ssh mac-pro` still works now that
-    # MagicDNS is gone. Not ~spartans: bare names should keep working for things
-    # that are not in the zone.
-    settings.Resolve.Domains = [ net.apex ];
-  };
-
-  # A DNS outage on the gateway must not stop `nixos-rebuild` reaching this
-  # machine over ssh, and nix.buildMachines resolves these names. The spartans
-  # zone is the source of truth for everything else.
-  networking.extraHosts = ''
-    ${net.gateway} mac-pro
-    ${net.laptop} kk-spartans
-  '' + lib.optionalString isGateway ''
-    # The gateway cannot use pihole for these (see above), and it only needs a
-    # couple of its own names: the dashboard for the CLI, and its own t3code.
-    ${net.gateway} home.${net.apex}
-    ${net.gateway} spartans
-    ${net.gateway} t3code.mac-pro.devices.${net.apex}
-  '';
-
-  # spartans writes the generated zone into a directory bind-mounted into the
-  # resolver container and asks for a reload. This is the fallback that actually
-  # runs: notice the file changing and signal dnsmasq, which re-reads its whole
-  # configuration on SIGHUP.
-  #
-  # The gateway writes the zone with a temp file and a rename, which shows up as
-  # a change to the *directory* and not a modify to the file, so the path unit
-  # watches the directory. And the triggered service must not be RemainAfterExit,
-  # or systemd will not re-trigger it and the zone only ever reloads once.
+  # The gateway rewrites the zone atomically (temp file + rename), which shows up
+  # as a change to the *directory* rather than a modify to the file, so the path
+  # unit watches the directory. The triggered service must not be
+  # RemainAfterExit, or systemd will not re-trigger it and the zone only ever
+  # reloads once.
   systemd.paths.spartans-dns-zone = {
     description = "Reload the spartans resolver when the zone changes";
     wantedBy = [ "multi-user.target" ];
@@ -96,15 +75,15 @@ in
   };
 
   systemd.services.spartans-dns-zone-reload = {
-    description = "Ask the spartans resolver to re-read the zone";
+    description = "Ask pihole to re-read the generated zone";
     serviceConfig = {
       Type = "oneshot";
       ExecStart = pkgs.writeShellScript "spartans-dns-zone-reload" ''
         # A unit's PATH is nearly empty; docker is not on it by default.
         docker=${pkgs.docker}/bin/docker
 
-        # dnsmasq re-reads addn-hosts on SIGHUP.
-        $docker kill -s HUP spartans-dns >/dev/null 2>&1 || true
+        # dnsmasq, inside pihole, re-reads addn-hosts on SIGHUP.
+        $docker kill -s HUP pihole >/dev/null 2>&1 || true
       '';
     };
   };
