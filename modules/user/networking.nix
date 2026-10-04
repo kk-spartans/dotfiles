@@ -23,8 +23,9 @@
 }:
 let
   net = config.spartans.network;
-  # On the gateway the container is reachable on the bridge; everywhere else it
-  # is published on the tailnet.
+  # The gateway is the machine pihole runs on, and pihole cannot have port 53
+  # here (systemd-resolved holds it). Every other machine uses pihole for the
+  # zone and gets normal internet DNS as a fallback.
   isGateway = config.networking.hostName == "mac-pro";
 in
 {
@@ -53,12 +54,7 @@ in
     # fallbacks behind the container means a dead or broken container degrades
     # to "the internet still works, *.spartans does not", which is the failure
     # mode that is actually recoverable, rather than "nothing resolves".
-    # The gateway reaches its own resolver on the bridge; a device uses the
-    # published tailnet address instead, which is why this is a per-host value
-    # rather than one constant.
-    settings.Resolve.DNS = [
-      (if isGateway then net.resolver else net.resolverTailnet)
-    ];
+    settings.Resolve.DNS = lib.optionals (!isGateway) [ net.resolver ];
     settings.Resolve.FallbackDNS = net.upstreamDNS;
 
     # A plain search domain, so a bare `ssh mac-pro` still works now that
@@ -73,6 +69,12 @@ in
   networking.extraHosts = ''
     ${net.gateway} mac-pro
     ${net.laptop} kk-spartans
+  '' + lib.optionalString isGateway ''
+    # The gateway cannot use pihole for these (see above), and it only needs a
+    # couple of its own names: the dashboard for the CLI, and its own t3code.
+    ${net.gateway} home.${net.apex}
+    ${net.gateway} spartans
+    ${net.gateway} t3code.mac-pro.devices.${net.apex}
   '';
 
   # spartans writes the generated zone into a directory bind-mounted into the

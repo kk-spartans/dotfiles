@@ -26,19 +26,16 @@
       # to come in over the tailnet on the published port.
       resolver = lib.mkOption {
         type = lib.types.str;
-        default = "172.30.0.2";
+        default = "100.67.45.93";
         description = ''
-          The dnsmasq container that serves the spartans zone, as reachable from
-          the gateway itself (its address on the spartans-dns bridge).
-        '';
-      };
-      resolverTailnet = lib.mkOption {
-        type = lib.types.str;
-        default = "100.67.45.93:5300";
-        description = ''
-          The same resolver as reachable from other machines: the gateway's
-          tailnet address and the published port. Port 53 cannot be published
-          because systemd-resolved already holds 127.0.0.53:53 on that host.
+          The resolver that serves *.spartans, on its port 53 -- reachable from
+          other machines on the tailnet.
+
+          The gateway host deliberately does not use this for itself: pihole
+          binds the wildcard on port 53, and systemd-resolved already holds
+          127.0.0.53:53, and those cannot coexist. So the gateway resolves
+          through resolved and /etc/hosts, which also means pihole dying costs
+          the tailnet its zone and costs the gateway nothing at all.
         '';
       };
       # Where ordinary (non-spartans) lookups go. The router first so
