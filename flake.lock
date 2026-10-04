@@ -1174,11 +1174,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790421575,
-        "narHash": "sha256-4lH2MpBOWmnkIvY3oIW4jRCfxmBZUoasTQu0SA5uoeE=",
+        "lastModified": 1790452399,
+        "narHash": "sha256-ORz59AK3o28dmSXGPGC3/2y3x/dZsLfh6Hxldx0cvXQ=",
         "owner": "kk-spartans",
         "repo": "spartans",
-        "rev": "7c6f969e65497f7cce77b8443303023fa3461907",
+        "rev": "a3f16c43946390c91a0d0d0ffb4c78c55b737ae6",
         "type": "github"
       },
       "original": {
