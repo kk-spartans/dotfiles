@@ -12,8 +12,8 @@
 
     # MagicDNS is off for the tailnet. --accept-dns=false tells tailscaled to
     # leave this machine's DNS completely alone: no 100.100.100.100 resolver, no
-    # *.ts.net search domain. The names in the spartans zone come from pihole
-    # instead (see modules/user/networking.nix). The tailnet itself is
+    # *.ts.net search domain. The names in the spartans zone come from the
+    # resolver container (see modules/user/networking.nix).
     # untouched, so this stays reversible per machine.
     # extraUpFlags only runs inside tailscaled-autoconnect, which is a
     # RemainAfterExit oneshot that already fired the first time this machine

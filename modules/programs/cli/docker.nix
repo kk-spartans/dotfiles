@@ -12,11 +12,10 @@
   config = lib.mkMerge [
     {
       virtualisation.docker = {
-        # The host resolves through systemd-resolved on 127.0.0.53, which
-        # dockerd cannot use as an upstream for containers. Point them at pihole
-        # on the tailnet address instead: it answers for the spartans zone and
-        # forwards everything else.
-        daemon.settings.dns = [ "100.67.45.93" "1.1.1.1" ];
+        # Containers cannot use the host's systemd-resolved stub at 127.0.0.53,
+        # so dockerd needs real addresses. The spartans resolver answers the
+        # zone; the public one is there for everything else.
+        daemon.settings.dns = config.spartans.network.containerDNS;
         enable = true;
         enableOnBoot = true;
         autoPrune.enable = true;

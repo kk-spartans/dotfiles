@@ -37,7 +37,7 @@ let
       # port clients reach this device on; the API token is what authenticates
       # it. Must match the gateway's spartans.controlPort.
       control_listen: "${toString cfg.helper.controlPort}"
-      api: https://home.spartans
+      api: https://home.${config.spartans.network.apex}
       cert_dir: /home/kk-spartans/.t3/tls
       state_dir: /home/kk-spartans/.t3
       renew_before: 720h
@@ -45,7 +45,9 @@ let
 
     systemd.user.services.spartans-helper = {
       Unit = {
-        Description = "spartans t3code helper (t3code.${device}.devices.spartans)";
+        # The helper serves whatever the gateway assigns it -- t3code, a dev
+        # server, a scratch page -- so it is no longer a t3code helper by name.
+        Description = "spartans device helper for ${device}";
         After = [ "network-online.target" ];
         Wants = [ "network-online.target" ];
       };
