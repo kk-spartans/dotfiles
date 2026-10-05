@@ -266,17 +266,6 @@
           gpu = "nvidia";
         };
 
-        raspi = mkHost {
-          system = "aarch64-linux";
-          hostname = "raspi";
-          instructionSets = [ ];
-
-          pc = false;
-          minimal = true;
-          laptop = false;
-          gpu = "none";
-        };
-
         mac-pro = mkHost {
           system = "x86_64-linux";
           hostname = "mac-pro";
