@@ -12,10 +12,19 @@
 #   -> mac-pro:53. And a lookup of kk-spartans is answered by Tailscale without
 #   leaving the machine. Neither needs anything configured in Nix.
 #
-# MagicDNS is off, so there is no *.ts.net search domain -- the names in this
-# setup are the short ones from the spartans zone, and a search domain would
-# only make them ambiguous. Note that MagicDNS being off does NOT disable the
-# resolver: it is a separate switch from --accept-dns.
+# Two different things, and conflating them cost a lot of time:
+#
+#   MagicDNS is a tailnet-wide setting in the admin dashboard. It decides
+#   whether *.ts.net names and the matching search domain exist. It is not
+#   something a config file on this machine sets, and nothing here does.
+#
+#   --accept-dns is per-machine. It decides whether *this* node uses the DNS
+#   configuration the tailnet publishes -- which here means the resolver at
+#   100.100.100.100 forwarding to mac-pro:53. It is the switch that was wrong.
+#
+# In `tailscale debug prefs` the field called CorpDNS is this second one, not
+# MagicDNS. Reading CorpDNS: false as "MagicDNS is off" is what made this look
+# like a dashboard problem instead of a one-line config problem here.
 {
   config,
   pkgs,
