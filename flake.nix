@@ -153,6 +153,11 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+
+    opencode = {
+      url = "github:anomalyco/opencode?ref=v2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -213,6 +218,7 @@
                 # without every host having to thread the package through.
                 (final: prev: {
                   spartans = inputs.spartans.packages.${final.stdenv.hostPlatform.system}.spartans;
+                  opencode = inputs.opencode.packages.${final.stdenv.hostPlatform.system}.opencode;
                 })
               ]
               ++ nixpkgs.lib.optionals (!builtins.elem "avx2" instructionSets) [
