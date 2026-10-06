@@ -759,11 +759,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791284151,
-        "narHash": "sha256-o+ix4gnYiQRYcGDm07gICuzwgb8Ary5d/AMXZnOGIoM=",
+        "lastModified": 1791293641,
+        "narHash": "sha256-CjvrXny9UZKSDnsRnDzfZJ4h0NZPlf0WyEZm6N4JJ6M=",
         "owner": "kk-spartans",
         "repo": "nix-packages",
-        "rev": "10dbf93721cb6197564c5141981d97d69cbedfaa",
+        "rev": "8704e29b9f22ed34d5da4f866d21db03c154b811",
         "type": "github"
       },
       "original": {
