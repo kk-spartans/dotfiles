@@ -8,8 +8,6 @@
   programs.opencode = {
     enable = true;
 
-    settings.plugin = [ "opencode-pty" ];
-
     settings.permission = {
       "*" = "allow";
       "external_directory"."/**" = "allow";
