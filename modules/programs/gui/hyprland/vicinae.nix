@@ -29,6 +29,15 @@
 
   programs.vicinae = {
     enable = true;
+
+    # Use the nixpkgs-built vicinae instead of the flake input's package. The
+    # flake input pins its own nixpkgs (glibc 2.42) while the system graphics
+    # stack is built against glibc 2.44, so the input's prebuilt binary can't
+    # load mesa's EGL (libgallium needs GLIBC_2.43) and crashes on toggle with
+    # "Failed to initialize graphics backend for OpenGL". pkgs.vicinae is built
+    # against the same nixpkgs as the rest of the system.
+    package = pkgs.vicinae;
+
     systemd = {
       enable = true;
       autoStart = true;

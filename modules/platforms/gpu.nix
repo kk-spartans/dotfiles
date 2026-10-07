@@ -84,11 +84,17 @@ in
           # Required with PreserveVideoMemoryAllocations so systemd can save
           # and restore NVIDIA VRAM around suspend and hibernate.
           enable = true;
-          finegrained = false;
+          finegrained = true;
         };
 
-        # prime disabled for Discrete BIOS mode
-        # for Hybrid, use: prime.sync.enable = true
+        # Hybrid BIOS: Intel iGPU drives the display, NVIDIA is an offload-only
+        # render device.
+        prime = {
+          offload.enable = true;
+          offload.enableOffloadCmd = true;
+          intelBusId = "PCI:0:2:0";
+          nvidiaBusId = "PCI:1:0:0";
+        };
       };
 
       boot.initrd.kernelModules = [ "nvidia" ];
