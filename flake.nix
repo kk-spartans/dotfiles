@@ -81,6 +81,7 @@
 
     vicinae = {
       url = "github:vicinaehq/vicinae";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # if i delete it ill forget when the author updates

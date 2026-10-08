@@ -94,11 +94,14 @@ in
     after = [ "systemd-modules-load.service" ];
     serviceConfig.Type = "oneshot";
     script = ''
+      # Best-effort tuning: never fail the unit (and thus activation) if the
+      # kernel rejects a value. amdgpu wants "profile_peak" for max clocks; it
+      # returns EINVAL for values like "high".
       for governor in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-        [ ! -w "$governor" ] || echo performance > "$governor"
+        [ ! -w "$governor" ] || echo performance > "$governor" || true
       done
       for level in /sys/class/drm/card*/device/power_dpm_force_performance_level; do
-        [ ! -w "$level" ] || echo high > "$level"
+        [ ! -w "$level" ] || echo profile_peak > "$level" 2>/dev/null || true
       done
     '';
   };

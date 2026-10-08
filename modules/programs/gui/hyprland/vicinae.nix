@@ -30,13 +30,18 @@
   programs.vicinae = {
     enable = true;
 
-    # Use the nixpkgs-built vicinae instead of the flake input's package. The
-    # flake input pins its own nixpkgs (glibc 2.42) while the system graphics
-    # stack is built against glibc 2.44, so the input's prebuilt binary can't
-    # load mesa's EGL (libgallium needs GLIBC_2.43) and crashes on toggle with
-    # "Failed to initialize graphics backend for OpenGL". pkgs.vicinae is built
-    # against the same nixpkgs as the rest of the system.
-    package = pkgs.vicinae;
+    # Use the flake input's package (0.29.1) rather than pkgs.vicinae (0.29.0),
+    # so the extension/state DB schema matches what the machine already has.
+    # The input follows our nixpkgs (see flake.nix), which fixes the glibc skew
+    # that used to crash it. But vicinae builds with gcc15Stdenv while its
+    # numen dependency defaults to our gcc16, which fails the final link with
+    # `undefined reference to ...@GLIBCXX_3.4.36`; build numen with gcc15 too.
+    package = inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+      numen = inputs.vicinae.inputs.numen.packages.${pkgs.stdenv.hostPlatform.system}.numen.override {
+        stdenv = pkgs.gcc15Stdenv;
+        withRepl = false;
+      };
+    };
 
     systemd = {
       enable = true;
