@@ -1236,11 +1236,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791210068,
-        "narHash": "sha256-BnWQ+HqcJwBo2bmqp1iLuLGU5+vn+ueIBNBqlW4LfmU=",
+        "lastModified": 1791458362,
+        "narHash": "sha256-UQENGW41daSfSofUmm/4r+5FI8kceaSHT8d1WEMqXyk=",
         "owner": "kk-spartans",
         "repo": "spartans",
-        "rev": "6077a6d766146d9c15c14da8ef3b50314cf06be2",
+        "rev": "6ea66f6fe1c7f95e07549c066a57eb2777f8f6d3",
         "type": "github"
       },
       "original": {
