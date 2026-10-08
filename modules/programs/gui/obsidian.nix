@@ -22,7 +22,7 @@
     })
   '';
 
-  programs.vicinae.settings.providers.applications.entrypoints.obsidian.alias = "ob";
+  programs.vicinae.settings.providers.applications.entrypoints."md.obsidian.Obsidian".alias = "ob";
 
   programs.zen-browser.policies.ExtensionSettings."{4cfbf13b-f27f-4f03-91dc-2aa17644029a}" = {
     install_url = "https://addons.mozilla.org/firefox/downloads/file/3727203/obsidian_web_clipper-0.1.xpi";
