@@ -42,6 +42,14 @@
       hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
       hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
       hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+      -- caelestia shell (global shortcuts)
+      hl.bind("SUPER + SUPER_L", hl.dsp.global("caelestia:launcher"), { release = true })
+      hl.bind("SUPER + L", hl.dsp.global("caelestia:lock"))
+      hl.bind("SUPER + SHIFT + E", hl.dsp.global("caelestia:session"))
+      hl.bind("SUPER + N", hl.dsp.global("caelestia:sidebar"))
+      hl.bind("SUPER + SHIFT + N", hl.dsp.global("caelestia:clearNotifs"), { locked = true })
+      hl.bind("SUPER + SHIFT + P", hl.dsp.global("caelestia:showall"))
     '';
     settings = {
       config = {

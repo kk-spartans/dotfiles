@@ -37,11 +37,5 @@
       move = "20 monitor_h-120",
       float = true,
     })
-
-    hl.window_rule({
-      name = "swaync-noborder",
-      match = { class = "^(swaync)$" },
-      border_size = 0,
-    })
   '';
 }
