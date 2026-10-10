@@ -50,6 +50,14 @@
       install_url = "https://www.better-hub.com/api/extension-download?browser=firefox";
       installation_mode = "force_installed";
     };
+    "bouncer-store@feedfilter" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/file/5093413/bouncer_heal_your_feed-2.7.1.xpi";
+      installation_mode = "force_installed";
+    };
+    "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/file/5076543/bitwarden_password_manager-2026.9.3.xpi";
+      installation_mode = "force_installed";
+    };
 
     # takes 16gbs of memory out of nowhere doing nothing, and slows down page loads *by a lot*
     # "wappalyzer@crunchlabz.com" = {
