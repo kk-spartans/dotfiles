@@ -22,6 +22,7 @@ in
       services.logind.settings.Login = {
         HandleLidSwitchExternalPower = "lock";
         HandleLidSwitchDocked = "lock";
+        HandleLidSwitch = "ignore";
         HandlePowerKey = "ignore";
         HandlePowerKeyLongPress = "ignore";
       };
