@@ -39,11 +39,6 @@ in
     ];
 
     services.wacli-sync.enable = true;
-    services.discord-cli-follow = {
-      enable = true;
-      downloadMedia = true;
-      environmentFile = "%h/.local/share/discord-cli/env";
-    };
   };
 
   # The gateway host: trust its CA and put the CLI on PATH. No helper here --

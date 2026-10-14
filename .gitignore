@@ -1,4 +1,7 @@
 /result
+/node_modules/
+/package.json
+/package-lock.json
 !*.nix
 
 # ripgrep annoys me
