@@ -16,7 +16,6 @@
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     nixos-hardware = {
@@ -221,9 +220,6 @@
                   spartans = inputs.spartans.packages.${final.stdenv.hostPlatform.system}.spartans;
                   opencode = inputs.opencode.packages.${final.stdenv.hostPlatform.system}.opencode;
                 })
-              ]
-              ++ nixpkgs.lib.optionals (!builtins.elem "avx2" instructionSets) [
-                inputs.nix-packages.overlays.bun-baseline
               ];
             }
 

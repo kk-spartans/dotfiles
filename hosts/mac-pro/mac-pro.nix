@@ -32,13 +32,26 @@ in
     ../../modules/services/t3-server.nix
   ];
 
+  # deviceHub pulls in pkgs.androidsdk, which refuses to evaluate unless the
+  # Android SDK license is accepted. mac-pro doesn't import modules/programs/gui,
+  # which sets this for the GUI hosts, so set it here.
+  nixpkgs.config.android_sdk.accept_license = true;
+
   home-manager.users.kk-spartans = {
     imports = [
       inputs.nix-packages.homeManagerModules.wacli-sync
       inputs.discord-cli.homeManagerModules.default
     ];
 
+    # Thin CLI: talks to the container over the runtime socket, no token here.
+    home.packages = [
+      inputs.discord-cli.packages.${pkgs.stdenv.hostPlatform.system}.thin
+    ];
+
     services.wacli-sync.enable = true;
+
+    # Install the full Android SDK for device tooling (adb/fastboot, emulators).
+    services.t3-server.deviceHub = true;
   };
 
   # The gateway host: trust its CA and put the CLI on PATH. No helper here --

@@ -157,11 +157,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789813336,
-        "narHash": "sha256-5/pr4/ofkv5pNjGW6inPx3uGhOosATOWuvs07WOiU7s=",
+        "lastModified": 1792218662,
+        "narHash": "sha256-7+jNVF84StUyogGXDDey/WWk9veDJ4V5ZdPRkUBpZJ8=",
         "owner": "kk-spartans",
         "repo": "discord-cli",
-        "rev": "07d9ee9ea4628174f42c041ef26837507bc87f26",
+        "rev": "939271b87e06fddffe906afa4a67074c3b8a9a0b",
         "type": "github"
       },
       "original": {
@@ -759,11 +759,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791374042,
-        "narHash": "sha256-D0PPl5sl+9twnSAoLp5D9ylNGRBS9HAM3UZYQwyzWhg=",
+        "lastModified": 1792219123,
+        "narHash": "sha256-9atybOfAiJ3ITD45emmHDPpdnNFUxX6T4/PTDIHk9nY=",
         "owner": "kk-spartans",
         "repo": "nix-packages",
-        "rev": "eab5c3fd37b7c474c69572d9618d3c1a5b76bbe3",
+        "rev": "c07bf53d51b1d3b92a5fa98fbf33355bdc722800",
         "type": "github"
       },
       "original": {
