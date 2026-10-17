@@ -37,14 +37,6 @@ in
         })
       '';
     };
-
-    xdg.configFile."hypr/hypridle.conf".text = ''
-      # listener { 
-      #     timeout = 35
-      #     on-timeout = hyprctl dispatch workspace special:spotify
-      #     on-resume = hyprctl dispatch togglespecialworkspace spotify
-      # }
-    '';
   };
 
   programs.spicetify = {
