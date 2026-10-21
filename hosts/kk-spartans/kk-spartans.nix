@@ -33,7 +33,7 @@
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
-      hostName = "mac-pro";
+      hostName = "mac-pro.devices.spartans";
       system = "x86_64-linux";
       protocol = "ssh-ng";
       sshUser = "kk-spartans";
