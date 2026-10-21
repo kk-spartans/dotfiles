@@ -62,6 +62,8 @@
     }
   ];
 
+  users.users.kk-spartans.extraGroups = [ "kvm" ];
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
