@@ -6,15 +6,20 @@
   ...
 }:
 let
-  t3-nightly = pkgs.t3-nightly.override {
+  t3Harnesses = {
     enableCodex = true;
     enableOpencode = true;
   };
+
+  # Stable CLI on PATH. The systemd service below runs the nightly build, so
+  # `t3` for humans and the server t3 binary are versioned independently.
+  t3 = pkgs.t3.override t3Harnesses;
+  t3-nightly = pkgs.t3-nightly.override t3Harnesses;
 in
 {
   users.users.kk-spartans.linger = true;
 
-  environment.systemPackages = [ t3-nightly ];
+  environment.systemPackages = [ t3 ];
 
   home-manager.users.kk-spartans = {
     imports = [ inputs.nix-packages.homeManagerModules.default ];
