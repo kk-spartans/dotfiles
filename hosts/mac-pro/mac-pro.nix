@@ -133,7 +133,7 @@ in
     };
   };
 
-  users.users.kk-spartans.extraGroups = [ "audio" ];
+  users.users.kk-spartans.extraGroups = [ "audio" "kvm" ];
 
   environment.systemPackages = [
     pkgs.libnotify
