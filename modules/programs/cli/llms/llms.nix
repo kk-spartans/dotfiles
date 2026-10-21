@@ -10,8 +10,13 @@
   imports = [
     ./opencode.nix
     ./skills.nix
-    ./agent-browser/agent-browser.nix
+
+    inputs.nix-packages.homeManagerModules.agent-browser
+    inputs.nix-packages.homeManagerModules.completions
   ];
+
+  programs.agent-browser.enable = true;
+  programs.cli-completions.enable = true;
 
   home.packages =
     with pkgs;

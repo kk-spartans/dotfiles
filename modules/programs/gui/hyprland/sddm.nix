@@ -27,7 +27,6 @@
 
   services.displayManager.sddm = {
     enable = false; # same here
-    theme = "pixie";
     package = pkgs.kdePackages.sddm;
 
     extraPackages = [
@@ -50,9 +49,6 @@
     };
   };
 
-  environment.systemPackages = [
-    pkgs.pixie-sddm
-  ];
   home-manager.users.kk-spartans = {
     xdg.configFile."uwsm/env".text = ''
       export XCURSOR_THEME=macOS

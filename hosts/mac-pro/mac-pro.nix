@@ -40,10 +40,9 @@ in
   home-manager.users.kk-spartans = {
     imports = [
       inputs.nix-packages.homeManagerModules.wacli-sync
-      inputs.discord-cli.homeManagerModules.default
     ];
 
-    # Thin CLI: talks to the container over the runtime socket, no token here.
+    # Thin CLI: talks to the container over its mounted data-dir socket.
     home.packages = [
       inputs.discord-cli.packages.${pkgs.stdenv.hostPlatform.system}.thin
     ];

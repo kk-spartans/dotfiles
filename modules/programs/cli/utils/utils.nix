@@ -16,17 +16,6 @@
   ++ lib.optionals (!minimal) [
     ./ocrmypdf.nix
     ./totp-cli.nix
-    inputs.nix-packages.homeManagerModules.terminal-agent-browser
-
-    # Per-herdr-tab agent control for terminal-browser. Same toggle pattern as
-    # the terminal-browser package above: off on minimal hosts.
-    #
-    # Carried as a conditional import rather than an assignment, because naming
-    # an option no imported module declares is an evaluation error -- so on a
-    # minimal host this has to be absent, not merely false.
-    {
-      programs.terminal-agent-browser.enable = true;
-    }
   ];
 
 
