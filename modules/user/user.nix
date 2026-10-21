@@ -36,6 +36,7 @@
       "uinput"
       "video"
       "dialout"
+      "kvm"
     ];
     initialPassword = "123456789"; # pls change
   };
@@ -61,8 +62,6 @@
       ];
     }
   ];
-
-  users.users.kk-spartans.extraGroups = [ "kvm" ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
