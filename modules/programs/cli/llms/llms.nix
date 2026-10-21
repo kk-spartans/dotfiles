@@ -15,7 +15,6 @@
     inputs.nix-packages.homeManagerModules.spogo
     inputs.nix-packages.homeManagerModules.gogcli
     inputs.nix-packages.homeManagerModules.wacli
-    inputs.nix-packages.homeManagerModules.t3
     inputs.nix-packages.homeManagerModules.hf
   ];
 
@@ -23,27 +22,22 @@
 
   programs.spogo = {
     enable = true;
-    enableFishIntegration = "fish";
+    enableFishIntegration = true;
   };
 
   programs.gogcli = {
     enable = true;
-    enableFishIntegration = "fish";
+    enableFishIntegration = true;
   };
 
   programs.wacli = {
     enable = true;
-    enableFishIntegration = "fish";
-  };
-
-  programs.t3 = {
-    enable = true;
-    enableFishIntegration = "fish";
+    enableFishIntegration = true;
   };
 
   programs.hf = {
     enable = true;
-    enableFishIntegration = "fish";
+    enableFishIntegration = true;
   };
 
   home.packages =

@@ -25,6 +25,7 @@ in
     services.t3-server = {
       enable = true;
       package = t3-nightly;
+      enableFishIntegration = true;
       tailscale.enable = true;
       # t3 binds the tailnet address directly and the spartans gateway
       # terminates TLS for it: t3code.<host>.devices.spartans. Using
