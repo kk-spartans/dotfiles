@@ -30,10 +30,7 @@ in
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/services/t3-server.nix
-    ../../modules/system/nixos-update.nix
   ];
-
-  services.nixos-update.enable = true;
 
   # deviceHub pulls in pkgs.androidsdk, which refuses to evaluate unless the
   # Android SDK license is accepted. mac-pro doesn't import modules/programs/gui,
