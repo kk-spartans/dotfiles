@@ -28,11 +28,8 @@
       sqlite
       bc
       cage
-      spogo
       fkill
-      wacli
       discrawl
-      hf
     ]
     ++ lib.optionals (!minimal) [
       terminal-browser

@@ -30,7 +30,10 @@ in
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/services/t3-server.nix
+    ../../modules/system/nixos-update.nix
   ];
+
+  services.nixos-update.enable = true;
 
   # deviceHub pulls in pkgs.androidsdk, which refuses to evaluate unless the
   # Android SDK license is accepted. mac-pro doesn't import modules/programs/gui,
@@ -136,6 +139,7 @@ in
   users.users.kk-spartans.extraGroups = [ "audio" ];
 
   environment.systemPackages = [
+    pkgs.libnotify
     pkgs.libva-utils
     pkgs.vulkan-tools
     pkgs.efibootmgr

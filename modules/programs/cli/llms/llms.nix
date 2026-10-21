@@ -12,11 +12,39 @@
     ./skills.nix
 
     inputs.nix-packages.homeManagerModules.agent-browser
-    inputs.nix-packages.homeManagerModules.completions
+    inputs.nix-packages.homeManagerModules.spogo
+    inputs.nix-packages.homeManagerModules.gogcli
+    inputs.nix-packages.homeManagerModules.wacli
+    inputs.nix-packages.homeManagerModules.t3
+    inputs.nix-packages.homeManagerModules.hf
   ];
 
   programs.agent-browser.enable = true;
-  programs.cli-completions.enable = true;
+
+  programs.spogo = {
+    enable = true;
+    enableFishIntegration = "fish";
+  };
+
+  programs.gogcli = {
+    enable = true;
+    enableFishIntegration = "fish";
+  };
+
+  programs.wacli = {
+    enable = true;
+    enableFishIntegration = "fish";
+  };
+
+  programs.t3 = {
+    enable = true;
+    enableFishIntegration = "fish";
+  };
+
+  programs.hf = {
+    enable = true;
+    enableFishIntegration = "fish";
+  };
 
   home.packages =
     with pkgs;
