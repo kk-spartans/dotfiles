@@ -31,7 +31,21 @@
     "brcmutil"
     "ssb"
   ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  # nixpkgs now builds kernels with CONFIG_MODULE_SIG and expects every module
+  # to ship a kmodigest single-module certificate. broadcom-sta builds wl.ko as
+  # a plain out-of-tree module and copies it straight into the output, so it
+  # never runs the kernel's signing step; the kernel-modules aggregator then
+  # fails with `cat: .../wl.ko.cer: No such file or directory`. Sign it with
+  # kmodigest ourselves so the certificate exists.
+  boot.extraModulePackages = [
+    (config.boot.kernelPackages.broadcom_sta.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.kmodigest ];
+      postInstall = (old.postInstall or "") + ''
+        ${pkgs.kmodigest}/bin/kmodigest \
+          "$out/lib/modules/${config.boot.kernelPackages.kernel.modDirVersion}/kernel/net/wireless/wl.ko"
+      '';
+    }))
+  ];
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
