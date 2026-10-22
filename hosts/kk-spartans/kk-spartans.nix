@@ -24,15 +24,44 @@
     caCertificate = ./../../certs/spartans-root.crt;
   };
 
-  # patchelf 0.19 aborts (`splitIndex == -1`) when adding an rpath to the
-  # protoc binaries shipped in the Grpc.Tools NuGet package, which breaks
-  # naps2. patchelf 0.18 handles them fine.
+  # nixpkgs' patch-nupkgs runs patchelf on every ELF in every NuGet package,
+  # including foreign-architecture binaries (naps2 pulls in arm64 runtimes)
+  # and binaries that patchelf 0.19 aborts on (the protoc in Grpc.Tools).
+  # Skip anything that is not for this system and patch the rest with the
+  # older, more forgiving patchelf.
   nixpkgs.overlays = [
     (final: prev: {
       dotnetCorePackages = prev.dotnetCorePackages.overrideScope (
         self: super: {
           patchNupkgs = super.patchNupkgs.override {
-            patchelf = prev.patchelfUnstable;
+            patchelf = prev.writeShellScriptBin "patchelf" ''
+              real=${prev.patchelfUnstable}/bin/patchelf
+              if [ "''${1-}" = "--print-interpreter" ]; then
+                for f; do :; done
+                machine=$(${prev.coreutils}/bin/od -An -tu2 -j18 -N2 "$f" | ${prev.coreutils}/bin/tr -d '[:space:]')
+                if [ "$machine" != "${
+                  toString (
+                    {
+                      x86_64 = 62;
+                      i686 = 3;
+                      aarch64 = 183;
+                    }
+                    .${prev.stdenv.hostPlatform.parsed.cpu.name} or 0
+                  )
+                }" ]; then
+                  echo "skipping non-native ELF ($machine): $f" >&2
+                  exit 1
+                fi
+              fi
+              if [ "''${1-}" = "--add-rpath" ]; then
+                for f; do :; done
+                if ! "$real" "$@" 2>/dev/null; then
+                  echo "patchelf could not add an rpath to $f, leaving it alone" >&2
+                fi
+                exit 0
+              fi
+              exec "$real" "$@"
+            '';
           };
         }
       );
