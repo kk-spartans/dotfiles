@@ -14,31 +14,16 @@
     inputs.nix-packages.homeManagerModules.agent-browser
     inputs.nix-packages.homeManagerModules.spogo
     inputs.nix-packages.homeManagerModules.gogcli
-    inputs.nix-packages.homeManagerModules.wacli
     inputs.nix-packages.homeManagerModules.hf
   ];
 
   programs.agent-browser.enable = true;
 
-  programs.spogo = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+  programs.spogo.enable = true;
 
-  programs.gogcli = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+  programs.gogcli.enable = true;
 
-  programs.wacli = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-
-  programs.hf = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+  programs.hf.enable = true;
 
   home.packages =
     with pkgs;
@@ -46,6 +31,8 @@
       pi-coding-agent
       claude-code
       codex
+      # wacli sync service is only enabled on mac-pro; keep the CLI everywhere.
+      wacli
     ]
     ++ (
       if minimal || gpu != "nvidia" then
