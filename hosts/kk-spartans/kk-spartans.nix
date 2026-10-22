@@ -24,6 +24,21 @@
     caCertificate = ./../../certs/spartans-root.crt;
   };
 
+  # patchelf 0.19 aborts (`splitIndex == -1`) when adding an rpath to the
+  # protoc binaries shipped in the Grpc.Tools NuGet package, which breaks
+  # naps2. patchelf 0.18 handles them fine.
+  nixpkgs.overlays = [
+    (final: prev: {
+      dotnetCorePackages = prev.dotnetCorePackages.overrideScope (
+        self: super: {
+          patchNupkgs = super.patchNupkgs.override {
+            patchelf = prev.patchelfUnstable;
+          };
+        }
+      );
+    })
+  ];
+
   boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
