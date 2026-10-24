@@ -17,7 +17,7 @@ let
   agent-browser-tailnet = pkgs.writeShellApplication {
     name = "agent-browser";
     runtimeInputs = [
-      pkgs.agent-browser-bin
+      pkgs.agent-browser
       pkgs.curl
       pkgs.python3
     ];
@@ -44,11 +44,11 @@ else:
         exit 1
       fi
 
-      exec ${pkgs.agent-browser-bin}/bin/agent-browser --cdp "$WS" "$@"
+      exec ${pkgs.agent-browser}/bin/agent-browser --cdp "$WS" "$@"
     '';
   };
 
-  agent-browser = if isMacPro then agent-browser-tailnet else pkgs.agent-browser-bin;
+  agent-browser = if isMacPro then agent-browser-tailnet else pkgs.agent-browser;
 in
 {
   home.packages = [ agent-browser ];
