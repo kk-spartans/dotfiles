@@ -4,25 +4,28 @@
   inputs,
   minimal,
   gpu,
+  hostname,
   ...
 }:
 {
   imports = [
     ./opencode.nix
     ./skills.nix
-
-    inputs.nix-packages.homeManagerModules.agent-browser
+  ]
+  ++ (
+    if hostname != "mac-pro" then
+      [ ./agent-browser/agent-browser.nix ]
+    else
+      []
+  )
+  ++ [
     inputs.nix-packages.homeManagerModules.spogo
     inputs.nix-packages.homeManagerModules.gogcli
     inputs.nix-packages.homeManagerModules.hf
   ];
 
-  programs.agent-browser.enable = true;
-
   programs.spogo.enable = true;
-
   programs.gogcli.enable = true;
-
   programs.hf.enable = true;
 
   home.packages =

@@ -40,6 +40,7 @@ in
   home-manager.users.kk-spartans = {
     imports = [
       inputs.nix-packages.homeManagerModules.wacli-sync
+      ../../modules/programs/cli/llms/agent-browser/agent-browser.nix
     ];
 
     # Thin CLI: talks to the container over its mounted data-dir socket.

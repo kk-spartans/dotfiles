@@ -207,6 +207,7 @@
               pc
               laptop
               gpu
+              hostname
               ;
           };
 
@@ -248,6 +249,7 @@
                   pc
                   laptop
                   gpu
+                  hostname
                   ;
               };
             }
