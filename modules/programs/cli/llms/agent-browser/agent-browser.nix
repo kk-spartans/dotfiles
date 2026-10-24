@@ -35,7 +35,7 @@ if override:
     print(override + urllib.parse.urlparse(url).path)
 else:
     p = urllib.parse.urlparse(url)
-    print("ws://127.0.0.1:9222" + p.path)
+    print("ws://127.0.0.1:9223" + p.path)
 ')"
       if [ -z "$WS" ]; then
         echo "agent-browser: no Chrome reachable via $BASE." >&2
