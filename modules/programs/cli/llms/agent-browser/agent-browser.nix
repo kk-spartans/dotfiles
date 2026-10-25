@@ -4,18 +4,15 @@ let
   isMacPro = hostname == "mac-pro";
 
   # mac-pro only: drives the persistent real-Chrome service over the tailnet
-  # (https://browsers.services.spartans routes /json/* + /devtools/* to Chrome
-  # running on mac-pro under Xvfb; port 9223 is published on 127.0.0.1 only so
-  # agent-browser can reach CDP over plaintext ws:// — not exposed on any host
-  # interface). Log into Google by hand once in the noVNC UI; the agent
-  # inherits the persisted session. No license keys. Override with
-  # BROWSERS_BASE.
+  # (https://browsers.services.spartans routes /json/* + wss://.../devtools/*
+  # to Chrome running on mac-pro under Xvfb; nothing is published on any host
+  # port). Log into Google by hand once in the noVNC UI; the agent inherits
+  # the persisted session. No license keys. Override with BROWSERS_BASE.
   #
-  # agent-browser is a static binary with its own CA bundle, so it cannot be
-  # taught the gateway's private CA and would refuse the wss:// endpoint.
-  # Fetch /json/version over https (curl does trust it) and then dial the
-  # plaintext loopback port the cdp-proxy also publishes — same nginx, same
-  # Chrome, same session. Override with BROWSERS_WS=... to point elsewhere.
+  # agent-browser is patched (nix-packages) to verify wss:// CDP endpoints
+  # against the system trust store, so the gateway's private CA is trusted
+  # and the whole path is plain HTTPS/WSS through spartans. Override the
+  # WebSocket endpoint with BROWSERS_WS=... if needed.
   agent-browser-tailnet = pkgs.writeShellApplication {
     name = "agent-browser";
     runtimeInputs = [
@@ -36,9 +33,10 @@ override = os.environ.get("BROWSERS_WS")
 if override:
     print(override + urllib.parse.urlparse(url).path)
 else:
-    p = urllib.parse.urlparse(url)
-    print("ws://127.0.0.1:9223" + p.path)
-')"
+    base = os.environ.get("BROWSERS_BASE", "https://browsers.services.spartans")
+    ws_base = base.replace("https://", "wss://").replace("http://", "ws://").rstrip("/")
+    print(ws_base + urllib.parse.urlparse(url).path)
+' )"
       if [ -z "$WS" ]; then
         echo "agent-browser: no Chrome reachable via $BASE." >&2
         echo "On mac-pro: cd ~/things/docker/browsers && docker compose up -d" >&2
