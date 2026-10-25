@@ -136,28 +136,28 @@
       }
       {
         workspace = "6";
-        monitor = "eDP-1";
+        monitor = "HDMI-A-1";
         default = true;
         persistent = false;
       }
       {
         workspace = "7";
-        monitor = "eDP-1";
+        monitor = "HDMI-A-1";
         persistent = false;
       }
       {
         workspace = "8";
-        monitor = "eDP-1";
+        monitor = "HDMI-A-1";
         persistent = false;
       }
       {
         workspace = "9";
-        monitor = "eDP-1";
+        monitor = "HDMI-A-1";
         persistent = false;
       }
       {
         workspace = "10";
-        monitor = "eDP-1";
+        monitor = "HDMI-A-1";
         persistent = false;
       }
     ];
