@@ -38,9 +38,7 @@
     implementation = lib.mkForce "dbus";
   };
 
-  environment.systemPackages = with pkgs; [
-    fuse3
-  ];
+  programs.fuse.enable = true;
 
   home-manager.users.kk-spartans = {
     imports = [
