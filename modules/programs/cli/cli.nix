@@ -38,6 +38,10 @@
     implementation = lib.mkForce "dbus";
   };
 
+  environment.systemPackages = with pkgs; [
+    fuse3
+  ];
+
   home-manager.users.kk-spartans = {
     imports = [
       inputs.catppuccin.homeModules.catppuccin
