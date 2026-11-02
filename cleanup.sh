@@ -92,12 +92,12 @@ if [[ -d /var/lib/systemd/coredump ]]; then
   sudo rm -f -- /var/lib/systemd/coredump/* || true
 fi
 
-log "Removing everything inside /tmp and /var/tmp while preserving the directories"
-if [[ -d /tmp ]]; then
-  sudo find /tmp -mindepth 1 -maxdepth 1 -exec rm -rf -- {} + || true
-else
-  log "/tmp does not exist; skipping"
-fi
+# log "Removing everything inside /tmp and /var/tmp while preserving the directories"
+# if [[ -d /tmp ]]; then
+#   sudo find /tmp -mindepth 1 -maxdepth 1 -exec rm -rf -- {} + || true
+# else
+#   log "/tmp does not exist; skipping"
+# fi
 if [[ -d /var/tmp ]]; then
   sudo find /var/tmp -mindepth 1 -maxdepth 1 -exec rm -rf -- {} + || true
 fi
