@@ -1,4 +1,4 @@
-Don't edit /etc/nixos.
+Don't edit /etc/nixos if it isn't the CWD.
 
 When making a PR: you're already in a new blank branch that's only for you, don't make a new branch and then a PR. When you're done make a PR.
 
