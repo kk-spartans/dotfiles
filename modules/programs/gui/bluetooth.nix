@@ -28,7 +28,7 @@
     wireplumber.configPackages = [
       (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/51-bluetooth.conf" ''
         monitor.bluez.properties = {
-          bluez5.roles = [ a2dp_source ]
+          bluez5.roles = [ a2dp_source hfp hsp ]
           bluez5.hfphsp-backend = "native"
           bluez5.enable-hw-volume = true
         }

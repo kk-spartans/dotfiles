@@ -1,0 +1,1 @@
+/contains(/c\    local clients=`hyprctl -j clients | jq -r --argjson ids "$(echo $monitors | jq -c '[.[] | .activeWorkspace.id]')" '[.[] | select(.workspace.id != null and (.workspace.id as $id | $ids | index($id) != null))]'`
