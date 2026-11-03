@@ -9,6 +9,8 @@
     extraConfig = ''
       hl.bind("SUPER + CTRL + T", hl.dsp.exec_cmd("hyprctl dispatch togglefloating active && hyprctl dispatch pin active && hyprctl dispatch bringactivetotop"))
 
+      hl.bind("CTRL + space", hl.dsp.exec_cmd("hex dictation toggle"))
+
       hl.bind("SUPER + E", hl.dsp.exec_cmd("uwsm app -- nautilus"))
       hl.bind("SUPER + Z", hl.dsp.exec_cmd("playerctl play-pause"))
 
