@@ -67,7 +67,7 @@
           post_processing = {
             deadline_seconds = 30;
             enabled = true;
-            model = null;
+            model = "groq/qwen/qwen3.8-27b";
             prompt = "Rewrite the transcript into clear, natural text while preserving the speaker's intended meaning.";
             variant = null;
           };
