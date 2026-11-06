@@ -19,7 +19,8 @@
       enable = true;
       autostart = true;
       systemdTarget = "graphical-session.target";
-      # Hex dictation toggle is bound to CTRL + Space in
+      # Hex dictation toggle is bound to CTRL + Space (and CTRL + Shift + Space
+      # for toggle without processing) in
       # modules/programs/gui/hyprland/hypr/binds.nix (hl.bind).
       # hex 3.3.0 has a failing test (meetings.opencode_model names no setting)
       package = inputs.hex.packages.${pkgs.stdenv.hostPlatform.system}.hex.overrideAttrs (old: {
