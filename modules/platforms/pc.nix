@@ -66,9 +66,9 @@
           name = "Global";
           post_processing = {
             deadline_seconds = 30;
-            enabled = true;
+            enabled = false;
             model = "groq/qwen/qwen3.8-27b";
-            prompt = "Rewrite the transcript into clear, natural text while preserving the speaker's intended meaning.";
+            # prompt = "Act like a bot that sits in between a user dictation transcript and the actualy output text. Shorten things like \"What the fuck?\" to wtf, omfg, etc. On top of that, remove filler words like uhh, and if the user tries to correct themselves, only leave the corrected version, etc. Small QoL things you can do before the text is passed. Reminder: this isn't always for texts, but if it seems like one, follow it. Try to get context. In any scenario, keep as much phrasing as possible the same from the og message.";
             variant = null;
           };
           replacements = [ ];
