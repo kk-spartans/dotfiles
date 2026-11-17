@@ -64,6 +64,7 @@
       nmap
       gimp
       naps2
+      pluely
     ];
   };
 }
