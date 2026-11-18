@@ -39,13 +39,7 @@
         xdg-desktop-portal-gtk
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
       ];
-      config = {
-        common.default = [ "gtk" ];
-        hyprland = {
-          default = [ "hyprland" "gtk" ];
-          "org.freedesktop.impl.portal.GlobalShortcuts" = [ "hyprland" ];
-        };
-      };
+      config.common.default = "*";
     };
   };
 }
